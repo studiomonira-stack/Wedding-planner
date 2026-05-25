@@ -1,0 +1,48 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+<h1><i class="fas fa-list-check"></i> Checklista</h1>
+<p class="text-muted">Håll koll på allt inför er stora dag.</p>
+
+<form method="post" action="{% url 'add_checklist_item' %}" class="row g-2 mb-4">
+    {% csrf_token %}
+    <div class="col-md-6">
+        <input type="text" name="text" class="form-control" placeholder="Ny punkt..." required>
+    </div>
+    <div class="col-md-4">
+        <select name="kategori" class="form-select">
+            {% for value, name in kategorier %}
+                <option value="{{ value }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Lägg till</button>
+    </div>
+</form>
+
+{% for value, data in kategorier_med_items.items %}
+    <h5 class="mt-4">{{ data.name }}</h5>
+    <ul class="list-group mb-3">
+        {% for item in data.items %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <a href="{% url 'toggle_checklist_item' item.id %}" class="text-decoration-none">
+                        {% if item.klar %}
+                            <i class="fas fa-circle-check text-success"></i> <span class="text-decoration-line-through text-muted">{{ item.text }}</span>
+                        {% else %}
+                            <i class="fas fa-circle text-muted"></i> {{ item.text }}
+                        {% endif %}
+                    </a>
+                </div>
+                <a href="{% url 'delete_checklist_item' item.id %}" class="btn btn-sm btn-outline-danger">	<i class="fas fa-trash-can"></i></a>
+            </li>
+        {% endfor %}
+    </ul>
+{% empty %}
+    <div class="text-center text-muted mt-5">
+        <p>✨ Inga punkter ännu. Börja planera ert drömbröllop!</p>
+    </div>
+{% endfor %}
+
+{% endblock %}

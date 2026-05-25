@@ -1,0 +1,51 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+<h1><i class="fas fa-images"></i> Inspirationsgalleri</h1>
+<p class="text-muted">Samla er inspiration – klistra in bildlänkar från Pinterest, Instagram eller andra sajter.</p>
+
+<form method="post" action="{% url 'add_bild' %}" class="row g-2 mb-4">
+    {% csrf_token %}
+    <div class="col-md-4">
+        <input type="url" name="bild" class="form-control" placeholder="Bildlänk (URL) *" required>
+    </div>
+    <div class="col-md-2">
+        <input type="text" name="titel" class="form-control" placeholder="Titel">
+    </div>
+    <div class="col-md-2">
+        <select name="kategori" class="form-select">
+            {% for value, name in kategorier %}
+                <option value="{{ value }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-3">
+        <input type="text" name="notering" class="form-control" placeholder="Notering">
+    </div>
+    <div class="col-md-1">
+        <button type="submit" class="btn btn-primary w-100">+</button>
+    </div>
+</form>
+
+<div class="row g-3">
+    {% for bild in bilder %}
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="{{ bild.bild }}" class="card-img-top" alt="{{ bild.titel }}" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    {% if bild.titel %}<h6 class="card-title">{{ bild.titel }}</h6>{% endif %}
+                    <span class="badge bg-secondary mb-2">{{ bild.get_kategori_display }}</span>
+                    {% if bild.notering %}<p class="card-text small text-muted">{{ bild.notering }}</p>{% endif %}
+                    <a href="{% url 'delete_bild' bild.id %}" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-can"></i> Ta bort</a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="col-12 text-center text-muted mt-5">
+            <p> Inga bilder ännu. Klistra in en bildlänk ovan!</p>
+            <p class="small">Tips: Högerklicka på en bild på Pinterest → Kopiera bildadress</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

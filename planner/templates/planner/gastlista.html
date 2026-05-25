@@ -1,0 +1,108 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+<h1><i class="fas fa-envelope-open-text"></i> Gästlista</h1>
+<p class="text-muted">Håll koll på era gäster, svar och bordsplacering.</p>
+
+<!-- Summering -->
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                <h5 class="card-title">Totalt</h5>
+                <p class="fs-4">{{ totalt_antal }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body text-center">
+                <h5 class="card-title">Kommer</h5>
+                <p class="fs-4">{{ antal_kommer }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning">
+            <div class="card-body text-center">
+                <h5 class="card-title">Inväntar svar</h5>
+                <p class="fs-4">{{ antal_invagen }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-danger text-white">
+            <div class="card-body text-center">
+                <h5 class="card-title">Kommer inte</h5>
+                <p class="fs-4">{{ antal_kommer_inte }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Lägg till gäst -->
+<form method="post" action="{% url 'add_gast' %}" class="row g-2 mb-4">
+    {% csrf_token %}
+    <div class="col-md-3">
+        <input type="text" name="namn" class="form-control" placeholder="Namn *" required>
+    </div>
+    <div class="col-md-2">
+        <input type="number" name="antal" class="form-control" placeholder="Antal" value="1" min="1">
+    </div>
+    <div class="col-md-2">
+        <input type="text" name="bord" class="form-control" placeholder="Bord">
+    </div>
+    <div class="col-md-3">
+        <input type="text" name="notering" class="form-control" placeholder="Notering">
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Lägg till</button>
+    </div>
+</form>
+
+<!-- Gästtabell -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Namn</th>
+            <th>Antal</th>
+            <th>Svar</th>
+            <th>Bord</th>
+            <th>Notering</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for gast in gaster %}
+            <tr>
+                <td>{{ gast.namn }}</td>
+                <td>{{ gast.antal }}</td>
+                <td>
+                    <form method="post" action="{% url 'update_gast' gast.id %}" class="d-inline">
+                        {% csrf_token %}
+                        <input type="hidden" name="namn" value="{{ gast.namn }}">
+                        <input type="hidden" name="antal" value="{{ gast.antal }}">
+                        <input type="hidden" name="bord" value="{{ gast.bord }}">
+                        <input type="hidden" name="notering" value="{{ gast.notering }}">
+                        <select name="svar" class="form-select form-select-sm" onchange="this.form.submit()">
+                            {% for value, name in svar_alternativ %}
+                                <option value="{{ value }}" {% if gast.svar == value %}selected{% endif %}>{{ name }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </td>
+                <td>{{ gast.bord }}</td>
+                <td>{{ gast.notering }}</td>
+                <td>
+                    <a href="{% url 'delete_gast' gast.id %}" class="btn btn-sm btn-outline-danger">	<i class="fas fa-trash-can"></i></a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="6" class="text-center text-muted">✨ Inga gäster ännu.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

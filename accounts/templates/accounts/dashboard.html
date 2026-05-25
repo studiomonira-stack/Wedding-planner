@@ -1,0 +1,107 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+<h1>Välkommen, {{ user.username }}! <i class="fas fa-gem"></i></h1>
+<p class="text-muted mb-4">Här är en överblick över er bröllopsplanering.</p>
+
+<div class="row g-4">
+    
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-list-check"></i> Checklista</h5>
+                {% if total_checklist > 0 %}
+                    <div class="progress mb-2" style="height: 25px;">
+                        <div class="progress-bar bg-success" style="width: {{ checklist_procent }}%">
+                            {{ checklist_procent }}%
+                        </div>
+                    </div>
+                    <p class="text-muted">{{ klara_checklist }} av {{ total_checklist }} punkter klara</p>
+                {% else %}
+                    <p class="text-muted">Inga punkter ännu.</p>
+                {% endif %}
+                <a href="{% url 'checklist' %}" class="btn btn-outline-primary btn-sm">Gå till checklistan →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-coins"></i> Budget</h5>
+                {% if total_budget > 0 %}
+                    <p><strong>Budget:</strong> {{ total_budget }} kr</p>
+                    <p><strong>Faktiskt:</strong> {{ total_faktiskt }} kr</p>
+                    <p class="{% if resultat >= 0 %}text-success{% else %}text-danger{% endif %}">
+                        <strong>Resultat:</strong> {% if resultat > 0 %}+{% endif %}{{ resultat }} kr
+                    </p>
+                {% else %}
+                    <p class="text-muted">Inga budgetposter ännu.</p>
+                {% endif %}
+                <a href="{% url 'budget' %}" class="btn btn-outline-primary btn-sm">Gå till budget →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-envelope-open-text"></i> Gäster</h5>
+                {% if totalt_gaster > 0 %}
+                    <p><strong>Totalt:</strong> {{ totalt_gaster }} personer</p>
+                    <p class="text-success"><strong>Kommer:</strong> {{ antal_kommer }}</p>
+                    <p class="text-warning"><strong>Inväntar svar:</strong> {{ antal_invagen }}</p>
+                    <p class="text-danger"><strong>Kommer inte:</strong> {{ antal_kommer_inte }}</p>
+                {% else %}
+                    <p class="text-muted">Inga gäster ännu.</p>
+                {% endif %}
+                <a href="{% url 'gastlista' %}" class="btn btn-outline-primary btn-sm">Gå till gästlistan →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card h-100 bg-light">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-play-circle"></i> Kom igång</h5>
+                <p class="text-muted">Börja med att fylla i checklistan och lägga till era gäster. Budgeten hjälper er hålla koll på kostnaderna längs vägen.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-truck"></i> Leverantörer</h5>
+                {% if antal_leverantorer > 0 %}
+                    <p><strong>Totalt:</strong> {{ antal_leverantorer }} leverantörer</p>
+                    <p class="text-success"><strong>Bokade:</strong> {{ antal_bokade }}</p>
+                    <p class="text-muted"><strong>Ej bokade:</strong> {{ antal_ej_bokade }}</p>
+                {% else %}
+                    <p class="text-muted">Inga leverantörer ännu.</p>
+                {% endif %}
+                <a href="{% url 'leverantorer' %}" class="btn btn-outline-primary btn-sm">Gå till leverantörer →</a>
+            </div>
+        </div>
+    </div>
+        <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-clock"></i> Tidslinje</h5>
+                {% if antal_handelser > 0 %}
+                    <p><strong>{{ antal_handelser }}</strong> händelser planerade</p>
+                    {% if forsta_handelse %}
+                        <p class="text-muted small">Först: {{ forsta_handelse.tid|time:"H:i" }} – {{ forsta_handelse.aktivitet }}</p>
+                    {% endif %}
+                    {% if sista_handelse %}
+                        <p class="text-muted small">Sist: {{ sista_handelse.tid|time:"H:i" }} – {{ sista_handelse.aktivitet }}</p>
+                    {% endif %}
+                {% else %}
+                    <p class="text-muted">Inga händelser ännu.</p>
+                {% endif %}
+                <a href="{% url 'tidslinje' %}" class="btn btn-outline-primary btn-sm">Gå till tidslinjen →</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
