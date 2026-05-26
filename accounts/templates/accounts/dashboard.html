@@ -1,107 +1,282 @@
 {% extends 'accounts/base.html' %}
 {% block content %}
 
-<h1>Välkommen, {{ user.username }}! <i class="fas fa-gem"></i></h1>
+<h1>Välkommen, {{ user.username }} <i class="fas fa-gem"></i></h1></h1>
 <p class="text-muted mb-4">Här är en överblick över er bröllopsplanering.</p>
 
 <div class="row g-4">
     
-    <div class="col-md-6">
+       <!-- Checklista – Cirkel + uppgifter till höger -->
+    <div class="col-md-4">
         <div class="card h-100">
             <div class="card-body">
-                <h5 class="card-title"><i class="fas fa-list-check"></i> Checklista</h5>
+                <h5 class="card-title"><i class="fas fa-list-check me-2"></i>Checklista</h5>
                 {% if total_checklist > 0 %}
-                    <div class="progress mb-2" style="height: 25px;">
-                        <div class="progress-bar bg-success" style="width: {{ checklist_procent }}%">
-                            {{ checklist_procent }}%
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="position-relative me-4" style="width: 110px; height: 110px; flex-shrink: 0;">
+                            <svg viewBox="0 0 36 36" class="w-100 h-100">
+                                <path d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    fill="none" stroke="#e5e3dc" stroke-width="4"/>
+                                <path d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    fill="none" stroke="#C7BDAE" stroke-width="4"
+                                    stroke-dasharray="{{ checklist_procent }}, 100"/>
+                            </svg>
+                            <div class="position-absolute top-50 start-50 translate-middle text-center">
+                                <strong style="font-size: 1.5rem;">{{ checklist_procent }}%</strong>
+                            </div>
+                        </div>
+                        <div>
+                            {% for item in checklist_items|slice:":4" %}
+                                <div class="d-flex align-items-center mb-1">
+                                    {% if item.klar %}
+                                        <i class="fas fa-circle-check me-2" style="color: var(--primary); font-size: 0.8rem;"></i>
+                                        <small class="text-decoration-line-through text-muted">{{ item.text }}</small>
+                                    {% else %}
+                                        <i class="far fa-circle me-2" style="color: var(--border); font-size: 0.8rem;"></i>
+                                        <small>{{ item.text }}</small>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                            {% if checklist_remaining > 0 %}
+                                <small class="text-muted mt-1 d-block">{{ checklist_remaining }} uppgifter kvar</small>
+                            {% endif %}
                         </div>
                     </div>
-                    <p class="text-muted">{{ klara_checklist }} av {{ total_checklist }} punkter klara</p>
                 {% else %}
-                    <p class="text-muted">Inga punkter ännu.</p>
+                    <p class="text-muted small mt-3">Inga punkter ännu.</p>
                 {% endif %}
-                <a href="{% url 'checklist' %}" class="btn btn-outline-primary btn-sm">Gå till checklistan →</a>
+                <a href="{% url 'checklist' %}" class="btn btn-outline-secondary btn-sm mt-auto align-self-center">Gå till checklistan <i class="fas fa-arrow-right ms-1"></i></a>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
+    <!-- Budget – Cirkel med 3 färger + text till höger -->
+    <div class="col-md-4">
         <div class="card h-100">
             <div class="card-body">
-                <h5 class="card-title"><i class="fas fa-coins"></i> Budget</h5>
+                <h5 class="card-title"><i class="fas fa-coins me-2"></i>Budget</h5>
                 {% if total_budget > 0 %}
-                    <p><strong>Budget:</strong> {{ total_budget }} kr</p>
-                    <p><strong>Faktiskt:</strong> {{ total_faktiskt }} kr</p>
-                    <p class="{% if resultat >= 0 %}text-success{% else %}text-danger{% endif %}">
-                        <strong>Resultat:</strong> {% if resultat > 0 %}+{% endif %}{{ resultat }} kr
-                    </p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="position-relative me-4" style="width: 110px; height: 110px; flex-shrink: 0;">
+                            <svg viewBox="0 0 36 36" class="w-100 h-100">
+                                <!-- Total budget (bakgrund) - mörkaste -->
+                                <circle cx="18" cy="18" r="14" fill="none" stroke="#634935" stroke-width="4"/>
+                                <!-- Spenderat - mellanfärg -->
+                                <circle cx="18" cy="18" r="14" fill="none" stroke="#997D64" stroke-width="4"
+                                    stroke-dasharray="{{ budget_procent }}, 100" stroke-dashoffset="0"
+                                    transform="rotate(-90 18 18)"/>
+                                <!-- Kvar att spendera - ljusaste -->
+                                {% if budget_procent < 100 %}
+                                <circle cx="18" cy="18" r="14" fill="none" stroke="#C7BDAE" stroke-width="4"
+                                    stroke-dasharray="{{ budget_kvar }}, 100" stroke-dashoffset="-{{ budget_procent }}"
+                                    transform="rotate(-90 18 18)"/>
+                                {% endif %}
+                            </svg>
+                            <div class="position-absolute top-50 start-50 translate-middle text-center">
+                                <strong style="font-size: 0.9rem;">{{ total_budget }} kr</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-2">
+                                <div class="d-flex align-items-center mb-1">
+                                    <span style="width: 10px; height: 10px; background: #634935; border-radius: 50%; display: inline-block;" class="me-2"></span>
+                                    <small>Budget: {{ total_budget }} kr</small>
+                                </div>
+                                <div class="d-flex align-items-center mb-1">
+                                    <span style="width: 10px; height: 10px; background: #997D64; border-radius: 50%; display: inline-block;" class="me-2"></span>
+                                    <small>Spenderat: {{ total_faktiskt }} kr</small>
+                                </div>
+                                <div class="d-flex align-items-center mb-1">
+                                    <span style="width: 10px; height: 10px; background: #C7BDAE; border-radius: 50%; display: inline-block;" class="me-2"></span>
+                                    <small>Kvar: {{ resultat }} kr</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {% else %}
-                    <p class="text-muted">Inga budgetposter ännu.</p>
+                    <p class="text-muted small mt-3">Inga budgetposter ännu.</p>
                 {% endif %}
-                <a href="{% url 'budget' %}" class="btn btn-outline-primary btn-sm">Gå till budget →</a>
+               <a href="{% url 'budget' %}" class="btn btn-outline-secondary btn-sm mt-auto align-self-center">Gå till budget <i class="fas fa-arrow-right ms-1"></i></a>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
+    <!-- Gäster – Cirkel + text till höger -->
+    <div class="col-md-4">
         <div class="card h-100">
             <div class="card-body">
-                <h5 class="card-title"><i class="fas fa-envelope-open-text"></i> Gäster</h5>
+                <h5 class="card-title"><i class="fas fa-envelope-open-text me-2"></i>Gäster</h5>
                 {% if totalt_gaster > 0 %}
-                    <p><strong>Totalt:</strong> {{ totalt_gaster }} personer</p>
-                    <p class="text-success"><strong>Kommer:</strong> {{ antal_kommer }}</p>
-                    <p class="text-warning"><strong>Inväntar svar:</strong> {{ antal_invagen }}</p>
-                    <p class="text-danger"><strong>Kommer inte:</strong> {{ antal_kommer_inte }}</p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="position-relative me-4" style="width: 110px; height: 110px; flex-shrink: 0;">
+                            <svg viewBox="0 0 36 36" class="w-100 h-100">
+                                <circle cx="18" cy="18" r="14" fill="none" stroke="#e5e3dc" stroke-width="4"/>
+                                {% if antal_kommer > 0 %}
+                                <circle cx="18" cy="18" r="14" fill="none" stroke="#C7BDAE" stroke-width="4"
+                                    stroke-dasharray="{{ gaster_procent }}, 100" stroke-dashoffset="0"
+                                    transform="rotate(-90 18 18)"/>
+                                {% endif %}
+                            </svg>
+                            <div class="position-absolute top-50 start-50 translate-middle text-center">
+                                <strong style="font-size: 1.5rem;">{{ totalt_gaster }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-center mb-1">
+                                <span style="width: 10px; height: 10px; background: #C7BDAE; border-radius: 50%; display: inline-block;" class="me-2"></span>
+                                <small>Kommer: {{ antal_kommer }}</small>
+                            </div>
+                            <div class="d-flex align-items-center mb-1">
+                                <span style="width: 10px; height: 10px; background: #DFDDD4; border-radius: 50%; display: inline-block; border: 1px solid #C7BDAE;" class="me-2"></span>
+                                <small>Inväntar: {{ antal_invagen }}</small>
+                            </div>
+                            <div class="d-flex align-items-center mb-1">
+                                <span style="width: 10px; height: 10px; background: #e8e3df; border-radius: 50%; display: inline-block;" class="me-2"></span>
+                                <small>Nej: {{ antal_kommer_inte }}</small>
+                            </div>
+                        </div>
+                    </div>
                 {% else %}
-                    <p class="text-muted">Inga gäster ännu.</p>
+                    <p class="text-muted small mt-3">Inga gäster ännu.</p>
                 {% endif %}
-                <a href="{% url 'gastlista' %}" class="btn btn-outline-primary btn-sm">Gå till gästlistan →</a>
+                <a href="{% url 'gastlista' %}" class="btn btn-outline-secondary btn-sm mt-auto align-self-center">Gå till gästlistan <i class="fas fa-arrow-right ms-1"></i></a>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="card h-100 bg-light">
-            <div class="card-body">
-                <h5 class="card-title"><i class="fas fa-play-circle"></i> Kom igång</h5>
-                <p class="text-muted">Börja med att fylla i checklistan och lägga till era gäster. Budgeten hjälper er hålla koll på kostnaderna längs vägen.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
+       <!-- Leverantörer – Cirkel + text till höger -->
+    <div class="col-md-4">
         <div class="card h-100">
             <div class="card-body">
-                <h5 class="card-title"><i class="fas fa-truck"></i> Leverantörer</h5>
+                <h5 class="card-title"><i class="fas fa-truck me-2"></i>Leverantörer</h5>
                 {% if antal_leverantorer > 0 %}
-                    <p><strong>Totalt:</strong> {{ antal_leverantorer }} leverantörer</p>
-                    <p class="text-success"><strong>Bokade:</strong> {{ antal_bokade }}</p>
-                    <p class="text-muted"><strong>Ej bokade:</strong> {{ antal_ej_bokade }}</p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="position-relative me-4" style="width: 110px; height: 110px; flex-shrink: 0;">
+                            <svg viewBox="0 0 36 36" class="w-100 h-100">
+                                <circle cx="18" cy="18" r="14" fill="none" stroke="#e5e3dc" stroke-width="4"/>
+                                {% if antal_bokade > 0 %}
+                                <circle cx="18" cy="18" r="14" fill="none" stroke="#C7BDAE" stroke-width="4"
+                                    stroke-dasharray="{{ leverantor_procent }}, 100" stroke-dashoffset="0"
+                                    transform="rotate(-90 18 18)"/>
+                                {% endif %}
+                            </svg>
+                            <div class="position-absolute top-50 start-50 translate-middle text-center">
+                                <strong style="font-size: 1.5rem;">{{ antal_leverantorer }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-center mb-1">
+                                <span style="width: 10px; height: 10px; background: #C7BDAE; border-radius: 50%; display: inline-block;" class="me-2"></span>
+                                <small>Bokade: {{ antal_bokade }}</small>
+                            </div>
+                            <div class="d-flex align-items-center mb-1">
+                                <span style="width: 10px; height: 10px; background: #e8e3df; border-radius: 50%; display: inline-block;" class="me-2"></span>
+                                <small>Ej bokade: {{ antal_ej_bokade }}</small>
+                            </div>
+                        </div>
+                    </div>
                 {% else %}
-                    <p class="text-muted">Inga leverantörer ännu.</p>
+                    <p class="text-muted small mt-3">Inga leverantörer ännu.</p>
                 {% endif %}
-                <a href="{% url 'leverantorer' %}" class="btn btn-outline-primary btn-sm">Gå till leverantörer →</a>
+                <a href="{% url 'leverantorer' %}" class="btn btn-outline-secondary btn-sm mt-auto align-self-center">Gå till leverantörer <i class="fas fa-arrow-right ms-1"></i></a>
             </div>
         </div>
     </div>
-        <div class="col-md-6">
+
+    <!-- Tidslinje – Visuell -->
+    <div class="col-md-4">
         <div class="card h-100">
             <div class="card-body">
-                <h5 class="card-title"><i class="fas fa-clock"></i> Tidslinje</h5>
-                {% if antal_handelser > 0 %}
-                    <p><strong>{{ antal_handelser }}</strong> händelser planerade</p>
-                    {% if forsta_handelse %}
-                        <p class="text-muted small">Först: {{ forsta_handelse.tid|time:"H:i" }} – {{ forsta_handelse.aktivitet }}</p>
-                    {% endif %}
-                    {% if sista_handelse %}
-                        <p class="text-muted small">Sist: {{ sista_handelse.tid|time:"H:i" }} – {{ sista_handelse.aktivitet }}</p>
-                    {% endif %}
+                <h5 class="card-title"><i class="fas fa-clock me-2"></i>Tidslinje</h5>
+                {% if handelser %}
+                    <div class="timeline mt-3">
+                        {% for h in handelser %}
+                            <div class="d-flex mb-2">
+                                <div class="me-3 text-end" style="min-width: 40px;">
+                                    <small class="text-muted">{{ h.tid|time:"H:i" }}</small>
+                                </div>
+                                <div class="position-relative">
+                                    <div class="timeline-dot" style="width: 10px; height: 10px; background: var(--primary); border-radius: 50%; margin-top: 4px;"></div>
+                                    {% if not forloop.last %}
+                                        <div class="timeline-line" style="width: 2px; background: var(--border); height: calc(100% + 8px); position: absolute; left: 4px; top: 14px;"></div>
+                                    {% endif %}
+                                </div>
+                                <div class="ms-2">
+                                    <small><strong>{{ h.aktivitet }}</strong></small>
+                                    {% if h.plats %}<br><small class="text-muted">{{ h.plats }}</small>{% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
                 {% else %}
-                    <p class="text-muted">Inga händelser ännu.</p>
+                    <p class="text-muted small mt-3">Inga händelser ännu.</p>
                 {% endif %}
-                <a href="{% url 'tidslinje' %}" class="btn btn-outline-primary btn-sm">Gå till tidslinjen →</a>
+                <a href="{% url 'tidslinje' %}" class="btn btn-outline-secondary btn-sm mt-auto align-self-center">Gå till tidslinjen <i class="fas fa-arrow-right ms-1"></i></a>
             </div>
         </div>
     </div>
+
+    <!-- Galleri -->
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-images me-2"></i>Galleri</h5>
+                {% if galleri_bilder %}
+                    <div class="row g-1 mt-2">
+                        {% for bild in galleri_bilder|slice:":4" %}
+                            <div class="col-6">
+                                <img src="{{ bild.bild }}" alt="{{ bild.titel }}" class="img-fluid rounded" style="height: 70px; width: 100%; object-fit: cover;">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <p class="small text-muted mt-2">{{ galleri_antal }} bilder totalt</p>
+                {% else %}
+                    <p class="text-muted small mt-3">Inga bilder ännu.</p>
+                {% endif %}
+                <a href="{% url 'galleri' %}" class="btn btn-outline-secondary btn-sm mt-auto align-self-center">Gå till galleriet <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<style>
+.timeline-dot {
+    flex-shrink: 0;
+}
+.card {
+    transition: transform 0.2s ease;
+}
+.card:hover {
+    transform: translateY(-2px);
+}
+</style>
+
+<style>
+.timeline-dot {
+    flex-shrink: 0;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.card-body .btn {
+    margin-top: auto;
+    align-self: center;
+}
+.card:hover {
+    transform: translateY(-2px);
+}
+</style>
 
 {% endblock %}
