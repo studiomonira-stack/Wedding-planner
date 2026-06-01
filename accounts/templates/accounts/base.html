@@ -110,29 +110,42 @@
         .badge {
             font-weight: 500;
         }
+        .nav-scroll::-webkit-scrollbar {
+    display: none;  /* Dölj scrollbaren på mobilen */
+}
+.nav-scroll {
+    -ms-overflow-style: none;  /* Dölj på IE/Edge */
+    scrollbar-width: none;      /* Dölj på Firefox */
+}
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light px-4">
-        <a class="navbar-brand" href="{% url 'dashboard' %}"><i class="fas fa-gem"></i> Bröllopsplaneraren</a>
-        <div class="ms-auto">
-            {% if user.is_authenticated %}
-                <a href="{% url 'checklist' %}" class="btn btn-outline-secondary btn-sm me-1"><i class="fas fa-list-check"></i> Checklista</a>
-                <a href="{% url 'budget' %}" class="btn btn-outline-secondary btn-sm me-1"><i class="fas fa-coins"></i> Budget</a>
-                <a href="{% url 'gastlista' %}" class="btn btn-outline-secondary btn-sm me-1"><i class="fas fa-envelope-open-text"></i> Gäster</a>
-                <a href="{% url 'leverantorer' %}" class="btn btn-outline-secondary btn-sm me-1"><i class="fas fa-truck"></i> Leverantörer</a>
-                <a href="{% url 'tidslinje' %}" class="btn btn-outline-secondary btn-sm me-1"><i class="fas fa-clock"></i> Tidslinje</a>
-                <a href="{% url 'galleri' %}" class="btn btn-outline-secondary btn-sm me-3"><i class="fas fa-images"></i> Galleri</a>
-                <span class="me-2">Hej {{ user.username }}!</span>
-                <form method="post" action="{% url 'logout' %}" class="d-inline">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-danger btn-sm">Logga ut</button>
-                </form>
-            {% else %}
-                <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm">Logga in</a>
-            {% endif %}
+    <nav class="navbar navbar-light px-3">
+    <a class="navbar-brand" href="{% url 'dashboard' %}"><i class="fas fa-gem"></i> Bröllopsplaneraren</a>
+    
+    {% if user.is_authenticated %}
+    <div class="ms-auto d-flex align-items-center">
+        <div class="nav-scroll d-flex" style="overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; max-width: 60vw;">
+            <a href="{% url 'checklist' %}" class="btn btn-outline-secondary btn-sm me-1 flex-shrink-0"><i class="fas fa-list-check"></i> Checklista</a>
+            <a href="{% url 'budget' %}" class="btn btn-outline-secondary btn-sm me-1 flex-shrink-0"><i class="fas fa-coins"></i> Budget</a>
+            <a href="{% url 'gastlista' %}" class="btn btn-outline-secondary btn-sm me-1 flex-shrink-0"><i class="fas fa-envelope-open-text"></i> Gäster</a>
+            <a href="{% url 'leverantorer' %}" class="btn btn-outline-secondary btn-sm me-1 flex-shrink-0"><i class="fas fa-truck"></i> Leverantörer</a>
+            <a href="{% url 'tidslinje' %}" class="btn btn-outline-secondary btn-sm me-1 flex-shrink-0"><i class="fas fa-clock"></i> Tidslinje</a>
+            <a href="{% url 'galleri' %}" class="btn btn-outline-secondary btn-sm me-1 flex-shrink-0"><i class="fas fa-images"></i> Galleri</a>
         </div>
-    </nav>
+        <span class="me-2 ms-2 flex-shrink-0">Hej {{ user.username }}!</span>
+        <form method="post" action="{% url 'logout' %}" class="d-inline flex-shrink-0">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger btn-sm">Logga ut</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="ms-auto">
+        <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm">Logga in</a>
+    </div>
+    {% endif %}
+</nav>
+
     <div class="container mt-4">
         {% block content %}
         {% endblock %}
