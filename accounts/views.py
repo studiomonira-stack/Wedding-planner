@@ -1,3 +1,5 @@
+from linecache import cache
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -17,15 +19,8 @@ def landing(request):
 
 
 def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('dashboard')
-    else:
-        form = UserCreationForm()
-    return render(request, 'accounts/register.html', {'form': form})
+    # Registrering sker endast via Whop-köp
+    return redirect('landing')
 
 
 @login_required
@@ -98,10 +93,6 @@ def dashboard(request):
 def whop_webhook(request):
     """Tar emot köp från Whop och skapar användarkonto automatiskt"""
     
-    secret = request.headers.get('X-Whop-Secret', '')
-    if secret != 'WHOP_HEMLIG_NYCKEL':
-        return JsonResponse({'error': 'Unauthorized'}, status=403)
-
     try:
         data = json.loads(request.body)
         email = data.get('customer', {}).get('email', '')
@@ -111,18 +102,41 @@ def whop_webhook(request):
 
         user, created = User.objects.get_or_create(
             email=email,
-            defaults={
-                'username': email.split('@')[0],
-            }
+            defaults={'username': email.split('@')[0]}
         )
 
         if created:
             password = secrets.token_urlsafe(12)
             user.set_password(password)
             user.save()
-            print(f"✅ Ny användare skapad: {email} | Lösenord: {password}")
+            
+            # Spara lösenordet temporärt i 1 timme
+            from django.core.cache import cache
+            cache.set(f'password_{email}', password, timeout=3600)
+        else:
+            # Om användaren redan finns, hämta eller skapa nytt lösenord
+            password = secrets.token_urlsafe(12)
+            user.set_password(password)
+            user.save()
+            from django.core.cache import cache
+            cache.set(f'password_{email}', password, timeout=3600)
 
         return JsonResponse({'status': 'ok', 'created': created}, status=200)
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+
+        
+def welcome(request):
+    email = request.GET.get('email', '')
+    from django.core.cache import cache
+    password = cache.get(f'password_{email}', '')
+    
+    if password:
+        cache.delete(f'password_{email}')
+        return render(request, 'accounts/welcome.html', {
+            'email': email,
+            'password': password,
+        })
+    else:
+        return redirect('login')
