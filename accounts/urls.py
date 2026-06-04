@@ -9,4 +9,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('webhook/whop/', views.whop_webhook, name='whop_webhook'),
+    path('skapa-par/', views.skapa_par, name='skapa_par'),
+    path('skapa-par/', views.skapa_par, name='skapa_par'),
 ]

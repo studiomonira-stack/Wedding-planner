@@ -1,6 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Brollop(models.Model):
+    planerare = models.ForeignKey(User, on_delete=models.CASCADE, related_name='brollop')
+    namn = models.CharField(max_length=200)  # t.ex. "Sara & Johan"
+    datum = models.DateField(null=True, blank=True)
+    skapad = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.namn} ({self.planerare.username})"
 
 class ChecklistItem(models.Model):
     KATEGORIER = [
@@ -13,6 +21,7 @@ class ChecklistItem(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    brollop = models.ForeignKey(Brollop, on_delete=models.CASCADE, null=True, blank=True, related_name='%(class)s_items')
     text = models.CharField(max_length=255)
     kategori = models.CharField(max_length=20, choices=KATEGORIER, default='12_manader')
     klar = models.BooleanField(default=False)
@@ -39,6 +48,7 @@ class BudgetPost(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    brollop = models.ForeignKey(Brollop, on_delete=models.CASCADE, null=True, blank=True, related_name='%(class)s_items')
     kategori = models.CharField(max_length=30, choices=KATEGORIER)
     beskrivning = models.CharField(max_length=255, blank=True)
     budgeterat = models.DecimalField(max_digits=10, decimal_places=0, default=0)
@@ -57,6 +67,7 @@ class Gast(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    brollop = models.ForeignKey(Brollop, on_delete=models.CASCADE, null=True, blank=True, related_name='%(class)s_items')
     namn = models.CharField(max_length=100)
     email = models.EmailField(blank=True)
     telefon = models.CharField(max_length=20, blank=True)
@@ -87,6 +98,7 @@ class Leverantor(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    brollop = models.ForeignKey(Brollop, on_delete=models.CASCADE, null=True, blank=True, related_name='%(class)s_items')
     namn = models.CharField(max_length=100)
     kategori = models.CharField(max_length=30, choices=KATEGORIER)
     kontaktperson = models.CharField(max_length=100, blank=True)
@@ -103,6 +115,7 @@ class Leverantor(models.Model):
 
 class Tidslinje(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    brollop = models.ForeignKey(Brollop, on_delete=models.CASCADE, null=True, blank=True, related_name='%(class)s_items')
     tid = models.TimeField()
     aktivitet = models.CharField(max_length=255)
     plats = models.CharField(max_length=255, blank=True)
@@ -130,6 +143,7 @@ class Galleri(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    brollop = models.ForeignKey(Brollop, on_delete=models.CASCADE, null=True, blank=True, related_name='%(class)s_items')
     bild = models.URLField(max_length=500)
     titel = models.CharField(max_length=100, blank=True)
     kategori = models.CharField(max_length=20, choices=KATEGORIER, default='ovrigt')

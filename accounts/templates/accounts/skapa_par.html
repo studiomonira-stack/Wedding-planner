@@ -1,0 +1,32 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+<h1>👥 Skapa konto åt ett brudpar</h1>
+<p class="text-muted mb-4">Fyll i deras uppgifter så får de ett färdigt konto.</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Användarnamn</label>
+                        <input type="text" name="username" class="form-control" placeholder="t.ex. saraochjohan" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">E-post</label>
+                        <input type="email" name="email" class="form-control" placeholder="sara@email.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Lösenord</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Skapa konto</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
