@@ -13,14 +13,14 @@
                     {% if brollop.datum %}
                         <p class="text-muted small">{{ brollop.datum|date:"j F Y" }}</p>
                     {% endif %}
-                    <a href="{% url 'brollop_detail' brollop.id %}" class="btn btn-outline-secondary btn-sm">Öppna planering</a>
+                    <span class="text-muted small">ID: {{ brollop.id }}</span>
                 </div>
             </div>
         </div>
     {% empty %}
         <div class="col-12">
             <p class="text-muted">Du har inga bröllop ännu.</p>
-            <a href="{% url 'skapa_brollop' %}" class="btn btn-primary btn-sm">Skapa ditt första bröllop</a>
+            <span class="text-muted">Skapa bröllop kommer snart</span>
         </div>
     {% endfor %}
 </div>
