@@ -41,6 +41,7 @@ def dashboard(request):
     
     if profil.roll == 'planerare':
         brollop_lista = Brollop.objects.filter(planerare=request.user)
+        print(f"DEBUG: Planerare {request.user.username} har {brollop_lista.count()} bröllop")  # ← Lägg till denna
         return render(request, 'accounts/planerare_dashboard.html', {
             'brollop_lista': brollop_lista,
         })
