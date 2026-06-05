@@ -43,7 +43,7 @@ def dashboard(request):
         profil.roll = 'planerare'
         profil.save()
     if request.user.username == 'Monira':
-        profil.roll = 'par'
+        profil.roll = 'planerare'
         profil.save()
     
     if profil.roll == 'planerare':
