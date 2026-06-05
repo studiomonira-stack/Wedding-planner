@@ -1,0 +1,74 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+<h1>{{ brollop.namn }}</h1>
+{% if brollop.datum %}
+    <p class="text-muted">{{ brollop.datum|date:"j F Y" }}</p>
+{% endif %}
+
+<div class="row mt-4 g-4">
+    
+    <!-- Checklista -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5>📋 Checklista</h5>
+                {% for item in checklist_items %}
+                    <div class="d-flex align-items-center mb-1">
+                        {% if item.klar %}
+                            <i class="fas fa-circle-check me-2 text-success"></i>
+                            <span class="text-decoration-line-through text-muted">{{ item.text }}</span>
+                        {% else %}
+                            <i class="far fa-circle me-2"></i>
+                            {{ item.text }}
+                        {% endif %}
+                    </div>
+                {% empty %}
+                    <p class="text-muted">Inga punkter ännu</p>
+                {% endfor %}
+                <a href="{% url 'checklist' %}" class="btn btn-outline-secondary btn-sm mt-2">Gå till checklistan</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Budget -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5>💰 Budget</h5>
+                {% for p in poster %}
+                    <div class="d-flex justify-content-between">
+                        <span>{{ p.get_kategori_display }}</span>
+                        <span>{{ p.faktiskt }} / {{ p.budgeterat }} kr</span>
+                    </div>
+                {% empty %}
+                    <p class="text-muted">Inga budgetposter ännu</p>
+                {% endfor %}
+                <a href="{% url 'budget' %}" class="btn btn-outline-secondary btn-sm mt-2">Gå till budget</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gäster -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5>💌 Gäster</h5>
+                {% for g in gaster %}
+                    <div class="d-flex justify-content-between">
+                        <span>{{ g.namn }}</span>
+                        <span class="text-muted small">{{ g.get_svar_display }}</span>
+                    </div>
+                {% empty %}
+                    <p class="text-muted">Inga gäster ännu</p>
+                {% endfor %}
+                <a href="{% url 'gastlista' %}" class="btn btn-outline-secondary btn-sm mt-2">Gå till gästlistan</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<a href="{% url 'dashboard' %}" class="btn btn-outline-secondary btn-sm mt-3">← Tillbaka till dashboard</a>
+
+{% endblock %}

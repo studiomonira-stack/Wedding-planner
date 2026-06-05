@@ -20,7 +20,7 @@
     {% empty %}
         <div class="col-12">
             <p class="text-muted">Du har inga bröllop ännu.</p>
-            <span class="text-muted">Skapa bröllop kommer snart</span>
+            <a href="{% url 'brollop_detail' brollop.id %}" class="btn btn-outline-secondary btn-sm">Öppna planering</a>
         </div>
     {% endfor %}
 </div>
