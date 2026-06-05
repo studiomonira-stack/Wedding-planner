@@ -38,6 +38,10 @@ def register(request):
 @login_required
 def dashboard(request):
     profil, created = Profil.objects.get_or_create(user=request.user, defaults={'roll': 'par'})
+        # TVÅNG AdminMonira till planerare (tillfälligt)
+    if request.user.username == 'AdminMonira':
+        profil.roll = 'planerare'
+        profil.save()
     
     if profil.roll == 'planerare':
         brollop_lista = Brollop.objects.filter(planerare=request.user)
