@@ -250,3 +250,19 @@ def delete_bild(request, bild_id):
     bild = get_object_or_404(Galleri, id=bild_id, user=request.user)
     bild.delete()
     return redirect('galleri')
+
+@login_required
+def brollop_detail(request, brollop_id):
+    from planner.models import Brollop
+    brollop = get_object_or_404(Brollop, id=brollop_id)
+    
+    checklist_items = ChecklistItem.objects.filter(brollop=brollop)
+    poster = BudgetPost.objects.filter(brollop=brollop)
+    gaster = Gast.objects.filter(brollop=brollop)
+    
+    return render(request, 'planner/brollop_detail.html', {
+        'brollop': brollop,
+        'checklist_items': checklist_items,
+        'poster': poster,
+        'gaster': gaster,
+    })
