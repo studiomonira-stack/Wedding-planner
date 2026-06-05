@@ -42,6 +42,9 @@ def dashboard(request):
     if request.user.username == 'AdminMonira':
         profil.roll = 'planerare'
         profil.save()
+    if request.user.username == 'Monira':
+        profil.roll = 'par'
+        profil.save()
     
     if profil.roll == 'planerare':
         brollop_lista = Brollop.objects.filter(planerare=request.user)
