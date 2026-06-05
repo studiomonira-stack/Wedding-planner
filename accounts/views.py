@@ -112,6 +112,42 @@ def dashboard(request):
         })
 
 
+@csrf_exempt
+def whop_webhook(request):
+    """Tar emot köp från Whop och skapar användarkonto automatiskt"""
+    
+    try:
+        data = json.loads(request.body)
+        email = data.get('customer', {}).get('email', '')
+        
+        if not email:
+            return JsonResponse({'error': 'Email saknas'}, status=400)
+
+        user, created = User.objects.get_or_create(
+            email=email,
+            defaults={'username': email.split('@')[0]}
+        )
+
+        if created:
+            password = secrets.token_urlsafe(12)
+            user.set_password(password)
+            user.save()
+            
+            from django.core.cache import cache
+            cache.set(f'password_{email}', password, timeout=3600)
+        else:
+            password = secrets.token_urlsafe(12)
+            user.set_password(password)
+            user.save()
+            from django.core.cache import cache
+            cache.set(f'password_{email}', password, timeout=3600)
+
+        return JsonResponse({'status': 'ok', 'created': created}, status=200)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+
 def welcome(request):
     email = request.GET.get('email', '')
     from django.core.cache import cache
