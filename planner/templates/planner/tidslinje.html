@@ -1,8 +1,9 @@
 {% extends 'accounts/base.html' %}
+{% load i18n %}
 {% block content %}
 
-<h1><i class="fas fa-clock"></i> Tidslinje</h1>
-<p class="text-muted">Planera bröllopsdagen – från morgon till natt.</p>
+<h1><i class="fas fa-clock"></i> {% trans "Tidslinje" %}</h1>
+<p class="text-muted">{% trans "Planera bröllopsdagen – från morgon till natt." %}</p>
 
 <form method="post" action="{% url 'add_tidslinje' %}" class="row g-2 mb-4">
     {% csrf_token %}
@@ -10,16 +11,16 @@
         <input type="time" name="tid" class="form-control" required>
     </div>
     <div class="col-md-3">
-        <input type="text" name="aktivitet" class="form-control" placeholder="Aktivitet *" required>
+        <input type="text" name="aktivitet" class="form-control" placeholder="{% trans 'Aktivitet *' %}" required>
     </div>
     <div class="col-md-2">
-        <input type="text" name="plats" class="form-control" placeholder="Plats">
+        <input type="text" name="plats" class="form-control" placeholder="{% trans 'Plats' %}">
     </div>
     <div class="col-md-2">
-        <input type="text" name="ansvarig" class="form-control" placeholder="Ansvarig">
+        <input type="text" name="ansvarig" class="form-control" placeholder="{% trans 'Ansvarig' %}">
     </div>
     <div class="col-md-2">
-        <input type="text" name="notering" class="form-control" placeholder="Notering">
+        <input type="text" name="notering" class="form-control" placeholder="{% trans 'Notering' %}">
     </div>
     <div class="col-md-1">
         <button type="submit" class="btn btn-primary w-100">+</button>
@@ -31,11 +32,11 @@
         <table class="table table-hover">
             <thead class="table-light">
                 <tr>
-                    <th style="width: 100px;">Tid</th>
-                    <th>Aktivitet</th>
-                    <th>Plats</th>
-                    <th>Ansvarig</th>
-                    <th>Notering</th>
+                    <th style="width: 100px;">{% trans "Tid" %}</th>
+                    <th>{% trans "Aktivitet" %}</th>
+                    <th>{% trans "Plats" %}</th>
+                    <th>{% trans "Ansvarig" %}</th>
+                    <th>{% trans "Notering" %}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -57,8 +58,8 @@
     </div>
 {% else %}
     <div class="text-center text-muted mt-5">
-        <p>✨ Inga händelser ännu. Börja med att lägga till vigseln!</p>
-        <p class="small">Tips: 14:00 – Vigsel, 15:30 – Mingel, 18:00 – Middag, 22:00 – Dans</p>
+        <p>✨ {% trans "Inga händelser ännu. Börja med att lägga till vigseln!" %}</p>
+        <p class="small">{% trans "Tips: 14:00 – Vigsel, 15:30 – Mingel, 18:00 – Middag, 22:00 – Dans" %}</p>
     </div>
 {% endif %}
 

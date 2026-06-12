@@ -1,14 +1,15 @@
 {% extends 'accounts/base.html' %}
+{% load i18n %}
 {% block content %}
 
-<h1>	<i class="fas fa-coins"></i> Budget</h1>
-<p class="text-muted">Håll koll på era bröllopskostnader.</p>
+<h1><i class="fas fa-coins"></i> {% trans "Budget" %}</h1>
+<p class="text-muted">{% trans "Håll koll på era bröllopskostnader." %}</p>
 
 <div class="row g-3 mb-4">
     <div class="col-md-4">
         <div class="card bg-light">
             <div class="card-body text-center">
-                <h5 class="card-title">Budget</h5>
+                <h5 class="card-title">{% trans "Budget" %}</h5>
                 <p class="fs-4">{{ total_budget }} kr</p>
             </div>
         </div>
@@ -16,15 +17,15 @@
     <div class="col-md-4">
         <div class="card bg-light">
             <div class="card-body text-center">
-                <h5 class="card-title">Faktiskt</h5>
+                <h5 class="card-title">{% trans "Faktiskt" %}</h5>
                 <p class="fs-4">{{ total_faktiskt }} kr</p>
             </div>
         </div>
     </div>
-       <div class="col-md-4">
+    <div class="col-md-4">
         <div class="card {% if differens >= 0 %}bg-success{% else %}bg-danger{% endif %} text-white">
             <div class="card-body text-center">
-                <h5 class="card-title">Resultat</h5>
+                <h5 class="card-title">{% trans "Resultat" %}</h5>
                 <p class="fs-4">{% if differens > 0 %}+{% endif %}{{ differens }} kr</p>
             </div>
         </div>
@@ -35,34 +36,34 @@
     {% csrf_token %}
     <div class="col-md-3">
         <select name="kategori" class="form-select" required>
-            <option value="">Välj kategori...</option>
+            <option value="">{% trans "Välj kategori..." %}</option>
             {% for value, name in kategorier %}
                 <option value="{{ value }}">{{ name }}</option>
             {% endfor %}
         </select>
     </div>
     <div class="col-md-3">
-        <input type="text" name="beskrivning" class="form-control" placeholder="Beskrivning (valfritt)">
+        <input type="text" name="beskrivning" class="form-control" placeholder="{% trans 'Beskrivning (valfritt)' %}">
     </div>
     <div class="col-md-2">
-        <input type="number" name="budgeterat" class="form-control" placeholder="Budget (kr)" required>
+        <input type="number" name="budgeterat" class="form-control" placeholder="{% trans 'Budget (kr)' %}" required>
     </div>
     <div class="col-md-2">
-        <input type="number" name="faktiskt" class="form-control" placeholder="Faktiskt (kr)">
+        <input type="number" name="faktiskt" class="form-control" placeholder="{% trans 'Faktiskt (kr)' %}">
     </div>
     <div class="col-md-2">
-        <button type="submit" class="btn btn-primary w-100">Lägg till</button>
+        <button type="submit" class="btn btn-primary w-100">{% trans "Lägg till" %}</button>
     </div>
 </form>
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Kategori</th>
-            <th>Beskrivning</th>
-            <th>Budget</th>
-            <th>Faktiskt</th>
-            <th>Resultat</th>
+            <th>{% trans "Kategori" %}</th>
+            <th>{% trans "Beskrivning" %}</th>
+            <th>{% trans "Budget" %}</th>
+            <th>{% trans "Faktiskt" %}</th>
+            <th>{% trans "Resultat" %}</th>
             <th></th>
         </tr>
     </thead>
@@ -77,12 +78,12 @@
                     {% if post.diff > 0 %}+{% endif %}{{ post.diff }} kr
                 </td>
                 <td>
-                    <a href="{% url 'delete_budget_post' post.id %}" class="btn btn-sm btn-outline-danger">	<i class="fas fa-trash-can"></i></a>
+                    <a href="{% url 'delete_budget_post' post.id %}" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-can"></i></a>
                 </td>
             </tr>
         {% empty %}
             <tr>
-                <td colspan="6" class="text-center text-muted">✨ Inga budgetposter ännu.</td>
+                <td colspan="6" class="text-center text-muted">✨ {% trans "Inga budgetposter ännu." %}</td>
             </tr>
         {% endfor %}
     </tbody>
