@@ -1,3 +1,4 @@
+from django import forms
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -10,6 +11,12 @@ from planner.models import Brollop, ChecklistItem, BudgetPost, Gast, Leverantor,
 import json
 import secrets
 
+class CustomUserCreationForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')
 
 def landing(request):
     if request.user.is_authenticated:

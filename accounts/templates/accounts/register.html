@@ -92,18 +92,34 @@
 
         <form method="post">
             {% csrf_token %}
+            
             <div class="mb-3">
                 <label class="form-label small" style="color: var(--text-light);">{% trans "Användarnamn" %}</label>
                 {{ form.username }}
             </div>
+            
+            <div class="mb-3">
+                <label class="form-label small" style="color: var(--text-light);">{% trans "E-post" %}</label>
+                <input type="email" name="email" class="form-control" placeholder="din@email.se" required>
+            </div>
+
+            <!-- ETSY ORDER ID HÄR -->
+            <div class="mb-3">
+                <label class="form-label small" style="color: var(--text-light);">{% trans "Etsy Order ID" %}</label>
+                <input type="text" name="etsy_order_id" class="form-control" placeholder="Från ditt Etsy-kvitto" required>
+                <small class="text-muted">{% trans "Du hittar ditt Order ID i ditt Etsy-kvitto." %}</small>
+            </div>
+
             <div class="mb-3">
                 <label class="form-label small" style="color: var(--text-light);">{% trans "Lösenord" %}</label>
                 {{ form.password1 }}
             </div>
+            
             <div class="mb-3">
                 <label class="form-label small" style="color: var(--text-light);">{% trans "Bekräfta lösenord" %}</label>
                 {{ form.password2 }}
             </div>
+            
             {% if form.errors %}
                 <div class="alert alert-danger small">
                     {% for field in form %}
@@ -113,6 +129,7 @@
                     {% endfor %}
                 </div>
             {% endif %}
+            
             <button type="submit" class="btn btn-primary mt-2">{% trans "Skapa konto" %}</button>
         </form>
 
