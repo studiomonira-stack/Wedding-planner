@@ -39,6 +39,7 @@
         .section { padding: 80px 0; }
         .section-alt { background: var(--white); }
         .content-narrow { max-width: 650px; margin: 0 auto; }
+        .content-wide { max-width: 900px; margin: 0 auto; }
         .card-feature {
             background: var(--white);
             border: 1px solid var(--border);
@@ -47,6 +48,10 @@
             text-align: center;
             box-shadow: 0 2px 12px rgba(99,73,53,0.04);
             height: 100%;
+            transition: transform 0.2s ease;
+        }
+        .card-feature:hover {
+            transform: translateY(-4px);
         }
         .btn-primary {
             background: var(--primary);
@@ -127,42 +132,61 @@
     <section class="hero">
         <div class="container content-narrow">
             <h1>{% trans "Dina följare inspireras." %}<br>{% trans "Sedan planerar de sitt bröllop någon annanstans." %}</h1>
-            <p class="lead mt-3">{% trans "Du byggde publiken. Ge dem nu ett skäl att stanna. En digital bröllopsplanerare – fullt anpassad till ditt varumärke, inbäddad i ditt ekosystem – som gör varje planeringsstund till en påminnelse om vem som gav dem verktyget från början." %}</p>
+            <p class="lead mt-3">{% trans "Ge dem ett skäl att stanna. En digital bröllopsplanerare – fullt anpassad till ditt varumärke – som gör varje planeringsstund till en påminnelse om vem som gav dem verktyget från början." %}</p>
             <a href="#waitlist" class="btn btn-primary btn-lg mt-4">{% trans "Ansök om en plats" %}</a>
         </div>
     </section>
 
-    <!-- Problemet -->
-    <section class="section">
-        <div class="container content-narrow">
-            <h2>{% trans "När inspirerande innehåll tyst arbetar mot dig" %}</h2>
-            <p class="mt-3">{% trans "Du har gjort allting rätt. Vackra bilder. Konsekvent publicering. En växande gemenskap som uppriktigt älskar det du skapar. Och ändå – när dina följare stänger Instagram och öppnar sin dator för att faktiskt planera sitt bröllop, går de någon annanstans. En klumpig engelskspråkig app. En generisk checklist-sajt. Ett tomt kalkylark. De bär med sig din inspiration – och lämnar sin lojalitet någon helt annanstans. Detta är inte ett innehållsproblem. Det är ett strukturellt sådant." %}</p>
-            <p>{% trans "Här är det ingen talar om: ju bättre ditt innehåll är, desto värre blir det. Varje gång du publicerar något vackert ger du dina följare ytterligare en anledning att känna sig inspirerade – och ytterligare en anledning att agera på den inspirationen i någon annans verktyg. Du förlorar dem inte för att ditt varumärke är svagt. Du förlorar dem för att ditt varumärke saknar en hamn. De ser fyren. De beundrar den. Sedan seglar de vidare." %}</p>
-            <p>{% trans "Detta kallar vi auktoritetsläckage. Det är den tysta, dagliga överföringen av förtroende från varumärket som byggde publiken till verktyget som fångade beteendet. Det visar sig inte som ett dramatiskt misslyckande. Det visar sig som följarantal som ser sunt ut men konverteringssiffror som aldrig rör sig. Det visar sig som ett marknadsteam som arbetar hårdare för varje kvartal och undrar varför lojalitet känns permanent utom räckhåll. Det är inte ditt fel. Innehållsstrategin var aldrig utformad för att skapa den typ av daglig, funktionell beroendeställning som förvandlar beundran till intäkter. Du fick helt enkelt aldrig rätt verktyg för att stänga det gapet." %}</p>
-        </div>
-    </section>
-
-    <!-- Möjligheten -->
+    <!-- Vad appen gör – NY sektion -->
     <section class="section section-alt">
-        <div class="container content-narrow">
-            <h2>{% trans "Den första som äger planeringsresan vinner allt som följer" %}</h2>
-            <p class="mt-3">{% trans "Just nu finns det en lucka på den svenska bröllopsmarknaden. Par som planerar sitt bröllop söker ett digitalt verktyg som passar deras språk, deras estetik och verkligheten i att planera något så betydelsefullt. Vad de istället finner är utländska appar som känns generiska, webbplatser som känns frånkopplade och PDF-checklistor som blir oanvändbara inom en vecka. Den luckan är öppen. Och det första etablerade varumärket som fyller den med något genuint användbart kommer inte bara att skapa en ny intäktsström. Det kommer att bli den oumbärliga dagliga destinationen för varje par i sin gemenskap – platsen de återvänder till varje morgon medan de planerar den viktigaste dagen i sina liv." %}</p>
-        </div>
-    </section>
-
-    <!-- Lösningen -->
-    <section class="section">
-        <div class="container content-narrow">
-            <h2>{% trans "Ett verktyg som stärker bandet med dina följare" %}</h2>
-            <p class="mt-3">{% trans "Utility Anchor-partnerskapet gör en sak med precision: det bäddar in en fullt varumärkesanpassad, interaktiv digital bröllopsplanerare direkt i ditt ekosystem. Inte en mall. Inte en white label-produkt med någon annans logotyp. Ett verktyg som din publik kommer att anta att du byggde från grunden – för i varje meningsfull bemärkelse gjorde du det. Varje gång de öppnar det ser de ditt varumärke. Varje gång de slutför ett steg litar de mer på dig. Varje gång de delar det med en vän som just förlovat sig når ditt varumärke längre. Planeraren står inte bredvid ditt varumärke. Den blir ett uttryck för det." %}</p>
-        </div>
-    </section>
-
-    <!-- Transformation -->
-    <section class="section section-alt">
-        <div class="container content-narrow">
-            <h2>{% trans "Från passiv beundran till daglig beroendeställning" %}</h2>
-            <p class="mt-3">{% trans "Föreställ dig vad som förändras när ditt varumärke äger den dagliga vanan. Dina följare slutar vara människor som ibland besöker din webbplats och börjar vara människor som är beroende av den. Relationen skiftar från envisgsutsändning till genuint partnerskap. Du har nu en tydlig, databaserad berättelse att presentera i varje ledningsmöte. Inte \"vårt engagemang känns starkare\". Utan \"här är trafiken, här är konverteringsgraden, och här är den nya intäktskanalen vi öppnade – utan en enda krona i upfront-investering.\" Det är skillnaden mellan ett varumärke människor beundrar och ett varumärke de inte kan planera utan." %}</p>
+        <div class="container content-wide text-center">
+            <h2>{% trans "Allt samlat på ett ställe" %}</h2>
+            <p class="text-muted">{% trans "Checklista, budget, gästlista och mycket mer – designat för brudpar." %}</p>
+            
+            <div class="row g-4 mt-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-feature">
+                        <i class="fas fa-list-check fa-3x mb-3" style="color: var(--primary);"></i>
+                        <h5>{% trans "Checklista" %}</h5>
+                        <p class="small text-muted">{% trans "Steg-för-steg genom hela planeringen." %}</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-feature">
+                        <i class="fas fa-coins fa-3x mb-3" style="color: var(--primary);"></i>
+                        <h5>{% trans "Budget" %}</h5>
+                        <p class="small text-muted">{% trans "Håll koll på kostnaderna – se resultatet direkt." %}</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-feature">
+                        <i class="fas fa-envelope-open-text fa-3x mb-3" style="color: var(--primary);"></i>
+                        <h5>{% trans "Gästlista" %}</h5>
+                        <p class="small text-muted">{% trans "RSVP, bordsplacering och överblick." %}</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-feature">
+                        <i class="fas fa-clock fa-3x mb-3" style="color: var(--primary);"></i>
+                        <h5>{% trans "Tidslinje" %}</h5>
+                        <p class="small text-muted">{% trans "Planera bröllopsdagen minut för minut." %}</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-feature">
+                        <i class="fas fa-images fa-3x mb-3" style="color: var(--primary);"></i>
+                        <h5>{% trans "Galleri" %}</h5>
+                        <p class="small text-muted">{% trans "Samla inspiration från Pinterest och Instagram." %}</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-feature">
+                        <i class="fas fa-truck fa-3x mb-3" style="color: var(--primary);"></i>
+                        <h5>{% trans "Leverantörer" %}</h5>
+                        <p class="small text-muted">{% trans "Samla kontaktuppgifter och jämför priser." %}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -193,15 +217,24 @@
                     </div>
                 </div>
             </div>
-            <p class="text-center mt-4">{% trans "Ett begränsat antal partnerskap öppnas per kvartal. De varumärken som ansluter nu är live och genererar insikter – medan nästa intag fortfarande väntar." %}</p>
+        </div>
+    </section>
+
+    <!-- Kortad Authority Bleed -->
+    <section class="section section-alt">
+        <div class="container content-narrow">
+            <h2>{% trans "Varför inspiration inte räcker" %}</h2>
+            <p class="mt-3">{% trans "Varje gång dina följare lämnar din profil för att planera någon annanstans förlorar du inte bara trafik – du förlorar förtroende. Vi kallar det auktoritetsläckage. Din content-strategi är inte problemet. Avsaknaden av ett verktyg som håller kvar dem hos dig – det är problemet." %}</p>
+            <p>{% trans "Vår planner löser det. Fullt anpassad till ditt varumärke, inbäddad i ditt ekosystem. Dina följare planerar med dig – inte någon annan." %}</p>
         </div>
     </section>
 
     <!-- Väntlista -->
-    <section id="waitlist" class="section section-alt text-center">
+    <section id="waitlist" class="section text-center">
         <div class="container content-narrow">
             <h2>{% trans "Var inte sist denna gången" %}</h2>
             <p class="mt-2">{% trans "Se om ert varumärke kvalificerar – utan förpliktelser." %}</p>
+            <p class="text-muted small">{% trans "Ett begränsat antal partnerskap öppnas per kvartal." %}</p>
             
             <form method="post" action="DIN_FORMSPREE_LÄNK" class="mt-4 waitlist-form">
                 {% csrf_token %}
@@ -214,7 +247,7 @@
     </section>
 
     <!-- Värde -->
-    <section class="section">
+    <section class="section section-alt">
         <div class="container content-narrow">
             <h2 class="text-center mb-4">{% trans "Vad detta faktiskt är värt" %}</h2>
             <table>
@@ -228,27 +261,7 @@
                     <tr style="border-top: 2px solid var(--text-dark);"><td><strong>{% trans "Totalt uppskattat värde" %}</strong></td><td class="text-end price-highlight"><strong>102 500 kr</strong></td></tr>
                 </tbody>
             </table>
-
-            <h5 class="mt-5">{% trans "Att bygga motsvarande själv:" %}</h5>
-            <table class="mt-2">
-                <thead>
-                    <tr><th>{% trans "Alternativ väg" %}</th><th class="text-end">{% trans "Uppskattad kostnad" %}</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>{% trans "Egen app-utveckling (minimum viable)" %}</td><td class="text-end price-highlight">250 000 – 400 000 kr</td></tr>
-                    <tr><td>{% trans "White label-licens (internationell leverantör)" %}</td><td class="text-end price-highlight">30 000 – 80 000 kr + årlig avgift</td></tr>
-                    <tr><td>{% trans "Digital byrå för rådgivning och projektplanering" %}</td><td class="text-end price-highlight">50 000 – 120 000 kr</td></tr>
-                </tbody>
-            </table>
             <p class="text-center mt-4">{% trans "Ni får allt detta – utan en enda krona i start-investering. Eftersom vi endast tjänar pengar när ni gör det." %}</p>
-        </div>
-    </section>
-
-    <!-- Kostnaden för att vänta -->
-    <section class="section section-alt">
-        <div class="container content-narrow">
-            <h2>{% trans "Kostnaden för att vänta" %}</h2>
-            <p class="mt-3">{% trans "Om ni har 40 000 följare och tre procent av dem just nu planerar sitt bröllop, talar vi om 1 200 människor. 1 200 par mitt uppe i det mest känslosamma – och ekonomiskt betydelsefulla – beslut de någonsin fattat tillsammans. Och just nu fattar de det någon annanstans. Inte hos er." %}</p>
         </div>
     </section>
 
