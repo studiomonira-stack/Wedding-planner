@@ -122,7 +122,7 @@ STATIC_URL = 'static/'
 
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'login'
-LOGIN_URL = 'login'
+LOGIN_URL = 'login'  # en liten ändring här
 
 import os
 
