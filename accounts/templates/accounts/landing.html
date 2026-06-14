@@ -249,6 +249,15 @@
             <h1>Ge varje brudpar sin egen bröllopsplanner – med din logga.</h1>
             <p class="subtitle">Dina kunder planerar sitt bröllop varje dag. Se till att de gör det med dig – inte på Google Sheets eller någon annans app. Du får en helt anpassad planner, en unik länk att dela, och 30% provision på varje köp. Utan startkostnad.</p>
             <a href="#waitlist" class="btn-primary">Ansök om partnerskap – kostnadsfritt →</a>
+            <div style="margin-top: 1.5rem; font-family: 'Karla', sans-serif;">
+    <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.5rem;">⏳ Detta kvartals intag stänger om:</p>
+    <div id="countdown" style="display: flex; justify-content: center; gap: 20px; font-family: 'Cormorant Garamond', serif;">
+        <div><span id="days" style="font-size: 2.5rem; color: var(--text); font-weight: 600;">14</span><br><span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light);">Dagar</span></div>
+        <div><span id="hours" style="font-size: 2.5rem; color: var(--text); font-weight: 600;">00</span><br><span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light);">Timmar</span></div>
+        <div><span id="minutes" style="font-size: 2.5rem; color: var(--text); font-weight: 600;">00</span><br><span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light);">Minuter</span></div>
+        <div><span id="seconds" style="font-size: 2.5rem; color: var(--text); font-weight: 600;">00</span><br><span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light);">Sekunder</span></div>
+    </div>
+</div>
             <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-light);">10 platser kvar detta kvartal. Ingen bindningstid. Ingen startavgift.</p>
         </div>
     </section>
@@ -420,6 +429,32 @@
         <p>© 2026 Bröllopsplaneraren – Vi tjänar bara när ni tjänar.</p>
         <p style="margin-top: 0.5rem;"><a href="/">Är du brudpar? Köp planner direkt här →</a></p>
     </footer>
+<script>
+// Sätt slutdatum – 14 dagar från nu
+var countDownDate = new Date();
+countDownDate.setDate(countDownDate.getDate() + 14);
+countDownDate.setHours(23, 59, 59, 0);
+
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+    
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "<p style='font-size: 1.2rem; color: var(--text);'>Intaget är nu stängt. Nästa kvartal öppnar snart.</p>";
+    }
+}, 1000);
+</script>
 
 </body>
 </html>
