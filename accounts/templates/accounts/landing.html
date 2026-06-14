@@ -221,6 +221,26 @@
     justify-content: space-between !important;
     align-items: center !important;
 }
+@media (max-width: 768px) {
+    .btn-outline {
+        padding: 6px 14px !important;
+        font-size: 0.65rem !important;
+        letter-spacing: 1px !important;
+    }
+    .btn-primary {
+        padding: 12px 24px !important;
+        font-size: 0.75rem !important;
+        letter-spacing: 1px !important;
+        white-space: nowrap !important;
+    }
+    .hero h1 {
+        font-size: 2rem !important;
+    }
+    .hero .subtitle {
+        font-size: 0.9rem !important;
+        padding: 0 10px;
+    }
+}
     </style>
 </head>
 <body>
@@ -394,7 +414,7 @@
         <div class="container-narrow">
             <h2>Redo att ge dina par deras egen bröllopsplanner?</h2>
             <p style="color: var(--text-light); font-weight: 300; margin-bottom: 2rem;">Vi öppnar endast 10 nya partnerskap detta kvartal. Ansök kostnadsfritt – tar 2 minuter.</p>
-            <form method="post" action="DIN_FORMSPREE_LÄNK" class="waitlist-form" style="max-width: 420px; margin: 0 auto;">
+            <form method="post" action="https://formspree.io/f/xvzybjwj" class="waitlist-form" style="max-width: 420px; margin: 0 auto;">
                 {% csrf_token %}
                 <input type="text" name="firstname" placeholder="Förnamn" required>
                 <input type="text" name="lastname" placeholder="Efternamn" required>
