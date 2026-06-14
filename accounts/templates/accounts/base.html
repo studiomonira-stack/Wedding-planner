@@ -1,3 +1,4 @@
+{% load static %}
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="sv">
@@ -122,7 +123,10 @@
 </head>
 <body>
    <nav class="navbar navbar-expand-lg navbar-light px-4">
-    <a class="navbar-brand" href="{% url 'dashboard' %}"><i class="fas fa-gem"></i> {% trans "Bröllopsplaneraren" %}</a>
+    <a href="{% url 'dashboard' %}" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="{% static 'images/logga-trans-BP.png' %}" alt="{% trans 'Bröllopsplaneraren' %}" style="height: 40px; margin-right: 10px;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-dark);">{% trans "Bröllopsplaneraren" %}</span>
+    </a>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,18 +150,18 @@
             {% else %}
                 <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm">{% trans "Logga in" %}</a>
             {% endif %}
-
+            
+            <!-- Språkväljare -->
             <form action="{% url 'set_language' %}" method="post" class="d-inline ms-3">
-    {% csrf_token %}
-    <input name="next" type="hidden" value="{{ redirect_to }}">
-    <select name="language" class="form-select form-select-sm" onchange="this.form.submit()" style="width: auto; display: inline-block; background: var(--white); color: var(--text-dark); border: 1px solid var(--border); cursor: pointer;">
-        {% get_current_language as CURRENT_LANGUAGE %}
-        <option value="sv" {% if CURRENT_LANGUAGE == 'sv' %}selected{% endif %}>🇸🇪 Svenska</option>
-        <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>🇬🇧 English</option>
-        <option value="no" {% if CURRENT_LANGUAGE == 'no' %}selected{% endif %}>🇳🇴 Norsk</option>
-        <option value="da" {% if CURRENT_LANGUAGE == 'da' %}selected{% endif %}>🇩🇰 Dansk</option>
-    </select>
-</form>
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}">
+                <select name="language" class="form-select form-select-sm" onchange="this.form.submit()" style="width: auto; display: inline-block; background: var(--white); color: var(--text-dark); border: 1px solid var(--border); cursor: pointer;">
+                    {% get_current_language as CURRENT_LANGUAGE %}
+                    <option value="sv" {% if CURRENT_LANGUAGE == 'sv' %}selected{% endif %}>🇸🇪 Svenska</option>
+                    <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>🇬🇧 English</option>
+                    <option value="no" {% if CURRENT_LANGUAGE == 'no' %}selected{% endif %}>🇳🇴 Norsk</option>
+                </select>
+            </form>
         </div>
     </div>
 </nav>

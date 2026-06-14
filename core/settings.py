@@ -128,6 +128,9 @@ import os
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'accounts/static'),
+]
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale',

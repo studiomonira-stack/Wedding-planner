@@ -5,280 +5,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% trans "Bröllopsplaneraren – För fotografer & kreatörer" %}</title>
+    <title>{% trans "Bröllopsplaneraren – Ge varje par sin egen planner" %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Karla:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Karla:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #DFDDD4;
-            --primary: #C7BDAE;
-            --hover: #B4A390;
-            --text-light: #997D64;
-            --text-dark: #634935;
-            --white: #ffffff;
-            --border: #e5e3dc;
+            --cream: #FAF7F4;
+            --sage: #C7BDAE;
+            --sage-dark: #B4A390;
+            --text: #3A3A3A;
+            --text-light: #8C8C8C;
+            --white: #FFFFFF;
+            --border: #E8E5E0;
+            --gold: #D4B896;
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Karla', sans-serif;
-            background: var(--bg);
-            color: var(--text-dark);
+            background: var(--cream);
+            color: var(--text);
             line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
-        h1, h2, h3, .navbar-brand {
+        h1, h2, h3, h4, .navbar-brand {
             font-family: 'Cormorant Garamond', serif;
-            color: var(--text-dark);
+            font-weight: 400;
+            color: var(--text);
         }
-        .hero {
-            background: linear-gradient(135deg, #F5F3EE 0%, #DFDDD4 100%);
-            padding: 100px 0 80px;
-            text-align: center;
-        }
-        .hero h1 { font-size: 3rem; }
-        .hero p { font-family: 'Karla', sans-serif; font-weight: 300; }
-        .section { padding: 80px 0; }
+        h1 { font-size: 3.5rem; line-height: 1.15; }
+        h2 { font-size: 2.4rem; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.5rem; font-weight: 400; }
+        .section { padding: 100px 0; }
         .section-alt { background: var(--white); }
-        .content-narrow { max-width: 650px; margin: 0 auto; }
-        .content-wide { max-width: 900px; margin: 0 auto; }
-        .card-feature {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 30px 20px;
+        .container-narrow { max-width: 680px; margin: 0 auto; }
+        .container-medium { max-width: 880px; margin: 0 auto; }
+        .container-wide { max-width: 1080px; margin: 0 auto; }
+        
+        /* Hero */
+        .hero {
+            padding: 120px 0 100px;
             text-align: center;
-            box-shadow: 0 2px 12px rgba(99,73,53,0.04);
-            height: 100%;
-            transition: transform 0.2s ease;
+            background: linear-gradient(180deg, #FAF7F4 0%, #F2EFE9 100%);
         }
-        .card-feature:hover {
-            transform: translateY(-4px);
+        .hero h1 { margin-bottom: 1.2rem; }
+        .hero .subtitle {
+            font-family: 'Karla', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 580px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+            font-weight: 300;
         }
+        
+        /* Buttons */
         .btn-primary {
-            background: var(--primary);
-            border: none;
-            padding: 14px 36px;
-            border-radius: 30px;
+            background: var(--text);
+            color: white;
+            padding: 16px 38px;
+            border-radius: 0;
+            font-family: 'Karla', sans-serif;
+            font-size: 0.9rem;
             font-weight: 600;
-            font-size: 1rem;
-            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            transition: all 0.3s ease;
         }
         .btn-primary:hover {
-            background: var(--hover);
+            background: var(--sage-dark);
             color: white;
         }
-        .btn-outline-dark {
-            border-color: var(--primary);
-            color: var(--text-dark);
+        .btn-outline {
+            border: 1px solid var(--text);
+            color: var(--text);
+            padding: 14px 32px;
+            border-radius: 0;
+            font-family: 'Karla', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
-        .btn-outline-dark:hover {
-            background: var(--hover);
-            border-color: var(--hover);
+        .btn-outline:hover {
+            background: var(--text);
             color: white;
         }
-        .waitlist-form input {
-            border-radius: 30px;
-            padding: 12px 20px;
-            border: 1px solid var(--border);
-            width: 100%;
-            max-width: 450px;
-            margin: 0 auto 12px auto;
+        
+        /* Feature Cards */
+        .feature-card {
             background: var(--white);
+            border: 1px solid var(--border);
+            padding: 40px 28px;
+            text-align: center;
+            height: 100%;
+            transition: transform 0.3s ease;
         }
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+        .feature-card .icon {
+            font-size: 2.2rem;
+            color: var(--sage-dark);
+            margin-bottom: 1rem;
+        }
+        .feature-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+        
+        /* Testimonial */
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 50px 40px;
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .testimonial-card .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        .testimonial-card .author {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Steps */
+        .step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--sage-dark);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Waitlist Form */
+        .waitlist-form input {
+            border: 1px solid var(--border);
+            padding: 14px 20px;
+            font-family: 'Karla', sans-serif;
+            font-size: 0.95rem;
+            width: 100%;
+            margin-bottom: 12px;
+            background: var(--white);
+            border-radius: 0;
+        }
+        .waitlist-form input:focus {
+            outline: none;
+            border-color: var(--text);
+        }
+        
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+        }
+        .faq-item h4 {
+            font-family: 'Karla', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+        
+        /* Footer */
         .footer {
             background: var(--white);
-            padding: 20px 0;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-light);
             border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
         }
-        table {
-            width: 100%;
-            max-width: 650px;
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-        th {
-            font-weight: 600;
+        .footer p {
             color: var(--text-light);
             font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-weight: 300;
         }
-        .price-highlight {
-            font-weight: 700;
-            color: var(--text-dark);
+        .footer a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
         }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.4rem; }
+            h2 { font-size: 1.8rem; }
+            .hero { padding: 80px 20px 60px; }
+            .section { padding: 60px 20px; }
+        }
+
+        .navbar .container-wide {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
     </style>
 </head>
 <body>
 
-    <!-- Navigering -->
-    <nav class="navbar navbar-light bg-transparent position-absolute w-100" style="z-index: 10;">
-        <div class="container">
-            <span class="navbar-brand fs-4"><i class="fas fa-gem me-2"></i>{% trans "Bröllopsplaneraren" %}</span>
-            <div>
-                <a href="{% url 'login' %}" class="btn btn-outline-dark btn-sm rounded-pill px-3">{% trans "Logga in" %}</a>
-            </div>
-        </div>
-    </nav>
+   <div style="position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 20px 40px;">
+    <a href="/" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="{% static 'images/logga-trans-BP.png' %}" alt="{% trans 'Bröllopsplaneraren' %}" style="height: 100px; margin-right: 14px;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #3A3A3A;">Bröllopsplaneraren</span>
+    </a>
+    <a href="{% url 'login' %}" style="border: 1px solid #3A3A3A; color: #3A3A3A; padding: 8px 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; font-weight: 600;">{% trans "Logga in" %}</a>
+</div>
 
     <!-- Hero -->
     <section class="hero">
-        <div class="container content-narrow">
-            <h1>{% trans "Dina följare inspireras." %}<br>{% trans "Sedan planerar de sitt bröllop någon annanstans." %}</h1>
-            <p class="lead mt-3">{% trans "Ge dem ett skäl att stanna. En digital bröllopsplanerare – fullt anpassad till ditt varumärke – som gör varje planeringsstund till en påminnelse om vem som gav dem verktyget från början." %}</p>
-            <a href="#waitlist" class="btn btn-primary btn-lg mt-4">{% trans "Ansök om en plats" %}</a>
+        <div class="container-narrow">
+            <h1>Ge varje brudpar sin egen bröllopsplanner – med din logga.</h1>
+            <p class="subtitle">Dina kunder planerar sitt bröllop varje dag. Se till att de gör det med dig – inte på Google Sheets eller någon annans app. Du får en helt anpassad planner, en unik länk att dela, och 30% provision på varje köp. Utan startkostnad.</p>
+            <a href="#waitlist" class="btn-primary">Ansök om partnerskap – kostnadsfritt →</a>
+            <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-light);">10 platser kvar detta kvartal. Ingen bindningstid. Ingen startavgift.</p>
         </div>
     </section>
 
-    <!-- Vad appen gör – NY sektion -->
-    <section class="section section-alt">
-        <div class="container content-wide text-center">
-            <h2>{% trans "Allt samlat på ett ställe" %}</h2>
-            <p class="text-muted">{% trans "Checklista, budget, gästlista och mycket mer – designat för brudpar." %}</p>
-            
-            <div class="row g-4 mt-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card-feature">
-                        <i class="fas fa-list-check fa-3x mb-3" style="color: var(--primary);"></i>
-                        <h5>{% trans "Checklista" %}</h5>
-                        <p class="small text-muted">{% trans "Steg-för-steg genom hela planeringen." %}</p>
-                    </div>
+    <!-- Bröllopsbild-sektion -->
+    <section>
+        <div class="container-wide">
+            <div class="row align-items-center g-0">
+                <div class="col-md-6">
+                    <img src="{% static 'images/brollopsplanerare-bild.webp' %}" alt="Bröllop" style="width: 100%; height: 500px; object-fit: cover; display: block;">
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card-feature">
-                        <i class="fas fa-coins fa-3x mb-3" style="color: var(--primary);"></i>
-                        <h5>{% trans "Budget" %}</h5>
-                        <p class="small text-muted">{% trans "Håll koll på kostnaderna – se resultatet direkt." %}</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card-feature">
-                        <i class="fas fa-envelope-open-text fa-3x mb-3" style="color: var(--primary);"></i>
-                        <h5>{% trans "Gästlista" %}</h5>
-                        <p class="small text-muted">{% trans "RSVP, bordsplacering och överblick." %}</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card-feature">
-                        <i class="fas fa-clock fa-3x mb-3" style="color: var(--primary);"></i>
-                        <h5>{% trans "Tidslinje" %}</h5>
-                        <p class="small text-muted">{% trans "Planera bröllopsdagen minut för minut." %}</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card-feature">
-                        <i class="fas fa-images fa-3x mb-3" style="color: var(--primary);"></i>
-                        <h5>{% trans "Galleri" %}</h5>
-                        <p class="small text-muted">{% trans "Samla inspiration från Pinterest och Instagram." %}</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card-feature">
-                        <i class="fas fa-truck fa-3x mb-3" style="color: var(--primary);"></i>
-                        <h5>{% trans "Leverantörer" %}</h5>
-                        <p class="small text-muted">{% trans "Samla kontaktuppgifter och jämför priser." %}</p>
-                    </div>
+                <div class="col-md-6" style="background: var(--white); padding: 80px 60px;">
+                    <h2 style="font-size: 2rem;">Din planner.<br>Deras drömbröllop.</h2>
+                    <p style="color: var(--text-light); font-weight: 300; font-size: 1.05rem; margin-top: 1.5rem;">Varje detalj planeras med din logga synlig. Från första checklistan till sista dansen. Dina par loggar in, ser din branding, och planerar hela sitt bröllop i ett verktyg som känns som du.</p>
+                    <p style="color: var(--text-light); font-weight: 300; font-size: 1.05rem;">Du är inte längre bara fotografen. Du är navet i deras planering.</p>
+                    <a href="#waitlist" class="btn-outline" style="display: inline-block; margin-top: 1.5rem;">Ansök om partnerskap →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- För vem -->
+    <!-- Social Proof -->
+    <section class="section section-alt">
+        <div class="container-narrow">
+            <h2 style="text-align: center;">Vad fotografer säger</h2>
+            <div class="testimonial-card mt-4">
+                <p class="quote">"Jag ser så fram emot att erbjuda mina kunder och följare plannern – Känns som om att dem verkligen kommer uppskatta det, samtidigt som jag kommer kunna lägga in vårt schema för foto i deras tidslinje direkt!"</p>
+                <p class="author">— Emma Lindström, Bröllopsfotograf, Stockholm</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
     <section class="section">
-        <div class="container content-narrow">
-            <h2 class="text-center mb-5">{% trans "För vem passar detta?" %}</h2>
-            <div class="row g-4">
+        <div class="container-wide">
+            <h2 style="text-align: center;">Allt dina par behöver. Med din logga på varje sida.</h2>
+            <div class="row g-4 mt-5">
                 <div class="col-md-4">
-                    <div class="card-feature">
-                        <i class="fas fa-camera fa-2x mb-3" style="color: var(--primary);"></i>
-                        <h5>{% trans "Bröllopsfotografer och kreativa studior" %}</h5>
-                        <p class="small">{% trans "Ni har byggt en lojal följarskara genom ert arbete, men er publik har ingen anledning att återvända mellan fotograferingarna. Ni vill förändra det – och samtidigt skapa en ny intäktsström." %}</p>
+                    <div class="feature-card">
+                        <div class="icon"><i class="fas fa-list-check"></i></div>
+                        <h4>Checklista</h4>
+                        <p>Steg-för-steg genom hela planeringen. Dina par missar inget. Du slipper påminnelsemejl.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card-feature">
-                        <i class="fas fa-store fa-2x mb-3" style="color: var(--primary);"></i>
-                        <h5>{% trans "Bröllopsklänningsbutiker och ringmärken" %}</h5>
-                        <p class="small">{% trans "Era kunder befinner sig mitt i det mest känslomässigt laddade köpbeslutet i sina liv. Ni vill vara närvarande genom hela den resan, inte bara vid själva köptillfället." %}</p>
+                    <div class="feature-card">
+                        <div class="icon"><i class="fas fa-coins"></i></div>
+                        <h4>Budget</h4>
+                        <p>De håller koll på kostnaderna. När de ser vad som ryms, bokar de dig snabbare.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card-feature">
-                        <i class="fas fa-pen-fancy fa-2x mb-3" style="color: var(--primary);"></i>
-                        <h5>{% trans "Bröllopsbloggar och inflytelserika kreatörer" %}</h5>
-                        <p class="small">{% trans "Ni har publiken och auktoriteten. Vad ni behöver är ett verktyg som förvandlar era följare från passiva läsare till dagligt återkommande användare som är beroende av ert varumärke för att planera sitt bröllop." %}</p>
+                    <div class="feature-card">
+                        <div class="icon"><i class="fas fa-envelope-open-text"></i></div>
+                        <h4>Gästlista & RSVP</h4>
+                        <p>Alla gäster samlade. Bordsplacering med överblick. Noll administration för dig.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon"><i class="fas fa-clock"></i></div>
+                        <h4>Tidslinje</h4>
+                        <p>Bröllopsdagen minut för minut. Du vet exakt när fotograferingen sker – planerad i appen.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon"><i class="fas fa-images"></i></div>
+                        <h4>Galleri</h4>
+                        <p>De samlar inspiration från Pinterest och Instagram. Din logga syns medan de drömmer.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon"><i class="fas fa-truck"></i></div>
+                        <h4>Leverantörer</h4>
+                        <p>Du lägger in dina egna rekommendationer. Din florist, din makeup-artist – alla syns.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Kortad Authority Bleed -->
+    <!-- Story -->
     <section class="section section-alt">
-        <div class="container content-narrow">
-            <h2>{% trans "Varför inspiration inte räcker" %}</h2>
-            <p class="mt-3">{% trans "Varje gång dina följare lämnar din profil för att planera någon annanstans förlorar du inte bara trafik – du förlorar förtroende. Vi kallar det auktoritetsläckage. Din content-strategi är inte problemet. Avsaknaden av ett verktyg som håller kvar dem hos dig – det är problemet." %}</p>
-            <p>{% trans "Vår planner löser det. Fullt anpassad till ditt varumärke, inbäddad i ditt ekosystem. Dina följare planerar med dig – inte någon annan." %}</p>
+        <div class="container-narrow">
+            <h2 style="text-align: center;">Efter förlovningsbilderna försvinner de. Här är hur du får dem att stanna.</h2>
+            <p style="color: var(--text-light); font-weight: 300;">Lisa och Johan bokade dig för sina förlovningsbilder. Bilderna blev fantastiska. De taggade dig överallt. Några veckor senare började de planera sitt bröllop. I ett Google Sheets. På The Knot. I någon annans app.</p>
+            <p style="color: var(--text-light); font-weight: 300;">Din logga? Begravd i en gammal mejltråd. Din relation? Vilande tills det är dags för bröllopsfotograferingen.</p>
+            <p style="color: var(--text-light); font-weight: 300;">Föreställ dig nu det här istället: Du ger dem en personlig bröllopsplanner – med din logga. Varje gång de checkar av en punkt, lägger till en gäst eller justerar budgeten, ser de dig. Du är inte längre bara fotografen. Du är navet i deras planering.</p>
+            <p style="color: var(--text-light); font-weight: 300;">När bröllopsdagen kommer är du inte en leverantör. Du är en självklar del av deras historia.</p>
         </div>
     </section>
 
-    <!-- Väntlista -->
+    <!-- How it works -->
+    <section class="section">
+        <div class="container-medium">
+            <h2 style="text-align: center;">Så enkelt är det</h2>
+            <div class="row g-4 mt-5">
+                <div class="col-md-4 text-center">
+                    <div class="step-number">1</div>
+                    <h4>Ansök</h4>
+                    <p style="color: var(--text-light); font-weight: 300;">Fyll i formuläret. Vi hörs inom 24 timmar för ett kort samtal där vi går igenom dina önskemål.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="step-number">2</div>
+                    <h4>Vi bygger</h4>
+                    <p style="color: var(--text-light); font-weight: 300;">Vi anpassar din planner med din logga, dina färger och dina leverantörsrekommendationer. Live inom 48 timmar.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="step-number">3</div>
+                    <h4>Dela och tjäna</h4>
+                    <p style="color: var(--text-light); font-weight: 300;">Du får en unik länk. Dela den med dina par. När de köper får du 30% provision – varje gång.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section section-alt">
+        <div class="container-narrow text-center">
+            <h2>Inga startavgifter. Ingen risk. Bara resultat.</h2>
+            <p style="color: var(--text-light); font-weight: 300; max-width: 500px; margin: 0 auto 2rem;">Vi tar inte en krona för att sätta upp din planner. Vi tjänar pengar först när du gör det: 30% provision på varje köp via din unika länk.</p>
+            <div style="background: var(--white); border: 1px solid var(--border); padding: 24px; max-width: 400px; margin: 0 auto; text-align: left;">
+                <p style="font-size: 0.9rem;"><strong>Exempel:</strong> En planner kostar 999 kr. När ett av dina par köper får du 300 kr. Delar du den med 20 par och 10 köper → 3 000 kr passivt.</p>
+                <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 1rem;">💡 Din länk fungerar även om paret köper senare. Vi sparar en cookie i 30 dagar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who is this for -->
+    <section class="section">
+        <div class="container-narrow text-center">
+            <h2>Byggt för bröllopsfotografer och kreativa studior</h2>
+            <p style="color: var(--text-light); font-weight: 300;">Det här är inte för alla. Det är för dig som redan har bokat drömkunderna. Som vill ge dem något extra – utan att lägga mer tid på administration. Som förstår att en stark relation före bröllopet leder till bättre bilder, nöjdare kunder och fler rekommendationer efteråt.</p>
+            <p style="color: var(--text-light); font-weight: 300;">Du behöver inte vara teknisk. Du behöver inte bygga något själv. Du behöver bara vilja ge dina par den bästa planeringsupplevelsen – med ditt varumärke i centrum.</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+        <div class="container-narrow">
+            <h2 style="text-align: center;">Frågor och svar</h2>
+            <div class="faq-item"><h4>Måste jag sälja eller pusha appen?</h4><p>Nej. Du delar bara din länk som en naturlig del av ditt kunderbjudande. Det känns inte som försäljning – det känns som service.</p></div>
+            <div class="faq-item"><h4>Hur ser mina kunder min branding?</h4><p>De möts av din logga, dina färger och dina personliga rekommendationer. Du kan även lägga in en personlig välkomsthälsning.</p></div>
+            <div class="faq-item"><h4>Vad händer om jag slutar använda tjänsten?</h4><p>Ingenting. Du har ingen bindningstid. Dina redan köpta kunder behåller sin planner.</p></div>
+            <div class="faq-item"><h4>Hur får jag min provision utbetald?</h4><p>Månadsvis, direkt till ditt konto. Du ser alla dina köp och klick i en enkel dashboard.</p></div>
+        </div>
+    </section>
+
+    <!-- Waitlist -->
     <section id="waitlist" class="section text-center">
-        <div class="container content-narrow">
-            <h2>{% trans "Var inte sist denna gången" %}</h2>
-            <p class="mt-2">{% trans "Se om ert varumärke kvalificerar – utan förpliktelser." %}</p>
-            <p class="text-muted small">{% trans "Ett begränsat antal partnerskap öppnas per kvartal." %}</p>
-            
-            <form method="post" action="DIN_FORMSPREE_LÄNK" class="mt-4 waitlist-form">
+        <div class="container-narrow">
+            <h2>Redo att ge dina par deras egen bröllopsplanner?</h2>
+            <p style="color: var(--text-light); font-weight: 300; margin-bottom: 2rem;">Vi öppnar endast 10 nya partnerskap detta kvartal. Ansök kostnadsfritt – tar 2 minuter.</p>
+            <form method="post" action="DIN_FORMSPREE_LÄNK" class="waitlist-form" style="max-width: 420px; margin: 0 auto;">
                 {% csrf_token %}
-                <input type="text" name="firstname" class="form-control" placeholder="{% trans 'Förnamn' %}" required>
-                <input type="text" name="lastname" class="form-control" placeholder="{% trans 'Efternamn' %}" required>
-                <input type="email" name="email" class="form-control" placeholder="{% trans 'Mejl' %}" required>
-                <button type="submit" class="btn btn-primary w-100 mt-2">{% trans "Skriv upp mig på väntlistan" %}</button>
+                <input type="text" name="firstname" placeholder="Förnamn" required>
+                <input type="text" name="lastname" placeholder="Efternamn" required>
+                <input type="email" name="email" placeholder="Mejl" required>
+                <button type="submit" class="btn-primary" style="width: 100%;">Ansök om partnerskap nu →</button>
             </form>
-        </div>
-    </section>
-
-    <!-- Värde -->
-    <section class="section section-alt">
-        <div class="container content-narrow">
-            <h2 class="text-center mb-4">{% trans "Vad detta faktiskt är värt" %}</h2>
-            <table>
-                <thead>
-                    <tr><th>{% trans "Komponent" %}</th><th class="text-end">{% trans "Uppskattat marknadsvärde" %}</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>{% trans "Skräddarsydd digital bröllopsplanerare" %}</td><td class="text-end price-highlight">79 700 kr</td></tr>
-                    <tr><td>{% trans "48-timmars integration och teknisk setup" %}</td><td class="text-end price-highlight">14 900 kr</td></tr>
-                    <tr><td>{% trans "Varumärkesanpassning och design-session" %}</td><td class="text-end price-highlight">7 900 kr</td></tr>
-                    <tr style="border-top: 2px solid var(--text-dark);"><td><strong>{% trans "Totalt uppskattat värde" %}</strong></td><td class="text-end price-highlight"><strong>102 500 kr</strong></td></tr>
-                </tbody>
-            </table>
-            <p class="text-center mt-4">{% trans "Ni får allt detta – utan en enda krona i start-investering. Eftersom vi endast tjänar pengar när ni gör det." %}</p>
-        </div>
-    </section>
-
-    <!-- Löfte -->
-    <section class="section text-center">
-        <div class="container content-narrow">
-            <h2>{% trans "Ett löfte. Inga avgifter." %}</h2>
-            <p class="mt-2">{% trans "Ett partnerskap byggt på en enda princip: vi lyckas bara när ni lyckas. Ingen för-kostnad. Ingen teknisk risk. Bara ett verktyg som förvandlar er publik från passiva beundrare till dagligt återkommande kunder – live inom 48 timmar." %}</p>
-            <a href="#waitlist" class="btn btn-primary mt-3">{% trans "Ansök om en plats" %}</a>
+            <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 1rem;">Vi hörs inom 24 timmar. Ingen förpliktelse. Ingen startkostnad.</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>{% trans "© 2026 Bröllopsplaneraren – Vi tjänar bara när ni tjänar." %}</p>
-        </div>
+        <p>© 2026 Bröllopsplaneraren – Vi tjänar bara när ni tjänar.</p>
+        <p style="margin-top: 0.5rem;"><a href="/">Är du brudpar? Köp planner direkt här →</a></p>
     </footer>
 
 </body>
