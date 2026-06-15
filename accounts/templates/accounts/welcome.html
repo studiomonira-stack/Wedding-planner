@@ -1,0 +1,22 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+<div class="text-center mt-5">
+    <h1>Welcome!</h1>
+    <p class="lead">Your account has been created. Here are your login credentials:</p>
+    
+    <div class="card mx-auto mt-4" style="max-width: 400px;">
+        <div class="card-body text-start">
+            <p><strong>Email:</strong><br><code>{{ email }}</code></p>
+            <p><strong>Password:</strong><br><code style="font-size: 1.2rem;">{{ password }}</code></p>
+            <div class="alert alert-warning small mt-3 mb-0">
+                <i class="fas fa-exclamation-triangle me-1"></i>
+                Save the password – it will only be shown once.
+            </div>
+        </div>
+    </div>
+    
+    <a href="{% url 'login' %}" class="btn btn-primary mt-4">Log in now</a>
+</div>
+
+{% endblock %}
