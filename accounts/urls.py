@@ -11,4 +11,5 @@ urlpatterns = [
     path('webhook/whop/', views.whop_webhook, name='whop_webhook'),
     path('skapa-par/', views.skapa_par, name='skapa_par'),
     path('skapa-par/', views.skapa_par, name='skapa_par'),
+    path('kop/', views.kop, name='kop'),
 ]

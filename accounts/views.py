@@ -1,3 +1,5 @@
+from urllib import request
+
 from django import forms
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
@@ -10,6 +12,7 @@ from accounts.models import Profil
 from planner.models import Brollop, ChecklistItem, BudgetPost, Gast, Leverantor, Tidslinje, Galleri
 import json
 import secrets
+from datetime import date, timedelta
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -33,7 +36,17 @@ def register(request):
             user.save()
             
             roll = request.POST.get('roll', 'par')
-            Profil.objects.create(user=user, telefon=form.cleaned_data.get('phone'), roll=roll)
+            
+            # 24 månaders utgångsdatum
+            from datetime import date, timedelta
+            utgang = date.today() + timedelta(days=730)
+            
+            Profil.objects.create(
+                user=user, 
+                telefon=form.cleaned_data.get('phone'), 
+                roll=roll,
+                utgangsdatum=utgang
+            )
             
             login(request, user)
             return redirect('dashboard')
@@ -44,6 +57,11 @@ def register(request):
 
 @login_required
 def dashboard(request):
+    profil = Profil.objects.get(user=request.user)
+     # Kolla om kontot har gått ut
+    if profil.utgangsdatum and profil.utgangsdatum < date.today():
+        return render(request, 'accounts/utganget.html')
+    
     # Checklista
     total_checklist = ChecklistItem.objects.filter(user=request.user).count()
     klara_checklist = ChecklistItem.objects.filter(user=request.user, klar=True).count()
@@ -131,6 +149,16 @@ def whop_webhook(request):
             user.set_password(password)
             user.save()
             
+            # 24 månaders utgångsdatum
+            from datetime import date, timedelta
+            utgang = date.today() + timedelta(days=730)
+            
+            Profil.objects.create(
+                user=user,
+                roll='par',
+                utgangsdatum=utgang
+            )
+            
             from django.core.cache import cache
             cache.set(f'password_{email}', password, timeout=3600)
         else:
@@ -174,3 +202,6 @@ def skapa_par(request):
             return redirect('dashboard')
     
     return render(request, 'accounts/skapa_par.html')
+
+def kop(request):
+    return render(request, 'accounts/kop.html')

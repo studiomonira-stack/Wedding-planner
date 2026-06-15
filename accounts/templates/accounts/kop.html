@@ -1,0 +1,308 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Bröllopsplaneraren – Planera ert drömbröllop" %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Karla:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FAF7F4;
+            --sage: #C7BDAE;
+            --sage-dark: #B4A390;
+            --text: #3A3A3A;
+            --text-light: #8C8C8C;
+            --white: #FFFFFF;
+            --border: #E8E5E0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Karla', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2rem; }
+        .section { padding: 80px 0; }
+        .section-alt { background: var(--white); }
+        .container-narrow { max-width: 650px; margin: 0 auto; }
+        .container-wide { max-width: 1000px; margin: 0 auto; }
+        
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            background: linear-gradient(180deg, #FAF7F4 0%, #F2EFE9 100%);
+        }
+        .hero h1 { margin-bottom: 1rem; }
+        .hero p { color: var(--text-light); font-size: 1.1rem; font-weight: 300; max-width: 500px; margin: 0 auto 2rem; }
+        
+        .btn-primary {
+            background: var(--text);
+            color: white;
+            padding: 16px 38px;
+            border-radius: 0;
+            font-family: 'Karla', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover { background: var(--sage-dark); color: white; }
+        
+        .feature-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 40px 28px;
+            text-align: center;
+            height: 100%;
+        }
+        .feature-card .icon { font-size: 2rem; color: var(--sage-dark); margin-bottom: 1rem; }
+        .feature-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--text-light); font-size: 0.9rem; font-weight: 300; }
+        
+        .price-box {
+            background: var(--white);
+            border: 2px solid var(--text);
+            padding: 40px;
+            text-align: center;
+            max-width: 350px;
+            margin: 0 auto;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            border-radius: 4px;
+        }
+
+        .price-box .amount { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--text); }
+        .price-box .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-light); }
+        
+        .footer {
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .hero { padding: 60px 20px 50px; }
+            .section { padding: 50px 20px; }
+        }
+
+        @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+    </style>
+</head>
+<body>
+
+   <!-- Nav -->
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 40px;">
+    <a href="/" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="https://i.imgur.com/bOcT1Cx.jpeg" alt="Bröllopsplaneraren" style="height: 40px; margin-right: 10px;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text);">{% trans "Bröllopsplaneraren" %}</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <!-- Språkväljare -->
+        <form action="{% url 'set_language' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <select name="language" onchange="this.form.submit()" style="font-family: 'Karla', sans-serif; font-size: 0.7rem; padding: 4px 8px; border: 1px solid #ccc; background: white; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
+                {% get_current_language as CURRENT_LANGUAGE %}
+                <option value="sv" {% if CURRENT_LANGUAGE == 'sv' %}selected{% endif %}>🇸🇪 SV</option>
+                <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>🇬🇧 EN</option>
+               <!-- <option value="no" {% if CURRENT_LANGUAGE == 'no' %}selected{% endif %}>🇳🇴 NO</option> --->
+            </select>
+        </form>
+        <!-- Login -->
+        <a href="{% url 'login' %}" style="border: 1px solid #3A3A3A; color: #3A3A3A; padding: 5px 12px; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; font-weight: 600;">{% trans "Logga in" %}</a>
+    </div>
+</div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container-narrow">
+            <h1>{% trans "Planera ert drömbröllop – allt på ett ställe" %}</h1>
+            <p>{% trans "Checklista, budget, gästlista, tidslinje och galleri. Allt samlat i en vacker, lättanvänd planner." %}</p>
+            <a href="https://whop.com/checkout/plan_Xq2qra99EegxU" class="btn-primary">{% trans "Köp nu – 49 € →" %}</a>
+            <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 1rem;">{% trans "Direkt tillgång efter köp. Fungerar på mobil, platta och dator." %}</p>
+        </div>
+    </section>
+
+
+    <!-- Bröllopsbild -->
+<section>
+    <div class="container-wide">
+        <div class="row align-items-center g-0">
+            <div class="col-md-6">
+                <img src="https://i.imgur.com/nk4GH5S.png" alt="Bröllop" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+            </div>
+            <div class="col-md-6" style="background: var(--white); padding: 60px 50px;">
+                <h2 style="font-size: 1.8rem;">{% trans "Allt samlat. Alltid tillgängligt." %}</h2>
+                <p style="color: var(--text-light); font-weight: 300; font-size: 1rem; margin-top: 1.2rem;">{% trans "Från första checklistan till sista dansen. Er bröllopsplanerare finns där ni är – i mobilen, plattan eller datorn." %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bild-marquee -->
+<section style="padding: 60px 0; background: var(--white); overflow: hidden;">
+    <div style="display: flex; animation: scroll 25s linear infinite; width: max-content;">
+        <img src="https://i.etsystatic.com/22819364/r/il/2ec954/8181741243/il_1588xN.8181741243_88rz.jpg" alt="Dashboard" style="height: 250px; margin-right: 20px; border-radius: 4px;">
+        <img src="https://i.etsystatic.com/22819364/r/il/6b0b86/8181814029/il_1588xN.8181814029_fomc.jpg" alt="Checklista" style="height: 250px; margin-right: 20px; border-radius: 4px;">
+        <img src="https://i.etsystatic.com/22819364/r/il/c5dd3b/8133842148/il_1588xN.8133842148_rl6y.jpg" alt="Budget" style="height: 250px; margin-right: 20px; border-radius: 4px;">
+        <img src="https://i.etsystatic.com/22819364/r/il/77aedd/8181739889/il_1588xN.8181739889_jltr.jpg" alt="Gästlista" style="height: 250px; margin-right: 20px; border-radius: 4px;">
+        <img src="https://i.etsystatic.com/22819364/r/il/f50e33/8133842062/il_1588xN.8133842062_epjr.jpg" alt="Tidslinje" style="height: 250px; margin-right: 20px; border-radius: 4px;">
+        <!-- Duplicera för sömlös loop -->
+        <img src="https://i.etsystatic.com/22819364/r/il/e06d62/8133842204/il_1588xN.8133842204_396t.jpg" alt="Dashboard" style="height: 250px; margin-right: 20px; border-radius: 4px;">
+        <img src="https://i.etsystatic.com/22819364/r/il/7ec6b9/8133842170/il_1588xN.8133842170_wsdz.jpg" alt="Checklista" style="height: 250px; margin-right: 20px; border-radius: 4px;">
+        <img src="https://i.etsystatic.com/22819364/r/il/a4653e/8181739907/il_1588xN.8181739907_oi0y.jpg" alt="Budget" style="height: 250px; margin-right: 20px; border-radius: 4px;">
+        <img src="https://i.etsystatic.com/22819364/r/il/9991e1/8133851446/il_1588xN.8133851446_q8jo.jpg" alt="Gästlista" style="height: 250px; margin-right: 20px; border-radius: 4px;">
+        <img src="https://i.etsystatic.com/22819364/r/il/99ce17/8181739867/il_1588xN.8181739867_j9oh.jpg" alt="Tidslinje" style="height: 250px; margin-right: 20px; border-radius: 4px;">
+    </div>
+</section>
+
+    <!-- Features -->
+    <section class="section section-alt">
+        <div class="container-wide">
+            <h2 style="text-align: center; margin-bottom: 3rem;">{% trans "Allt ni behöver – samlat" %}</h2>
+            <div class="row g-4">
+                <div class="col-md-4"><div class="feature-card"><div class="icon"><i class="fas fa-list-check"></i></div><h4>{% trans "Checklista" %}</h4><p>{% trans "Steg-för-steg från 12 månader innan till bröllopsdagen." %}</p></div></div>
+                <div class="col-md-4"><div class="feature-card"><div class="icon"><i class="fas fa-coins"></i></div><h4>{% trans "Budget" %}</h4><p>{% trans "Håll koll på kostnaderna med ett enkelt cirkeldiagram." %}</p></div></div>
+                <div class="col-md-4"><div class="feature-card"><div class="icon"><i class="fas fa-envelope-open-text"></i></div><h4>{% trans "Gästlista" %}</h4><p>{% trans "Bjud in, följ upp RSVP och planera bordsplacering." %}</p></div></div>
+                <div class="col-md-4"><div class="feature-card"><div class="icon"><i class="fas fa-clock"></i></div><h4>{% trans "Tidslinje" %}</h4><p>{% trans "Planera bröllopsdagen minut för minut." %}</p></div></div>
+                <div class="col-md-4"><div class="feature-card"><div class="icon"><i class="fas fa-images"></i></div><h4>{% trans "Galleri" %}</h4><p>{% trans "Samla inspiration från Pinterest och Instagram." %}</p></div></div>
+                <div class="col-md-4"><div class="feature-card"><div class="icon"><i class="fas fa-truck"></i></div><h4>{% trans "Leverantörer" %}</h4><p>{% trans "Samla alla kontakter och jämför priser." %}</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produktbilder – Karusell med peek -->
+<section class="section section-alt">
+    <div class="container-wide text-center">
+        <h2>{% trans "Se hur det ser ut" %}</h2>
+        <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 2rem;">{% trans "Allt är designat för att vara enkelt och vackert." %}</p>
+        
+        <style>
+            .peek-carousel .carousel-inner {
+                overflow: visible !important;
+                padding: 0 60px;
+            }
+            .peek-carousel .carousel-item {
+                transition: transform 0.6s ease-in-out;
+            }
+            .peek-carousel .carousel-item img {
+                max-height: 100%;
+                object-fit: cover;
+                margin: 0 auto;
+            }
+            .peek-carousel .carousel-control-prev,
+            .peek-carousel .carousel-control-next {
+                width: 40px;
+                filter: invert(1);
+            }
+            .peek-carousel .carousel-inner {
+                overflow: visible !important;
+                padding: 0 20px;   /* Minska från 60px till 20px */
+    }
+            @media (max-width: 768px) {
+                .peek-carousel .carousel-inner {
+                    padding: 0 30px;
+                }
+            }
+        </style>
+        
+        <div id="productCarousel" class="carousel slide peek-carousel" data-bs-ride="carousel" data-bs-interval="4000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-11 mx-auto">
+                            <img src="https://i.etsystatic.com/22819364/r/il/2ec954/8181741243/il_1588xN.8181741243_88rz.jpg" class="d-block w-100" alt="Dashboard" style="border: 1px solid var(--border); border-radius: 4px;">
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-light);"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-11 mx-auto">
+                            <img src="https://i.etsystatic.com/22819364/r/il/6b0b86/8181814029/il_1588xN.8181814029_fomc.jpg" class="d-block w-100" alt="Checklista" style="border: 1px solid var(--border); border-radius: 4px;">
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-light);"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-11 mx-auto">
+                            <img src="https://i.etsystatic.com/22819364/r/il/99ce17/8181739867/il_1588xN.8181739867_j9oh.jpg" class="d-block w-100" alt="Budget" style="border: 1px solid var(--border); border-radius: 4px;">
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-light);"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-11 mx-auto">
+                            <img src="https://i.etsystatic.com/22819364/r/il/f50e33/8133842062/il_1588xN.8133842062_epjr.jpg" class="d-block w-100" alt="Gästlista" style="border: 1px solid var(--border); border-radius: 4px;">
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-light);"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-11 mx-auto">
+                            <img src="https://i.etsystatic.com/22819364/r/il/7ec6b9/8133842170/il_1588xN.8133842170_wsdz.jpg" class="d-block w-100" alt="Tidslinje" style="border: 1px solid var(--border); border-radius: 4px;">
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-light);"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-11 mx-auto">
+                            <img src="https://i.etsystatic.com/22819364/r/il/e06d62/8133842204/il_1588xN.8133842204_396t.jpg" class="d-block w-100" alt="Galleri" style="border: 1px solid var(--border); border-radius: 4px;">
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-light);"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pilar -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+    <!-- Pris -->
+    <section class="section text-center">
+        <div class="container-narrow">
+            <h2>{% trans "Engångsköp – ingen prenumeration" %}</h2>
+            <div class="price-box mt-4">
+                <p class="label">{% trans "Engångspris" %}</p>
+                <p class="amount">49 €</p>
+                <p style="color: var(--text-light); font-size: 0.9rem;">{% trans "Direkt tillgång. Alla funktioner. Inga dolda avgifter." %}</p>
+                <a href="https://whop.com/checkout/plan_Xq2qra99EegxU" class="btn-primary" style="margin-top: 1.5rem;">{% trans "Köp här →" %}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 {% trans "Bröllopsplaneraren" %}</p>
+        <p style="margin-top: 0.5rem;"><a href="/" style="color: var(--text);">{% trans "Är du fotograf? Bli partner här →" %}</a></p>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
