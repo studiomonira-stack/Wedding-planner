@@ -150,13 +150,13 @@
     <div style="display: flex; align-items: center; gap: 15px;">
         <!-- Språkväljare -->
         <form action="{% url 'set_language' %}" method="post" style="display: inline;">
-    {% csrf_token %}
-    <input name="next" type="hidden" value="{{ redirect_to }}">
-    <select name="language" onchange="this.form.submit()" style="font-family: 'Karla', sans-serif; font-size: 0.7rem; padding: 4px 8px; border: 1px solid #ccc; background: white; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
-        <option value="sv">🇸🇪 SV</option>
-        <option value="en" selected>🇬🇧 EN</option>
-    </select>
-</form>
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <select name="language" onchange="this.form.submit()" style="font-family: 'Karla', sans-serif; font-size: 0.7rem; padding: 4px 8px; border: 1px solid #ccc; background: white; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
+                <option value="sv">🇸🇪 SV</option>
+                <option value="en" selected>🇬🇧 EN</option>
+            </select>
+        </form>
         <!-- Login -->
         <a href="{% url 'login' %}" style="border: 1px solid #3A3A3A; color: #3A3A3A; padding: 5px 12px; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; font-weight: 600;">{% trans "Logga in" %}</a>
     </div>

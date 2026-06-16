@@ -203,5 +203,9 @@ def skapa_par(request):
     
     return render(request, 'accounts/skapa_par.html')
 
+from django.utils.translation import activate
+
 def kop(request):
+    activate('en')  # Tvinga engelska
+    request.session['django_language'] = 'en'
     return render(request, 'accounts/kop.html')
