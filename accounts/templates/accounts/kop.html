@@ -113,6 +113,22 @@
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+.section, .hero, footer, .container-wide, .container-narrow, .container-medium {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--cream) !important;
+}
     </style>
 </head>
 <body>
