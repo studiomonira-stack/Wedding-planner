@@ -1,7 +1,14 @@
 {% load static %}
 {% load i18n %}
+
+{% get_current_language as CURRENT_LANGUAGE %}
+{% if CURRENT_LANGUAGE == 'sv' %}
+    <meta http-equiv="refresh" content="0; url=/kop/?language=en" />
+{% endif %}
+
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="sv">
+    
 <head>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LKM96TXGF"></script>
