@@ -1,14 +1,9 @@
 {% load static %}
 {% load i18n %}
 
-{% get_current_language as CURRENT_LANGUAGE %}
-{% if CURRENT_LANGUAGE == 'sv' %}
-    <meta http-equiv="refresh" content="0; url=/kop/?language=en" />
-{% endif %}
-
 <!DOCTYPE html>
 <html lang="sv">
-    
+
 <head>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LKM96TXGF"></script>
@@ -146,9 +141,9 @@ body {
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}">
             <select name="language" onchange="this.form.submit()" style="font-family: 'Karla', sans-serif; font-size: 0.7rem; padding: 4px 8px; border: 1px solid #ccc; background: white; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
-                {% get_current_language as CURRENT_LANGUAGE %}
-                <option value="sv" {% if CURRENT_LANGUAGE == 'sv' %}selected{% endif %}>🇸🇪 SV</option>
-                <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>🇬🇧 EN</option>
+                {% get_language_info for 'en' as CURRENT_LANGUAGE %}
+                <option value="sv">🇸🇪 SV</option>
+                <option value="en" selected>🇬🇧 EN</option>
                <!-- <option value="no" {% if CURRENT_LANGUAGE == 'no' %}selected{% endif %}>🇳🇴 NO</option> --->
             </select>
         </form>
