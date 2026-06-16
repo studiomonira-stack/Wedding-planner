@@ -3,6 +3,16 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2LKM96TXGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2LKM96TXGF');
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% trans "Bröllopsplaneraren – Ge varje par sin egen planner" %}</title>
@@ -429,11 +439,12 @@
         <p>© 2026 Bröllopsplaneraren – Vi tjänar bara när ni tjänar.</p>
         <p style="margin-top: 0.5rem;"><a href="/">Är du brudpar? Köp planner direkt här →</a></p>
     </footer>
-<script>
-// Sätt slutdatum – 14 dagar från nu
-var countDownDate = new Date();
-countDownDate.setDate(countDownDate.getDate() + 14);
-countDownDate.setHours(23, 59, 59, 0);
+
+    <!-- Sätt slutdatum – 14 dagar från nu -->
+    <div id="deadline" style="display: none;">2026-06-30T23:59:59</div>
+    <script>
+var deadlineStr = document.getElementById("deadline").innerText;
+var countDownDate = new Date(deadlineStr).getTime();
 
 var x = setInterval(function() {
     var now = new Date().getTime();
