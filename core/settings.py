@@ -141,4 +141,6 @@ LANGUAGES = [
     ('en', _('English')),
     ('no', _('Norwegian')),
     ('da', _('Danish')),
+    ('bs', _('Bosnian')),
+
 ]

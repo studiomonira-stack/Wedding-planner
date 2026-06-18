@@ -226,6 +226,7 @@
             <select name="language" onchange="this.form.submit()" style="font-family: 'Karla', sans-serif; font-size: 0.7rem; padding: 4px 8px; border: 1px solid #ccc; background: white; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
                 <option value="sv">🇸🇪 SV</option>
                 <option value="en" selected>🇬🇧 EN</option>
+                <option value="bs">🇧🇦 BS</option>
             </select>
         </form>
         <!-- Login -->
@@ -324,6 +325,14 @@
                     padding: 0 30px;
                 }
             }
+
+            @media (max-width: 480px) {
+    a[href*="login"] {
+        padding: 4px 10px !important;
+        font-size: 0.55rem !important;
+        letter-spacing: 0.3px !important;
+    }
+}
         </style>
         
         <div id="productCarousel" class="carousel slide peek-carousel" data-bs-ride="carousel" data-bs-interval="4000">
@@ -391,9 +400,9 @@
     <!-- Pris -->
     <section class="section text-center">
         <div class="container-narrow">
-            <h2>{% trans "Engångsköp – valid 24 months" %}</h2>
+            <h2>{% trans "Engångsköp – giltig i 24 månader" %}</h2>
             <div class="price-box mt-4">
-                <p class="label">{% trans "Engångspris" %}</p>
+                <p class="label">{% trans "Engångspris (giltig i 24 mån)" %}</p>
                 <p class="amount">49 €</p>
                 <p style="color: var(--text-light); font-size: 0.9rem;">{% trans "Direkt tillgång. Alla funktioner. Inga dolda avgifter." %}</p>
                 <a href="https://whop.com/checkout/plan_Xq2qra99EegxU" class="btn-primary" style="margin-top: 1.5rem;">{% trans "Köp här →" %}</a>
