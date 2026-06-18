@@ -565,8 +565,8 @@ msgid "Resultat"
 msgstr "Rezultat"
 
 #: .\planner\templates\planner\budget.html:39
-msgid "Välj kategori..."
-msgstr "Odaberite kategoriju..."
+msgid "Välj kategori.."
+msgstr "Odaberite kategoriju.."
 
 #: .\planner\templates\planner\budget.html:46
 msgid "Beskrivning (valfritt)"

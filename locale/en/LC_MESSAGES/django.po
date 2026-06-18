@@ -893,8 +893,8 @@ msgid "Samla alla era leverantörer på ett ställe."
 msgstr "Gather all your suppliers in one place."
 
 #: .\planner\templates\planner\leverantorer.html:16
-msgid "Kategori..."
-msgstr "Category..."
+msgid "Kategori.."
+msgstr "Category.."
 
 #: .\planner\templates\planner\leverantorer.html:23
 msgid "Kontaktperson"
