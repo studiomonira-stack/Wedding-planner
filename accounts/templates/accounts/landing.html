@@ -329,9 +329,9 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container-narrow">
-            <h1>Ge varje brudpar sin egen bröllopsplanner – med din logga.</h1>
-            <p class="subtitle">Dina kunder planerar sitt bröllop varje dag. Se till att de gör det med dig – inte på Google Sheets eller någon annans app. Du får en helt anpassad planner, en unik länk att dela, och 30% provision på varje köp. Utan startkostnad.</p>
-            <a href="#waitlist" class="btn-primary">Ansök om partnerskap, kostnadsfritt →</a>
+            <h1>{% trans "Ge varje brudpar sin egen bröllopsplanner – med din logga." %}</h1>
+            <p class="subtitle">{% trans "Dina kunder planerar sitt bröllop varje dag. Se till att de gör det med dig – inte på Google Sheets eller någon annans app. Du får en helt anpassad planner, en unik länk att dela, och 30% provision på varje köp. Utan startkostnad." %}</p>
+            <a href="#waitlist" class="btn-primary">{% trans "Ansök om partnerskap, kostnadsfritt →" %}</a>
             <div style="margin-top: 1.5rem; font-family: 'Karla', sans-serif;">
     <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.5rem;">⏳ Detta kvartals intag stänger om:</p>
     <div id="countdown" style="display: flex; justify-content: center; gap: 20px; font-family: 'Cormorant Garamond', serif;">
@@ -341,7 +341,7 @@
         <div><span id="seconds" style="font-size: 2.5rem; color: var(--text); font-weight: 600;">00</span><br><span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light);">Sekunder</span></div>
     </div>
 </div>
-            <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-light);">Intag varje kvartal. Ingen bindningstid. Inga avgifter, någonsin.</p>
+            <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-light);">{% trans "Intag varje kvartal. Ingen bindningstid. Inga avgifter, någonsin." %}</p>
         </div>
     </section>
 
@@ -353,10 +353,10 @@
                     <img src="https://i.imgur.com/nk4GH5S.png" alt="Bröllop" style="width: 100%; height: 500px; object-fit: cover; display: block;">
                 </div>
                 <div class="col-md-6" style="background: var(--white); padding: 80px 60px;">
-                    <h2 style="font-size: 2rem;">Din planner.<br>Deras drömbröllop.</h2>
-                    <p style="color: var(--text-light); font-weight: 300; font-size: 1.05rem; margin-top: 1.5rem;">Varje detalj planeras med din logga synlig. Från första checklistan till sista dansen. Dina par loggar in, ser din branding, och planerar hela sitt bröllop i ett verktyg som känns som du.</p>
-                    <p style="color: var(--text-light); font-weight: 300; font-size: 1.05rem;">Du är inte längre bara fotografen. Du är navet i deras planering.</p>
-                    <a href="#waitlist" class="btn-outline" style="display: inline-block; margin-top: 1.5rem; white-space: nowrap;">Ansök om partnerskap →</a>
+                    <h2 style="font-size: 2rem;">{% trans "Din planner.<br>Deras drömbröllop." %}</h2>
+                    <p style="color: var(--text-light); font-weight: 300; font-size: 1.05rem; margin-top: 1.5rem;">{% trans "Varje detalj planeras med din logga synlig. Från första checklistan till sista dansen. Dina par loggar in, ser din branding, och planerar hela sitt bröllop i ett verktyg som känns som du." %}</p>
+                    <p style="color: var(--text-light); font-weight: 300; font-size: 1.05rem;">{% trans "Du är inte längre bara fotografen. Du är navet i deras planering." %}</p>
+                    <a href="#waitlist" class="btn-outline" style="display: inline-block; margin-top: 1.5rem; white-space: nowrap;">{% trans "Ansök om partnerskap →" %}</a>
                 </div>
             </div>
         </div>
@@ -365,10 +365,10 @@
     <!-- Social Proof -->
     <section class="section section-alt">
         <div class="container-narrow">
-            <h2 style="text-align: center;">Vad fotografer säger</h2>
+            <h2 style="text-align: center;">{% trans "Vad fotografer säger" %}</h2>
             <div class="testimonial-card mt-4">
-                <p class="quote">"Jag ser så fram emot att erbjuda mina kunder och följare plannern – Känns som om att dem verkligen kommer uppskatta det, samtidigt som jag kommer kunna lägga in vårt schema för foto i deras tidslinje direkt!"</p>
-                <p class="author">— Emma, Bröllopsfotograf, Stockholm</p>
+                <p class="quote">{% trans "Jag ser så fram emot att erbjuda mina kunder och följare plannern – Känns som om att dem verkligen kommer uppskatta det, samtidigt som jag kommer kunna lägga in vårt schema för foto i deras tidslinje direkt!" %}</p>
+                <p class="author">{% trans "— Emma, Bröllopsfotograf, Stockholm" %}</p>
             </div>
         </div>
     </section>
@@ -376,48 +376,48 @@
     <!-- Features -->
     <section class="section">
         <div class="container-wide">
-            <h2 style="text-align: center;">Allt dina par behöver. Med din logga på varje sida.</h2>
+            <h2 style="text-align: center;">{% trans "Allt dina par behöver. Med din logga på varje sida." %}</h2>
             <div class="row g-4 mt-5">
                 <div class="col-md-4">
                     <div class="feature-card">
                         <div class="icon"><i class="fas fa-list-check"></i></div>
-                        <h4>Checklista</h4>
-                        <p>Steg-för-steg genom hela planeringen. Dina par missar inget. Du slipper påminnelsemejl.</p>
+                        <h4>{% trans "Checklista" %}</h4>
+                        <p>{% trans "Steg-för-steg genom hela planeringen. Dina par missar inget. Du slipper påminnelsemejl." %}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="feature-card">
                         <div class="icon"><i class="fas fa-coins"></i></div>
-                        <h4>Budget</h4>
-                        <p>De håller koll på kostnaderna. När de ser vad som ryms, bokar de dig snabbare.</p>
+                        <h4>{% trans "Budget" %}</h4>
+                        <p>{% trans "De håller koll på kostnaderna. När de ser vad som ryms, bokar de dig snabbare." %}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="feature-card">
                         <div class="icon"><i class="fas fa-envelope-open-text"></i></div>
-                        <h4>Gästlista & RSVP</h4>
-                        <p>Alla gäster samlade. Bordsplacering med överblick. Noll administration för dig.</p>
+                        <h4>{% trans "Gästlista & RSVP" %}</h4>
+                        <p>{% trans "Alla gäster samlade. Bordsplacering med överblick. Noll administration för dig." %}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="feature-card">
                         <div class="icon"><i class="fas fa-clock"></i></div>
-                        <h4>Tidslinje</h4>
-                        <p>Bröllopsdagen minut för minut. Du vet exakt när fotograferingen sker – planerad i appen.</p>
+                        <h4>{% trans "Tidslinje" %}</h4>
+                        <p>{% trans "Bröllopsdagen minut för minut. Du vet exakt när fotograferingen sker – planerad i appen." %}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="feature-card">
                         <div class="icon"><i class="fas fa-images"></i></div>
-                        <h4>Galleri</h4>
-                        <p>De samlar inspiration från Pinterest och Instagram. Din logga syns medan de drömmer.</p>
+                        <h4>{% trans "Galleri" %}</h4>
+                        <p>{% trans "De samlar inspiration från Pinterest och Instagram. Din logga syns medan de drömmer." %}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="feature-card">
                         <div class="icon"><i class="fas fa-truck"></i></div>
-                        <h4>Leverantörer</h4>
-                        <p>Du lägger in dina egna rekommendationer. Din florist, din makeup-artist – alla syns.</p>
+                        <h4>{% trans "Leverantörer" %}</h4>
+                        <p>{% trans "Du lägger in dina egna rekommendationer. Din florist, din makeup-artist – alla syns." %}</p>
                     </div>
                 </div>
             </div>
@@ -427,33 +427,33 @@
     <!-- Story -->
     <section class="section section-alt">
         <div class="container-narrow">
-            <h2 style="text-align: center;">Efter förlovningsbilderna försvinner de. Här är hur du får dem att stanna.</h2>
-            <p style="color: var(--text-light); font-weight: 300;">Lisa och Johan bokade dig för sina förlovningsbilder. Bilderna blev fantastiska. De taggade dig överallt. Några veckor senare började de planera sitt bröllop. I ett Google Sheets. På The Knot. I någon annans app.</p>
-            <p style="color: var(--text-light); font-weight: 300;">Din logga? Begravd i en gammal mejltråd. Din relation? Vilande tills det är dags för bröllopsfotograferingen.</p>
-            <p style="color: var(--text-light); font-weight: 300;">Föreställ dig nu det här istället: Du ger dem en personlig bröllopsplanner – med din logga. Varje gång de checkar av en punkt, lägger till en gäst eller justerar budgeten, ser de dig. Du är inte längre bara fotografen. Du är navet i deras planering.</p>
-            <p style="color: var(--text-light); font-weight: 300;">När bröllopsdagen kommer är du inte en leverantör. Du är en självklar del av deras historia.</p>
+            <h2 style="text-align: center;">{% trans "Efter förlovningsbilderna försvinner de. Här är hur du får dem att stanna." %}</h2>
+            <p style="color: var(--text-light); font-weight: 300;">{% trans "Lisa och Johan bokade dig för sina förlovningsbilder. Bilderna blev fantastiska. De taggade dig överallt. Några veckor senare började de planera sitt bröllop. I ett Google Sheets. På The Knot. I någon annans app." %}</p>
+            <p style="color: var(--text-light); font-weight: 300;">{% trans "Din logga? Begravd i en gammal mejltråd. Din relation? Vilande tills det är dags för bröllopsfotograferingen." %}</p>
+            <p style="color: var(--text-light); font-weight: 300;">{% trans "Föreställ dig nu det här istället: Du ger dem en personlig bröllopsplanner – med din logga. Varje gång de checkar av en punkt, lägger till en gäst eller justerar budgeten, ser de dig. Du är inte längre bara fotografen. Du är navet i deras planering." %}</p>
+            <p style="color: var(--text-light); font-weight: 300;">{% trans "När bröllopsdagen kommer är du inte en leverantör. Du är en självklar del av deras historia." %}</p>
         </div>
     </section>
 
     <!-- How it works -->
     <section class="section">
         <div class="container-medium">
-            <h2 style="text-align: center;">Så enkelt är det</h2>
+            <h2 style="text-align: center;">{% trans "Så enkelt är det" %}</h2>
             <div class="row g-4 mt-5">
                 <div class="col-md-4 text-center">
                     <div class="step-number">1</div>
-                    <h4>Ansök</h4>
-                    <p style="color: var(--text-light); font-weight: 300;">Fyll i formuläret. Vi hörs inom 24 timmar för ett kort samtal där vi går igenom dina önskemål.</p>
+                    <h4>{% trans "Ansök" %}</h4>
+                    <p style="color: var(--text-light); font-weight: 300;">{% trans "Fyll i formuläret. Vi hörs inom 24 timmar för ett kort samtal där vi går igenom dina önskemål." %}</p>
                 </div>
                 <div class="col-md-4 text-center">
                     <div class="step-number">2</div>
-                    <h4>Vi bygger</h4>
-                    <p style="color: var(--text-light); font-weight: 300;">Vi anpassar din planner med din logga, dina färger och dina leverantörsrekommendationer. Live inom 48 timmar.</p>
+                    <h4>{% trans "Vi bygger" %}</h4>
+                    <p style="color: var(--text-light); font-weight: 300;">{% trans "Vi anpassar din planner med din logga, dina färger och dina leverantörsrekommendationer. Live inom 48 timmar." %}</p>
                 </div>
                 <div class="col-md-4 text-center">
                     <div class="step-number">3</div>
-                    <h4>Dela och tjäna</h4>
-                    <p style="color: var(--text-light); font-weight: 300;">Du får en unik länk. Dela den med dina par. När de köper får du 30% provision – varje gång.</p>
+                    <h4>{% trans "Dela och tjäna" %}</h4>
+                    <p style="color: var(--text-light); font-weight: 300;">{% trans "Du får en unik länk. Dela den med dina par. När de köper får du 30% provision – varje gång." %}</p>
                 </div>
             </div>
         </div>
@@ -462,11 +462,11 @@
     <!-- Pricing -->
     <section class="section section-alt">
         <div class="container-narrow text-center">
-            <h2>Inga startavgifter. Ingen risk. Bara resultat.</h2>
-            <p style="color: var(--text-light); font-weight: 300; max-width: 500px; margin: 0 auto 2rem;">Vi tar inte en krona för att sätta upp din planner. Vi tjänar pengar först när du gör det: 30% provision på varje köp via din unika länk.</p>
+            <h2>{% trans "Inga startavgifter. Ingen risk. Bara resultat." %}</h2>
+            <p style="color: var(--text-light); font-weight: 300; max-width: 500px; margin: 0 auto 2rem;">{% trans "Vi tar inte en krona för att sätta upp din planner. Vi tjänar pengar först när du gör det: 30% provision på varje köp via din unika länk." %}</p>
             <div style="background: var(--white); border: 1px solid var(--border); padding: 24px; max-width: 400px; margin: 0 auto; text-align: left;">
-                <p style="font-size: 0.9rem;"><strong>Exempel:</strong> En planner kostar 999 kr. När ett av dina par köper får du 300 kr. Delar du den med 20 par och 10 köper → 3 000 kr passivt.</p>
-                <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 1rem;">💡 Din länk fungerar även om paret köper senare. Vi sparar en cookie i 30 dagar.</p>
+                <p style="font-size: 0.9rem;"><strong>{% trans "Exempel:" %}</strong> {% trans "En planner kostar 999 kr. När ett av dina par köper får du 300 kr. Delar du den med 20 par och 10 köper → 3 000 kr passivt." %}</p>
+                <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 1rem;">💡 {% trans "Din länk fungerar även om paret köper senare. Vi sparar en cookie i 30 dagar." %}</p>
             </div>
         </div>
     </section>
@@ -474,43 +474,43 @@
     <!-- Who is this for -->
     <section class="section">
         <div class="container-narrow text-center">
-            <h2>Byggt för bröllopsfotografer och kreativa studior</h2>
-            <p style="color: var(--text-light); font-weight: 300;">Det här är inte för alla. Det är för dig som redan har bokat drömkunderna. Som vill ge dem något extra – utan att lägga mer tid på administration. Som förstår att en stark relation före bröllopet leder till bättre bilder, nöjdare kunder och fler rekommendationer efteråt.</p>
-            <p style="color: var(--text-light); font-weight: 300;">Du behöver inte vara teknisk. Du behöver inte bygga något själv. Du behöver bara vilja ge dina par den bästa planeringsupplevelsen – med ditt varumärke i centrum.</p>
+            <h2>{% trans "Byggt för bröllopsfotografer och kreativa studior" %}</h2>
+            <p style="color: var(--text-light); font-weight: 300;">{% trans "Det här är inte för alla. Det är för dig som redan har bokat drömkunderna. Som vill ge dem något extra – utan att lägga mer tid på administration. Som förstår att en stark relation före bröllopet leder till bättre bilder, nöjdare kunder och fler rekommendationer efteråt." %}</p>
+            <p style="color: var(--text-light); font-weight: 300;">{% trans "Du behöver inte vara teknisk. Du behöver inte bygga något själv. Du behöver bara vilja ge dina par den bästa planeringsupplevelsen – med ditt varumärke i centrum." %}</p>
         </div>
     </section>
 
     <!-- FAQ -->
     <section class="section section-alt">
         <div class="container-narrow">
-            <h2 style="text-align: center;">Frågor och svar</h2>
-            <div class="faq-item"><h4>Måste jag sälja eller pusha appen?</h4><p>Nej. Du delar bara din länk som en naturlig del av ditt kunderbjudande. Det känns inte som försäljning – det känns som service.</p></div>
-            <div class="faq-item"><h4>Hur ser mina kunder min branding?</h4><p>De möts av din logga, dina färger och dina personliga rekommendationer. Du kan även lägga in en personlig välkomsthälsning.</p></div>
-            <div class="faq-item"><h4>Vad händer om jag slutar använda tjänsten?</h4><p>Ingenting. Du har ingen bindningstid. Dina redan köpta kunder behåller sin planner.</p></div>
-            <div class="faq-item"><h4>Hur får jag min provision utbetald?</h4><p>Månadsvis, direkt till ditt konto. Du ser alla dina köp och klick i en enkel dashboard.</p></div>
+            <h2 style="text-align: center;">{% trans "Frågor och svar" %}</h2>
+            <div class="faq-item"><h4>{% trans "Måste jag sälja eller pusha appen?" %}</h4><p>{% trans "Nej. Du delar bara din länk som en naturlig del av ditt kunderbjudande. Det känns inte som försäljning – det känns som service." %}</p></div>
+            <div class="faq-item"><h4>{% trans "Hur ser mina kunder min branding?" %}</h4><p>{% trans "De möts av din logga, dina färger och dina personliga rekommendationer. Du kan även lägga in en personlig välkomsthälsning." %}</p></div>
+            <div class="faq-item"><h4>{% trans "Vad händer om jag slutar använda tjänsten?" %}</h4><p>{% trans "Ingenting. Du har ingen bindningstid. Dina redan köpta kunder behåller sin planner." %}</p></div>
+            <div class="faq-item"><h4>{% trans "Hur får jag min provision utbetald?" %}</h4><p>{% trans "Månadsvis, direkt till ditt konto. Du ser alla dina köp och klick i en enkel dashboard." %}</p></div>
         </div>
     </section>
 
     <!-- Waitlist -->
     <section id="waitlist" class="section text-center">
         <div class="container-narrow">
-            <h2>Redo att ge dina par deras egen bröllopsplanner?</h2>
-            <p style="color: var(--text-light); font-weight: 300; margin-bottom: 2rem;">Vi öppnar endast 10 nya partnerskap detta kvartal. Ansök kostnadsfritt – tar 2 minuter.</p>
+            <h2>{% trans "Redo att ge dina par deras egen bröllopsplanner?" %}</h2>
+            <p style="color: var(--text-light); font-weight: 300; margin-bottom: 2rem;">{% trans "Vi öppnar endast 10 nya partnerskap detta kvartal. Ansök kostnadsfritt – tar 2 minuter." %}</p>
             <form method="post" action="https://formspree.io/f/xvzybjwj" class="waitlist-form" style="max-width: 420px; margin: 0 auto;">
                 {% csrf_token %}
                 <input type="text" name="firstname" placeholder="Förnamn" required>
                 <input type="text" name="lastname" placeholder="Efternamn" required>
                 <input type="email" name="email" placeholder="Mejl" required>
-                <button type="submit" class="btn-primary" style="width: 100%;">Ansök om partnerskap nu →</button>
+                <button type="submit" class="btn-primary" style="width: 100%;">{% trans "Ansök om partnerskap nu →" %}</button>
             </form>
-            <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 1rem;">Vi hörs inom 24 timmar. Ingen förpliktelse. Ingen startkostnad.</p>
+            <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 1rem;">{% trans "Vi hörs inom 24 timmar. Ingen förpliktelse. Ingen startkostnad." %}</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2026 Bröllopsplaneraren – Vi tjänar bara när ni tjänar.</p>
-        <p style="margin-top: 0.5rem;"><a href="/">Är du brudpar? Köp från någon av våra partners →</a></p>
+        <p>{% trans "© 2026 Bröllopsplaneraren – Vi tjänar bara när ni tjänar." %}</p>
+        <p style="margin-top: 0.5rem;"><a href="/">{% trans "Är du brudpar? Köp från någon av våra partners →" %}</a></p>
     </footer>
 
     <!-- Sätt slutdatum – 14 dagar från nu -->
