@@ -234,20 +234,6 @@
         <a href="{% url 'login' %}" style="background: var(--rose); color: white; padding: 8px 18px; border-radius: 30px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; font-weight: 600;">{% trans "Logga in" %}</a>
     </div>
 </div>
-        <!-- Språkväljare -->
-        <form action="{% url 'set_language' %}" method="post" style="display: inline;">
-            {% csrf_token %}
-            <input name="next" type="hidden" value="{{ redirect_to }}">
-            <select name="language" onchange="this.form.submit()" style="font-family: 'Karla', sans-serif; font-size: 0.7rem; padding: 4px 8px; border: 1px solid #ccc; background: white; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
-                <option value="sv">🇸🇪 SV</option>
-                <option value="en" selected>🇬🇧 EN</option>
-                <option value="bs">🇧🇦 BS</option>
-            </select>
-        </form>
-        <!-- Login -->
-        <a href="{% url 'login' %}" style="background: var(--rose); color: white; padding: 8px 18px; border-radius: 30px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; font-weight: 600;">{% trans "Logga in" %}</a>
-    </div>
-</div>
 
     <!-- Hero -->
     <section class="hero">
