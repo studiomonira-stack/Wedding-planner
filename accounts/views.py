@@ -206,6 +206,4 @@ def skapa_par(request):
 from django.utils.translation import activate
 
 def kop(request):
-    if not request.session.get('django_language'):
-        request.session['django_language'] = 'en'
     return render(request, 'accounts/kop.html')
