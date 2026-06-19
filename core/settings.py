@@ -151,7 +151,7 @@ LANGUAGES = [
 # SendGrid e-postinställningar
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
+EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'apikey'  # <-- Detta ska alltid stå 'apikey'
+EMAIL_HOST_USER = 'apikey'          # <--- Detta MÅSTE vara 'apikey'
 EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
