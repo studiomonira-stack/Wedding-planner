@@ -10,4 +10,3 @@ class PhotographerAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at',)
 
 admin.site.register(Brollop)
-admin.site.register(Photographer, PhotographerAdmin)
