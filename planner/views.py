@@ -319,6 +319,12 @@ def register_photographer(request):
                         from_email='no-reply@brollopsplanner.se',
                         recipient_list=['hej@brollopsplanner.se'],  # <-- Byt ut mot din epost!
                         fail_silently=False,
+
+                         print("📧 Mejlet skickades framgångsrikt!")
+                    except Exception as e:
+                        print(f"❌ MEJLKRASCH: {e}")
+                        print(f"Detaljerad felinformation: {type(e).__name__}")
+                    # --------------------------------
                     )
                     # --------------------------------
                     
