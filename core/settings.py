@@ -154,4 +154,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'hej@brollopsplanner.se'   # <--- Byt ut mot din Gmail
-EMAIL_HOST_PASSWORD = 'uszm hawt ejrc owpf' # <--- Byt ut mot ditt Gmail App Password (se nedan)
+EMAIL_HOST_PASSWORD = 'uszmhawtejrcowpf' # <--- Byt ut mot ditt Gmail App Password (se nedan)
