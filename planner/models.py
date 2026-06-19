@@ -171,7 +171,7 @@ class Photographer(models.Model):
     primary_color = models.CharField(max_length=7, default="#FF0000", verbose_name="Primär färg (Hex-kod)")
     whop_email = models.EmailField(blank=True, null=True, verbose_name="Whop E-post")
     whop_affiliate_id = models.CharField(max_length=100, verbose_name="Whop Affiliate ID")
-    
+    is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
