@@ -317,15 +317,14 @@ def register_photographer(request):
                                     f'Whop-epost: {photographer.whop_email}\n'
                                     f'Logga: {photographer.logo.url if photographer.logo else "Ingen logga"}\n\n'
                                     f'Gå in i Whop och lägg till dem som affiliate nu!',
-                            from_email='hej@brollopsplanner.se',  # <-- Din avsändare
-                            recipient_list=['hej@brollopsplanner.se'],  # <-- Din mottagare
+                            from_email='hej@brollopsplanner.se',
+                            recipient_list=['hej@brollopsplanner.se'],
                             fail_silently=False,
                         )
                         print("📧 Mejlet skickades framgångsrikt!")
                     except Exception as e:
                         print(f"❌ MEJLKRASCH: {e}")
                         print(f"Detaljerad felinformation: {type(e).__name__}")
-                    # --------------------------------
                     
                     return render(request, 'planner/register_photographer_base.html', {
                         'step_content': 'planner/registration_waiting.html',
