@@ -1,0 +1,23 @@
+<h2 style="text-align: center;">Steg 2 av 3: Skapa Whop-konto</h2>
+<div class="instruction-box">
+    <p><strong>Instruktioner:</strong></p>
+    <ol>
+        <li>Gå till <a href="https://whop.com" target="_blank">whop.com</a> och registrera dig som säljare (gratis).</li>
+        <li>När kontot är skapat, kom tillbaka hit.</li>
+        <li>Fyll i vilken epost du använde och klicka på knappen.</li>
+    </ol>
+</div>
+<div class="form-wrapper">
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- LÄGG TILL DENNA DOLDA INPUT HÄR! -->
+        <input type="hidden" name="step2_submit" value="1">
+        
+        <div class="mb-3">
+            <label class="form-label">Epost du använde på Whop:</label>
+            <input type="email" name="whop_email" class="form-control" required placeholder="t.ex. emma@fotograf.se">
+        </div>
+        <button type="submit" class="btn-primary-custom">Jag har skapat konto! →</button>
+    </form>
+</div>

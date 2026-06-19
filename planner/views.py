@@ -1,6 +1,11 @@
+from urllib import request
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import ChecklistItem, BudgetPost, Gast, Leverantor, Tidslinje, Galleri 
+from .forms import PhotographerStep1Form, PhotographerStep2Form
+from .models import Photographer
+from django.core.mail import send_mail  # <-- Lägg till denna rad
 
 
 @login_required
@@ -266,3 +271,93 @@ def brollop_detail(request, brollop_id):
         'poster': poster,
         'gaster': gaster,
     })
+
+
+from .forms import PhotographerStep1Form, PhotographerStep2Form  # <-- Ändra importen!
+
+def register_photographer(request):
+    # --- STEG 1 ---
+    if request.method == 'POST' and 'step1_submit' in request.POST:
+        print("✅ Steg 1 mottaget!")
+        form = PhotographerStep1Form(request.POST, request.FILES)  # <-- Använd Step1Form
+        if form.is_valid():
+            photographer = form.save(commit=False)
+            photographer.is_active = False
+            photographer.save()
+            request.session['temp_photographer_id'] = photographer.id
+            
+            # Visa Steg 2
+            form = PhotographerStep2Form(instance=photographer)
+            return render(request, 'planner/register_photographer_base.html', {
+                'step_content': 'planner/register_photographer_step2.html',
+                'form': form,
+                'photographer': photographer
+            })
+        else:
+            print(f"❌ Fel: {form.errors}")
+
+        # --- STEG 2 ---
+    elif request.method == 'POST' and 'step2_submit' in request.POST:
+        print("✅ Steg 2 mottaget!")
+        photographer_id = request.session.get('temp_photographer_id')
+        if photographer_id:
+            try:
+                photographer = Photographer.objects.get(id=photographer_id)
+                whop_email = request.POST.get('whop_email')
+                if whop_email:
+                    photographer.whop_email = whop_email
+                    photographer.save()
+                    
+                    # --- SKICKA MEJL TILL DIG (ADMIN) ---
+                    send_mail(
+                        subject='📸 Ny fotograf redo för Whop!',
+                        message=f'Hej! En fotograf har precis slutfört Steg 2.\n\n'
+                                f'Namn: {photographer.name}\n'
+                                f'Whop-epost: {photographer.whop_email}\n'
+                                f'Logga: {photographer.logo.url if photographer.logo else "Ingen logga"}\n\n'
+                                f'Gå in i Whop och lägg till dem som affiliate nu!',
+                        from_email='no-reply@brollopsplanner.se',
+                        recipient_list=['hej@brollopsplanner.se'],  # <-- Byt ut mot din epost!
+                        fail_silently=False,
+                    )
+                    # --------------------------------
+                    
+                    return render(request, 'planner/register_photographer_base.html', {
+                        'step_content': 'planner/registration_waiting.html',
+                        'photographer': photographer
+                    })
+            except Photographer.DoesNotExist:
+                pass
+
+    # --- Hämta fotografen ---
+    photographer_id = request.session.get('temp_photographer_id')
+    photographer = None
+    if photographer_id:
+        try:
+            photographer = Photographer.objects.get(id=photographer_id)
+        except Photographer.DoesNotExist:
+            pass
+
+    # --- STEG 4: KLART! ---
+    if photographer and photographer.whop_affiliate_id:
+        return render(request, 'planner/register_photographer_base.html', {
+            'step_content': 'planner/registration_complete.html',
+            'photographer': photographer
+        })
+
+    # --- STEG 2 (visa igen) ---
+    elif photographer:
+        form = PhotographerStep2Form(instance=photographer)
+        return render(request, 'planner/register_photographer_base.html', {
+            'step_content': 'planner/register_photographer_step2.html',
+            'form': form,
+            'photographer': photographer
+        })
+
+    # --- STEG 1 ---
+    else:
+        form = PhotographerStep1Form()
+        return render(request, 'planner/register_photographer_base.html', {
+            'step_content': 'planner/register_photographer_step1.html',
+            'form': form
+        })

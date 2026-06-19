@@ -1,0 +1,27 @@
+<h2 style="text-align: center;">Steg 1 av 3: Ditt varumärke</h2>
+<div class="form-wrapper">
+    <!-- OBS! method="post" och enctype MÅSTE vara med -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- DETTA ÄR DET VIKTIGASTE: En dold input som säger "Detta är Steg 1" -->
+        <input type="hidden" name="step1_submit" value="1">
+        
+        <div class="mb-3">
+            <label class="form-label">Företagsnamn</label>
+            {{ form.name }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ladda upp din logga</label>
+            {{ form.logo }}
+            <div class="form-text">PNG eller JPG rekommenderas.</div>
+        </div>
+        <div class="mb-4">
+            <label class="form-label">Din primära färg</label>
+            {{ form.primary_color }}
+        </div>
+        
+        <!-- Knappen måste vara type="submit" -->
+        <button type="submit" class="btn-primary-custom">Fortsätt till Steg 2 →</button>
+    </form>
+</div>

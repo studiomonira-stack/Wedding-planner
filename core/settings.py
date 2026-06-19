@@ -132,6 +132,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'accounts/static'),
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
@@ -144,3 +147,12 @@ LANGUAGES = [
     ('bs', _('Bosnian')),
 
 ]
+
+# Riktiga e-postinställningar för Render
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'hej@brollopsplanner.se'   # <--- Byt ut mot din Gmail
+# EMAIL_HOST_PASSWORD = 'uszm hawt ejrc owpf' # <--- Byt ut mot ditt Gmail App Password (se nedan)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')

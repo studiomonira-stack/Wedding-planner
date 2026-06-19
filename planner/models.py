@@ -155,3 +155,24 @@ class Galleri(models.Model):
 
     def __str__(self):
         return self.titel or self.bild[:50]
+
+# Denna modell är för att lagra information om fotografer som användare kan koppla till sina bröllop.
+
+class Photographer(models.Model):
+    # Vi lägger till user här för att matcha andra modellerna.
+    # Detta gör att en fotograf kan kopplas till en användare.
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True) 
+    
+    name = models.CharField(max_length=100, verbose_name="Företagsnamn")
+    
+    # ImageField kräver att du har installerat 'pillow' och konfigurerat MEDIA_ROOT
+    logo = models.ImageField(upload_to='photographer_logos/', blank=True, null=True)
+    
+    primary_color = models.CharField(max_length=7, default="#FF0000", verbose_name="Primär färg (Hex-kod)")
+    whop_email = models.EmailField(blank=True, null=True, verbose_name="Whop E-post")
+    whop_affiliate_id = models.CharField(max_length=100, verbose_name="Whop Affiliate ID")
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
