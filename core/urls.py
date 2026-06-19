@@ -6,6 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from planner import views as planner_views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),

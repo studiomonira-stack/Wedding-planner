@@ -23,4 +23,7 @@ urlpatterns = [
     path('galleri/', views.galleri, name='galleri'),
     path('galleri/add/', views.add_bild, name='add_bild'),
     path('galleri/delete/<int:bild_id>/', views.delete_bild, name='delete_bild'),
+    path('fotograf/tidslinje/<int:kund_id>/', views.fotograf_tidslinje, name='fotograf_tidslinje'),
+    path('fotograf/tidslinje/<int:kund_id>/ny/', views.fotograf_ny_handelse, name='fotograf_ny_handelse'),
+    path('fotograf/tidslinje/<int:kund_id>/ta-bort/<int:handelse_id>/', views.fotograf_ta_bort_handelse, name='fotograf_ta_bort_handelse'),
     ]

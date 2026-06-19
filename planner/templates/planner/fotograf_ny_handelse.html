@@ -1,0 +1,31 @@
+{% extends 'planner/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Lägg till ny tid för {{ kund.username }}</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Tid</label>
+            <input type="time" name="tid" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Aktivitet</label>
+            <input type="text" name="aktivitet" class="form-control" required placeholder="t.ex. Fotografering vid altaret">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Plats (valfritt)</label>
+            <input type="text" name="plats" class="form-control" placeholder="t.ex. Kyrkan">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ansvarig (valfritt)</label>
+            <input type="text" name="ansvarig" class="form-control" placeholder="t.ex. Fotografen">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Notering (valfritt)</label>
+            <textarea name="notering" class="form-control" rows="2" placeholder="Eventuella extra instruktioner..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Lägg till</button>
+    </form>
+</div>
+{% endblock %}

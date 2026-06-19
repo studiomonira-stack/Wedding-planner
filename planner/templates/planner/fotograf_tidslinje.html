@@ -1,0 +1,31 @@
+{% extends 'planner/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Tidslinje för {{ kund.username }}</h2>
+    
+    <a href="{% url 'fotograf_ny_handelse' kund.id %}" class="btn btn-primary mb-3">
+        <i class="fas fa-plus"></i> Lägg till foto-tid
+    </a>
+    
+    <div class="card">
+        <div class="card-body">
+            {% for handelse in handelser %}
+            <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                <div>
+                    <strong>{{ handelse.tid }}</strong> – {{ handelse.aktivitet }}
+                    {% if handelse.plats %}<br><small>{{ handelse.plats }}</small>{% endif %}
+                    {% if handelse.ansvarig %}<br><small>Ansvarig: {{ handelse.ansvarig }}</small>{% endif %}
+                </div>
+                <div>
+                    <a href="{% url 'fotograf_ta_bort_handelse' kund.id handelse.id %}" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-muted">Inga tider inlagda ännu.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -6,6 +6,7 @@ from .models import ChecklistItem, BudgetPost, Gast, Leverantor, Tidslinje, Gall
 from .forms import PhotographerStep1Form, PhotographerStep2Form
 from .models import Photographer
 from django.core.mail import send_mail  # <-- Lägg till denna rad
+from django.contrib.auth.models import User
 
 
 @login_required
@@ -365,3 +366,48 @@ def register_photographer(request):
             'step_content': 'planner/register_photographer_step1.html',
             'form': form
         })
+
+# ============================================
+# NYA VYER FÖR FOTOGRAFENS TIDSLINJE
+# ============================================
+
+@login_required
+def fotograf_tidslinje(request, kund_id):
+    # Hitta kunden (brudparet)
+    kund = get_object_or_404(User, id=kund_id)
+    
+    # Hämta alla tidslinje-händelser för detta par
+    handelser = Tidslinje.objects.filter(user=kund).order_by('tid')
+    
+    return render(request, 'planner/fotograf_tidslinje.html', {
+        'kund': kund,
+        'handelser': handelser,
+    })
+
+
+@login_required
+def fotograf_ny_handelse(request, kund_id):
+    kund = get_object_or_404(User, id=kund_id)
+    
+    if request.method == 'POST':
+        Tidslinje.objects.create(
+            user=kund,                 # Koppla till kunden (brudparet)
+            fotograf=request.user,     # Koppla till fotografen (den som loggat in)
+            tid=request.POST.get('tid'),
+            aktivitet=request.POST.get('aktivitet'),
+            plats=request.POST.get('plats', ''),
+            ansvarig=request.POST.get('ansvarig', ''),
+            notering=request.POST.get('notering', ''),
+            ordning=request.POST.get('ordning', 0)
+        )
+        return redirect('fotograf_tidslinje', kund_id=kund.id)
+    
+    return render(request, 'planner/fotograf_ny_handelse.html', {'kund': kund})
+
+
+@login_required
+def fotograf_ta_bort_handelse(request, kund_id, handelse_id):
+    kund = get_object_or_404(User, id=kund_id)
+    handelse = get_object_or_404(Tidslinje, id=handelse_id, user=kund)
+    handelse.delete()
+    return redirect('fotograf_tidslinje', kund_id=kund.id)
