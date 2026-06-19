@@ -308,24 +308,23 @@ def register_photographer(request):
                     photographer.whop_email = whop_email
                     photographer.save()
                     
-                    # --- SKICKA MEJL TILL DIG (ADMIN) ---
-                    send_mail(
-                        subject='📸 Ny fotograf redo för Whop!',
-                        message=f'Hej! En fotograf har precis slutfört Steg 2.\n\n'
-                                f'Namn: {photographer.name}\n'
-                                f'Whop-epost: {photographer.whop_email}\n'
-                                f'Logga: {photographer.logo.url if photographer.logo else "Ingen logga"}\n\n'
-                                f'Gå in i Whop och lägg till dem som affiliate nu!',
-                        from_email='no-reply@brollopsplanner.se',
-                        recipient_list=['hej@brollopsplanner.se'],  # <-- Byt ut mot din epost!
-                        fail_silently=False,
-
-                         print("📧 Mejlet skickades framgångsrikt!")
+                                       # --- SKICKA MEJL TILL DIG (ADMIN) ---
+                    try:
+                        send_mail(
+                            subject='📸 Ny fotograf redo för Whop!',
+                            message=f'Hej! En fotograf har precis slutfört Steg 2.\n\n'
+                                    f'Namn: {photographer.name}\n'
+                                    f'Whop-epost: {photographer.whop_email}\n'
+                                    f'Logga: {photographer.logo.url if photographer.logo else "Ingen logga"}\n\n'
+                                    f'Gå in i Whop och lägg till dem som affiliate nu!',
+                            from_email='hej@brollopsplanner.se',  # <-- Din avsändare
+                            recipient_list=['hej@brollopsplanner.se'],  # <-- Din mottagare
+                            fail_silently=False,
+                        )
+                        print("📧 Mejlet skickades framgångsrikt!")
                     except Exception as e:
                         print(f"❌ MEJLKRASCH: {e}")
                         print(f"Detaljerad felinformation: {type(e).__name__}")
-                    # --------------------------------
-                    )
                     # --------------------------------
                     
                     return render(request, 'planner/register_photographer_base.html', {
