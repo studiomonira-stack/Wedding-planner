@@ -57,8 +57,20 @@ def register(request):
 
 @login_required
 def dashboard(request):
-    profil = Profil.objects.get(user=request.user)
-     # Kolla om kontot har gått ut
+    # Om profilen inte finns, skapa den automatiskt
+    try:
+        profil = Profil.objects.get(user=request.user)
+    except Profil.DoesNotExist:
+        # Skapa en standardprofil för användaren
+        from datetime import date, timedelta
+        utgang = date.today() + timedelta(days=730)
+        profil = Profil.objects.create(
+            user=request.user,
+            roll='par',
+            utgangsdatum=utgang
+        )
+    
+    # Kolla om kontot har gått ut
     if profil.utgangsdatum and profil.utgangsdatum < date.today():
         return render(request, 'accounts/utganget.html')
     
@@ -127,6 +139,8 @@ def dashboard(request):
         'checklist_items': checklist_items,
         'checklist_remaining': checklist_remaining,
     })
+    
+
 
 @csrf_exempt
 def whop_webhook(request):
