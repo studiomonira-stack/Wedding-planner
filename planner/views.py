@@ -280,6 +280,17 @@ def register_photographer(request):
     # --- STEG 1 ---
     if request.method == 'POST' and 'step1_submit' in request.POST:
         print("✅ Steg 1 mottaget!")
+
+         # <--- NY KOD: KONTROLLERA GDPR-KRYSSRUTAN --->
+        if not request.POST.get('accept_privacy'):
+            form = PhotographerStep1Form(request.POST, request.FILES)
+            form.add_error(None, "Du måste godkänna integritetspolicyn för att fortsätta.")
+            return render(request, 'planner/register_photographer_base.html', {
+                'step_content': 'planner/register_photographer_step1.html',
+                'form': form
+            })
+        # <-------------------------------------------->
+
         form = PhotographerStep1Form(request.POST, request.FILES)  # <-- Använd Step1Form
         if form.is_valid():
             photographer = form.save(commit=False)
@@ -411,3 +422,6 @@ def fotograf_ta_bort_handelse(request, kund_id, handelse_id):
     handelse = get_object_or_404(Tidslinje, id=handelse_id, user=kund)
     handelse.delete()
     return redirect('fotograf_tidslinje', kund_id=kund.id)
+
+def privacy_policy(request):
+    return render(request, 'planner/privacy_policy.html')

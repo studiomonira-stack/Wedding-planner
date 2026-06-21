@@ -1,0 +1,304 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<style>
+    .privacy-container {
+        max-width: 800px;
+        margin: 60px auto;
+        padding: 0 20px;
+    }
+    .privacy-container h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.8rem;
+        color: #3A3A3A;
+        margin-bottom: 0.5rem;
+    }
+    .privacy-container .last-updated {
+        color: #8C8C8C;
+        font-size: 0.9rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+    }
+    .privacy-container h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.6rem;
+        color: #3A3A3A;
+        margin-top: 2rem;
+        margin-bottom: 0.8rem;
+    }
+    .privacy-container p, .privacy-container li {
+        font-family: 'Karla', sans-serif;
+        font-weight: 300;
+        color: #3A3A3A;
+        line-height: 1.8;
+        font-size: 1.05rem;
+    }
+    .privacy-container ul {
+        padding-left: 20px;
+    }
+    .privacy-container strong {
+        font-weight: 600;
+    }
+    .privacy-container a {
+        color: #D4B5B5;
+        text-decoration: none;
+    }
+    .privacy-container a:hover {
+        text-decoration: underline;
+    }
+    .privacy-card {
+        background: #FFFFFF;
+        border-radius: 20px;
+        padding: 50px 45px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+        border: 1px solid #E8E5E0;
+    }
+    .privacy-contact-box {
+        background: #F5EBEB;
+        border-radius: 12px;
+        padding: 20px 25px;
+        margin-top: 2rem;
+        border-left: 4px solid #D4B5B5;
+    }
+    @media (max-width: 768px) {
+        .privacy-container h1 { font-size: 2rem; }
+        .privacy-container h3 { font-size: 1.3rem; }
+        .privacy-card { padding: 30px 20px; }
+    }
+
+    /* Flikar för språk */
+    .lang-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+    }
+    .lang-tab {
+        background: transparent;
+        border: 1px solid #D4B5B5;
+        color: #3A3A3A;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-family: 'Karla', sans-serif;
+        font-weight: 600;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .lang-tab:hover {
+        background: #F5EBEB;
+    }
+    .lang-tab.active {
+        background: #D4B5B5;
+        color: white;
+        border-color: #D4B5B5;
+    }
+    .lang-content {
+        display: none;
+    }
+    .lang-content.active {
+        display: block;
+    }
+</style>
+
+<div class="privacy-container">
+    <div class="privacy-card">
+
+        <!-- Språkvalsflikar -->
+        <div class="lang-tabs">
+            <button class="lang-tab active" onclick="switchLang('sv')">🇸🇪 Svenska</button>
+            <button class="lang-tab" onclick="switchLang('en')">🇬🇧 English</button>
+        </div>
+
+        <!-- ================================ -->
+        <!-- SVENSK VERSION                   -->
+        <!-- ================================ -->
+        <div id="lang-sv" class="lang-content active">
+            <h1>Integritetspolicy</h1>
+            <p class="last-updated"><em>Senast uppdaterad: 21 juni 2026</em></p>
+
+            <h3>1. Vilka vi är</h3>
+            <p>Vi är <strong>Bröllopsplaneraren</strong>, en digital plattform som tillhandahåller ett planeringsverktyg för bröllop. Vår webbplats riktar sig huvudsakligen till användare i Sverige, och vi är registrerade i Bosnien och Hercegovina.</p>
+            <p><strong>Kontakt:</strong><br>
+            E-post: <a href="mailto:hej@brollopsplanner.se">hej@brollopsplanner.se</a></p>
+
+            <h3>2. Vilka personuppgifter vi samlar in</h3>
+            <p>Vi samlar in följande uppgifter:</p>
+            <ul>
+                <li>Namn (när du registrerar dig eller kontaktar oss)</li>
+                <li>E-postadress</li>
+                <li>(Valfritt: telefonnummer, bröllopsdatum, gästlistor, etc.)</li>
+            </ul>
+            <p>Vi samlar in dessa uppgifter när du:</p>
+            <ul>
+                <li>Registrerar ett konto</li>
+                <li>Använder våra tjänster</li>
+                <li>Kontaktar oss via vår webbplats</li>
+            </ul>
+
+            <h3>3. Ändamål och rättslig grund</h3>
+            <p>Vi behandlar dina uppgifter för att:</p>
+            <ul>
+                <li>Skapa och administrera ditt konto.</li>
+                <li>Tillhandahålla planeringsverktyget.</li>
+                <li>Skicka viktiga meddelanden (t.ex. bekräftelser, uppdateringar).</li>
+            </ul>
+            <p>Rättslig grund för behandlingen är:</p>
+            <ul>
+                <li><strong>Avtal</strong> (för att leverera tjänsten du har registrerat dig för).</li>
+                <li><strong>Samtycke</strong> (för marknadsföring, om du har gett det).</li>
+            </ul>
+
+            <h3>4. Lagring och säkerhet</h3>
+            <p>Dina personuppgifter lagras på säkra servrar inom EU/EES via vår molnleverantör (Render.com). Vi använder kryptering och lösenordsskydd för att skydda dina uppgifter.</p>
+            <p>Vi sparar dina uppgifter så länge ditt konto är aktivt, och upp till 3 år efter att du senast loggade in, om du inte begär radering tidigare.</p>
+
+            <h3>5. Dina rättigheter enligt GDPR</h3>
+            <p>Enligt GDPR har du rätt att:</p>
+            <ul>
+                <li>Begära tillgång till dina personuppgifter.</li>
+                <li>Begära rättelse eller radering ("rätten att bli glömd").</li>
+                <li>Invända mot behandling eller begära begränsning.</li>
+                <li>Begära dataöverförbarhet.</li>
+            </ul>
+            <p>För att utöva dessa rättigheter, kontakta oss på: <a href="mailto:hej@brollopsplanner.se">hej@brollopsplanner.se</a></p>
+
+            <h3>6. Delning av personuppgifter</h3>
+            <p>Vi delar <strong>inte</strong> dina uppgifter med tredje part för marknadsföringsändamål.</p>
+            <p>Vi delar endast nödvändiga uppgifter med:</p>
+            <ul>
+                <li><strong>Whop</strong> (vår betalningspartner)</li>
+                <li><strong>Render.com</strong> (vår hostingpartner)</li>
+            </ul>
+            <p>Dessa parter är bundna av sekretessavtal och får inte använda dina uppgifter för egna ändamål.</p>
+
+            <h3>7. Cookies och spårning</h3>
+            <p>Vi använder endast nödvändiga cookies (t.ex. för inloggning och språkinställningar). Vi använder inte tredjepartsspårning eller marknadsföringscookies utan ditt uttryckliga samtycke.</p>
+
+            <h3>8. Överföring till tredje land</h3>
+            <p>Dina uppgifter lagras inom EU/EES. Vi överför inte dina personuppgifter till länder utanför EU, med undantag för eventuella tekniska supportärenden där data kan hamna på servrar i USA via Render.com. I sådana fall skyddas överföringen av EU:s standardavtalsklausuler.</p>
+
+            <h3>9. Tillämplig lag och tvistlösning</h3>
+            <p>Denna integritetspolicy och all behandling av personuppgifter styrs av <strong>svensk lag</strong>, inklusive <strong>EU:s dataskyddsförordning (GDPR)</strong>.</p>
+            <p>Eventuella tvister som uppstår i anslutning till denna policy ska prövas vid <strong>Stockholms tingsrätt, Sverige</strong>. Detta val av lag och domstol gäller oavsett var du bor eller var vi är registrerade.</p>
+
+            <h3>10. Ändringar</h3>
+            <p>Vi kan komma att uppdatera denna policy. Den senaste versionen finns alltid tillgänglig på denna sida.</p>
+
+            <div class="privacy-contact-box">
+                <p style="margin: 0; font-size: 1rem;">
+                    <strong>Kontakta oss</strong><br>
+                    Bröllopsplaneraren<br>
+                    E-post: <a href="mailto:hej@brollopsplanner.se">hej@brollopsplanner.se</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- ================================ -->
+        <!-- ENGELSK VERSION                  -->
+        <!-- ================================ -->
+        <div id="lang-en" class="lang-content">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated"><em>Last updated: June 21, 2026</em></p>
+
+            <h3>1. Who we are</h3>
+            <p>We are <strong>Bröllopsplaneraren</strong>, a digital platform providing a wedding planning tool. Our website is primarily directed at users in Sweden, and we are registered in Bosnia and Herzegovina.</p>
+            <p><strong>Contact:</strong><br>
+            Email: <a href="mailto:hej@brollopsplanner.se">hej@brollopsplanner.se</a></p>
+
+            <h3>2. What personal data we collect</h3>
+            <p>We collect the following information:</p>
+            <ul>
+                <li>Name (when you register or contact us)</li>
+                <li>Email address</li>
+                <li>(Optional: phone number, wedding date, guest lists, etc.)</li>
+            </ul>
+            <p>We collect this data when you:</p>
+            <ul>
+                <li>Register for an account</li>
+                <li>Use our services</li>
+                <li>Contact us via our website</li>
+            </ul>
+
+            <h3>3. Purpose and legal basis</h3>
+            <p>We process your data for the following purposes:</p>
+            <ul>
+                <li>To create and manage your account.</li>
+                <li>To provide the wedding planning tool.</li>
+                <li>To send important service-related messages (e.g., confirmations, updates).</li>
+            </ul>
+            <p>The legal basis for processing is:</p>
+            <ul>
+                <li><strong>Contract</strong> (to deliver the service you have signed up for).</li>
+                <li><strong>Consent</strong> (for marketing, if you have provided it).</li>
+            </ul>
+
+            <h3>4. Data storage and security</h3>
+            <p>Your personal data is stored on secure servers within the EU/EEA via our cloud provider (Render.com). We use encryption and password protection to safeguard your data.</p>
+            <p>We retain your data for as long as your account is active, and up to 3 years after your last login, unless you request deletion earlier.</p>
+
+            <h3>5. Your rights under GDPR</h3>
+            <p>Under the GDPR, you have the right to:</p>
+            <ul>
+                <li>Request access to your personal data.</li>
+                <li>Request correction or deletion (“right to be forgotten”).</li>
+                <li>Object to processing or request restriction.</li>
+                <li>Request data portability.</li>
+            </ul>
+            <p>To exercise these rights, contact us at: <a href="mailto:hej@brollopsplanner.se">hej@brollopsplanner.se</a></p>
+
+            <h3>6. Sharing of personal data</h3>
+            <p>We do <strong>not</strong> share your data with third parties for marketing purposes.</p>
+            <p>We only share necessary data with:</p>
+            <ul>
+                <li><strong>Whop</strong> (our payment partner)</li>
+                <li><strong>Render.com</strong> (our hosting partner)</li>
+            </ul>
+            <p>These partners are bound by confidentiality agreements and may not use your data for their own purposes.</p>
+
+            <h3>7. Cookies and tracking</h3>
+            <p>We only use essential cookies (e.g., for login and language preferences). We do not use third-party tracking or marketing cookies without your explicit consent.</p>
+
+            <h3>8. Data transfer to third countries</h3>
+            <p>Your data is stored within the EU/EEA. We do not transfer your data to countries outside the EU, except for potential technical support cases where data may reside on servers in the USA via Render.com. In such cases, the transfer is protected by the EU's Standard Contractual Clauses (SCCs).</p>
+
+            <h3>9. Applicable law and dispute resolution</h3>
+            <p>This Privacy Policy and all processing of personal data are governed by <strong>Swedish law</strong>, including the <strong>EU General Data Protection Regulation (GDPR)</strong>.</p>
+            <p>Any disputes arising in connection with this policy shall be resolved at the <strong>Stockholm District Court (Stockholms tingsrätt), Sweden</strong>. This choice of law and jurisdiction applies regardless of where you reside or where we are registered.</p>
+
+            <h3>10. Changes to this policy</h3>
+            <p>We may update this Privacy Policy from time to time. The latest version will always be available on this page.</p>
+
+            <div class="privacy-contact-box">
+                <p style="margin: 0; font-size: 1rem;">
+                    <strong>Contact us</strong><br>
+                    Bröllopsplaneraren<br>
+                    Email: <a href="mailto:hej@brollopsplanner.se">hej@brollopsplanner.se</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- JavaScript för att växla språk -->
+<script>
+function switchLang(lang) {
+    // Dölj alla språk och avaktivera alla flikar
+    document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+    
+    // Visa valt språk och aktivera vald flik
+    document.getElementById('lang-' + lang).classList.add('active');
+    // Obs: event.target fungerar bara om funktionen anropas från klickhändelsen
+    // Vi använder istället querySelector för att hitta knappen
+    document.querySelectorAll('.lang-tab').forEach(el => {
+        if (el.textContent.includes(lang === 'sv' ? 'Svenska' : 'English')) {
+            el.classList.add('active');
+        }
+    });
+}
+</script>
+{% endblock %}

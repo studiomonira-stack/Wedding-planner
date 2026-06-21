@@ -21,6 +21,17 @@
             {{ form.primary_color }}
         </div>
         
+        
+        <!-- Godkänna Privacy ruta! -->
+        <!-- ============================== -->
+        <div class="mb-4 form-check">
+            <input class="form-check-input" type="checkbox" id="accept_privacy" name="accept_privacy" required>
+            <label class="form-check-label" for="accept_privacy">
+                Jag godkänner <a href="{% url 'privacy_policy' %}">integritetspolicyn</a> och samtycker till att mina personuppgifter behandlas enligt GDPR.
+            </label>
+        </div>
+        <!-- ============================== -->
+
         <!-- Knappen måste vara type="submit" -->
         <button type="submit" class="btn-primary-custom">Fortsätt till Steg 2 →</button>
     </form>
