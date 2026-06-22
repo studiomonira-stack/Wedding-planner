@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -155,3 +156,11 @@ EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'          # <--- Detta MÅSTE vara 'apikey'
 EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
+
+
+# I slutet av filen, lägg till:
+CSRF_TRUSTED_ORIGINS = ['https://www.brollopsplanner.se', 'https://brollopsplanner.se']
+
+# Om du har satt detta, se till att det är sant i produktion:
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
