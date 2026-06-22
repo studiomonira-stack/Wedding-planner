@@ -13,6 +13,7 @@ from planner.models import Brollop, ChecklistItem, BudgetPost, Gast, Leverantor,
 import json
 import secrets
 from datetime import date, timedelta
+from datetime import date  # <-- Lägg till denna rad!
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -62,7 +63,6 @@ def dashboard(request):
         profil = Profil.objects.get(user=request.user)
     except Profil.DoesNotExist:
         # Skapa en standardprofil för användaren
-        from datetime import date, timedelta
         utgang = date.today() + timedelta(days=730)
         profil = Profil.objects.create(
             user=request.user,
