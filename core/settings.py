@@ -78,16 +78,18 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 
+import os
+
 if 'RENDER' in os.environ:
-    # På Render – använd PostgreSQL
+    # Render – använd PostgreSQL via TCP/IP
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
+            'HOST': os.environ.get('PGHOST'),
+            'PORT': os.environ.get('PGPORT'),
             'NAME': os.environ.get('PGDATABASE'),
             'USER': os.environ.get('PGUSER'),
             'PASSWORD': os.environ.get('PGPASSWORD'),
-            'HOST': os.environ.get('PGHOST'),
-            'PORT': os.environ.get('PGPORT'),
         }
     }
 else:
@@ -95,7 +97,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
