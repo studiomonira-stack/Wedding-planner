@@ -77,10 +77,14 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+import os
+
+import os
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'URL': os.environ.get('postgresql://brollopsplanner_db_user:wNhdgAtPjChqFC0SzFtJbr9S9itiW1cc@dpg-d8snfmjeo5us73enrllg-a.frankfurt-postgres.render.com/brollopsplanner_db'),
     }
 }
 
