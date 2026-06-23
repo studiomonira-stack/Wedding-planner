@@ -5,37 +5,76 @@
 <!-- ========== FOTOGRAFENS ANPASSNING ========== -->
 {% if photographer %}
 <style>
-    /* CHECKLISTA */
+    /* ========== CHECKLISTA ========== */
     svg path[stroke="#C7BDAE"] {
         stroke: {{ photographer.accent_color }} !important;
     }
     svg path[stroke="#e5e3dc"] {
         stroke: {{ photographer.accent_color }} !important;
+        opacity: 0.25;
+    }
+    
+    /* ========== BUDGET - CIRKLAR ========== */
+    /* Budget total - mörkaste */
+    .card:nth-of-type(2) svg circle[stroke="#634935"] {
+        stroke: {{ photographer.accent_color }} !important;
+    }
+    /* Budget spenderat - mellan */
+    .card:nth-of-type(2) svg circle[stroke="#997D64"] {
+        stroke: {{ photographer.accent_color }} !important;
+        opacity: 0.65;
+    }
+    /* Budget kvar - ljusaste */
+    .card:nth-of-type(2) svg circle[stroke="#C7BDAE"] {
+        stroke: {{ photographer.accent_color }} !important;
         opacity: 0.3;
     }
     
-    /* BUDGET - 3 färger */
-    svg circle[stroke="#634935"] {
-        stroke: {{ photographer.accent_color }} !important;
-        opacity: 1;
+    /* ========== BUDGET - PUNKTER ========== */
+    .card:nth-of-type(2) span[style*="#634935"] {
+        background: {{ photographer.accent_color }} !important;
     }
-    svg circle[stroke="#997D64"] {
-        stroke: {{ photographer.accent_color }} !important;
-        opacity: 0.6;
+    .card:nth-of-type(2) span[style*="#997D64"] {
+        background: {{ photographer.accent_color }} !important;
+        opacity: 0.65;
     }
-    svg circle[stroke="#C7BDAE"] {
-        stroke: {{ photographer.accent_color }} !important;
+    .card:nth-of-type(2) span[style*="#C7BDAE"] {
+        background: {{ photographer.accent_color }} !important;
         opacity: 0.3;
     }
     
-    /* GÄSTER & LEVERANTÖRER */
-    svg circle[stroke="#C7BDAE"] {
+    /* ========== GÄSTER - CIRKLAR & PUNKTER ========== */
+    .card:nth-of-type(3) svg circle[stroke="#C7BDAE"],
+    .card:nth-of-type(3) span[style*="#C7BDAE"] {
         stroke: {{ photographer.accent_color }} !important;
-        opacity: 0.6;
+        background: {{ photographer.accent_color }} !important;
     }
-    svg circle[stroke="#e5e3dc"] {
+    .card:nth-of-type(3) svg circle[stroke="#e5e3dc"] {
         stroke: {{ photographer.accent_color }} !important;
-        opacity: 0.3;
+        opacity: 0.25;
+    }
+    .card:nth-of-type(3) span[style*="#DFDDD4"] {
+        background: {{ photographer.accent_color }} !important;
+        opacity: 0.4;
+    }
+    .card:nth-of-type(3) span[style*="#e8e3df"] {
+        background: {{ photographer.accent_color }} !important;
+        opacity: 0.2;
+    }
+    
+    /* ========== LEVERANTÖRER - CIRKLAR & PUNKTER ========== */
+    .card:nth-of-type(4) svg circle[stroke="#C7BDAE"],
+    .card:nth-of-type(4) span[style*="#C7BDAE"] {
+        stroke: {{ photographer.accent_color }} !important;
+        background: {{ photographer.accent_color }} !important;
+    }
+    .card:nth-of-type(4) svg circle[stroke="#e5e3dc"] {
+        stroke: {{ photographer.accent_color }} !important;
+        opacity: 0.25;
+    }
+    .card:nth-of-type(4) span[style*="#e8e3df"] {
+        background: {{ photographer.accent_color }} !important;
+        opacity: 0.2;
     }
 </style>
 {% endif %}
