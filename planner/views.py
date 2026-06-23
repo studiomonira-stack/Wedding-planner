@@ -177,7 +177,7 @@ def add_leverantor(request):
             kontaktperson=request.POST.get('kontaktperson', ''),
             email=request.POST.get('email', ''),
             telefon=request.POST.get('telefon', ''),
-            pris=request.POST.get('pris', 0),
+            pris=request.POST.get('pris', 0) or 0,
             notering=request.POST.get('notering', ''),
         )
     return redirect('leverantorer')
@@ -196,6 +196,7 @@ def delete_leverantor(request, lev_id):
     lev = get_object_or_404(Leverantor, id=lev_id, user=request.user)
     lev.delete()
     return redirect('leverantorer')
+
 @login_required
 def tidslinje(request):
     handelser = Tidslinje.objects.filter(user=request.user).order_by('tid', 'ordning')
