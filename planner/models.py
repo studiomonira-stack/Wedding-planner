@@ -162,7 +162,7 @@ class Galleri(models.Model):
 class Photographer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True) 
     name = models.CharField(max_length=100, verbose_name="Företagsnamn")
-    logo = models.ImageField(upload_to='photographer_logos/', blank=True, null=True)
+    logo = models.URLField(max_length=500, blank=True, null=True, verbose_name="Logga (URL)")
     primary_color = models.CharField(max_length=7, default="#FFFFFF", verbose_name="Navbar-färg (Hex-kod)")
     accent_color = models.CharField(max_length=7, default="#C7BDAE", verbose_name="Accentfärg (Hex-kod)")
     whop_email = models.EmailField(blank=True, null=True, verbose_name="Whop E-post")
