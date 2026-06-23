@@ -6,9 +6,12 @@
 {% if photographer %}
 <style>
     svg circle[stroke="#C7BDAE"] {
-        stroke: {{ photographer.accent_color }} !important;
+        stroke: {{ photographer.accent_color }}80 !important;
     }
     svg circle[stroke="#997D64"] {
+        stroke: {{ photographer.accent_color }}40 !important;
+    }
+    svg circle[stroke="#634935"] {
         stroke: {{ photographer.accent_color }} !important;
     }
 </style>
