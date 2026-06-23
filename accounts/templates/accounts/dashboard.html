@@ -2,6 +2,19 @@
 {% load i18n %}
 {% block content %}
 
+<!-- ========== FOTOGRAFENS ANPASSNING ========== -->
+{% if photographer %}
+<style>
+    svg circle[stroke="#C7BDAE"] {
+        stroke: {{ photographer.accent_color }} !important;
+    }
+    svg circle[stroke="#997D64"] {
+        stroke: {{ photographer.accent_color }} !important;
+    }
+</style>
+{% endif %}
+<!-- ========== SLUT FOTOGRAFANPASSNING ========== -->
+
 <h1>{% trans "Välkommen" %}, {{ user.username }} </h1>
 <p class="text-muted mb-4">{% trans "Här är en överblick över er bröllopsplanering." %}</p>
 

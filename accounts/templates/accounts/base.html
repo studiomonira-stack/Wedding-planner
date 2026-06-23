@@ -24,8 +24,8 @@
             --bg: #F5F3EE;
             --primary: #C7BDAE;
             --hover: #B4A390;
-            --text-light: #997D64;
-            --text-dark: #634935;
+            --text-light: #888888;
+            --text-dark: #666666;
             --white: #ffffff;
             --border: #e5e3dc;
         }
@@ -44,7 +44,7 @@
         }
         .btn-outline-secondary {
             border-color: var(--primary);
-            color: var(--text-light);
+            color: var(--text-dark);
             background: transparent;
             font-size: 0.8rem;
             padding: 4px 10px;
@@ -90,7 +90,7 @@
             overflow: hidden;
         }
         .table th {
-            color: var(--text-light);
+            color: var(--text-dark);
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.8rem;
@@ -114,7 +114,7 @@
             color: var(--text-dark);
         }
         a {
-            color: var(--text-light);
+            color: var(--text-dark);
         }
         a:hover {
             color: var(--text-dark);
@@ -140,12 +140,70 @@
 }
 
     </style>
+<!-- Photographer-specific styles-->
+
+{% if photographer %}
+<style>
+    /* HELA SIDANS BAKGRUND - Ljusare variant av primary */
+    body {
+        background: {{ photographer.primary_color }}20 !important;
+    }
+    
+    /* NAVBAR - Primary */
+    .navbar {
+        background: {{ photographer.primary_color }} !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    /* Namn i navbaren - originalfärg */
+    .navbar .navbar-brand span,
+    .navbar > a > span {
+        color: var(--text-dark) !important;
+    }
+    
+    /* FOOTER - Primary */
+    footer {
+        background: {{ photographer.primary_color }} !important;
+        border-top: 1px solid {{ photographer.accent_color }}30 !important;
+    }
+    
+    /* HOVER OCH DETALJER - Accent */
+    .btn-primary:hover,
+    .btn-outline-secondary:hover,
+    .btn-outline-primary:hover,
+    .btn-outline-danger:hover {
+        background: {{ photographer.accent_color }} !important;
+        border-color: {{ photographer.accent_color }} !important;
+        color: white !important;
+    }
+    
+    .fa-circle-check {
+        color: {{ photographer.accent_color }} !important;
+    }
+    
+    .timeline-dot {
+        background: {{ photographer.accent_color }} !important;
+    }
+    
+    a:hover {
+        color: {{ photographer.accent_color }};
+    }
+</style>
+{% endif %}
+<!-- End of Photographer-specific styles -->
+
 </head>
 <body>
-   <nav class="navbar navbar-expand-lg navbar-light px-4" style="position: sticky; top: 0; z-index: 1000; background: var(--white) !important;">
+  <nav class="navbar navbar-expand-lg navbar-light px-4" style="position: sticky; top: 0; z-index: 1000; {% if photographer %}background: {{ photographer.primary_color }} !important;{% else %}background: var(--white) !important;{% endif %}">
     <a href="{% url 'dashboard' %}" style="display: flex; align-items: center; text-decoration: none;">
-        <img src="https://i.imgur.com/bOcT1Cx.jpeg" alt="Bröllopsplaneraren" style="height: 40px; margin-right: 10px;">
-        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-dark);">{% trans "Bröllopsplaneraren" %}</span>
+        {% if photographer and photographer.logo %}
+            <img src="{{ photographer.logo.url }}" alt="{{ photographer.name }}" style="height: 40px; margin-right: 10px;">
+        {% else %}
+            <img src="https://i.imgur.com/bOcT1Cx.jpeg" alt="Bröllopsplaneraren" style="height: 40px; margin-right: 10px;">
+        {% endif %}
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; {% if photographer %}color: white;{% else %}color: var(--text-dark);{% endif %}">
+            {% if photographer %}{{ photographer.name }}{% else %}{% trans "Bröllopsplaneraren" %}{% endif %}
+        </span>
     </a>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 

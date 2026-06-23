@@ -9,11 +9,10 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from accounts.models import Profil
-from planner.models import Brollop, ChecklistItem, BudgetPost, Gast, Leverantor, Tidslinje, Galleri
+from planner.models import Brollop, ChecklistItem, BudgetPost, Gast, Leverantor, Tidslinje, Galleri, Photographer
 import json
 import secrets
 from datetime import date, timedelta
-from datetime import date  # <-- Lägg till denna rad!
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -29,6 +28,15 @@ def landing(request):
 
 
 def register(request):
+    # Kolla om det finns en fotograf i URL:en (?ref=AFFILIATE_ID)
+    affiliate_id = request.GET.get('ref', '')
+    photographer = None
+    if affiliate_id:
+        try:
+            photographer = Photographer.objects.get(whop_affiliate_id=affiliate_id, is_active=True)
+        except Photographer.DoesNotExist:
+            pass
+    
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -39,21 +47,25 @@ def register(request):
             roll = request.POST.get('roll', 'par')
             
             # 24 månaders utgångsdatum
-            from datetime import date, timedelta
             utgang = date.today() + timedelta(days=730)
             
             Profil.objects.create(
                 user=user, 
                 telefon=form.cleaned_data.get('phone'), 
                 roll=roll,
-                utgangsdatum=utgang
+                utgangsdatum=utgang,
+                photographer=photographer  # NYTT: Koppla kunden till fotografen
             )
             
             login(request, user)
             return redirect('dashboard')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'accounts/register.html', {'form': form})
+    
+    return render(request, 'accounts/register.html', {
+        'form': form,
+        'photographer': photographer,  # Skicka med till templaten
+    })
 
 
 @login_required
@@ -69,6 +81,9 @@ def dashboard(request):
             roll='par',
             utgangsdatum=utgang
         )
+    
+    # Hämta fotograf om kunden har en
+    photographer = profil.photographer
     
     # Kolla om kontot har gått ut
     if profil.utgangsdatum and profil.utgangsdatum < date.today():
@@ -138,6 +153,7 @@ def dashboard(request):
         'galleri_antal': galleri_antal,
         'checklist_items': checklist_items,
         'checklist_remaining': checklist_remaining,
+        'photographer': photographer,  # NYTT: Skicka fotograf till dashboard
     })
     
 
@@ -164,7 +180,6 @@ def whop_webhook(request):
             user.save()
             
             # 24 månaders utgångsdatum
-            from datetime import date, timedelta
             utgang = date.today() + timedelta(days=730)
             
             Profil.objects.create(
