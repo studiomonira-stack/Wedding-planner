@@ -14,20 +14,20 @@
         opacity: 0.25;
     }
     
-    /* ========== BUDGET CIRKLAR (INGEN opacity - de ligger ovanpå varandra) ========== */
+        /* ========== BUDGET CIRKLAR (separat, utan opacity så de syns) ========== */
     svg circle[stroke="#634935"] {
         stroke: {{ photographer.accent_color }} !important;
     }
     svg circle[stroke="#997D64"] {
         stroke: {{ photographer.accent_color }} !important;
-        opacity: 0.65;
+        opacity: 0.7;
     }
     svg circle[stroke="#C7BDAE"] {
         stroke: {{ photographer.accent_color }} !important;
         opacity: 0.4;
     }
     
-    /* ========== PUNKTER ========== */
+    /* ========== PUNKTER (behåll som innan) ========== */
     span[style*="#634935"] {
         background: {{ photographer.accent_color }} !important;
     }
@@ -38,12 +38,6 @@
     span[style*="#C7BDAE"] {
         background: {{ photographer.accent_color }} !important;
         opacity: 0.4;
-    }
-    span[style*="#DFDDD4"],
-    span[style*="#e8e3df"],
-    span[style*="#e5e3dc"] {
-        background: {{ photographer.accent_color }} !important;
-        opacity: 0.2;
     }
 </style>
 {% endif %}
