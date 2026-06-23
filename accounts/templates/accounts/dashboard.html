@@ -3,6 +3,7 @@
 {% block content %}
 
 <!-- ========== FOTOGRAFENS ANPASSNING ========== -->
+
 {% if photographer %}
 <style>
     /* ========== CHECKLISTA ========== */
@@ -13,31 +14,51 @@
         stroke: {{ photographer.accent_color }} !important;
         opacity: 0.25;
     }
-    
-        /* ========== BUDGET CIRKLAR (separat, utan opacity så de syns) ========== */
+
+      /* ========== BUDGET CIRKLAR (INGEN opacity - de ligger ovanpå varandra) ========== */
     svg circle[stroke="#634935"] {
         stroke: {{ photographer.accent_color }} !important;
     }
     svg circle[stroke="#997D64"] {
         stroke: {{ photographer.accent_color }} !important;
-        opacity: 0.7;
+        opacity: 0.65;
     }
     svg circle[stroke="#C7BDAE"] {
         stroke: {{ photographer.accent_color }} !important;
         opacity: 0.4;
     }
     
-    /* ========== PUNKTER (behåll som innan) ========== */
+    /* ========== ALLA CIRKLAR OCH PUNKTER ========== */
+    /* Starkaste accent - #634935 */
+    svg circle[stroke="#634935"],
     span[style*="#634935"] {
+        stroke: {{ photographer.accent_color }} !important;
         background: {{ photographer.accent_color }} !important;
     }
+    
+    /* Mellan accent - #997D64 */
+    svg circle[stroke="#997D64"],
     span[style*="#997D64"] {
+        stroke: {{ photographer.accent_color }} !important;
         background: {{ photographer.accent_color }} !important;
         opacity: 0.65;
     }
+    
+    /* Ljus accent - #C7BDAE */
+    svg circle[stroke="#C7BDAE"],
     span[style*="#C7BDAE"] {
+        stroke: {{ photographer.accent_color }} !important;
         background: {{ photographer.accent_color }} !important;
         opacity: 0.4;
+    }
+    
+    /* Ljusaste - #e5e3dc, #DFDDD4, #e8e3df */
+    svg circle[stroke="#e5e3dc"],
+    span[style*="#DFDDD4"],
+    span[style*="#e8e3df"] {
+        stroke: {{ photographer.accent_color }} !important;
+        background: {{ photographer.accent_color }} !important;
+        opacity: 0.2;
     }
 </style>
 {% endif %}
