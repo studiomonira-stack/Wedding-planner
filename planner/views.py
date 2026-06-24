@@ -309,56 +309,56 @@ def register_photographer(request):
         else:
             print(f"❌ Fel: {form.errors}")
 
-       # --- STEG 2 ---
-elif request.method == 'POST' and 'step2_submit' in request.POST:
-    print("✅ Steg 2 mottaget!")
-    
-    # Försök hämta ID från sessionen
-    photographer_id = request.session.get('temp_photographer_id')
-    
-    # Om sessionen är tom – försök hitta fotografen via e-post
-    if not photographer_id:
-        whop_email = request.POST.get('whop_email')
-        if whop_email:
-            try:
-                photographer = Photographer.objects.get(whop_email=whop_email)
-                photographer_id = photographer.id
-            except Photographer.DoesNotExist:
-                pass
-    
-    if photographer_id:
-        try:
-            photographer = Photographer.objects.get(id=photographer_id)
+           # --- STEG 2 ---
+    elif request.method == 'POST' and 'step2_submit' in request.POST:
+        print("✅ Steg 2 mottaget!")
+        
+        # Försök hämta ID från sessionen
+        photographer_id = request.session.get('temp_photographer_id')
+        
+        # Om sessionen är tom – försök hitta fotografen via e-post
+        if not photographer_id:
             whop_email = request.POST.get('whop_email')
             if whop_email:
-                photographer.whop_email = whop_email
-                photographer.save()
-                
-                # --- SKICKA MEJL TILL DIG (ADMIN) ---
                 try:
-                    send_mail(
-                        subject='📸 Ny fotograf redo för Whop!',
-                        message=f'Hej! En fotograf har precis slutfört Steg 2.\n\n'
-                                f'Namn: {photographer.name}\n'
-                                f'Whop-epost: {photographer.whop_email}\n'
-                                f'Logga: {photographer.logo.url if photographer.logo else "Ingen logga"}\n\n'
-                                f'Gå in i Whop och lägg till dem som affiliate nu!',
-                        from_email='hej@brollopsplanner.se',
-                        recipient_list=['hej@brollopsplanner.se'],
-                        fail_silently=False,
-                    )
-                    print("📧 Mejlet skickades framgångsrikt!")
-                except Exception as e:
-                    print(f"❌ MEJLKRASCH: {e}")
-                    print(f"Detaljerad felinformation: {type(e).__name__}")
-                
-                return render(request, 'planner/register_photographer_base.html', {
-                    'step_content': 'planner/registration_waiting.html',
-                    'photographer': photographer
-                })
-        except Photographer.DoesNotExist:
-            pass
+                    photographer = Photographer.objects.get(whop_email=whop_email)
+                    photographer_id = photographer.id
+                except Photographer.DoesNotExist:
+                    pass
         
+        if photographer_id:
+            try:
+                photographer = Photographer.objects.get(id=photographer_id)
+                whop_email = request.POST.get('whop_email')
+                if whop_email:
+                    photographer.whop_email = whop_email
+                    photographer.save()
+                    
+                    # --- SKICKA MEJL TILL DIG (ADMIN) ---
+                    try:
+                        send_mail(
+                            subject='📸 Ny fotograf redo för Whop!',
+                            message=f'Hej! En fotograf har precis slutfört Steg 2.\n\n'
+                                    f'Namn: {photographer.name}\n'
+                                    f'Whop-epost: {photographer.whop_email}\n'
+                                    f'Logga: {photographer.logo.url if photographer.logo else "Ingen logga"}\n\n'
+                                    f'Gå in i Whop och lägg till dem som affiliate nu!',
+                            from_email='hej@brollopsplanner.se',
+                            recipient_list=['hej@brollopsplanner.se'],
+                            fail_silently=False,
+                        )
+                        print("📧 Mejlet skickades framgångsrikt!")
+                    except Exception as e:
+                        print(f"❌ MEJLKRASCH: {e}")
+                        print(f"Detaljerad felinformation: {type(e).__name__}")
+                    
+                    return render(request, 'planner/register_photographer_base.html', {
+                        'step_content': 'planner/registration_waiting.html',
+                        'photographer': photographer
+                    })
+            except Photographer.DoesNotExist:
+                pass
+
     # --- Hämta fotografen ---
     photographer_id = request.session.get('temp_photographer_id')
     photographer = None
