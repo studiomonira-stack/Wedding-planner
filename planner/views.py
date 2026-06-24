@@ -282,7 +282,7 @@ def register_photographer(request):
     if request.method == 'POST' and 'step1_submit' in request.POST:
         print("✅ Steg 1 mottaget!")
 
-         # <--- NY KOD: KONTROLLERA GDPR-KRYSSRUTAN --->
+        # GDPR-kontroll
         if not request.POST.get('accept_privacy'):
             form = PhotographerStep1Form(request.POST, request.FILES)
             form.add_error(None, "Du måste godkänna integritetspolicyn för att fortsätta.")
@@ -290,16 +290,14 @@ def register_photographer(request):
                 'step_content': 'planner/register_photographer_step1.html',
                 'form': form
             })
-        # <-------------------------------------------->
 
-        form = PhotographerStep1Form(request.POST, request.FILES)  # <-- Använd Step1Form
+        form = PhotographerStep1Form(request.POST, request.FILES)
         if form.is_valid():
             photographer = form.save(commit=False)
             photographer.is_active = False
             photographer.save()
             request.session['temp_photographer_id'] = photographer.id
             
-            # Visa Steg 2
             form = PhotographerStep2Form(instance=photographer)
             return render(request, 'planner/register_photographer_base.html', {
                 'step_content': 'planner/register_photographer_step2.html',
@@ -309,11 +307,10 @@ def register_photographer(request):
         else:
             print(f"❌ Fel: {form.errors}")
 
-           # --- STEG 2 ---
+    # --- STEG 2 ---
     elif request.method == 'POST' and 'step2_submit' in request.POST:
         print("✅ Steg 2 mottaget!")
         
-        # Försök hämta ID från sessionen
         photographer_id = request.session.get('temp_photographer_id')
         
         # Om sessionen är tom – försök hitta fotografen via e-post
@@ -334,7 +331,6 @@ def register_photographer(request):
                     photographer.whop_email = whop_email
                     photographer.save()
                     
-                    # --- SKICKA MEJL TILL DIG (ADMIN) ---
                     try:
                         send_mail(
                             subject='📸 Ny fotograf redo för Whop!',
@@ -359,7 +355,7 @@ def register_photographer(request):
             except Photographer.DoesNotExist:
                 pass
 
-    # --- Hämta fotografen ---
+    # --- Hämta fotografen från sessionen ---
     photographer_id = request.session.get('temp_photographer_id')
     photographer = None
     if photographer_id:
