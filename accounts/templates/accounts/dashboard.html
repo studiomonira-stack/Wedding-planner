@@ -3,7 +3,6 @@
 {% block content %}
 
 <!-- ========== FOTOGRAFENS ANPASSNING ========== -->
-
 {% if photographer %}
 <style>
     /* ========== CHECKLISTA ========== */
@@ -15,7 +14,7 @@
         opacity: 0.25;
     }
 
-      /* ========== BUDGET CIRKLAR (solid, ingen opacity) ========== */
+    /* ========== BUDGET CIRKLAR (solid, ingen opacity) ========== */
     svg circle[stroke="#634935"] {
         stroke: {{ photographer.accent_color }} !important;
         opacity: 0.3;
@@ -66,10 +65,16 @@
 <h1>{% trans "Välkommen" %}, {{ user.username }} </h1>
 <p class="text-muted mb-4">{% trans "Här är en överblick över er bröllopsplanering." %}</p>
 
+<!-- ========== DASHBOARD-KORT ========== -->
+<!-- Anpassade kolumner beroende på embed-läge -->
 <div class="row g-4">
-    
-    <!-- Checklista – Cirkel + uppgifter till höger -->
+
+    <!-- Checklista -->
+    {% if is_embed %}
+    <div class="col-6">
+    {% else %}
     <div class="col-md-4">
+    {% endif %}
         <div class="card h-100">
             <div class="card-body">
                 <h5 class="card-title"><i class="fas fa-list-check me-2"></i>{% trans "Checklista" %}</h5>
@@ -117,7 +122,11 @@
     </div>
 
     <!-- Budget -->
+    {% if is_embed %}
+    <div class="col-6">
+    {% else %}
     <div class="col-md-4">
+    {% endif %}
         <div class="card h-100">
             <div class="card-body">
                 <h5 class="card-title"><i class="fas fa-coins me-2"></i>{% trans "Budget" %}</h5>
@@ -165,7 +174,11 @@
     </div>
 
     <!-- Gäster -->
+    {% if is_embed %}
+    <div class="col-6">
+    {% else %}
     <div class="col-md-4">
+    {% endif %}
         <div class="card h-100">
             <div class="card-body">
                 <h5 class="card-title"><i class="fas fa-envelope-open-text me-2"></i>{% trans "Gäster" %}</h5>
@@ -208,7 +221,11 @@
     </div>
 
     <!-- Leverantörer -->
+    {% if is_embed %}
+    <div class="col-6">
+    {% else %}
     <div class="col-md-4">
+    {% endif %}
         <div class="card h-100">
             <div class="card-body">
                 <h5 class="card-title"><i class="fas fa-truck me-2"></i>{% trans "Leverantörer" %}</h5>
@@ -247,7 +264,11 @@
     </div>
 
     <!-- Tidslinje -->
+    {% if is_embed %}
+    <div class="col-6">
+    {% else %}
     <div class="col-md-4">
+    {% endif %}
         <div class="card h-100">
             <div class="card-body">
                 <h5 class="card-title"><i class="fas fa-clock me-2"></i>{% trans "Tidslinje" %}</h5>
@@ -280,7 +301,11 @@
     </div>
 
     <!-- Galleri -->
+    {% if is_embed %}
+    <div class="col-6">
+    {% else %}
     <div class="col-md-4">
+    {% endif %}
         <div class="card h-100">
             <div class="card-body">
                 <h5 class="card-title"><i class="fas fa-images me-2"></i>{% trans "Galleri" %}</h5>

@@ -70,31 +70,20 @@ def register(request):
 
 @login_required
 def dashboard(request):
-    # Om profilen inte finns, skapa den automatiskt
-    try:
-        profil = Profil.objects.get(user=request.user)
-    except Profil.DoesNotExist:
-        # Skapa en standardprofil för användaren
-        utgang = date.today() + timedelta(days=730)
-        profil = Profil.objects.create(
-            user=request.user,
-            roll='par',
-            utgangsdatum=utgang
-        )
-    
-    # Hämta fotograf om kunden har en
-    photographer = profil.photographer
+    profil = Profil.objects.get(user=request.user)
     
     # Kolla om kontot har gått ut
     if profil.utgangsdatum and profil.utgangsdatum < date.today():
         return render(request, 'accounts/utganget.html')
     
-    # Checklista
+    # Kolla om vi är i embed-läge
+    is_embed = request.GET.get('embed') == '1'
+    
+    # --- Hämta all data (din befintliga kod) ---
     total_checklist = ChecklistItem.objects.filter(user=request.user).count()
     klara_checklist = ChecklistItem.objects.filter(user=request.user, klar=True).count()
     checklist_procent = int((klara_checklist / total_checklist * 100)) if total_checklist > 0 else 0
     
-    # Budget
     poster = BudgetPost.objects.filter(user=request.user)
     total_budget = sum(p.budgeterat for p in poster)
     total_faktiskt = sum(p.faktiskt for p in poster)
@@ -102,7 +91,6 @@ def dashboard(request):
     budget_procent = int((total_faktiskt / total_budget * 100)) if total_budget > 0 else 0
     budget_kvar = 100 - budget_procent if budget_procent < 100 else 0
     
-    # Gäster
     gaster = Gast.objects.filter(user=request.user)
     antal_kommer = sum(g.antal for g in gaster if g.svar == 'kommer')
     antal_invagen = sum(g.antal for g in gaster if g.svar == 'invagen')
@@ -110,22 +98,18 @@ def dashboard(request):
     totalt_gaster = sum(g.antal for g in gaster)
     gaster_procent = int((antal_kommer / totalt_gaster * 100)) if totalt_gaster > 0 else 0
     
-    # Leverantörer
     leverantorer = Leverantor.objects.filter(user=request.user)
     antal_leverantorer = leverantorer.count()
     antal_bokade = leverantorer.filter(bokat=True).count()
     antal_ej_bokade = antal_leverantorer - antal_bokade
     leverantor_procent = int((antal_bokade / antal_leverantorer * 100)) if antal_leverantorer > 0 else 0
     
-    # Tidslinje
     handelser = Tidslinje.objects.filter(user=request.user).order_by('tid')[:5]
     antal_handelser = Tidslinje.objects.filter(user=request.user).count()
     
-    # Galleri
     galleri_bilder = Galleri.objects.filter(user=request.user).order_by('-skapad')[:4]
     galleri_antal = Galleri.objects.filter(user=request.user).count()
     
-    # Checklist items
     checklist_items = ChecklistItem.objects.filter(user=request.user).order_by('kategori', '-skapad')[:4]
     checklist_remaining = total_checklist - klara_checklist
 
@@ -153,7 +137,7 @@ def dashboard(request):
         'galleri_antal': galleri_antal,
         'checklist_items': checklist_items,
         'checklist_remaining': checklist_remaining,
-        'photographer': photographer,  # NYTT: Skicka fotograf till dashboard
+        'is_embed': is_embed,  # <--- LÄGG TILL DENNA RAD HÄR!
     })
     
 
