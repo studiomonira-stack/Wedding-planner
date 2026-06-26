@@ -76,9 +76,6 @@ def dashboard(request):
     if profil.utgangsdatum and profil.utgangsdatum < date.today():
         return render(request, 'accounts/utganget.html')
     
-    # Kolla om vi är i embed-läge
-    is_embed = request.GET.get('embed') == '1'
-    
     # --- Hämta all data (din befintliga kod) ---
     total_checklist = ChecklistItem.objects.filter(user=request.user).count()
     klara_checklist = ChecklistItem.objects.filter(user=request.user, klar=True).count()
@@ -220,6 +217,3 @@ from django.utils.translation import activate
 
 def kop(request):
     return render(request, 'accounts/kop.html')
-
-def login_embed(request):
-    return render(request, 'accounts/login_embed.html')

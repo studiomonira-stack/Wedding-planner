@@ -467,14 +467,52 @@ def partner_landing_demo(request):
 
 @login_required
 def dashboard_embed(request):
-    # Hämta all data som vanligt
-    profil = Profil.objects.get(user=request.user)
-    # ... (samma data som i din vanliga dashboard)
+    try:
+        profil = Profil.objects.get(user=request.user)
+    except Profil.DoesNotExist:
+        from datetime import date, timedelta
+        utgang = date.today() + timedelta(days=730)
+        profil = Profil.objects.create(user=request.user, roll='par', utgangsdatum=utgang)
+    
+    photographer = profil.photographer
+    
+    # Checklista
+    total_checklist = ChecklistItem.objects.filter(user=request.user).count()
+    klara_checklist = ChecklistItem.objects.filter(user=request.user, klar=True).count()
+    checklist_procent = int((klara_checklist / total_checklist * 100)) if total_checklist > 0 else 0
+    
+    # Budget
+    poster = BudgetPost.objects.filter(user=request.user)
+    total_budget = sum(p.budgeterat for p in poster)
+    total_faktiskt = sum(p.faktiskt for p in poster)
+    budget_procent = int((total_faktiskt / total_budget * 100)) if total_budget > 0 else 0
+    
+    # Gäster
+    gaster = Gast.objects.filter(user=request.user)
+    antal_kommer = sum(g.antal for g in gaster if g.svar == 'kommer')
+    totalt_gaster = sum(g.antal for g in gaster)
+    gaster_procent = int((antal_kommer / totalt_gaster * 100)) if totalt_gaster > 0 else 0
+    
+    # Leverantörer
+    leverantorer = Leverantor.objects.filter(user=request.user)
+    antal_leverantorer = leverantorer.count()
+    antal_bokade = leverantorer.filter(bokat=True).count()
+    leverantor_procent = int((antal_bokade / antal_leverantorer * 100)) if antal_leverantorer > 0 else 0
     
     return render(request, 'planner/dashboard_embed.html', {
+        'photographer': photographer,
+        'total_checklist': total_checklist,
+        'klara_checklist': klara_checklist,
         'checklist_procent': checklist_procent,
+        'total_budget': total_budget,
+        'total_faktiskt': total_faktiskt,
         'budget_procent': budget_procent,
+        'totalt_gaster': totalt_gaster,
+        'antal_kommer': antal_kommer,
         'gaster_procent': gaster_procent,
+        'antal_leverantorer': antal_leverantorer,
+        'antal_bokade': antal_bokade,
         'leverantor_procent': leverantor_procent,
-        'checklist_items': checklist_items,
+        'antal_handelser': Tidslinje.objects.filter(user=request.user).count(),
+        'galleri_antal': Galleri.objects.filter(user=request.user).count(),
     })

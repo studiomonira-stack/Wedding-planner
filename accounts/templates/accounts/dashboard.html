@@ -2,22 +2,32 @@
 {% load i18n %}
 {% block content %}
 
+{% if request.GET.embed == '1' %}
 <style>
-    /* När sidan öppnas med ?embed=1 i URL:en */
-    body[data-embed="1"] .navbar,
-    body[data-embed="1"] .footer {
+    .navbar, footer, #cookie-banner {
         display: none !important;
     }
-    body[data-embed="1"] .col-md-4 {
+    .col-md-4 {
         flex: 0 0 auto;
-        width: 50%;
+        width: 50% !important;
     }
-    body[data-embed="1"] {
+    body {
         background: transparent !important;
         padding: 0 !important;
         margin: 0 !important;
     }
+    .container {
+        max-width: 100% !important;
+        padding: 10px !important;
+    }
+    .card {
+        font-size: 0.85rem;
+    }
+    .card h5 {
+        font-size: 1rem;
+    }
 </style>
+{% endif %}
 
 <!-- ========== FOTOGRAFENS ANPASSNING ========== -->
 
