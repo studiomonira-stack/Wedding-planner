@@ -137,7 +137,7 @@ def dashboard(request):
         'galleri_antal': galleri_antal,
         'checklist_items': checklist_items,
         'checklist_remaining': checklist_remaining,
-        'is_embed': is_embed,  # <--- LÄGG TILL DENNA RAD HÄR!
+
     })
     
 
