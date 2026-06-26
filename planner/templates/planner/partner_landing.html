@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://*.yourpartnerdomain.com;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Din white label-bröllopsplanner – demo</title>
+    <style>
+        /* Bröllopsplanerarens stil */
+        :root {
+            --white: #FFFFFF;
+            --blush: #F5EBEB;
+            --rose: #D4B5B5;
+            --rose-dark: #B89595;
+            --text: #3A3A3A;
+            --text-light: #8C8C8C;
+        }
+        body {
+            font-family: 'Karla', sans-serif;
+            background: var(--white);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 60px 20px 30px;
+            background: linear-gradient(to bottom, var(--white), var(--blush));
+        }
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid #E8E5E0;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--rose);
+            color: white;
+            padding: 16px 38px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: var(--rose-dark);
+        }
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid var(--rose);
+            color: var(--rose);
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .btn-outline:hover {
+            background: var(--rose);
+            color: white;
+        }
+        .demo-section {
+            margin: 30px 0;
+        }
+        iframe {
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            background: #FAFAFA;
+        }
+        .step-number {
+            display: inline-block;
+            background: var(--blush);
+            color: var(--rose-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2rem; }
+            iframe { height: 450px !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Din egen bröllopsplanner</h1>
+        <p>Här är ett exempel på hur din sida skulle kunna se ut – med inbäddad betalning och planner, helt sömlöst.</p>
+    </div>
+
+    <div class="container">
+
+        <!-- Steg 1: Välj din egen design -->
+        <div class="section">
+            <h3><span class="step-number">1</span> Välj din logga och dina färger</h3>
+            <p>När du registrerar dig får du en personlig sida där du enkelt kan ladda upp din logga och välja dina färger. Vi fixar resten.</p>
+            <a href="https://www.brollopsplanner.se/register-partner/" class="btn-primary">Registrera dig nu</a>
+        </div>
+
+       <!-- Steg 2: Inbäddad checkout (visas efter knapptryck) -->
+<div class="section">
+    <h3><span class="step-number">2</span> Inbäddad checkout – kunderna betalar utan att lämna din sida</h3>
+    <p>När dina kunder vill köpa, kan de betala direkt på din sida. </p>
+    
+    <!-- Knapp som öppnar checkouten -->
+    <button onclick="toggleCheckout()" class="btn-primary" style="margin-bottom: 20px;">
+        Visa betalning (demo)
+    </button>
+    
+    <!-- Själva checkouten (gömd från början) -->
+    <div id="checkout-container" style="display: none;">
+        <div
+            data-whop-checkout-plan-id="plan_Xq2qra99EegxU"
+            data-whop-checkout-theme="light"
+            data-whop-checkout-theme-accent-color="#D4B5B5"
+            data-whop-checkout-style-container-padding-x="20"
+            data-whop-checkout-style-container-padding-y="28"
+            data-whop-checkout-affiliate-id="DEMO_AFFILIATE"
+        ></div>
+        <script async src="https://js.whop.com/static/checkout/loader.js"></script>
+    </div>
+    
+    <p style="color: var(--text-light); font-size: 0.9rem;">
+        ⚡ Det här är en demo – i verkligheten använder du din egen affiliate-länk.
+    </p>
+</div>
+
+        <!-- Steg 3: Inbäddad planner – kunderna planerar på din sida -->
+        <div class="section">
+            <h3><span class="step-number">3</span> Inbäddad planner – de planerar hela bröllopet utan att lämna din sida</h3>
+            <p>När dina kunder har köpt, loggar de in och planerar hela bröllopet – direkt på din sida. De ser din logga och dina färger överallt.</p>
+            
+            <div class="demo-section">
+                <iframe 
+                    src="https://www.brollopsplanner.se/login/"
+                    height="600px"
+                    allow="same-origin"
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+>
+                </iframe>
+            </div>
+            <p style="color: var(--text-light); font-size: 0.9rem;">
+                👤 Demo av inloggningssidan – när de loggar in kommer de till sin planner.
+            </p>
+        </div>
+
+        <!-- Steg 4: Hur fungerar det för dig? -->
+        <div class="section">
+            <h3><span class="step-number">4</span> Så här fungerar det för dig</h3>
+            <ul style="padding-left: 20px; color: var(--text);">
+                <li><strong>Du får din unika länk</strong> – du delar den med dina kunder.</li>
+                <li><strong>De köper via din sida</strong> – du får 30% provision på varje köp.</li>
+                <li><strong>De planerar med din logga</strong> – de ser ditt varumärke varje gång de loggar in.</li>
+                <li><strong>Du kan följa deras planering</strong> – du ser deras tidslinje och galleri.</li>
+            </ul>
+            <a href="https://www.brollopsplanner.se/register-partner/" class="btn-primary">Bli partner nu</a>
+        </div>
+
+    </div>
+<script>
+    function toggleCheckout() {
+        var container = document.getElementById('checkout-container');
+        if (container.style.display === 'none' || container.style.display === '') {
+            container.style.display = 'block';
+            // Rulla ner till checkouten så att den syns direkt
+            container.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            container.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>

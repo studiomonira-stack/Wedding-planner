@@ -84,8 +84,34 @@ def add_budget_post(request):
     if request.method == 'POST':
         kategori = request.POST.get('kategori')
         beskrivning = request.POST.get('beskrivning', '')
-        budgeterat = request.POST.get('budgeterat', 0)
-        faktiskt = request.POST.get('faktiskt', 0)
+        
+        budgeterat_raw = request.POST.get('budgeterat', '0')
+        faktiskt_raw = request.POST.get('faktiskt', '0')
+        
+        # Rensa bort mellanslag och kommatecken
+        budgeterat_clean = budgeterat_raw.replace(' ', '').replace(',', '.')
+        faktiskt_clean = faktiskt_raw.replace(' ', '').replace(',', '.')
+        
+        from decimal import Decimal, InvalidOperation
+        
+        try:
+            budgeterat = Decimal(budgeterat_clean)
+        except InvalidOperation:
+            return render(request, 'planner/budget.html', {
+                'error_message': 'Ange ett giltigt belopp (t.ex. 10000 eller 10000,50). Inga bokstäver.',
+                'poster': BudgetPost.objects.filter(user=request.user).order_by('kategori'),
+                'kategorier': BudgetPost.KATEGORIER,
+            })
+            
+        try:
+            faktiskt = Decimal(faktiskt_clean)
+        except InvalidOperation:
+            return render(request, 'planner/budget.html', {
+                'error_message': 'Ange ett giltigt belopp (t.ex. 10000 eller 10000,50). Inga bokstäver.',
+                'poster': BudgetPost.objects.filter(user=request.user).order_by('kategori'),
+                'kategorier': BudgetPost.KATEGORIER,
+            })
+        
         BudgetPost.objects.create(
             user=request.user,
             kategori=kategori,
@@ -435,3 +461,6 @@ def fotograf_ta_bort_handelse(request, kund_id, handelse_id):
 
 def privacy_policy(request):
     return render(request, 'planner/privacy_policy.html')
+
+def partner_landing_demo(request):
+    return render(request, 'planner/partner_landing.html')

@@ -182,3 +182,11 @@ CSRF_TRUSTED_ORIGINS = ['https://www.brollopsplanner.se', 'https://brollopsplann
 # Om du har satt detta, se till att det är sant i produktion:
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+# Tillåt att sidan visas i iframe (för alla domäner – använd med försiktighet!)
+X_FRAME_OPTIONS = 'ALLOWALL'
+
+# Content Security Policy (CSP) – tillåt iframes
+CSP_DEFAULT_SRC = "'self'"
+# Tillåt iframes från alla domäner (för demoändamål)
+CSP_FRAME_ANCESTORS = "'self' *"

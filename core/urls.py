@@ -15,6 +15,7 @@ urlpatterns = [
     path('register-partner/', planner_views.register_photographer, name='register_photographer'),
     path('privacy-policy/', planner_views.privacy_policy, name='privacy_policy'),
     path('i18n/', include('django.conf.urls.i18n')), 
+    path('partner-demo/', planner_views.partner_landing_demo, name='partner_landing_demo'),
     
 ]
 from django.views.decorators.csrf import csrf_exempt
