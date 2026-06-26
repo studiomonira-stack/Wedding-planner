@@ -217,3 +217,6 @@ from django.utils.translation import activate
 
 def kop(request):
     return render(request, 'accounts/kop.html')
+
+def login_embed(request):
+    return render(request, 'accounts/login_embed.html')
