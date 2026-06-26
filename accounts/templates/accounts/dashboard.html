@@ -1,4 +1,4 @@
-{% extends 'accounts/base.html' %}
+{% extends 'accounts/base.html' with is_embed=is_embed %}
 {% load i18n %}
 {% block content %}
 
@@ -7,23 +7,23 @@
 <style>
     /* ========== CHECKLISTA ========== */
     svg path[stroke="#C7BDAE"] {
-        stroke: {{ photographer.accent_color }} !important;
+        stroke: {{ photographer.accent_color }} !important; 
     }
     svg path[stroke="#e5e3dc"] {
-        stroke: {{ photographer.accent_color }} !important;
+        stroke: {{ photographer.accent_color }} !important; 
         opacity: 0.25;
     }
 
     /* ========== BUDGET CIRKLAR (solid, ingen opacity) ========== */
     svg circle[stroke="#634935"] {
-        stroke: {{ photographer.accent_color }} !important;
+        stroke: {{ photographer.accent_color }} !important; 
         opacity: 0.3;
     }
     svg circle[stroke="#997D64"] {
-        stroke: {{ photographer.accent_color }} !important;
+        stroke: {{ photographer.accent_color }} !important; 
     }
     svg circle[stroke="#C7BDAE"] {
-        stroke: {{ photographer.accent_color }} !important;
+        stroke: {{ photographer.accent_color }} !important; 
     }
     
     /* ========== ALLA CIRKLAR OCH PUNKTER ========== */
@@ -37,16 +37,16 @@
     /* Mellan accent - #997D64 */
     svg circle[stroke="#997D64"],
     span[style*="#997D64"] {
-        stroke: {{ photographer.accent_color }} !important;
-        background: {{ photographer.accent_color }} !important;
+        stroke: {{ photographer.accent_color }} !important; 
+        background: {{ photographer.accent_color }} !important; 
         opacity: 0.65;
     }
     
     /* Ljus accent - #C7BDAE */
     svg circle[stroke="#C7BDAE"],
     span[style*="#C7BDAE"] {
-        stroke: {{ photographer.accent_color }} !important;
-        background: {{ photographer.accent_color }} !important;
+        stroke: {{ photographer.accent_color }} !important; 
+        background: {{ photographer.accent_color }} !important; 
         opacity: 0.4;
     }
     
@@ -54,8 +54,8 @@
     svg circle[stroke="#e5e3dc"],
     span[style*="#DFDDD4"],
     span[style*="#e8e3df"] {
-        stroke: {{ photographer.accent_color }} !important;
-        background: {{ photographer.accent_color }} !important;
+        stroke: {{ photographer.accent_color }} !important; 
+        background: {{ photographer.accent_color }} !important; 
         opacity: 0.2;
     }
 </style>
