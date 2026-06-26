@@ -20,17 +20,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Karla:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #DFDDD4;
-            --primary: #C7BDAE;
-            --hover: #B4A390;
-            --text-light: #997D64;
-            --text-dark: #634935;
-            --white: #ffffff;
-            --border: #e5e3dc;
+            --white: #FFFFFF;
+            --blush: #F5EBEB;
+            --rose: #D4B5B5;
+            --rose-dark: #B89595;
+            --text: #3A3A3A;
+            --text-light: #8C8C8C;
+            --border: #E8E5E0;
         }
         body {
             font-family: 'Karla', sans-serif;
-            background: linear-gradient(135deg, #F5F3EE 0%, #DFDDD4 100%);
+            background: #F5F3EE;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -38,49 +38,62 @@
         }
         h1, h2 {
             font-family: 'Cormorant Garamond', serif;
-            color: var(--text-dark);
+            color: var(--text);
         }
         .login-card {
             background: var(--white);
             border-radius: 20px;
             padding: 50px 40px;
-            box-shadow: 0 8px 40px rgba(99,73,53,0.08);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
             width: 100%;
             max-width: 440px;
         }
         .btn-primary {
-            background: #D4CFC4;
+            background: var(--rose);
             border: none;
             padding: 12px;
             border-radius: 30px;
             font-weight: 600;
             width: 100%;
-            color: var(--text-dark);
+            color: white;
+            transition: all 0.3s ease;
         }
         .btn-primary:hover {
-            background: var(--hover);
+            background: var(--rose-dark);
+            transform: translateY(-2px);
             color: white;
         }
         .form-control {
             border-radius: 12px;
             padding: 12px 16px;
             border: 1px solid var(--border);
+            font-family: 'Karla', sans-serif;
         }
         .form-control:focus {
-            border-color: var(--hover);
-            box-shadow: 0 0 0 0.2rem rgba(180,163,144,0.25);
+            border-color: var(--rose);
+            box-shadow: 0 0 0 0.2rem rgba(212,181,181,0.25);
         }
         a {
-            color: var(--text-light);
+            color: var(--rose);
+            text-decoration: none;
         }
         a:hover {
-            color: var(--text-dark);
+            color: var(--rose-dark);
         }
         .navbar-brand {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.4rem;
-            color: var(--text-dark);
+            color: var(--text);
             text-decoration: none;
+        }
+        .text-muted {
+            color: var(--text-light) !important;
+        }
+        .alert-danger {
+            background: #F5EBEB;
+            border-color: #D4B5B5;
+            color: #3A3A3A;
         }
     </style>
 </head>
