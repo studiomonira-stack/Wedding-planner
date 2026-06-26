@@ -464,3 +464,17 @@ def privacy_policy(request):
 
 def partner_landing_demo(request):
     return render(request, 'planner/partner_landing.html')
+
+@login_required
+def dashboard_embed(request):
+    # Hämta all data som vanligt
+    profil = Profil.objects.get(user=request.user)
+    # ... (samma data som i din vanliga dashboard)
+    
+    return render(request, 'planner/dashboard_embed.html', {
+        'checklist_procent': checklist_procent,
+        'budget_procent': budget_procent,
+        'gaster_procent': gaster_procent,
+        'leverantor_procent': leverantor_procent,
+        'checklist_items': checklist_items,
+    })

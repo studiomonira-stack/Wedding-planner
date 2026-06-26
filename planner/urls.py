@@ -26,5 +26,6 @@ urlpatterns = [
     path('fotograf/tidslinje/<int:kund_id>/', views.fotograf_tidslinje, name='fotograf_tidslinje'),
     path('fotograf/tidslinje/<int:kund_id>/ny/', views.fotograf_ny_handelse, name='fotograf_ny_handelse'),
     path('fotograf/tidslinje/<int:kund_id>/ta-bort/<int:handelse_id>/', views.fotograf_ta_bort_handelse, name='fotograf_ta_bort_handelse'),
-    path('partner-demo/', views.partner_landing_demo, name='partner_landing_demo'),
+    path('dashboard-embed/', views.dashboard_embed, name='dashboard_embed'),
+   
     ]

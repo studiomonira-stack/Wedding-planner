@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Gör allt kompakt och anpassat för små ytor */
+        body { margin: 0; padding: 10px; font-family: 'Karla', sans-serif; }
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+        .container { max-width: 100%; padding: 0 10px; }
+        .card { padding: 15px; margin-bottom: 12px; }
+        .btn { font-size: 0.8rem; padding: 6px 14px; }
+        .table { font-size: 0.85rem; }
+        .progress { height: 12px; }
+        /* Dölj onödiga element som tar plats */
+        .navbar, .footer, .sidebar { display: none !important; }
+        /* Gör så att långa texter bryts automatiskt */
+        .text-break { word-break: break-word; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
