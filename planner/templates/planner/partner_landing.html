@@ -159,24 +159,32 @@
     </p>
 </div>
 
-        <!-- Steg 3: Inbäddad planner – kunderna planerar på din sida -->
-        <div class="section">
-            <h3><span class="step-number">3</span> Inbäddad planner – de planerar hela bröllopet utan att lämna din sida</h3>
-            <p>När dina kunder har köpt, loggar de in och planerar hela bröllopet – direkt på din sida. De ser din logga och dina färger överallt.</p>
-            
-            <div class="demo-section">
-                <iframe 
+        <!-- Steg 3: Inbäddad planner (visas efter knapptryck) -->
+<div class="section">
+    <h3><span class="step-number">3</span> Inbäddad planner – de planerar hela bröllopet utan att lämna din sida</h3>
+    <p>När dina kunder har köpt, loggar de in och planerar hela bröllopet – direkt på din sida. De ser din logga och dina färger överallt.</p>
+    
+    <!-- Knapp som öppnar den inbäddade planeraren -->
+    <button onclick="togglePlanner()" class="btn-primary" style="margin-bottom: 20px;">
+        Logga in här (demo)
+    </button>
+    
+    <!-- Själva inbäddade planeraren (gömd från början) -->
+    <div id="planner-container" style="display: none;">
+        <iframe 
             src="https://www.brollopsplanner.se/login-embed/"
             height="600px"
             allow="same-origin"
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            style="width: 100%; border: none; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);"
         >
         </iframe>
-            </div>
-            <p style="color: var(--text-light); font-size: 0.9rem;">
-                👤 Demo av inloggningssidan – när de loggar in kommer de till sin planner.
-            </p>
-        </div>
+    </div>
+    
+    <p style="color: var(--text-light); font-size: 0.9rem;">
+        👤 Demo – klicka på knappen för att se hur inloggningen ser ut inbäddad.
+    </p>
+</div>
 
         <!-- Steg 4: Hur fungerar det för dig? -->
         <div class="section">
@@ -203,6 +211,16 @@
         }
     }
 </script>
-
+<script>
+    function togglePlanner() {
+        var container = document.getElementById('planner-container');
+        if (container.style.display === 'none' || container.style.display === '') {
+            container.style.display = 'block';
+            container.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            container.style.display = 'none';
+        }
+    }
+</script>
 </body>
 </html>
