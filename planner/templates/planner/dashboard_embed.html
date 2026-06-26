@@ -1,51 +1,26 @@
-{% extends 'planner/base_embed.html' %}
-{% load static %}
-
-{% block content %}
-<h2 class="text-center mb-3" style="font-size: 1.4rem;">📊 Översikt</h2>
-
 <div class="row g-2">
     <div class="col-6">
-        <div class="card text-center p-2">
+        <div class="card text-center p-3 h-100">
             <small>Checklista</small>
             <h4>{{ checklist_procent }}%</h4>
         </div>
     </div>
     <div class="col-6">
-        <div class="card text-center p-2">
+        <div class="card text-center p-3 h-100">
             <small>Budget</small>
             <h4>{{ budget_procent }}%</h4>
         </div>
     </div>
     <div class="col-6">
-        <div class="card text-center p-2">
+        <div class="card text-center p-3 h-100">
             <small>Gäster</small>
             <h4>{{ gaster_procent }}%</h4>
         </div>
     </div>
     <div class="col-6">
-        <div class="card text-center p-2">
+        <div class="card text-center p-3 h-100">
             <small>Leverantörer</small>
             <h4>{{ leverantor_procent }}%</h4>
         </div>
     </div>
 </div>
-
-<div class="card mt-2 p-2">
-    <h5 style="font-size: 1rem;">📝 Senaste checklistan</h5>
-    <ul class="list-unstyled small">
-        {% for item in checklist_items %}
-        <li class="d-flex justify-content-between border-bottom py-1">
-            <span>{{ item.text|truncatechars:25 }}</span>
-            <span class="badge bg-success">✔</span>
-        </li>
-        {% empty %}
-        <li class="text-muted">Inga uppgifter ännu</li>
-        {% endfor %}
-    </ul>
-</div>
-
-<div class="text-center mt-2">
-    <a href="/" class="btn btn-sm btn-outline-primary">Till startsidan</a>
-</div>
-{% endblock %}
