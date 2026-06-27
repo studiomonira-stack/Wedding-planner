@@ -28,25 +28,61 @@
     </div>
 </form>
 
-<div class="row g-3">
-    {% for bild in bilder %}
-        <div class="col-md-4">
-            <div class="card h-100">
-                <img src="{{ bild.bild }}" class="card-img-top" alt="{{ bild.titel }}" style="height: 200px; object-fit: cover;">
-                <div class="card-body">
-                    {% if bild.titel %}<h6 class="card-title">{{ bild.titel }}</h6>{% endif %}
-                    <span class="badge bg-secondary mb-2">{{ bild.get_kategori_display }}</span>
-                    {% if bild.notering %}<p class="card-text small text-muted">{{ bild.notering }}</p>{% endif %}
-                    <a href="{% url 'delete_bild' bild.id %}" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-can"></i> {% trans "Ta bort" %}</a>
+{% if kategorier_med_bilder %}
+    {% for value, data in kategorier_med_bilder.items %}
+        <h4 class="mt-4 mb-3">{{ data.name }}</h4>
+        <div class="row g-3 mb-4">
+            {% for bild in data.bilder %}
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        {% if bild.id == edit_id %}
+                        <!-- REDIGERINGSLÄGE -->
+                        <form method="post" action="{% url 'update_bild' bild.id %}" class="p-3">
+                            {% csrf_token %}
+                            <div class="mb-2">
+                                <label class="form-label small">Bild-URL</label>
+                                <input type="url" name="bild" class="form-control form-control-sm" value="{{ bild.bild }}" required>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label small">Titel</label>
+                                <input type="text" name="titel" class="form-control form-control-sm" value="{{ bild.titel }}">
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label small">Kategori</label>
+                                <select name="kategori" class="form-select form-select-sm">
+                                    {% for v, n in kategorier %}
+                                        <option value="{{ v }}" {% if bild.kategori == v %}selected{% endif %}>{{ n }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label small">Notering</label>
+                                <input type="text" name="notering" class="form-control form-control-sm" value="{{ bild.notering }}">
+                            </div>
+                            <button type="submit" class="btn btn-sm btn-success me-1"><i class="fas fa-check"></i> Spara</button>
+                            <a href="{% url 'galleri' %}" class="btn btn-sm btn-outline-secondary">Avbryt</a>
+                        </form>
+                        {% else %}
+                        <!-- VISNINGSLÄGE -->
+                        <img src="{{ bild.bild }}" class="card-img-top" alt="{{ bild.titel }}" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            {% if bild.titel %}<h6 class="card-title">{{ bild.titel }}</h6>{% endif %}
+                            <span class="badge bg-secondary mb-2">{{ bild.get_kategori_display }}</span>
+                            {% if bild.notering %}<p class="card-text small text-muted">{{ bild.notering }}</p>{% endif %}
+                            <a href="{% url 'galleri' %}?edit={{ bild.id }}" class="btn btn-sm btn-outline-secondary me-1" title="Redigera"><i class="fas fa-pen-to-square"></i></a>
+                            <a href="{% url 'delete_bild' bild.id %}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Vill du ta bort denna bild?')" title="Radera"><i class="fas fa-trash-can"></i></a>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-        </div>
-    {% empty %}
-        <div class="col-12 text-center text-muted mt-5">
-            <p>✨ {% trans "Inga bilder ännu. Klistra in en bildlänk ovan!" %}</p>
-            <p class="small">{% trans "Tips: Högerklicka på en bild på Pinterest → Kopiera bildadress" %}</p>
+            {% endfor %}
         </div>
     {% endfor %}
-</div>
+{% else %}
+    <div class="col-12 text-center text-muted mt-5">
+        <p>✨ {% trans "Inga bilder ännu. Klistra in en bildlänk ovan!" %}</p>
+        <p class="small">{% trans "Tips: Högerklicka på en bild på Pinterest → Kopiera bildadress" %}</p>
+    </div>
+{% endif %}
 
 {% endblock %}

@@ -42,15 +42,43 @@
             </thead>
             <tbody>
                 {% for h in handelser %}
-                    <tr>
+                    <tr id="tid-{{ h.id }}">
+                        {% if h.id == edit_id %}
+                        <!-- REDIGERINGSLÄGE -->
+                        <form method="post" action="{% url 'update_tidslinje' h.id %}" style="display: contents;">
+                            {% csrf_token %}
+                            <td>
+                                <input type="time" name="tid" class="form-control form-control-sm" value="{{ h.tid|time:'H:i' }}">
+                            </td>
+                            <td>
+                                <input type="text" name="aktivitet" class="form-control form-control-sm" value="{{ h.aktivitet }}">
+                            </td>
+                            <td>
+                                <input type="text" name="plats" class="form-control form-control-sm" value="{{ h.plats }}">
+                            </td>
+                            <td>
+                                <input type="text" name="ansvarig" class="form-control form-control-sm" value="{{ h.ansvarig }}">
+                            </td>
+                            <td>
+                                <input type="text" name="notering" class="form-control form-control-sm" value="{{ h.notering }}">
+                            </td>
+                            <td style="white-space: nowrap;">
+                                <button type="submit" class="btn btn-sm btn-success me-1" title="Spara"><i class="fas fa-check"></i></button>
+                                <a href="{% url 'tidslinje' %}" class="btn btn-sm btn-outline-secondary" title="Avbryt"><i class="fas fa-times"></i></a>
+                            </td>
+                        </form>
+                        {% else %}
+                        <!-- VISNINGSLÄGE -->
                         <td><strong>{{ h.tid|time:"H:i" }}</strong></td>
                         <td>{{ h.aktivitet }}</td>
                         <td>{{ h.plats }}</td>
                         <td>{{ h.ansvarig }}</td>
                         <td><small class="text-muted">{{ h.notering }}</small></td>
-                        <td>
-                            <a href="{% url 'delete_tidslinje' h.id %}" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-can"></i></a>
+                        <td style="white-space: nowrap;">
+                            <a href="{% url 'tidslinje' %}?edit={{ h.id }}" class="btn btn-sm btn-outline-secondary me-1" title="Redigera"><i class="fas fa-pen-to-square"></i></a>
+                            <a href="{% url 'delete_tidslinje' h.id %}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Vill du radera denna händelse?')" title="Radera"><i class="fas fa-trash-can"></i></a>
                         </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>

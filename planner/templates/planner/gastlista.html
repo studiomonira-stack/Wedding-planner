@@ -75,7 +75,37 @@
     </thead>
     <tbody>
         {% for gast in gaster %}
-            <tr>
+            <tr id="gast-{{ gast.id }}">
+                {% if gast.id == edit_id %}
+                <!-- REDIGERINGSLÄGE -->
+                <form method="post" action="{% url 'update_gast' gast.id %}" style="display: contents;">
+                    {% csrf_token %}
+                    <td>
+                        <input type="text" name="namn" class="form-control form-control-sm" value="{{ gast.namn }}">
+                    </td>
+                    <td>
+                        <input type="number" name="antal" class="form-control form-control-sm" value="{{ gast.antal }}" style="width: 70px;" min="1">
+                    </td>
+                    <td>
+                        <select name="svar" class="form-select form-select-sm">
+                            {% for value, name in svar_alternativ %}
+                                <option value="{{ value }}" {% if gast.svar == value %}selected{% endif %}>{{ name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="bord" class="form-control form-control-sm" value="{{ gast.bord }}">
+                    </td>
+                    <td>
+                        <input type="text" name="notering" class="form-control form-control-sm" value="{{ gast.notering }}">
+                    </td>
+                    <td style="white-space: nowrap;">
+                        <button type="submit" class="btn btn-sm btn-success me-1" title="Spara"><i class="fas fa-check"></i></button>
+                        <a href="{% url 'gastlista' %}" class="btn btn-sm btn-outline-secondary" title="Avbryt"><i class="fas fa-times"></i></a>
+                    </td>
+                </form>
+                {% else %}
+                <!-- VISNINGSLÄGE -->
                 <td>{{ gast.namn }}</td>
                 <td>{{ gast.antal }}</td>
                 <td>
@@ -94,9 +124,13 @@
                 </td>
                 <td>{{ gast.bord }}</td>
                 <td>{{ gast.notering }}</td>
-                <td>
-                    <a href="{% url 'delete_gast' gast.id %}" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-can"></i></a>
+                <td style="white-space: nowrap;">
+                    <a href="{% url 'move_gast_up' gast.id %}" class="btn btn-sm btn-outline-secondary me-1" title="Flytta upp"><i class="fas fa-arrow-up"></i></a>
+                    <a href="{% url 'move_gast_down' gast.id %}" class="btn btn-sm btn-outline-secondary me-1" title="Flytta ner"><i class="fas fa-arrow-down"></i></a>
+                    <a href="{% url 'gastlista' %}?edit={{ gast.id }}" class="btn btn-sm btn-outline-secondary me-1" title="Redigera"><i class="fas fa-pen-to-square"></i></a>
+                    <a href="{% url 'delete_gast' gast.id %}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Vill du radera denna gäst?')" title="Radera"><i class="fas fa-trash-can"></i></a>
                 </td>
+                {% endif %}
             </tr>
         {% empty %}
             <tr>

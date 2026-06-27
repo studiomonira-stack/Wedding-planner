@@ -60,7 +60,7 @@ def delete_checklist_item(request, item_id):
 
 @login_required
 def budget(request):
-    poster = BudgetPost.objects.filter(user=request.user).order_by('kategori')
+    poster = BudgetPost.objects.filter(user=request.user).order_by('ordning', 'kategori')
     kategorier = BudgetPost.KATEGORIER
 
     total_budget = sum(p.budgeterat for p in poster)
@@ -70,12 +70,21 @@ def budget(request):
     for post in poster:
         post.diff = post.budgeterat - post.faktiskt
 
+    # Hämta edit_id från URL:en (?edit=1)
+    edit_id = request.GET.get('edit')
+    if edit_id:
+        try:
+            edit_id = int(edit_id)
+        except:
+            edit_id = None    
+
     return render(request, 'planner/budget.html', {
         'poster': poster,
         'kategorier': kategorier,
         'total_budget': total_budget,
         'total_faktiskt': total_faktiskt,
         'differens': differens,
+        'edit_id': edit_id, # Skicka med edit_id till mallen
     })
 
 
@@ -99,7 +108,7 @@ def add_budget_post(request):
         except InvalidOperation:
             return render(request, 'planner/budget.html', {
                 'error_message': 'Ange ett giltigt belopp (t.ex. 10000 eller 10000,50). Inga bokstäver.',
-                'poster': BudgetPost.objects.filter(user=request.user).order_by('kategori'),
+                'poster': BudgetPost.objects.filter(user=request.user).order_by('ordning', 'kategori'),
                 'kategorier': BudgetPost.KATEGORIER,
             })
             
@@ -108,16 +117,21 @@ def add_budget_post(request):
         except InvalidOperation:
             return render(request, 'planner/budget.html', {
                 'error_message': 'Ange ett giltigt belopp (t.ex. 10000 eller 10000,50). Inga bokstäver.',
-                'poster': BudgetPost.objects.filter(user=request.user).order_by('kategori'),
+                'poster': BudgetPost.objects.filter(user=request.user).order_by('ordning', 'kategori'),
                 'kategorier': BudgetPost.KATEGORIER,
             })
         
+          # Hitta högsta ordning
+        from django.db.models import Max
+        max_ordning = BudgetPost.objects.filter(user=request.user).aggregate(Max('ordning'))['ordning__max'] or 0
+
         BudgetPost.objects.create(
             user=request.user,
             kategori=kategori,
             beskrivning=beskrivning,
             budgeterat=budgeterat,
             faktiskt=faktiskt,
+            ordning=max_ordning + 1,
         )
     return redirect('budget')
 
@@ -129,14 +143,52 @@ def delete_budget_post(request, post_id):
     return redirect('budget')
 
 @login_required
-def gastlista(request):
-    gaster = Gast.objects.filter(user=request.user).order_by('namn')
-    svar_alternativ = Gast.SVAR
+def move_budget_up(request, post_id):
+    post = get_object_or_404(BudgetPost, id=post_id, user=request.user)
+    if post.ordning > 0:
+        post.ordning -= 1
+        post.save()
+        # Flytta ner den som hade samma ordning
+        BudgetPost.objects.filter(user=request.user, ordning=post.ordning).exclude(id=post.id).update(ordning=post.ordning + 1)
+    return redirect('budget')
 
+
+@login_required
+def move_budget_down(request, post_id):
+    post = get_object_or_404(BudgetPost, id=post_id, user=request.user)
+    post.ordning += 1
+    post.save()
+    # Flytta upp den som hade samma ordning
+    BudgetPost.objects.filter(user=request.user, ordning=post.ordning).exclude(id=post.id).update(ordning=post.ordning - 1)
+    return redirect('budget')
+
+@login_required
+def update_budget_post(request, post_id):
+    post = get_object_or_404(BudgetPost, id=post_id, user=request.user)
+    if request.method == 'POST':
+        post.kategori = request.POST.get('kategori')
+        post.beskrivning = request.POST.get('beskrivning', '')
+        post.budgeterat = request.POST.get('budgeterat', 0) or 0
+        post.faktiskt = request.POST.get('faktiskt', 0) or 0
+        post.save()
+    return redirect('budget')
+
+@login_required
+def gastlista(request):
+    gaster = Gast.objects.filter(user=request.user).order_by('ordning', 'namn')
+    svar_alternativ = Gast.SVAR
+    
     antal_kommer = sum(g.antal for g in gaster if g.svar == 'kommer')
     antal_invagen = sum(g.antal for g in gaster if g.svar == 'invagen')
     antal_kommer_inte = sum(g.antal for g in gaster if g.svar == 'kommer_inte')
     totalt_antal = sum(g.antal for g in gaster)
+    
+    edit_id = request.GET.get('edit')
+    if edit_id:
+        try:
+            edit_id = int(edit_id)
+        except:
+            edit_id = None
 
     return render(request, 'planner/gastlista.html', {
         'gaster': gaster,
@@ -145,11 +197,15 @@ def gastlista(request):
         'antal_invagen': antal_invagen,
         'antal_kommer_inte': antal_kommer_inte,
         'totalt_antal': totalt_antal,
+        'edit_id': edit_id,
     })
 
 @login_required
 def add_gast(request):
     if request.method == 'POST':
+        from django.db.models import Max
+        max_ordning = Gast.objects.filter(user=request.user).aggregate(Max('ordning'))['ordning__max'] or 0
+        
         Gast.objects.create(
             user=request.user,
             namn=request.POST.get('namn'),
@@ -158,6 +214,7 @@ def add_gast(request):
             antal=request.POST.get('antal', 1),
             bord=request.POST.get('bord', ''),
             notering=request.POST.get('notering', ''),
+            ordning=max_ordning + 1,
         )
     return redirect('gastlista')
 
@@ -182,20 +239,49 @@ def delete_gast(request, gast_id):
     gast = get_object_or_404(Gast, id=gast_id, user=request.user)
     gast.delete()
     return redirect('gastlista')
+
+@login_required
+def move_gast_up(request, gast_id):
+    gast = get_object_or_404(Gast, id=gast_id, user=request.user)
+    if gast.ordning > 0:
+        gast.ordning -= 1
+        gast.save()
+        Gast.objects.filter(user=request.user, ordning=gast.ordning).exclude(id=gast.id).update(ordning=gast.ordning + 1)
+    return redirect('gastlista')
+
+@login_required
+def move_gast_down(request, gast_id):
+    gast = get_object_or_404(Gast, id=gast_id, user=request.user)
+    gast.ordning += 1
+    gast.save()
+    Gast.objects.filter(user=request.user, ordning=gast.ordning).exclude(id=gast.id).update(ordning=gast.ordning - 1)
+    return redirect('gastlista')
+
 @login_required
 def leverantorer(request):
-    leverantorer_lista = Leverantor.objects.filter(user=request.user).order_by('kategori', 'namn')
+    leverantorer_lista = Leverantor.objects.filter(user=request.user).order_by('ordning', 'kategori')
     kategorier = Leverantor.KATEGORIER
+
+    edit_id = request.GET.get('edit')
+    if edit_id:
+        try:
+            edit_id = int(edit_id)
+        except:
+            edit_id = None
 
     return render(request, 'planner/leverantorer.html', {
         'leverantorer': leverantorer_lista,
         'kategorier': kategorier,
+        'edit_id': edit_id,
     })
 
 
 @login_required
 def add_leverantor(request):
     if request.method == 'POST':
+        from django.db.models import Max
+        max_ordning = Leverantor.objects.filter(user=request.user).aggregate(Max('ordning'))['ordning__max'] or 0
+        
         Leverantor.objects.create(
             user=request.user,
             namn=request.POST.get('namn'),
@@ -205,6 +291,7 @@ def add_leverantor(request):
             telefon=request.POST.get('telefon', ''),
             pris=request.POST.get('pris', 0) or 0,
             notering=request.POST.get('notering', ''),
+            ordning=max_ordning + 1,
         )
     return redirect('leverantorer')
 
@@ -224,10 +311,50 @@ def delete_leverantor(request, lev_id):
     return redirect('leverantorer')
 
 @login_required
+def update_leverantor(request, lev_id):
+    lev = get_object_or_404(Leverantor, id=lev_id, user=request.user)
+    if request.method == 'POST':
+        lev.namn = request.POST.get('namn')
+        lev.kategori = request.POST.get('kategori')
+        lev.kontaktperson = request.POST.get('kontaktperson', '')
+        lev.pris = request.POST.get('pris', 0) or 0
+        lev.notering = request.POST.get('notering', '')
+        lev.save()
+    return redirect('leverantorer')
+
+
+@login_required
+def move_leverantor_up(request, lev_id):
+    lev = get_object_or_404(Leverantor, id=lev_id, user=request.user)
+    if lev.ordning > 0:
+        lev.ordning -= 1
+        lev.save()
+        Leverantor.objects.filter(user=request.user, ordning=lev.ordning).exclude(id=lev.id).update(ordning=lev.ordning + 1)
+    return redirect('leverantorer')
+
+
+@login_required
+def move_leverantor_down(request, lev_id):
+    lev = get_object_or_404(Leverantor, id=lev_id, user=request.user)
+    lev.ordning += 1
+    lev.save()
+    Leverantor.objects.filter(user=request.user, ordning=lev.ordning).exclude(id=lev.id).update(ordning=lev.ordning - 1)
+    return redirect('leverantorer')
+
+@login_required
 def tidslinje(request):
     handelser = Tidslinje.objects.filter(user=request.user).order_by('tid', 'ordning')
+    
+    edit_id = request.GET.get('edit')
+    if edit_id:
+        try:
+            edit_id = int(edit_id)
+        except:
+            edit_id = None
+    
     return render(request, 'planner/tidslinje.html', {
         'handelser': handelser,
+        'edit_id': edit_id,
     })
 
 
@@ -250,13 +377,46 @@ def delete_tidslinje(request, tid_id):
     handelse = get_object_or_404(Tidslinje, id=tid_id, user=request.user)
     handelse.delete()
     return redirect('tidslinje')
+
+@login_required
+def update_tidslinje(request, tid_id):
+    handelse = get_object_or_404(Tidslinje, id=tid_id, user=request.user)
+    if request.method == 'POST':
+        handelse.tid = request.POST.get('tid')
+        handelse.aktivitet = request.POST.get('aktivitet')
+        handelse.plats = request.POST.get('plats', '')
+        handelse.ansvarig = request.POST.get('ansvarig', '')
+        handelse.notering = request.POST.get('notering', '')
+        handelse.save()
+    return redirect('tidslinje')
+
 @login_required
 def galleri(request):
-    bilder = Galleri.objects.filter(user=request.user).order_by('-skapad')
+    bilder = Galleri.objects.filter(user=request.user).order_by('kategori', '-skapad')
     kategorier = Galleri.KATEGORIER
+    
+    # Gruppera bilder per kategori
+    kategorier_med_bilder = {}
+    for value, name in kategorier:
+        bilder_i_kat = bilder.filter(kategori=value)
+        if bilder_i_kat.exists():
+            kategorier_med_bilder[value] = {
+                'name': name,
+                'bilder': bilder_i_kat
+            }
+    
+    # Hämta edit_id från URL:en (?edit=1)
+    edit_id = request.GET.get('edit')
+    if edit_id:
+        try:
+            edit_id = int(edit_id)
+        except:
+            edit_id = None
+            
     return render(request, 'planner/galleri.html', {
-        'bilder': bilder,
+        'kategorier_med_bilder': kategorier_med_bilder,
         'kategorier': kategorier,
+        'edit_id': edit_id,
     })
 
 
@@ -282,6 +442,17 @@ def add_bild(request):
 def delete_bild(request, bild_id):
     bild = get_object_or_404(Galleri, id=bild_id, user=request.user)
     bild.delete()
+    return redirect('galleri')
+
+@login_required
+def update_bild(request, bild_id):
+    bild = get_object_or_404(Galleri, id=bild_id, user=request.user)
+    if request.method == 'POST':
+        bild.bild = request.POST.get('bild')
+        bild.titel = request.POST.get('titel', '')
+        bild.kategori = request.POST.get('kategori', 'ovrigt')
+        bild.notering = request.POST.get('notering', '')
+        bild.save()
     return redirect('galleri')
 
 @login_required

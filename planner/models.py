@@ -54,6 +54,10 @@ class BudgetPost(models.Model):
     budgeterat = models.DecimalField(max_digits=10, decimal_places=0, default=0)
     faktiskt = models.DecimalField(max_digits=10, decimal_places=0, default=0)
     skapad = models.DateTimeField(auto_now_add=True)
+    ordning = models.PositiveIntegerField(default=0)  # NYTT!
+    
+    class Meta:
+        ordering = ['ordning', 'kategori']  # NYTT!
 
     def __str__(self):
         return f"{self.get_kategori_display()} - {self.user.username}"
@@ -76,6 +80,10 @@ class Gast(models.Model):
     bord = models.CharField(max_length=50, blank=True)
     notering = models.TextField(blank=True)
     skapad = models.DateTimeField(auto_now_add=True)
+    ordning = models.PositiveIntegerField(default=0)  # NYTT!
+    
+    class Meta:
+        ordering = ['ordning', 'namn']  # NYTT!
 
     def __str__(self):
         return f"{self.namn} - {self.user.username}"
@@ -108,6 +116,10 @@ class Leverantor(models.Model):
     bokat = models.BooleanField(default=False)
     notering = models.TextField(blank=True)
     skapad = models.DateTimeField(auto_now_add=True)
+    ordning = models.PositiveIntegerField(default=0)
+
+class Meta:
+    ordering = ['ordning', 'kategori']
 
     def __str__(self):
         return f"{self.namn} - {self.user.username}"

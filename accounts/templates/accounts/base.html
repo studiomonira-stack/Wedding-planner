@@ -206,44 +206,181 @@
         </span>
     </a>
     
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <!-- Hamburgermeny-knapp (modern) -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
+        <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 32 32\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'{% if photographer %}rgba(255,255,255,0.9){% else %}rgba(102,102,102,0.8){% endif %}\' stroke-width=\'2.5\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 8h24M4 16h24M4 24h24\'/%3E%3C/svg%3E');"></span>
     </button>
     
+    <!-- Mobilmeny -->
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="ms-auto">
             {% if user.is_authenticated %}
-                <a href="{% url 'checklist' %}" class="btn btn-outline-secondary btn-sm me-1 d-block d-lg-inline-block mb-1 mb-lg-0"><i class="fas fa-list-check"></i> {% trans "Checklista" %}</a>
-                <a href="{% url 'budget' %}" class="btn btn-outline-secondary btn-sm me-1 d-block d-lg-inline-block mb-1 mb-lg-0"><i class="fas fa-coins"></i> {% trans "Budget" %}</a>
-                <a href="{% url 'gastlista' %}" class="btn btn-outline-secondary btn-sm me-1 d-block d-lg-inline-block mb-1 mb-lg-0"><i class="fas fa-envelope-open-text"></i> {% trans "Gäster" %}</a>
-                <a href="{% url 'leverantorer' %}" class="btn btn-outline-secondary btn-sm me-1 d-block d-lg-inline-block mb-1 mb-lg-0"><i class="fas fa-truck"></i> {% trans "Leverantörer" %}</a>
-                <a href="{% url 'tidslinje' %}" class="btn btn-outline-secondary btn-sm me-1 d-block d-lg-inline-block mb-1 mb-lg-0"><i class="fas fa-clock"></i> {% trans "Tidslinje" %}</a>
-                <a href="{% url 'galleri' %}" class="btn btn-outline-secondary btn-sm me-3 d-block d-lg-inline-block mb-1 mb-lg-0"><i class="fas fa-images"></i> {% trans "Galleri" %}</a>
-                <span class="me-2">{% trans "Hej" %} {{ user.username }}!</span>
+                <!-- Mobil: användarinfo -->
+                <div class="d-lg-none text-center py-3 border-bottom mb-2">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary); color: white; display: inline-flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 8px;">
+                        {{ user.username|first|upper }}
+                    </div>
+                    <div style="font-weight: 600;">{{ user.username }}</div>
+                </div>
+                
+                <!-- Menylänkar -->
+                <a href="{% url 'checklist' %}" class="nav-link-custom d-block d-lg-inline-block">
+                    <i class="fas fa-list-check"></i> {% trans "Checklista" %}
+                </a>
+                <a href="{% url 'budget' %}" class="nav-link-custom d-block d-lg-inline-block">
+                    <i class="fas fa-coins"></i> {% trans "Budget" %}
+                </a>
+                <a href="{% url 'gastlista' %}" class="nav-link-custom d-block d-lg-inline-block">
+                    <i class="fas fa-envelope-open-text"></i> {% trans "Gäster" %}
+                </a>
+                <a href="{% url 'leverantorer' %}" class="nav-link-custom d-block d-lg-inline-block">
+                    <i class="fas fa-truck"></i> {% trans "Leverantörer" %}
+                </a>
+                <a href="{% url 'tidslinje' %}" class="nav-link-custom d-block d-lg-inline-block">
+                    <i class="fas fa-clock"></i> {% trans "Tidslinje" %}
+                </a>
+                <a href="{% url 'galleri' %}" class="nav-link-custom d-block d-lg-inline-block">
+                    <i class="fas fa-images"></i> {% trans "Galleri" %}
+                </a>
+                
+                <!-- Språkväljare (mobil) -->
+                <div class="d-lg-none mt-3 pt-2 border-top">
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}">
+                        <select name="language" class="form-select form-select-sm" onchange="this.form.submit()">
+                            {% get_current_language as CURRENT_LANGUAGE %}
+                            <option value="sv" {% if CURRENT_LANGUAGE == 'sv' %}selected{% endif %}>🇸🇪 Svenska</option>
+                            <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>🇬🇧 English</option>
+                            <option value="bs" {% if CURRENT_LANGUAGE == 'bs' %}selected{% endif %}>🇧🇦 Bosnian</option>
+                        </select>
+                    </form>
+                </div>
+                
+                <!-- Desktop: användarnamn + logout -->
+                <span class="d-none d-lg-inline me-2">{% trans "Hej" %} {{ user.username }}!</span>
                 <form method="post" action="{% url 'logout' %}" class="d-inline">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-danger btn-sm">{% trans "Logga ut" %}</button>
+                    <button type="submit" class="btn btn-outline-danger btn-sm d-block d-lg-inline-block mt-2 mt-lg-0">{% trans "Logga ut" %}</button>
+                </form>
+                
+                <!-- Språkväljare (desktop) -->
+                <form action="{% url 'set_language' %}" method="post" class="d-none d-lg-inline ms-3">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <select name="language" class="form-select form-select-sm" onchange="this.form.submit()" style="width: auto; display: inline-block; background: var(--white); color: var(--text-dark); border: 1px solid var(--border); cursor: pointer;">
+                        {% get_current_language as CURRENT_LANGUAGE %}
+                        <option value="sv" {% if CURRENT_LANGUAGE == 'sv' %}selected{% endif %}>🇸🇪 Svenska</option>
+                        <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>🇬🇧 English</option>
+                        <option value="bs" {% if CURRENT_LANGUAGE == 'bs' %}selected{% endif %}>🇧🇦 Bosnian</option>
+                    </select>
                 </form>
             {% else %}
                 <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm">{% trans "Logga in" %}</a>
+                
+                <!-- Språkväljare -->
+                <form action="{% url 'set_language' %}" method="post" class="d-inline ms-3">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <select name="language" class="form-select form-select-sm" onchange="this.form.submit()" style="width: auto; display: inline-block; background: var(--white); color: var(--text-dark); border: 1px solid var(--border); cursor: pointer;">
+                        {% get_current_language as CURRENT_LANGUAGE %}
+                        <option value="sv" {% if CURRENT_LANGUAGE == 'sv' %}selected{% endif %}>🇸🇪 Svenska</option>
+                        <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>🇬🇧 English</option>
+                        <option value="bs" {% if CURRENT_LANGUAGE == 'bs' %}selected{% endif %}>🇧🇦 Bosnian</option>
+                    </select>
+                </form>
             {% endif %}
-            
-            <!-- Språkväljare -->
-            <form action="{% url 'set_language' %}" method="post" class="d-inline ms-3">
-                {% csrf_token %}
-                <input name="next" type="hidden" value="{{ redirect_to }}">
-                <select name="language" class="form-select form-select-sm" onchange="this.form.submit()" style="width: auto; display: inline-block; background: var(--white); color: var(--text-dark); border: 1px solid var(--border); cursor: pointer;">
-                    {% get_current_language as CURRENT_LANGUAGE %}
-                    <option value="sv" {% if CURRENT_LANGUAGE == 'sv' %}selected{% endif %}>🇸🇪 Svenska</option>
-                    <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>🇬🇧 English</option>
-                    <option value="bs" {% if CURRENT_LANGUAGE == 'bs' %}selected{% endif %}>🇧🇦 Bosnian</option>
-                    <!-- <option value="no" {% if CURRENT_LANGUAGE == 'no' %}selected{% endif %}>🇳🇴 Norsk</option> -->
-                </select>
-            </form>
         </div>
     </div>
 </nav>
+
+<style>
+    /* Modern mobilmeny */
+    @media (max-width: 991px) {
+        #navbarNav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: var(--white);
+            padding: 80px 20px 20px;
+            transition: right 0.3s ease;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+            z-index: 999;
+            overflow-y: auto;
+        }
+        #navbarNav.show {
+            right: 0;
+        }
+        #navbarNav.collapsing {
+            right: -100%;
+            transition: right 0.3s ease;
+        }
+        .nav-link-custom {
+            display: block;
+            padding: 12px 16px;
+            margin: 2px 0;
+            border-radius: 10px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        .nav-link-custom:hover {
+            background: #f5f5f5;
+        }
+        .nav-link-custom i {
+            width: 24px;
+            text-align: center;
+            margin-right: 8px;
+            color: var(--primary);
+        }
+        /* Stäng-knapp */
+        .navbar-toggler.close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            z-index: 1000;
+        }
+    }
+    
+    /* Desktop */
+    @media (min-width: 992px) {
+        .nav-link-custom {
+            display: inline-block;
+            padding: 6px 12px;
+            margin: 0 2px;
+            border-radius: 8px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .nav-link-custom:hover {
+            background: rgba(0,0,0,0.05);
+        }
+        .nav-link-custom i {
+            margin-right: 4px;
+        }
+    }
+</style>
+
+<script>
+    // Gör så att menyn stängs när man klickar på en länk (mobil)
+    document.querySelectorAll('#navbarNav .nav-link-custom').forEach(link => {
+        link.addEventListener('click', () => {
+            var bsCollapse = new bootstrap.Collapse(document.getElementById('navbarNav'), { toggle: false });
+            bsCollapse.hide();
+        });
+    });
+</script>
 
     <div class="container mt-4">
         {% block content %}
