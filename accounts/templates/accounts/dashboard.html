@@ -7,10 +7,46 @@
     .navbar, footer, #cookie-banner {
         display: none !important;
     }
-    .col-md-4 {
-        flex: 0 0 auto;
-        width: 50% !important;
+    
+    /* Desktop: 2 kolumner */
+    @media (min-width: 768px) {
+        .col-md-4 {
+            flex: 0 0 auto;
+            width: 50% !important;
+        }
     }
+    
+    /* Mobil: 1 kolumn */
+    @media (max-width: 767px) {
+        .col-md-4 {
+            flex: 0 0 auto;
+            width: 100% !important;
+        }
+        .row.g-4 {
+            --bs-gutter-y: 0.75rem;
+        }
+        .card-body {
+            padding: 12px !important;
+        }
+        .card h5 {
+            font-size: 0.9rem !important;
+        }
+        .card small {
+            font-size: 0.7rem !important;
+        }
+        /* Göm cirklar på mobil för mer plats */
+        .position-relative[style*="width: 110px"] {
+            width: 70px !important;
+            height: 70px !important;
+        }
+        h1 {
+            font-size: 1.3rem !important;
+        }
+        p.text-muted {
+            font-size: 0.75rem !important;
+        }
+    }
+    
     body {
         background: transparent !important;
         padding: 0 !important;
@@ -18,7 +54,7 @@
     }
     .container {
         max-width: 100% !important;
-        padding: 10px !important;
+        padding: 8px !important;
     }
     .card {
         font-size: 0.85rem;
