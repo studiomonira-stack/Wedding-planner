@@ -963,6 +963,10 @@ def whop_connect(request):
 
 
 def whop_callback(request):
+    def register_photographer(request):
+        print("🔍 Session whop_connected:", request.session.get('whop_connected'))
+        print("🔍 Session whop_affiliate_id:", request.session.get('whop_affiliate_id'))
+        print("🔍 Session temp_photographer_id:", request.session.get('temp_photographer_id'))
     """Ta emot callback från Whop och hämta affiliate-ID"""
     code = request.GET.get('code')
     if not code:
@@ -1010,6 +1014,7 @@ def whop_callback(request):
                 
                 # Efter callback, sätt en session-flagga
                 request.session['whop_connected'] = True
+                request.session.modified = True
                 return redirect('register_photographer')
     
     except Exception as e:
