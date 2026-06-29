@@ -9,7 +9,11 @@ from django.core.mail import send_mail  # <-- Lägg till denna rad
 from django.contrib.auth.models import User
 from accounts.models import Profil
 import requests
+import hashlib
+import base64
+import secrets
 from django.conf import settings
+
 
 @login_required
 def checklist(request):
@@ -955,9 +959,30 @@ def partner_set_brollopsdatum(request, kund_id):
 # ============================================
 
 def whop_connect(request):
+    """Skicka partnern till Whop OAuth med PKCE"""
     client_id = settings.WHOP_CLIENT_ID
     redirect_uri = settings.WHOP_REDIRECT_URI
-    whop_url = f"https://whop.com/oauth?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
+    
+    # Generera PKCE code_verifier och code_challenge
+    code_verifier = secrets.token_urlsafe(64)[:128]
+    code_challenge = base64.urlsafe_b64encode(
+        hashlib.sha256(code_verifier.encode('ascii')).digest()
+    ).rstrip(b'=').decode('ascii')
+    
+    # Spara code_verifier i sessionen
+    request.session['whop_code_verifier'] = code_verifier
+    
+    # Bygg URL med PKCE-parametrar
+    whop_url = (
+        f"https://api.whop.com/oauth/authorize"
+        f"?client_id={client_id}"
+        f"&redirect_uri={redirect_uri}"
+        f"&response_type=code"
+        f"&scope=openid%20email"
+        f"&code_challenge={code_challenge}"
+        f"&code_challenge_method=S256"
+    )
+    
     return redirect(whop_url)
 
 def whop_callback(request):
@@ -966,26 +991,29 @@ def whop_callback(request):
     if not code:
         return redirect('register_photographer')
     
+    # Hämta code_verifier från sessionen
+    code_verifier = request.session.get('whop_code_verifier')
+    if not code_verifier:
+        print("❌ Ingen code_verifier i sessionen")
+        return redirect('register_photographer')
+    
     try:
-        # Testa att anropa Whop API
-        print(f"🔍 Försöker byta code mot token...")
-        print(f"🔍 Client ID: {settings.WHOP_CLIENT_ID[:10]}...")
-        print(f"🔍 Redirect URI: {settings.WHOP_REDIRECT_URI}")
+        print("🔍 Försöker byta code mot token...")
         
         response = requests.post(
-            'https://api.whop.com/api/v1/oauth/token',
+            'https://api.whop.com/oauth/token',
             json={
                 'client_id': settings.WHOP_CLIENT_ID,
                 'client_secret': settings.WHOP_CLIENT_SECRET,
                 'code': code,
                 'redirect_uri': settings.WHOP_REDIRECT_URI,
                 'grant_type': 'authorization_code',
+                'code_verifier': code_verifier,  # PKCE!
             },
-            timeout=10  # Sätt timeout
+            timeout=10
         )
         
         print(f"🔍 Token response status: {response.status_code}")
-        print(f"🔍 Token response: {response.text[:300]}")
         
         if response.status_code == 200:
             data = response.json()
@@ -993,12 +1021,10 @@ def whop_callback(request):
             
             if access_token:
                 user_response = requests.get(
-                    'https://api.whop.com/api/v1/me',
+                    'https://api.whop.com/oauth/userinfo',
                     headers={'Authorization': f'Bearer {access_token}'},
                     timeout=10
                 )
-                
-                print(f"🔍 User response status: {user_response.status_code}")
                 
                 if user_response.status_code == 200:
                     user_data = user_response.json()
@@ -1019,14 +1045,13 @@ def whop_callback(request):
                         except Photographer.DoesNotExist:
                             pass
                     
+                    # Rensa code_verifier
+                    request.session.pop('whop_code_verifier', None)
+                    
                     print("✅ Whop OAuth lyckades!")
                     return redirect(f'/register-partner/?whop_ok=1')
     
-    except requests.exceptions.Timeout:
-        print("❌ Timeout mot Whop API")
-    except requests.exceptions.ConnectionError:
-        print("❌ Kunde inte ansluta till Whop API")
     except Exception as e:
-        print(f"❌ Whop OAuth error: {type(e).__name__}: {e}")
+        print(f"❌ Whop OAuth error: {e}")
     
     return redirect('register_photographer')
