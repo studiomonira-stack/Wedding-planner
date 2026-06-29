@@ -959,20 +959,23 @@ def partner_set_brollopsdatum(request, kund_id):
 # ============================================
 
 def whop_connect(request):
-    """Skicka partnern till Whop OAuth med PKCE"""
     client_id = settings.WHOP_CLIENT_ID
     redirect_uri = settings.WHOP_REDIRECT_URI
     
-    # Generera PKCE code_verifier och code_challenge
+    # Generera PKCE
     code_verifier = secrets.token_urlsafe(64)[:128]
     code_challenge = base64.urlsafe_b64encode(
         hashlib.sha256(code_verifier.encode('ascii')).digest()
     ).rstrip(b'=').decode('ascii')
     
-    # Spara code_verifier i sessionen
-    request.session['whop_code_verifier'] = code_verifier
+    # Generera nonce
+    nonce = secrets.token_urlsafe(32)
     
-    # Bygg URL med PKCE-parametrar
+    # Spara i session
+    request.session['whop_code_verifier'] = code_verifier
+    request.session['whop_nonce'] = nonce
+    
+    # Bygg URL
     whop_url = (
         f"https://api.whop.com/oauth/authorize"
         f"?client_id={client_id}"
@@ -981,6 +984,7 @@ def whop_connect(request):
         f"&scope=openid%20email"
         f"&code_challenge={code_challenge}"
         f"&code_challenge_method=S256"
+        f"&nonce={nonce}"
     )
     
     return redirect(whop_url)
