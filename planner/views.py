@@ -477,6 +477,23 @@ def brollop_detail(request, brollop_id):
 from .forms import PhotographerStep1Form, PhotographerStep2Form  # <-- Ändra importen!
 
 def register_photographer(request):
+
+    # Kolla om Whop precis har kopplats (från OAuth callback)
+    if request.session.get('whop_connected'):
+        request.session.pop('whop_connected', None)
+        photographer_id = request.session.get('temp_photographer_id')
+        if photographer_id:
+            try:
+                photographer = Photographer.objects.get(id=photographer_id)
+                if photographer.whop_affiliate_id:
+                    # Gå direkt till steg 4 (klart!)
+                    return render(request, 'planner/register_photographer_base.html', {
+                        'step_content': 'planner/registration_complete.html',
+                        'photographer': photographer
+                    })
+            except Photographer.DoesNotExist:
+                pass
+
     # --- STEG 1 ---
     if request.method == 'POST' and 'step1_submit' in request.POST:
         print("✅ Steg 1 mottaget!")
@@ -505,6 +522,7 @@ def register_photographer(request):
             })
         else:
             print(f"❌ Fel: {form.errors}")
+
 
        # --- STEG 2 ---
     elif request.method == 'POST' and 'step2_submit' in request.POST:
@@ -990,6 +1008,8 @@ def whop_callback(request):
                     except Photographer.DoesNotExist:
                         pass
                 
+                # Efter callback, sätt en session-flagga
+                request.session['whop_connected'] = True
                 return redirect('register_photographer')
     
     except Exception as e:
