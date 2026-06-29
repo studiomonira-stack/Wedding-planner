@@ -955,11 +955,9 @@ def partner_set_brollopsdatum(request, kund_id):
 # ============================================
 
 def whop_connect(request):
-    """Skicka partnern till Whop OAuth-inloggning"""
     client_id = settings.WHOP_CLIENT_ID
     redirect_uri = settings.WHOP_REDIRECT_URI
-    whop_url = f"https://api.whop.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope=openid%20email"
-    return redirect(whop_url)
+    whop_url = f"https://whop.com/oauth?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
 
 
 def whop_callback(request):
@@ -975,7 +973,7 @@ def whop_callback(request):
         print(f"🔍 Redirect URI: {settings.WHOP_REDIRECT_URI}")
         
         response = requests.post(
-            'https://whop.com/api/oauth/token',
+            'https://api.whop.com/api/v1/oauth/token',
             json={
                 'client_id': settings.WHOP_CLIENT_ID,
                 'client_secret': settings.WHOP_CLIENT_SECRET,
@@ -995,7 +993,7 @@ def whop_callback(request):
             
             if access_token:
                 user_response = requests.get(
-                    'https://api.whop.com/oauth/userinfo',
+                    'https://api.whop.com/api/v1/me',
                     headers={'Authorization': f'Bearer {access_token}'},
                     timeout=10
                 )
