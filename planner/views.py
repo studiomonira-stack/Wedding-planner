@@ -963,63 +963,72 @@ def whop_connect(request):
 
 
 def whop_callback(request):
-    def register_photographer(request):
-        print("🔍 Session whop_connected:", request.session.get('whop_connected'))
-        print("🔍 Session whop_affiliate_id:", request.session.get('whop_affiliate_id'))
-        print("🔍 Session temp_photographer_id:", request.session.get('temp_photographer_id'))
     """Ta emot callback från Whop och hämta affiliate-ID"""
     code = request.GET.get('code')
     if not code:
         return redirect('register_photographer')
     
     try:
-        # Byt code mot access token
-        response = requests.post('https://api.whop.com/api/v1/oauth/token', json={
-            'client_id': settings.WHOP_CLIENT_ID,
-            'client_secret': settings.WHOP_CLIENT_SECRET,
-            'code': code,
-            'redirect_uri': settings.WHOP_REDIRECT_URI,
-            'grant_type': 'authorization_code',
-        })
-
-        print(f"🔍 Whop user response status: {user_response.status_code}")
-        print(f"🔍 Whop user data: {user_response.text[:200]}")
+        # Testa att anropa Whop API
+        print(f"🔍 Försöker byta code mot token...")
+        print(f"🔍 Client ID: {settings.WHOP_CLIENT_ID[:10]}...")
+        print(f"🔍 Redirect URI: {settings.WHOP_REDIRECT_URI}")
+        
+        response = requests.post(
+            'https://api.whop.com/api/v1/oauth/token',
+            json={
+                'client_id': settings.WHOP_CLIENT_ID,
+                'client_secret': settings.WHOP_CLIENT_SECRET,
+                'code': code,
+                'redirect_uri': settings.WHOP_REDIRECT_URI,
+                'grant_type': 'authorization_code',
+            },
+            timeout=10  # Sätt timeout
+        )
+        
+        print(f"🔍 Token response status: {response.status_code}")
+        print(f"🔍 Token response: {response.text[:300]}")
         
         if response.status_code == 200:
             data = response.json()
             access_token = data.get('access_token')
             
-            # Hämta användarinfo från Whop
-            user_response = requests.get('https://api.whop.com/api/v1/me', headers={
-                'Authorization': f'Bearer {access_token}'
-            })
-            
-            if user_response.status_code == 200:
-                user_data = user_response.json()
-                whop_email = user_data.get('email', '')
-                whop_user_id = user_data.get('id', '')
+            if access_token:
+                user_response = requests.get(
+                    'https://api.whop.com/api/v1/me',
+                    headers={'Authorization': f'Bearer {access_token}'},
+                    timeout=10
+                )
                 
-                # Spara i session
-                request.session['whop_email'] = whop_email
-                request.session['whop_affiliate_id'] = str(whop_user_id)
+                print(f"🔍 User response status: {user_response.status_code}")
                 
-                # Uppdatera fotografen om den finns i session
-                photographer_id = request.session.get('temp_photographer_id')
-                if photographer_id:
-                    try:
-                        photographer = Photographer.objects.get(id=photographer_id)
-                        photographer.whop_email = whop_email
-                        photographer.whop_affiliate_id = str(whop_user_id)
-                        photographer.is_active = True
-                        photographer.save()
-                    except Photographer.DoesNotExist:
-                        pass
-                
-                # Efter callback, sätt en session-flagga
-                print("✅ Whop OAuth lyckades! Redirectar till /register-partner/?whop_ok=1")
-                return redirect(f'/register-partner/?whop_ok=1')
+                if user_response.status_code == 200:
+                    user_data = user_response.json()
+                    whop_email = user_data.get('email', '')
+                    whop_user_id = user_data.get('id', '')
+                    
+                    request.session['whop_email'] = whop_email
+                    request.session['whop_affiliate_id'] = str(whop_user_id)
+                    
+                    photographer_id = request.session.get('temp_photographer_id')
+                    if photographer_id:
+                        try:
+                            photographer = Photographer.objects.get(id=photographer_id)
+                            photographer.whop_email = whop_email
+                            photographer.whop_affiliate_id = str(whop_user_id)
+                            photographer.is_active = True
+                            photographer.save()
+                        except Photographer.DoesNotExist:
+                            pass
+                    
+                    print("✅ Whop OAuth lyckades!")
+                    return redirect(f'/register-partner/?whop_ok=1')
     
+    except requests.exceptions.Timeout:
+        print("❌ Timeout mot Whop API")
+    except requests.exceptions.ConnectionError:
+        print("❌ Kunde inte ansluta till Whop API")
     except Exception as e:
-        print(f"Whop OAuth error: {e}")
+        print(f"❌ Whop OAuth error: {type(e).__name__}: {e}")
     
-        return redirect('register_photographer')
+    return redirect('register_photographer')
