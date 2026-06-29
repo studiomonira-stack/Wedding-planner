@@ -1018,6 +1018,7 @@ def whop_callback(request):
         )
         
         print(f"🔍 Token response status: {response.status_code}")
+        print(f"🔍 Token response text: {response.text}") 
         
         if response.status_code == 200:
             data = response.json()
