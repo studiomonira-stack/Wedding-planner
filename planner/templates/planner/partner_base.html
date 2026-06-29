@@ -71,9 +71,25 @@
 
 <nav class="partner-nav">
     <a href="{% url 'partner_dashboard' %}" class="brand">📸 {{ fotograf.name }}</a>
-    <div>
-        <a href="{% url 'partner_dashboard' %}">Översikt</a>
-        <a href="{% url 'partner_kunder' %}">Mina kunder</a>
+    <div style="display: flex; align-items: center; gap: 8px;">
+        <a href="{% url 'partner_dashboard' %}">📊 Översikt</a>
+        <a href="{% url 'partner_kunder' %}">👥 Mina kunder</a>
+        
+        <!-- Språkväljare -->
+        <form action="{% url 'set_language' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.path }}">
+            <select name="language" onchange="this.form.submit()" 
+                    style="font-size: 0.8rem; padding: 4px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--white); cursor: pointer;">
+                {% get_current_language as CURRENT_LANGUAGE %}
+                <option value="sv" {% if CURRENT_LANGUAGE == 'sv' %}selected{% endif %}>🇸🇪</option>
+                <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>🇬🇧</option>
+                <option value="bs" {% if CURRENT_LANGUAGE == 'bs' %}selected{% endif %}>🇧🇦</option>
+                <option value="no" {% if CURRENT_LANGUAGE == 'no' %}selected{% endif %}>🇳🇴</option>
+                <option value="da" {% if CURRENT_LANGUAGE == 'da' %}selected{% endif %}>🇩🇰</option>
+            </select>
+        </form>
+        
         <form method="post" action="{% url 'logout' %}" class="d-inline">
             {% csrf_token %}
             <button type="submit" class="btn btn-sm btn-outline-danger">Logga ut</button>
