@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
      'accounts', 
-     'planner',  
+     'planner',
+    'rosetta',  
 ]
 
 MIDDLEWARE = [
@@ -159,11 +160,12 @@ LOCALE_PATHS = [
 ]
 
 LANGUAGES = [
-    ('sv', _('Swedish')),
-    ('en', _('English')),
-    ('no', _('Norwegian')),
-    ('da', _('Danish')),
-    ('bs', _('Bosnian')),
+     ('sv', 'Svenska'),
+     ('en', 'English'),
+     ('no', 'Norsk'),
+     ('da', 'Dansk'),
+     ('bs', 'Bosnian'),
+    
 
 ]
 

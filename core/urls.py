@@ -15,6 +15,7 @@ urlpatterns = [
     path('privacy-policy/', planner_views.privacy_policy, name='privacy_policy'),
     path('partner-demo/', planner_views.partner_landing_demo, name='partner_landing_demo'),
     path('i18n/', include('django.conf.urls.i18n')), 
+    path('rosetta/', include('rosetta.urls')),
     
     
 ]

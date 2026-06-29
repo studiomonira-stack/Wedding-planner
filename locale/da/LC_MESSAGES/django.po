@@ -8,353 +8,662 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 06:47+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-06-29 17:47+0200\n"
+"PO-Revision-Date: 2026-06-29 18:41+0000\n"
+"Last-Translator:   <hej@brollopsplanner.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.10.3\n"
 
-#: .\accounts\templates\accounts\base.html:8
-#: .\accounts\templates\accounts\base.html:128
-#: .\accounts\templates\accounts\kop.html:106
-#: .\accounts\templates\accounts\kop.html:167
-#: .\accounts\templates\accounts\login.html:82
-#: .\accounts\templates\accounts\register.html:87
+#: .\accounts\templates\accounts\base.html:18
+#: .\accounts\templates\accounts\base.html:205
+#: .\accounts\templates\accounts\kop.html:219
+#: .\accounts\templates\accounts\kop.html:426
+#: .\accounts\templates\accounts\login.html:105
+#: .\accounts\templates\accounts\register.html:97
 msgid "Bröllopsplaneraren"
-msgstr ""
+msgstr "Bryllupsplanlæggeren"
 
-#: .\accounts\templates\accounts\base.html:139
-#: .\accounts\templates\accounts\dashboard.html:14
-#: .\accounts\templates\accounts\kop.html:142
+#: .\accounts\templates\accounts\base.html:229
+#: .\accounts\templates\accounts\dashboard.html:138
+#: .\accounts\templates\accounts\kop.html:286
+#: .\accounts\templates\accounts\landing.html:384
 #: .\planner\templates\planner\checklist.html:5
 msgid "Checklista"
-msgstr ""
+msgstr "Tjekliste"
 
-#: .\accounts\templates\accounts\base.html:140
-#: .\accounts\templates\accounts\dashboard.html:62
-#: .\accounts\templates\accounts\kop.html:143
+#: .\accounts\templates\accounts\base.html:232
+#: .\accounts\templates\accounts\dashboard.html:186
+#: .\accounts\templates\accounts\kop.html:287
+#: .\accounts\templates\accounts\landing.html:391
 #: .\planner\templates\planner\budget.html:5
 #: .\planner\templates\planner\budget.html:12
 #: .\planner\templates\planner\budget.html:64
 msgid "Budget"
-msgstr ""
+msgstr "Budget"
 
-#: .\accounts\templates\accounts\base.html:141
-#: .\accounts\templates\accounts\dashboard.html:110
+#: .\accounts\templates\accounts\base.html:235
+#: .\accounts\templates\accounts\dashboard.html:234
 msgid "Gäster"
-msgstr ""
+msgstr "Gæster"
 
-#: .\accounts\templates\accounts\base.html:142
-#: .\accounts\templates\accounts\dashboard.html:153
-#: .\accounts\templates\accounts\kop.html:147
+#: .\accounts\templates\accounts\base.html:238
+#: .\accounts\templates\accounts\dashboard.html:277
+#: .\accounts\templates\accounts\kop.html:291
+#: .\accounts\templates\accounts\landing.html:419
 #: .\planner\templates\planner\leverantorer.html:5
 msgid "Leverantörer"
-msgstr ""
+msgstr "Leverandører"
 
-#: .\accounts\templates\accounts\base.html:143
-#: .\accounts\templates\accounts\dashboard.html:192
-#: .\accounts\templates\accounts\kop.html:145
+#: .\accounts\templates\accounts\base.html:241
+#: .\accounts\templates\accounts\dashboard.html:316
+#: .\accounts\templates\accounts\kop.html:289
+#: .\accounts\templates\accounts\landing.html:405
+#: .\planner\templates\planner\partner_kund_detail.html:36
 #: .\planner\templates\planner\tidslinje.html:5
 msgid "Tidslinje"
-msgstr ""
+msgstr "Tidslinje"
 
-#: .\accounts\templates\accounts\base.html:144
-#: .\accounts\templates\accounts\dashboard.html:225
-#: .\accounts\templates\accounts\kop.html:146
+#: .\accounts\templates\accounts\base.html:244
+#: .\accounts\templates\accounts\dashboard.html:349
+#: .\accounts\templates\accounts\kop.html:290
+#: .\accounts\templates\accounts\landing.html:412
+#: .\planner\templates\planner\partner_kund_detail.html:39
 msgid "Galleri"
-msgstr ""
+msgstr "Galleri"
 
-#: .\accounts\templates\accounts\base.html:145
+#: .\accounts\templates\accounts\base.html:250
+msgid "Partner"
+msgstr "Partner"
+
+#: .\accounts\templates\accounts\base.html:269
 msgid "Hej"
-msgstr ""
+msgstr "Hej"
 
-#: .\accounts\templates\accounts\base.html:148
+#: .\accounts\templates\accounts\base.html:272
 msgid "Logga ut"
-msgstr ""
+msgstr "Log ud"
 
-#: .\accounts\templates\accounts\base.html:151
-#: .\accounts\templates\accounts\kop.html:108
-#: .\accounts\templates\accounts\landing.html:243
-#: .\accounts\templates\accounts\login.html:101
+#: .\accounts\templates\accounts\base.html:287
+#: .\accounts\templates\accounts\kop.html:234
+#: .\accounts\templates\accounts\landing.html:325
+#: .\accounts\templates\accounts\login.html:124
+#: .\accounts\templates\accounts\login_embed.html:8
+#: .\accounts\templates\accounts\login_embed.html:98
+#: .\accounts\templates\accounts\login_embed.html:119
 msgid "Logga in"
-msgstr ""
-
-#: .\accounts\templates\accounts\dashboard.html:5
-msgid "Välkommen"
-msgstr ""
-
-#: .\accounts\templates\accounts\dashboard.html:6
-msgid "Här är en överblick över er bröllopsplanering."
-msgstr ""
-
-#: .\accounts\templates\accounts\dashboard.html:46
-msgid "uppgifter kvar"
-msgstr ""
-
-#: .\accounts\templates\accounts\dashboard.html:51
-msgid "Inga punkter ännu."
-msgstr ""
-
-#: .\accounts\templates\accounts\dashboard.html:53
-msgid "Gå till checklistan"
-msgstr ""
-
-#: .\accounts\templates\accounts\dashboard.html:85
-msgid "Budget:"
-msgstr ""
-
-#: .\accounts\templates\accounts\dashboard.html:89
-msgid "Spenderat:"
-msgstr ""
-
-#: .\accounts\templates\accounts\dashboard.html:93
-msgid "Kvar:"
-msgstr ""
-
-#: .\accounts\templates\accounts\dashboard.html:99
-#: .\planner\templates\planner\budget.html:86
-msgid "Inga budgetposter ännu."
-msgstr ""
-
-#: .\accounts\templates\accounts\dashboard.html:101
-msgid "Gå till budget"
-msgstr ""
+msgstr "Log ind"
 
 #: .\accounts\templates\accounts\dashboard.html:129
+msgid "Välkommen"
+msgstr "Velkommen"
+
+#: .\accounts\templates\accounts\dashboard.html:130
+msgid "Här är en överblick över er bröllopsplanering."
+msgstr "Her er en oversigt over jeres bryllupsplanlægning."
+
+#: .\accounts\templates\accounts\dashboard.html:170
+msgid "uppgifter kvar"
+msgstr "opgaver tilbage"
+
+#: .\accounts\templates\accounts\dashboard.html:175
+msgid "Inga punkter ännu."
+msgstr "Ingen point endnu."
+
+#: .\accounts\templates\accounts\dashboard.html:177
+msgid "Gå till checklistan"
+msgstr "Gå til tjeklisten"
+
+#: .\accounts\templates\accounts\dashboard.html:209
+msgid "Budget:"
+msgstr "Budget:"
+
+#: .\accounts\templates\accounts\dashboard.html:213
+msgid "Spenderat:"
+msgstr "Brugt:"
+
+#: .\accounts\templates\accounts\dashboard.html:217
+msgid "Kvar:"
+msgstr "Hvor:"
+
+#: .\accounts\templates\accounts\dashboard.html:223
+#: .\planner\templates\planner\budget.html:122
+msgid "Inga budgetposter ännu."
+msgstr "Ingen budgetposter endnu."
+
+#: .\accounts\templates\accounts\dashboard.html:225
+msgid "Gå till budget"
+msgstr "Gå til budget"
+
+#: .\accounts\templates\accounts\dashboard.html:253
 msgid "Kommer:"
-msgstr ""
+msgstr "Kommer:"
 
-#: .\accounts\templates\accounts\dashboard.html:133
+#: .\accounts\templates\accounts\dashboard.html:257
 msgid "Inväntar:"
-msgstr ""
+msgstr "Afventer:"
 
-#: .\accounts\templates\accounts\dashboard.html:137
+#: .\accounts\templates\accounts\dashboard.html:261
 msgid "Nej:"
-msgstr ""
+msgstr "Nej:"
 
-#: .\accounts\templates\accounts\dashboard.html:142
-#: .\planner\templates\planner\gastlista.html:103
+#: .\accounts\templates\accounts\dashboard.html:266
+#: .\planner\templates\planner\gastlista.html:137
 msgid "Inga gäster ännu."
-msgstr ""
+msgstr "Ingen gæster endnu."
 
-#: .\accounts\templates\accounts\dashboard.html:144
+#: .\accounts\templates\accounts\dashboard.html:268
 msgid "Gå till gästlistan"
-msgstr ""
+msgstr "Gå til gæstelisten"
 
-#: .\accounts\templates\accounts\dashboard.html:172
+#: .\accounts\templates\accounts\dashboard.html:296
 msgid "Bokade:"
-msgstr ""
+msgstr "Bookede:"
 
-#: .\accounts\templates\accounts\dashboard.html:176
+#: .\accounts\templates\accounts\dashboard.html:300
 msgid "Ej bokade:"
-msgstr ""
+msgstr "Ikke booket:"
 
-#: .\accounts\templates\accounts\dashboard.html:181
+#: .\accounts\templates\accounts\dashboard.html:305
+#: .\planner\templates\planner\leverantorer.html:102
 msgid "Inga leverantörer ännu."
-msgstr ""
+msgstr "Ingen leverandører endnu."
 
-#: .\accounts\templates\accounts\dashboard.html:183
+#: .\accounts\templates\accounts\dashboard.html:307
 msgid "Gå till leverantörer"
-msgstr ""
+msgstr "Gå til leverandører"
 
-#: .\accounts\templates\accounts\dashboard.html:214
+#: .\accounts\templates\accounts\dashboard.html:338
+#: .\planner\templates\planner\partner_kund_detail.html:91
 msgid "Inga händelser ännu."
-msgstr ""
+msgstr "Ingen begivenheder endnu."
 
-#: .\accounts\templates\accounts\dashboard.html:216
+#: .\accounts\templates\accounts\dashboard.html:340
 msgid "Gå till tidslinjen"
-msgstr ""
+msgstr "Gå til tidslinjen"
 
-#: .\accounts\templates\accounts\dashboard.html:234
+#: .\accounts\templates\accounts\dashboard.html:358
 msgid "bilder totalt"
-msgstr ""
+msgstr "billeder i alt"
 
-#: .\accounts\templates\accounts\dashboard.html:236
+#: .\accounts\templates\accounts\dashboard.html:360
+#: .\planner\templates\planner\partner_kund_detail.html:136
 msgid "Inga bilder ännu."
-msgstr ""
+msgstr "Ingen billeder endnu."
 
-#: .\accounts\templates\accounts\dashboard.html:238
+#: .\accounts\templates\accounts\dashboard.html:362
 msgid "Gå till galleriet"
-msgstr ""
+msgstr "Gå til galleriet"
 
-#: .\accounts\templates\accounts\kop.html:8
+#: .\accounts\templates\accounts\kop.html:20
 msgid "Bröllopsplaneraren – Planera ert drömbröllop"
-msgstr ""
+msgstr "Bryllupsplanlæggeren – Planlæg jeres drømmebryllup"
 
-#: .\accounts\templates\accounts\kop.html:114
+#: .\accounts\templates\accounts\kop.html:241
 msgid "Planera ert drömbröllop – allt på ett ställe"
-msgstr ""
+msgstr "Planlæg jeres drømmebryllup – alt på ét sted"
 
-#: .\accounts\templates\accounts\kop.html:115
+#: .\accounts\templates\accounts\kop.html:242
 msgid ""
 "Checklista, budget, gästlista, tidslinje och galleri. Allt samlat i en "
 "vacker, lättanvänd planner."
 msgstr ""
+"Tjekliste, budget, gæsteliste, tidslinje og galleri. Alt samlet i en smuk, "
+"let at bruge planner."
 
-#: .\accounts\templates\accounts\kop.html:116
-msgid "Köp nu – 449 kr →"
-msgstr ""
+#: .\accounts\templates\accounts\kop.html:243
+msgid "Köp nu – 49 € →"
+msgstr "Køb nu – 49 € →"
 
-#: .\accounts\templates\accounts\kop.html:117
+#: .\accounts\templates\accounts\kop.html:244
 msgid "Direkt tillgång efter köp. Fungerar på mobil, platta och dator."
-msgstr ""
+msgstr "Direkte adgang efter køb. Fungerer på mobil, tablet og computer."
 
-#: .\accounts\templates\accounts\kop.html:130
+#: .\accounts\templates\accounts\kop.html:257
 msgid "Allt samlat. Alltid tillgängligt."
-msgstr ""
+msgstr "Alt samlet. Altid tilgængeligt."
 
-#: .\accounts\templates\accounts\kop.html:131
+#: .\accounts\templates\accounts\kop.html:258
 msgid ""
-"Från första checklistan till sista dansen. Er bröllopsplanerare finns där ni "
-"är – i mobilen, plattan eller datorn."
+"Från första checklistan till sista dansen. Er bröllopsplanerare finns där ni"
+" är – i mobilen, plattan eller datorn."
 msgstr ""
+"Fra den første tjekliste til den sidste dans. Jeres bryllupsplanlægger er "
+"der, hvor I er – på mobilen, tablet eller computer."
 
-#: .\accounts\templates\accounts\kop.html:140
+#: .\accounts\templates\accounts\kop.html:284
 msgid "Allt ni behöver – samlat"
-msgstr ""
+msgstr "Alt hvad I har brug for – samlet"
 
-#: .\accounts\templates\accounts\kop.html:142
+#: .\accounts\templates\accounts\kop.html:286
 msgid "Steg-för-steg från 12 månader innan till bröllopsdagen."
-msgstr ""
+msgstr "Trin for trin fra 12 måneder før til bryllupsdagen."
 
-#: .\accounts\templates\accounts\kop.html:143
+#: .\accounts\templates\accounts\kop.html:287
 msgid "Håll koll på kostnaderna med ett enkelt cirkeldiagram."
-msgstr ""
+msgstr "Hold styr på omkostningerne med et enkelt cirkeldiagram."
 
-#: .\accounts\templates\accounts\kop.html:144
+#: .\accounts\templates\accounts\kop.html:288
 #: .\planner\templates\planner\gastlista.html:5
 msgid "Gästlista"
-msgstr ""
+msgstr "Gæsteliste"
 
-#: .\accounts\templates\accounts\kop.html:144
+#: .\accounts\templates\accounts\kop.html:288
 msgid "Bjud in, följ upp RSVP och planera bordsplacering."
-msgstr ""
+msgstr "Inviter, følg op på RSVP og planlæg bordplacering."
 
-#: .\accounts\templates\accounts\kop.html:145
+#: .\accounts\templates\accounts\kop.html:289
 msgid "Planera bröllopsdagen minut för minut."
-msgstr ""
+msgstr "Planlæg bryllupsdagen minut for minut."
 
-#: .\accounts\templates\accounts\kop.html:146
+#: .\accounts\templates\accounts\kop.html:290
 msgid "Samla inspiration från Pinterest och Instagram."
-msgstr ""
+msgstr "Samle inspiration fra Pinterest og Instagram."
 
-#: .\accounts\templates\accounts\kop.html:147
+#: .\accounts\templates\accounts\kop.html:291
 msgid "Samla alla kontakter och jämför priser."
-msgstr ""
+msgstr "Saml alle kontakter og sammenlign priser."
 
-#: .\accounts\templates\accounts\kop.html:155
-msgid "Engångsköp – ingen prenumeration"
-msgstr ""
+#: .\accounts\templates\accounts\kop.html:299
+msgid "Se hur det ser ut"
+msgstr "Se hvordan det ser ud"
 
-#: .\accounts\templates\accounts\kop.html:157
-msgid "Engångspris"
-msgstr ""
+#: .\accounts\templates\accounts\kop.html:300
+msgid "Allt är designat för att vara enkelt och vackert."
+msgstr "Alt er designet til at være enkelt og smukt."
 
-#: .\accounts\templates\accounts\kop.html:159
+#: .\accounts\templates\accounts\kop.html:404
+msgid "Engångsköp, giltig i 24 månader"
+msgstr "Engangskøb, gyldigt i 24 måneder"
+
+#: .\accounts\templates\accounts\kop.html:406
+msgid "Engångspris (giltig i 24 mån)"
+msgstr "Engangspris (gyldig i 24 mdr)"
+
+#: .\accounts\templates\accounts\kop.html:408
 msgid "Direkt tillgång. Alla funktioner. Inga dolda avgifter."
-msgstr ""
+msgstr "Direkte adgang. Alle funktioner. Ingen skjulte gebyrer."
 
-#: .\accounts\templates\accounts\kop.html:160
-msgid "Köp på Etsy →"
-msgstr ""
+#: .\accounts\templates\accounts\kop.html:409
+msgid "Köp här →"
+msgstr "Køb her →"
 
-#: .\accounts\templates\accounts\kop.html:168
+#: .\accounts\templates\accounts\kop.html:417
+msgid "Also available on"
+msgstr "Også tilgængelig på"
+
+#: .\accounts\templates\accounts\kop.html:427
 msgid "Är du fotograf? Bli partner här →"
-msgstr ""
+msgstr "Er du fotograf? Bliv partner her →"
 
-#: .\accounts\templates\accounts\landing.html:8
+#: .\accounts\templates\accounts\landing.html:19
 msgid "Bröllopsplaneraren – Ge varje par sin egen planner"
+msgstr "Bryllupsplanlæggeren – Giv hvert par deres egen planner"
+
+#: .\accounts\templates\accounts\landing.html:332
+msgid "Ge varje brudpar sin egen bröllopsplanner – med din logga."
+msgstr "Giv hvert brudepar deres egen bryllupsplanner – med din logo."
+
+#: .\accounts\templates\accounts\landing.html:333
+#, python-format
+msgid ""
+"Dina kunder planerar sitt bröllop varje dag. Se till att de gör det med dig "
+"– inte på Google Sheets eller någon annans app. Du får en helt anpassad "
+"planner, en unik länk att dela, och 30%% provision på varje köp. Utan "
+"startkostnad."
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:8
+#: .\accounts\templates\accounts\landing.html:334
+msgid "Ansök om partnerskap, kostnadsfritt →"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:344
+msgid "Intag varje kvartal. Ingen bindningstid. Inga avgifter, någonsin."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:356
+msgid "Din planner.<br>Deras drömbröllop."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:357
+msgid ""
+"Varje detalj planeras med din logga synlig. Från första checklistan till "
+"sista dansen. Dina par loggar in, ser din branding, och planerar hela sitt "
+"bröllop i ett verktyg som känns som du."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:358
+msgid "Du är inte längre bara fotografen. Du är navet i deras planering."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:359
+msgid "Ansök om partnerskap →"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:368
+msgid "Vad fotografer säger"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:370
+msgid ""
+"Jag ser så fram emot att erbjuda mina kunder och följare plannern – Känns "
+"som om att dem verkligen kommer uppskatta det, samtidigt som jag kommer "
+"kunna lägga in vårt schema för foto i deras tidslinje direkt!"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:371
+msgid "— Emma, Bröllopsfotograf, Stockholm"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:379
+msgid "Allt dina par behöver. Med din logga på varje sida."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:385
+msgid ""
+"Steg-för-steg genom hela planeringen. Dina par missar inget. Du slipper "
+"påminnelsemejl."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:392
+msgid ""
+"De håller koll på kostnaderna. När de ser vad som ryms, bokar de dig "
+"snabbare."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:398
+msgid "Gästlista & RSVP"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:399
+msgid ""
+"Alla gäster samlade. Bordsplacering med överblick. Noll administration för "
+"dig."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:406
+msgid ""
+"Bröllopsdagen minut för minut. Du vet exakt när fotograferingen sker – "
+"planerad i appen."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:413
+msgid ""
+"De samlar inspiration från Pinterest och Instagram. Din logga syns medan de "
+"drömmer."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:420
+msgid ""
+"Du lägger in dina egna rekommendationer. Din florist, din makeup-artist – "
+"alla syns."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:430
+msgid ""
+"Efter förlovningsbilderna försvinner de. Här är hur du får dem att stanna."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:431
+msgid ""
+"Lisa och Johan bokade dig för sina förlovningsbilder. Bilderna blev "
+"fantastiska. De taggade dig överallt. Några veckor senare började de planera"
+" sitt bröllop. I ett Google Sheets. På The Knot. I någon annans app."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:432
+msgid ""
+"Din logga? Begravd i en gammal mejltråd. Din relation? Vilande tills det är "
+"dags för bröllopsfotograferingen."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:433
+msgid ""
+"Föreställ dig nu det här istället: Du ger dem en personlig bröllopsplanner –"
+" med din logga. Varje gång de checkar av en punkt, lägger till en gäst eller"
+" justerar budgeten, ser de dig. Du är inte längre bara fotografen. Du är "
+"navet i deras planering."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:434
+msgid ""
+"När bröllopsdagen kommer är du inte en leverantör. Du är en självklar del av"
+" deras historia."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:441
+msgid "Så enkelt är det"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:445
+msgid "Ansök"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:446
+msgid ""
+"Fyll i formuläret. Vi hörs inom 24 timmar för ett kort samtal där vi går "
+"igenom dina önskemål."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:450
+msgid "Vi bygger"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:451
+msgid ""
+"Vi anpassar din planner med din logga, dina färger och dina "
+"leverantörsrekommendationer. Live inom 48 timmar."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:455
+msgid "Dela och tjäna"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:456
+#, python-format
+msgid ""
+"Du får en unik länk. Dela den med dina par. När de köper får du 30%% "
+"provision – varje gång."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:465
+msgid "Inga startavgifter. Ingen risk. Bara resultat."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:466
+#, python-format
+msgid ""
+"Vi tar inte en krona för att sätta upp din planner. Vi tjänar pengar först "
+"när du gör det: 30%% provision på varje köp via din unika länk."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:468
+msgid "Exempel:"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:468
+msgid ""
+"En planner kostar 999 kr. När ett av dina par köper får du 300 kr. Delar du "
+"den med 20 par och 10 köper → 3 000 kr passivt."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:469
+msgid ""
+"Din länk fungerar även om paret köper senare. Vi sparar en cookie i 30 "
+"dagar."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:477
+msgid "Byggt för bröllopsfotografer och kreativa studior"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:478
+msgid ""
+"Det här är inte för alla. Det är för dig som redan har bokat drömkunderna. "
+"Som vill ge dem något extra – utan att lägga mer tid på administration. Som "
+"förstår att en stark relation före bröllopet leder till bättre bilder, "
+"nöjdare kunder och fler rekommendationer efteråt."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:479
+msgid ""
+"Du behöver inte vara teknisk. Du behöver inte bygga något själv. Du behöver "
+"bara vilja ge dina par den bästa planeringsupplevelsen – med ditt varumärke "
+"i centrum."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:486
+msgid "Frågor och svar"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:487
+msgid "Måste jag sälja eller pusha appen?"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:487
+msgid ""
+"Nej. Du delar bara din länk som en naturlig del av ditt kunderbjudande. Det "
+"känns inte som försäljning – det känns som service."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:488
+msgid "Hur ser mina kunder min branding?"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:488
+msgid ""
+"De möts av din logga, dina färger och dina personliga rekommendationer. Du "
+"kan även lägga in en personlig välkomsthälsning."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:489
+msgid "Vad händer om jag slutar använda tjänsten?"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:489
+msgid ""
+"Ingenting. Du har ingen bindningstid. Dina redan köpta kunder behåller sin "
+"planner."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:490
+msgid "Hur får jag min provision utbetald?"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:490
+msgid ""
+"Månadsvis, direkt till ditt konto. Du ser alla dina köp och klick i en enkel"
+" dashboard."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:497
+msgid "Redo att ge dina par deras egen bröllopsplanner?"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:498
+msgid ""
+"Vi öppnar endast 10 nya partnerskap detta kvartal. Ansök kostnadsfritt – tar"
+" 2 minuter."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:504
+msgid "Ansök om partnerskap nu →"
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:506
+msgid "Vi hörs inom 24 timmar. Ingen förpliktelse. Ingen startkostnad."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:512
+msgid "© 2026 Bröllopsplaneraren – Vi tjänar bara när ni tjänar."
+msgstr ""
+
+#: .\accounts\templates\accounts\landing.html:513
+msgid "Är du brudpar? Köp från någon av våra partners →"
+msgstr ""
+
+#: .\accounts\templates\accounts\login.html:18
 msgid "Logga in – Bröllopsplaneraren"
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:85
+#: .\accounts\templates\accounts\login.html:108
+#: .\accounts\templates\accounts\login_embed.html:101
+#: .\planner\templates\planner\partner_dashboard.html:6
 msgid "Välkommen tillbaka"
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:86
+#: .\accounts\templates\accounts\login.html:109
+#: .\accounts\templates\accounts\login_embed.html:102
 msgid "Logga in för att fortsätta planeringen"
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:91
-#: .\accounts\templates\accounts\register.html:97
+#: .\accounts\templates\accounts\login.html:114
+#: .\accounts\templates\accounts\login_embed.html:109
+#: .\accounts\templates\accounts\register.html:107
 msgid "Användarnamn"
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:92
+#: .\accounts\templates\accounts\login.html:115
+#: .\accounts\templates\accounts\login_embed.html:110
 msgid "Ditt användarnamn"
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:95
-#: .\accounts\templates\accounts\register.html:114
+#: .\accounts\templates\accounts\login.html:118
+#: .\accounts\templates\accounts\login_embed.html:113
+#: .\accounts\templates\accounts\register.html:124
 msgid "Lösenord"
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:96
+#: .\accounts\templates\accounts\login.html:119
+#: .\accounts\templates\accounts\login_embed.html:114
 msgid "Ditt lösenord"
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:99
+#: .\accounts\templates\accounts\login.html:122
+#: .\accounts\templates\accounts\login_embed.html:117
 msgid "Fel användarnamn eller lösenord."
 msgstr ""
 
-#: .\accounts\templates\accounts\register.html:8
+#: .\accounts\templates\accounts\register.html:18
 msgid "Skapa konto – Bröllopsplaneraren"
 msgstr ""
 
-#: .\accounts\templates\accounts\register.html:90
-#: .\accounts\templates\accounts\register.html:133
+#: .\accounts\templates\accounts\register.html:100
+#: .\accounts\templates\accounts\register.html:143
 msgid "Skapa konto"
 msgstr ""
 
-#: .\accounts\templates\accounts\register.html:91
+#: .\accounts\templates\accounts\register.html:101
 msgid "Börja planera ert drömbröllop"
 msgstr ""
 
-#: .\accounts\templates\accounts\register.html:102
+#: .\accounts\templates\accounts\register.html:112
+#: .\planner\templates\planner\partner_kunder.html:12
 msgid "E-post"
 msgstr ""
 
-#: .\accounts\templates\accounts\register.html:108
+#: .\accounts\templates\accounts\register.html:118
 msgid "Etsy Order ID"
 msgstr ""
 
-#: .\accounts\templates\accounts\register.html:110
+#: .\accounts\templates\accounts\register.html:120
 msgid "Du hittar ditt Order ID i ditt Etsy-kvitto."
 msgstr ""
 
-#: .\accounts\templates\accounts\register.html:119
+#: .\accounts\templates\accounts\register.html:129
 msgid "Bekräfta lösenord"
 msgstr ""
 
-#: .\accounts\templates\accounts\register.html:137
+#: .\accounts\templates\accounts\register.html:147
 msgid "Har du redan konto?"
 msgstr ""
 
-#: .\accounts\templates\accounts\register.html:137
+#: .\accounts\templates\accounts\register.html:147
 msgid "Logga in här"
-msgstr ""
-
-#: .\core\settings.py:140
-msgid "Swedish"
-msgstr ""
-
-#: .\core\settings.py:141
-msgid "English"
-msgstr ""
-
-#: .\core\settings.py:142
-msgid "Norwegian"
-msgstr ""
-
-#: .\core\settings.py:143
-msgid "Danish"
 msgstr ""
 
 #: .\planner\templates\planner\budget.html:6
@@ -420,8 +729,8 @@ msgstr ""
 
 #: .\planner\templates\planner\galleri.html:6
 msgid ""
-"Samla er inspiration – klistra in bildlänkar från Pinterest, Instagram eller "
-"andra sajter."
+"Samla er inspiration – klistra in bildlänkar från Pinterest, Instagram eller"
+" andra sajter."
 msgstr ""
 
 #: .\planner\templates\planner\galleri.html:11
@@ -429,6 +738,7 @@ msgid "Bildlänk (URL) *"
 msgstr ""
 
 #: .\planner\templates\planner\galleri.html:14
+#: .\planner\templates\planner\partner_kund_detail.html:107
 msgid "Titel"
 msgstr ""
 
@@ -436,20 +746,19 @@ msgstr ""
 #: .\planner\templates\planner\gastlista.html:57
 #: .\planner\templates\planner\gastlista.html:72
 #: .\planner\templates\planner\leverantorer.html:29
+#: .\planner\templates\planner\partner_kund_detail.html:63
+#: .\planner\templates\planner\partner_kund_detail.html:77
+#: .\planner\templates\planner\partner_kund_detail.html:117
 #: .\planner\templates\planner\tidslinje.html:23
 #: .\planner\templates\planner\tidslinje.html:39
 msgid "Notering"
 msgstr ""
 
-#: .\planner\templates\planner\galleri.html:40
-msgid "Ta bort"
-msgstr ""
-
-#: .\planner\templates\planner\galleri.html:46
+#: .\planner\templates\planner\galleri.html:83
 msgid "Inga bilder ännu. Klistra in en bildlänk ovan!"
 msgstr ""
 
-#: .\planner\templates\planner\galleri.html:47
+#: .\planner\templates\planner\galleri.html:84
 msgid "Tips: Högerklicka på en bild på Pinterest → Kopiera bildadress"
 msgstr ""
 
@@ -512,50 +821,151 @@ msgstr ""
 msgid "Pris (kr)"
 msgstr ""
 
-#: .\planner\templates\planner\leverantorer.html:57
+#: .\planner\templates\planner\leverantorer.html:82
 msgid "Bokat ✓"
 msgstr ""
 
-#: .\planner\templates\planner\leverantorer.html:62
+#: .\planner\templates\planner\leverantorer.html:90
 msgid "Avboka"
 msgstr ""
 
-#: .\planner\templates\planner\leverantorer.html:62
+#: .\planner\templates\planner\leverantorer.html:90
 msgid "Boka"
+msgstr ""
+
+#: .\planner\templates\planner\partner_base.html:8
+msgid "Partner Dashboard"
+msgstr ""
+
+#: .\planner\templates\planner\partner_dashboard.html:5
+msgid "Översikt"
+msgstr ""
+
+#: .\planner\templates\planner\partner_dashboard.html:12
+msgid "Totalt antal kunder"
+msgstr ""
+
+#: .\planner\templates\planner\partner_dashboard.html:18
+msgid "Kommande bröllop"
+msgstr ""
+
+#: .\planner\templates\planner\partner_dashboard.html:23
+msgid "Kommande vigslar"
+msgstr ""
+
+#: .\planner\templates\planner\partner_dashboard.html:36
+msgid "Inga kommande vigslar ännu."
+msgstr ""
+
+#: .\planner\templates\planner\partner_dashboard.html:39
+msgid "Senaste kunder"
+msgstr ""
+
+#: .\planner\templates\planner\partner_dashboard.html:43
+#: .\planner\templates\planner\partner_kunder.html:11
+msgid "Kund"
+msgstr ""
+
+#: .\planner\templates\planner\partner_dashboard.html:44
+#: .\planner\templates\planner\partner_kund_detail.html:7
+#: .\planner\templates\planner\partner_kunder.html:13
+msgid "Registrerad"
+msgstr ""
+
+#: .\planner\templates\planner\partner_dashboard.html:54
+msgid "Visa"
+msgstr ""
+
+#: .\planner\templates\planner\partner_dashboard.html:58
+#: .\planner\templates\planner\partner_kunder.html:31
+msgid "Inga kunder ännu."
+msgstr ""
+
+#: .\planner\templates\planner\partner_dashboard.html:63
+msgid "Se alla kunder"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kund_detail.html:9
+msgid "Utgång"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kund_detail.html:47
+msgid "Lägg till händelse"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kund_detail.html:54
+#: .\planner\templates\planner\tidslinje.html:14
+msgid "Aktivitet *"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kund_detail.html:57
+#: .\planner\templates\planner\partner_kund_detail.html:75
+#: .\planner\templates\planner\tidslinje.html:17
+#: .\planner\templates\planner\tidslinje.html:37
+msgid "Plats"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kund_detail.html:60
+#: .\planner\templates\planner\partner_kund_detail.html:76
+#: .\planner\templates\planner\tidslinje.html:20
+#: .\planner\templates\planner\tidslinje.html:38
+msgid "Ansvarig"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kund_detail.html:73
+#: .\planner\templates\planner\tidslinje.html:35
+msgid "Tid"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kund_detail.html:74
+#: .\planner\templates\planner\tidslinje.html:36
+msgid "Aktivitet"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kund_detail.html:100
+msgid "Lägg till bild"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kund_detail.html:104
+msgid "Bild-URL *"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kund_detail.html:142
+#: .\planner\templates\planner\partner_kunder.html:37
+msgid "Tillbaka"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kunder.html:5
+msgid "Mina kunder"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kunder.html:6
+msgid "Alla brudpar kopplade till"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kunder.html:14
+msgid "Utgångsdatum"
+msgstr ""
+
+#: .\planner\templates\planner\partner_kunder.html:26
+msgid "Visa planering"
 msgstr ""
 
 #: .\planner\templates\planner\tidslinje.html:6
 msgid "Planera bröllopsdagen – från morgon till natt."
 msgstr ""
 
-#: .\planner\templates\planner\tidslinje.html:14
-msgid "Aktivitet *"
-msgstr ""
-
-#: .\planner\templates\planner\tidslinje.html:17
-#: .\planner\templates\planner\tidslinje.html:37
-msgid "Plats"
-msgstr ""
-
-#: .\planner\templates\planner\tidslinje.html:20
-#: .\planner\templates\planner\tidslinje.html:38
-msgid "Ansvarig"
-msgstr ""
-
-#: .\planner\templates\planner\tidslinje.html:35
-msgid "Tid"
-msgstr ""
-
-#: .\planner\templates\planner\tidslinje.html:36
-msgid "Aktivitet"
-msgstr ""
-
-#: .\planner\templates\planner\tidslinje.html:61
+#: .\planner\templates\planner\tidslinje.html:89
 msgid "Inga händelser ännu. Börja med att lägga till vigseln!"
 msgstr ""
 
-#: .\planner\templates\planner\tidslinje.html:62
+#: .\planner\templates\planner\tidslinje.html:90
 msgid "Tips: 14:00 – Vigsel, 15:30 – Mingel, 18:00 – Middag, 22:00 – Dans"
+msgstr ""
+
+#: .\venv\Lib\site-packages\cloudinary\forms.py:55
+#: .\venv\Lib\site-packages\cloudinary\forms.py:124
+msgid "No file selected!"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
@@ -621,8 +1031,8 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:297
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
+" hyphens."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:309
@@ -841,8 +1251,8 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1569
 #, python-format
 msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
+"“%(value)s” value has the correct format (YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1574
@@ -1072,7 +1482,8 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\fields.py:642
 #, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid ""
+"Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
@@ -1179,7 +1590,8 @@ msgid "The inline value did not match the parent instance."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1474
-msgid "Select a valid choice. That choice is not one of the available choices."
+msgid ""
+"Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1623
@@ -1659,10 +2071,10 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\csrf.py:45
 msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a "
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or"
+" including the “Referrer-Policy: no-referrer” header, please remove them. "
+"The CSRF protection requires the “Referer” header to do strict referer "
+"checking. If you’re concerned about privacy, use alternatives like <a "
 "rel=\"noreferrer\" …> for links to third-party sites."
 msgstr ""
 
@@ -1773,10 +2185,10 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:208
 #, python-format
 msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" "
-"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
-"configured any URLs."
+"You are seeing this page because <a "
+"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
+"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> is in your settings file "
+"and you have not configured any URLs."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:217
