@@ -477,20 +477,22 @@ def brollop_detail(request, brollop_id):
 from .forms import PhotographerStep1Form, PhotographerStep2Form  # <-- Ändra importen!
 
 def register_photographer(request):
-
-        # Kolla om Whop precis har kopplats
+    # Kolla om Whop precis har kopplats (från OAuth callback)
     if request.GET.get('whop_ok') == '1':
         photographer_id = request.session.get('temp_photographer_id')
         if photographer_id:
             try:
                 photographer = Photographer.objects.get(id=photographer_id)
                 if photographer.whop_affiliate_id:
+                    # Gå direkt till klart!
                     return render(request, 'planner/register_photographer_base.html', {
                         'step_content': 'planner/registration_complete.html',
                         'photographer': photographer
                     })
             except Photographer.DoesNotExist:
                 pass
+        # Om något gick fel, börja om
+        return redirect('register_photographer')
 
     # --- STEG 1 ---
     if request.method == 'POST' and 'step1_submit' in request.POST:
