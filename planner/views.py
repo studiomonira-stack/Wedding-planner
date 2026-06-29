@@ -958,7 +958,7 @@ def whop_connect(request):
     client_id = settings.WHOP_CLIENT_ID
     redirect_uri = settings.WHOP_REDIRECT_URI
     whop_url = f"https://whop.com/oauth?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
-
+    return redirect(whop_url)
 
 def whop_callback(request):
     """Ta emot callback från Whop och hämta affiliate-ID"""
