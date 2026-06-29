@@ -478,15 +478,13 @@ from .forms import PhotographerStep1Form, PhotographerStep2Form  # <-- Ändra im
 
 def register_photographer(request):
 
-    # Kolla om Whop precis har kopplats (från OAuth callback)
-    if request.session.get('whop_connected'):
-        request.session.pop('whop_connected', None)
+        # Kolla om Whop precis har kopplats
+    if request.GET.get('whop_ok') == '1':
         photographer_id = request.session.get('temp_photographer_id')
         if photographer_id:
             try:
                 photographer = Photographer.objects.get(id=photographer_id)
                 if photographer.whop_affiliate_id:
-                    # Gå direkt till steg 4 (klart!)
                     return render(request, 'planner/register_photographer_base.html', {
                         'step_content': 'planner/registration_complete.html',
                         'photographer': photographer
@@ -1013,9 +1011,7 @@ def whop_callback(request):
                         pass
                 
                 # Efter callback, sätt en session-flagga
-                request.session['whop_connected'] = True
-                request.session.modified = True
-                return redirect('register_photographer')
+                return redirect(f'/register-partner/?whop_ok=1')
     
     except Exception as e:
         print(f"Whop OAuth error: {e}")
