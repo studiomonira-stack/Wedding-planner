@@ -981,6 +981,9 @@ def whop_callback(request):
             'redirect_uri': settings.WHOP_REDIRECT_URI,
             'grant_type': 'authorization_code',
         })
+
+        print(f"🔍 Whop user response status: {user_response.status_code}")
+        print(f"🔍 Whop user data: {user_response.text[:200]}")
         
         if response.status_code == 200:
             data = response.json()
@@ -1013,9 +1016,10 @@ def whop_callback(request):
                         pass
                 
                 # Efter callback, sätt en session-flagga
+                print("✅ Whop OAuth lyckades! Redirectar till /register-partner/?whop_ok=1")
                 return redirect(f'/register-partner/?whop_ok=1')
     
     except Exception as e:
         print(f"Whop OAuth error: {e}")
     
-    return redirect('register_photographer')
+    return redirect(f'/register-partner/?whop_ok=1')
