@@ -192,3 +192,7 @@ X_FRAME_OPTIONS = 'ALLOWALL'
 CSP_DEFAULT_SRC = "'self'"
 # Tillåt iframes från alla domäner (för demoändamål)
 CSP_FRAME_ANCESTORS = "'self' *"
+
+WHOP_CLIENT_ID = os.environ.get('WHOP_CLIENT_ID', 'CNpDCr7wEPuvh9NlOopPJbgBuRJh2OJaey16araXgx8')
+WHOP_CLIENT_SECRET = os.environ.get('WHOP_CLIENT_SECRET', '')
+WHOP_REDIRECT_URI = 'https://www.brollopsplanner.se/checklist/whop/callback/'

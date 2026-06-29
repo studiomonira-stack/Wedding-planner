@@ -38,11 +38,14 @@ urlpatterns = [
     path('fotograf/tidslinje/<int:kund_id>/ny/', views.fotograf_ny_handelse, name='fotograf_ny_handelse'),
     path('fotograf/tidslinje/<int:kund_id>/ta-bort/<int:handelse_id>/', views.fotograf_ta_bort_handelse, name='fotograf_ta_bort_handelse'),
     path('dashboard-embed/', views.dashboard_embed, name='dashboard_embed'),
+    path('whop/connect/', views.whop_connect, name='whop_connect'),
+    path('whop/callback/', views.whop_callback, name='whop_callback'),
+   
     # Partner/fotograf URLs
-path('partner/dashboard/', views.partner_dashboard, name='partner_dashboard'),
-path('partner/kunder/', views.partner_kunder, name='partner_kunder'),
-path('partner/kund/<int:kund_id>/', views.partner_kund_detail, name='partner_kund_detail'),
-path('partner/kund/<int:kund_id>/tidslinje/add/', views.partner_add_tidslinje, name='partner_add_tidslinje'),
-path('partner/kund/<int:kund_id>/galleri/add/', views.partner_add_galleri, name='partner_add_galleri'),
-path('partner/kund/<int:kund_id>/set-datum/', views.partner_set_brollopsdatum, name='partner_set_brollopsdatum'),
+    path('partner/dashboard/', views.partner_dashboard, name='partner_dashboard'),
+    path('partner/kunder/', views.partner_kunder, name='partner_kunder'),
+    path('partner/kund/<int:kund_id>/', views.partner_kund_detail, name='partner_kund_detail'),
+    path('partner/kund/<int:kund_id>/tidslinje/add/', views.partner_add_tidslinje, name='partner_add_tidslinje'),
+    path('partner/kund/<int:kund_id>/galleri/add/', views.partner_add_galleri, name='partner_add_galleri'),
+    path('partner/kund/<int:kund_id>/set-datum/', views.partner_set_brollopsdatum, name='partner_set_brollopsdatum'),
     ]
