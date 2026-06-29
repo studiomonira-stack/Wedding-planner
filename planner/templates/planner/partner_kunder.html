@@ -1,0 +1,39 @@
+{% extends 'planner/partner_base.html' %}
+{% load i18n %}
+{% block content %}
+
+<h1>{% trans "Mina kunder" %}</h1>
+<p class="text-muted">{% trans "Alla brudpar kopplade till" %} {{ fotograf.name }}</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{% trans "Kund" %}</th>
+            <th>{% trans "E-post" %}</th>
+            <th>{% trans "Registrerad" %}</th>
+            <th>{% trans "Utgångsdatum" %}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for k in kunder %}
+            <tr>
+                <td><strong>{{ k.user.username }}</strong></td>
+                <td>{{ k.user.email }}</td>
+                <td>{{ k.user.date_joined|date:"Y-m-d" }}</td>
+                <td>{{ k.utgangsdatum|date:"Y-m-d"|default:"-" }}</td>
+                <td>
+                    <a href="{% url 'partner_kund_detail' k.id %}" class="btn btn-sm btn-outline-primary">{% trans "Visa planering" %}</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5" class="text-center text-muted">✨ {% trans "Inga kunder ännu." %}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'partner_dashboard' %}" class="btn btn-outline-secondary">← {% trans "Tillbaka" %}</a>
+
+{% endblock %}

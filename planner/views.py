@@ -7,7 +7,7 @@ from .forms import PhotographerStep1Form, PhotographerStep2Form
 from .models import Photographer
 from django.core.mail import send_mail  # <-- Lägg till denna rad
 from django.contrib.auth.models import User
-
+from accounts.models import Profil
 
 @login_required
 def checklist(request):
@@ -561,8 +561,52 @@ def register_photographer(request):
         except Photographer.DoesNotExist:
             pass
 
-    # --- STEG 4: KLART! ---
+        # --- STEG 4: KLART! ---
     if photographer and photographer.whop_affiliate_id:
+        # Skapa användarkonto åt fotografen om det inte redan finns
+        if not photographer.user:
+            from django.contrib.auth.models import User
+            import secrets
+            
+            # Skapa användarnamn baserat på företagsnamnet
+            base_username = photographer.name.lower().replace(' ', '_')[:20]
+            username = base_username
+            counter = 1
+            while User.objects.filter(username=username).exists():
+                username = f"{base_username}{counter}"
+                counter += 1
+            
+            # Skapa lösenord
+            password = secrets.token_urlsafe(10)
+            
+            user = User.objects.create_user(
+                username=username,
+                email=photographer.whop_email or '',
+                password=password
+            )
+            photographer.user = user
+            photographer.is_active = True
+            photographer.save()
+            
+            # Skicka inloggningsuppgifter till fotografen
+            try:
+                send_mail(
+                    subject='🎉 Ditt partnerkonto är klart!',
+                    message=f'Hej {photographer.name}!\n\n'
+                            f'Ditt partnerkonto är nu aktivt.\n\n'
+                            f'Logga in på: https://www.brollopsplanner.se/login/\n'
+                            f'Användarnamn: {username}\n'
+                            f'Lösenord: {password}\n\n'
+                            f'Logga in och gå till "Partner" i menyn för att se dina kunder.\n\n'
+                            f'Välkommen!',
+                    from_email='hej@brollopsplanner.se',
+                    recipient_list=[photographer.whop_email],
+                    fail_silently=False,
+                )
+                print(f"📧 Inloggningsuppgifter skickade till {photographer.whop_email}")
+            except Exception as e:
+                print(f"❌ Kunde inte skicka mail: {e}")
+        
         return render(request, 'planner/register_photographer_base.html', {
             'step_content': 'planner/registration_complete.html',
             'photographer': photographer
@@ -687,3 +731,140 @@ def dashboard_embed(request):
         'antal_handelser': Tidslinje.objects.filter(user=request.user).count(),
         'galleri_antal': Galleri.objects.filter(user=request.user).count(),
     })
+
+    # ============================================
+# PARTNER / FOTOGRAF VIEWS
+# ============================================
+
+@login_required
+def partner_dashboard(request):
+    # Kolla att användaren är en fotograf
+    fotograf = Photographer.objects.filter(user=request.user, is_active=True).first()
+    if not fotograf:
+        return redirect('dashboard')
+    
+    # Hämta fotografens kunder
+    kunder = Profil.objects.filter(photographer=fotograf, roll='par')
+    antal_kunder = kunder.count()
+    
+    # Kommande vigslar (bröllop kopplade till kunderna)
+    from planner.models import Brollop
+    kommande_brollop = Brollop.objects.filter(
+        planerare__in=[k.user for k in kunder]
+    ).order_by('datum')[:5]
+    
+    return render(request, 'planner/partner_dashboard.html', {
+        'fotograf': fotograf,
+        'antal_kunder': antal_kunder,
+        'kunder': kunder.order_by('-user__date_joined')[:5],
+        'kommande_brollop': kommande_brollop,
+    })
+
+
+@login_required
+def partner_kunder(request):
+    fotograf = Photographer.objects.filter(user=request.user, is_active=True).first()
+    if not fotograf:
+        return redirect('dashboard')
+    
+    kunder = Profil.objects.filter(photographer=fotograf, roll='par').select_related('user')
+    
+    return render(request, 'planner/partner_kunder.html', {
+        'fotograf': fotograf,
+        'kunder': kunder,
+    })
+
+
+@login_required
+def partner_kund_detail(request, kund_id):
+    fotograf = Photographer.objects.filter(user=request.user, is_active=True).first()
+    if not fotograf:
+        return redirect('dashboard')
+    
+    kund = get_object_or_404(Profil, id=kund_id, photographer=fotograf)
+    
+    # Kundens tidslinje
+    tidslinje = Tidslinje.objects.filter(user=kund.user).order_by('tid')
+    
+    # Kundens galleri
+    galleri = Galleri.objects.filter(user=kund.user).order_by('-skapad')
+    kategorier = Galleri.KATEGORIER
+
+    from planner.models import Brollop
+    brollop = Brollop.objects.filter(planerare=kund.user).first()
+    
+    return render(request, 'planner/partner_kund_detail.html', {
+        'fotograf': fotograf,
+        'kund': kund,
+        'tidslinje': tidslinje,
+        'galleri': galleri,
+        'kategorier': kategorier,
+        'brollop': brollop,
+    })
+
+
+@login_required
+def partner_add_tidslinje(request, kund_id):
+    fotograf = Photographer.objects.filter(user=request.user, is_active=True).first()
+    if not fotograf:
+        return redirect('dashboard')
+    
+    kund = get_object_or_404(Profil, id=kund_id, photographer=fotograf)
+    
+    if request.method == 'POST':
+        Tidslinje.objects.create(
+            user=kund.user,
+            fotograf=request.user,
+            tid=request.POST.get('tid'),
+            aktivitet=request.POST.get('aktivitet'),
+            plats=request.POST.get('plats', ''),
+            ansvarig=request.POST.get('ansvarig', ''),
+            notering=request.POST.get('notering', ''),
+            ordning=request.POST.get('ordning', 0)
+        )
+    return redirect('partner_kund_detail', kund_id=kund.id)
+
+
+@login_required
+def partner_add_galleri(request, kund_id):
+    fotograf = Photographer.objects.filter(user=request.user, is_active=True).first()
+    if not fotograf:
+        return redirect('dashboard')
+    
+    kund = get_object_or_404(Profil, id=kund_id, photographer=fotograf)
+    
+    if request.method == 'POST':
+        Galleri.objects.create(
+            user=kund.user,
+            bild=request.POST.get('bild'),
+            titel=request.POST.get('titel', ''),
+            kategori=request.POST.get('kategori', 'ovrigt'),
+            notering=request.POST.get('notering', ''),
+        )
+    return redirect('partner_kund_detail', kund_id=kund.id)
+
+
+@login_required
+def partner_set_brollopsdatum(request, kund_id):
+    fotograf = Photographer.objects.filter(user=request.user, is_active=True).first()
+    if not fotograf:
+        return redirect('dashboard')
+    
+    kund = get_object_or_404(Profil, id=kund_id, photographer=fotograf)
+    
+    if request.method == 'POST':
+        from planner.models import Brollop
+        
+        # Hämta eller skapa bröllop
+        brollop, created = Brollop.objects.get_or_create(
+            planerare=kund.user,
+            defaults={'namn': request.POST.get('namn', '')}
+        )
+        
+        brollop.namn = request.POST.get('namn', brollop.namn)
+        datum_str = request.POST.get('datum', '')
+        if datum_str:
+            brollop.datum = datum_str
+        brollop.save()
+    
+    return redirect('partner_kund_detail', kund_id=kund.id)

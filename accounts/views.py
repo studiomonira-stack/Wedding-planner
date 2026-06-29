@@ -70,13 +70,25 @@ def register(request):
 
 @login_required
 def dashboard(request):
-    profil = Profil.objects.get(user=request.user)
+    # Om användaren är fotograf - skicka till partner dashboard
+    try:
+        fotograf = Photographer.objects.get(user=request.user, is_active=True)
+        return redirect('partner_dashboard')
+    except Photographer.DoesNotExist:
+        pass
+    
+    # Annars - vanlig dashboard för brudpar
+    try:
+        profil = Profil.objects.get(user=request.user)
+    except Profil.DoesNotExist:
+        utgang = date.today() + timedelta(days=730)
+        profil = Profil.objects.create(user=request.user, roll='par', utgangsdatum=utgang)
     
     # Kolla om kontot har gått ut
     if profil.utgangsdatum and profil.utgangsdatum < date.today():
         return render(request, 'accounts/utganget.html')
     
-    # --- Hämta all data (din befintliga kod) ---
+    # --- Hämta all data ---
     total_checklist = ChecklistItem.objects.filter(user=request.user).count()
     klara_checklist = ChecklistItem.objects.filter(user=request.user, klar=True).count()
     checklist_procent = int((klara_checklist / total_checklist * 100)) if total_checklist > 0 else 0
@@ -134,7 +146,6 @@ def dashboard(request):
         'galleri_antal': galleri_antal,
         'checklist_items': checklist_items,
         'checklist_remaining': checklist_remaining,
-
     })
     
 

@@ -1,0 +1,144 @@
+{% extends 'planner/partner_base.html' %}
+{% load i18n %}
+{% block content %}
+
+<h1>{{ kund.user.username }}</h1>
+<p class="text-muted">
+    {% trans "Registrerad" %}: {{ kund.user.date_joined|date:"Y-m-d" }}
+    {% if kund.utgangsdatum %}
+        | {% trans "Utgång" %}: {{ kund.utgangsdatum|date:"Y-m-d" }}
+    {% endif %}
+</p>
+
+<!-- Bröllopsdatum -->
+<div class="card p-3 mb-4">
+    <form method="post" action="{% url 'partner_set_brollopsdatum' kund.id %}" class="row g-2 align-items-end">
+        {% csrf_token %}
+        <div class="col-md-4">
+            <label class="form-label small">Bröllopsdatum</label>
+            <input type="date" name="datum" class="form-control form-control-sm" 
+                   value="{{ brollop.datum|date:'Y-m-d'|default:'' }}">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label small">Namn (t.ex. "Sara & Johan")</label>
+            <input type="text" name="namn" class="form-control form-control-sm" 
+                   value="{{ brollop.namn|default:'' }}" placeholder="Sara & Johan">
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary btn-sm">Spara</button>
+        </div>
+    </form>
+</div>
+
+<!-- Tabs -->
+<ul class="nav nav-tabs mb-4" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" data-bs-toggle="tab" href="#tidslinje">{% trans "Tidslinje" %}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="tab" href="#galleri">{% trans "Galleri" %}</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    
+    <!-- ========== TIDSLINJE ========== -->
+    <div class="tab-pane fade show active" id="tidslinje">
+        <h5>{% trans "Lägg till händelse" %}</h5>
+        <form method="post" action="{% url 'partner_add_tidslinje' kund.id %}" class="row g-2 mb-4">
+            {% csrf_token %}
+            <div class="col-md-2">
+                <input type="time" name="tid" class="form-control form-control-sm" required>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="aktivitet" class="form-control form-control-sm" placeholder="{% trans 'Aktivitet *' %}" required>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="plats" class="form-control form-control-sm" placeholder="{% trans 'Plats' %}">
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="ansvarig" class="form-control form-control-sm" placeholder="{% trans 'Ansvarig' %}">
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="notering" class="form-control form-control-sm" placeholder="{% trans 'Notering' %}">
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary btn-sm w-100">+</button>
+            </div>
+        </form>
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>{% trans "Tid" %}</th>
+                    <th>{% trans "Aktivitet" %}</th>
+                    <th>{% trans "Plats" %}</th>
+                    <th>{% trans "Ansvarig" %}</th>
+                    <th>{% trans "Notering" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for h in tidslinje %}
+                    <tr>
+                        <td><strong>{{ h.tid|time:"H:i" }}</strong></td>
+                        <td>{{ h.aktivitet }}</td>
+                        <td>{{ h.plats }}</td>
+                        <td>{{ h.ansvarig }}</td>
+                        <td><small class="text-muted">{{ h.notering }}</small></td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center text-muted">{% trans "Inga händelser ännu." %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- ========== GALLERI ========== -->
+    <div class="tab-pane fade" id="galleri">
+        <h5>{% trans "Lägg till bild" %}</h5>
+        <form method="post" action="{% url 'partner_add_galleri' kund.id %}" class="row g-2 mb-4">
+            {% csrf_token %}
+            <div class="col-md-4">
+                <input type="url" name="bild" class="form-control form-control-sm" placeholder="{% trans 'Bild-URL *' %}" required>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="titel" class="form-control form-control-sm" placeholder="{% trans 'Titel' %}">
+            </div>
+            <div class="col-md-2">
+                <select name="kategori" class="form-select form-select-sm">
+                    {% for value, name in kategorier %}
+                        <option value="{{ value }}">{{ name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="notering" class="form-control form-control-sm" placeholder="{% trans 'Notering' %}">
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary btn-sm w-100">+</button>
+            </div>
+        </form>
+        
+        <div class="row g-3">
+            {% for bild in galleri %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="{{ bild.bild }}" class="card-img-top" alt="{{ bild.titel }}" style="height: 150px; object-fit: cover;">
+                        <div class="card-body p-2">
+                            {% if bild.titel %}<small class="d-block"><strong>{{ bild.titel }}</strong></small>{% endif %}
+                            <small class="badge bg-secondary">{{ bild.get_kategori_display }}</small>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center text-muted">{% trans "Inga bilder ännu." %}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<a href="{% url 'partner_kunder' %}" class="btn btn-outline-secondary mt-3">← {% trans "Tillbaka" %}</a>
+
+{% endblock %}

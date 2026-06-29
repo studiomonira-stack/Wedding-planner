@@ -1,12 +1,43 @@
 from django.contrib import admin
-from .models import Brollop
-from .models import Photographer
+from django.contrib.auth.models import User
+from django.shortcuts import redirect
+from django.urls import path
+from django.template.response import TemplateResponse
+import secrets
+from .models import Photographer, Brollop
 
 @admin.register(Photographer)
 class PhotographerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'whop_email', 'whop_affiliate_id', 'is_active', 'created_at')
+    list_display = ('name', 'whop_email', 'whop_affiliate_id', 'has_account', 'is_active', 'created_at')
     search_fields = ('name', 'whop_email')
     list_filter = ('is_active', 'created_at')
     readonly_fields = ('created_at',)
+    actions = ['skapa_konton']
+    
+    def has_account(self, obj):
+        return obj.user is not None
+    has_account.boolean = True
+    has_account.short_description = 'Har konto'
+    
+    def skapa_konton(self, request, queryset):
+        skapade = []
+        for f in queryset.filter(user__isnull=True):
+            base_username = f.name.lower().replace(' ', '_')[:20]
+            username = base_username
+            counter = 1
+            while User.objects.filter(username=username).exists():
+                username = f"{base_username}{counter}"
+                counter += 1
+            
+            password = secrets.token_urlsafe(10)
+            user = User.objects.create_user(username=username, email=f.whop_email or '', password=password)
+            f.user = user
+            f.is_active = True
+            f.save()
+            skapade.append(f"{f.name}: {username} / {password}")
+        
+        self.message_user(request, f"Skapade {len(skapade)} konton:\n" + "\n".join(skapade))
+    
+    skapa_konton.short_description = "Skapa användarkonton för valda fotografer"
 
 admin.site.register(Brollop)

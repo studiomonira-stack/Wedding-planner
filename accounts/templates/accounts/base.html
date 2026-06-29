@@ -244,6 +244,13 @@
                     <i class="fas fa-images"></i> {% trans "Galleri" %}
                 </a>
                 
+                <!-- PARTNER-KNAPP (endast för fotografer) -->
+                {% if photographer and photographer.user == user %}
+                <a href="{% url 'partner_dashboard' %}" class="nav-link-custom d-block d-lg-inline-block">
+                    📸 {% trans "Partner" %}
+                </a>
+                {% endif %}
+                
                 <!-- Språkväljare (mobil) -->
                 <div class="d-lg-none mt-3 pt-2 border-top">
                     <form action="{% url 'set_language' %}" method="post">

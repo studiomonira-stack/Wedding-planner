@@ -1,0 +1,65 @@
+{% extends 'planner/partner_base.html' %}
+{% load i18n %}
+{% block content %}
+
+<h1> {% trans "Översikt" %}</h1>
+<p class="text-muted">{% trans "Välkommen tillbaka" %}, {{ fotograf.name }}!</p>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="card text-center p-4">
+            <h2>{{ antal_kunder }}</h2>
+            <small class="text-muted">{% trans "Totalt antal kunder" %}</small>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center p-4">
+            <h2>{{ kommande_brollop|length }}</h2>
+            <small class="text-muted">{% trans "Kommande bröllop" %}</small>
+        </div>
+    </div>
+</div>
+
+<h4 class="mt-4">{% trans "Kommande vigslar" %}</h4>
+{% if kommande_brollop %}
+    <div class="row g-3">
+        {% for brollop in kommande_brollop %}
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <strong>{{ brollop.namn }}</strong>
+                    <span class="text-muted"> – {{ brollop.datum|date:"d M Y"|default:"Datum ej satt" }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-muted">{% trans "Inga kommande vigslar ännu." %}</p>
+{% endif %}
+
+<h4 class="mt-4">{% trans "Senaste kunder" %}</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>{% trans "Kund" %}</th>
+            <th>{% trans "Registrerad" %}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for k in kunder %}
+            <tr>
+                <td>{{ k.user.username }}</td>
+                <td>{{ k.user.date_joined|date:"Y-m-d" }}</td>
+                <td>
+                    <a href="{% url 'partner_kund_detail' k.id %}" class="btn btn-sm btn-primary">{% trans "Visa" %}</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="3">{% trans "Inga kunder ännu." %}</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'partner_kunder' %}" class="btn btn-outline-secondary">{% trans "Se alla kunder" %} →</a>
+
+{% endblock %}
