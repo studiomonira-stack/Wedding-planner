@@ -975,7 +975,7 @@ def whop_callback(request):
         print(f"🔍 Redirect URI: {settings.WHOP_REDIRECT_URI}")
         
         response = requests.post(
-            'https://api.whop.com/api/v1/oauth/token',
+            'https://whop.com/api/oauth/token',
             json={
                 'client_id': settings.WHOP_CLIENT_ID,
                 'client_secret': settings.WHOP_CLIENT_SECRET,
@@ -995,7 +995,7 @@ def whop_callback(request):
             
             if access_token:
                 user_response = requests.get(
-                    'https://api.whop.com/api/v1/me',
+                    'https://whop.com/api/me',
                     headers={'Authorization': f'Bearer {access_token}'},
                     timeout=10
                 )
