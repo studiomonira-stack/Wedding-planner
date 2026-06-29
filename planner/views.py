@@ -958,7 +958,7 @@ def whop_connect(request):
     """Skicka partnern till Whop OAuth-inloggning"""
     client_id = settings.WHOP_CLIENT_ID
     redirect_uri = settings.WHOP_REDIRECT_URI
-    whop_url = f"https://whop.com/oauth?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
+    whop_url = f"https://api.whop.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope=openid%20email"
     return redirect(whop_url)
 
 
@@ -995,7 +995,7 @@ def whop_callback(request):
             
             if access_token:
                 user_response = requests.get(
-                    'https://whop.com/api/me',
+                    'https://api.whop.com/oauth/userinfo',
                     headers={'Authorization': f'Bearer {access_token}'},
                     timeout=10
                 )
@@ -1005,7 +1005,7 @@ def whop_callback(request):
                 if user_response.status_code == 200:
                     user_data = user_response.json()
                     whop_email = user_data.get('email', '')
-                    whop_user_id = user_data.get('id', '')
+                    whop_user_id = user_data.get('sub', '')
                     
                     request.session['whop_email'] = whop_email
                     request.session['whop_affiliate_id'] = str(whop_user_id)
