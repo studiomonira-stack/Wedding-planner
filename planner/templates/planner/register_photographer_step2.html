@@ -1,36 +1,46 @@
-<h2 style="text-align: center;">Steg 2 av 3: Koppla Whop-konto</h2>
-<div class="form-wrapper" style="text-align: center;">
-    
-    <p class="mb-3">Koppla ditt Whop-konto för att automatiskt hantera försäljning, provision och kunder.</p>
-    
-    <div class="instruction-box mb-4" style="text-align: left;">
-        <p><strong>Så här fungerar det:</strong></p>
-        <ol>
-            <li>Klicka på knappen nedan</li>
-            <li>Du skickas till Whop för att logga in</li>
-            <li>Godkänn att vi får tillgång</li>
-            <li>Du kommer tillbaka hit automatiskt</li>
-        </ol>
+{% if photographer and photographer.whop_affiliate_id %}
+    <!-- Whop är redan kopplat! -->
+    <h2 style="text-align: center;">✅ Whop kopplat!</h2>
+    <div class="form-wrapper" style="text-align: center;">
+        <p class="mb-3">Ditt Whop-konto är nu kopplat. Du är redo att komma igång!</p>
+        <p class="text-muted small">Du kommer att få ett mail med dina inloggningsuppgifter.</p>
     </div>
-    
-    <a href="{% url 'whop_connect' %}" class="btn-primary-custom" style="display: inline-block; text-decoration: none;">
-        🔗 Koppla Whop-konto
-    </a>
-    
-    <p class="text-muted small mt-3">
-        Du behöver ett Whop-konto. <a href="https://whop.com" target="_blank">Skapa ett här</a> om du inte redan har ett.
-    </p>
-    
-    <hr class="my-4">
-    
-    <p class="text-muted small">Eller ange din Whop-epost manuellt:</p>
-    <form method="post">
-        {% csrf_token %}
-        <input type="hidden" name="step2_submit" value="1">
+{% else %}
+    <!-- Visa Steg 2 som vanligt -->
+    <h2 style="text-align: center;">Steg 2 av 3: Koppla Whop-konto</h2>
+    <div class="form-wrapper" style="text-align: center;">
         
-        <div class="mb-3">
-            <input type="email" name="whop_email" class="form-control" placeholder="t.ex. emma@fotograf.se">
+        <p class="mb-3">Koppla ditt Whop-konto för att automatiskt hantera försäljning, provision och kunder.</p>
+        
+        <div class="instruction-box mb-4" style="text-align: left;">
+            <p><strong>Så här fungerar det:</strong></p>
+            <ol>
+                <li>Klicka på knappen nedan</li>
+                <li>Du skickas till Whop för att logga in</li>
+                <li>Godkänn att vi får tillgång</li>
+                <li>Du kommer tillbaka hit automatiskt</li>
+            </ol>
         </div>
-        <button type="submit" class="btn-outline-custom">Skicka manuellt</button>
-    </form>
-</div>
+        
+        <a href="{% url 'whop_connect' %}" class="btn-primary-custom" style="display: inline-block; text-decoration: none;">
+            🔗 Koppla Whop-konto
+        </a>
+        
+        <p class="text-muted small mt-3">
+            Du behöver ett Whop-konto. <a href="https://whop.com" target="_blank">Skapa ett här</a> om du inte redan har ett.
+        </p>
+        
+        <hr class="my-4">
+        
+        <p class="text-muted small">Eller ange din Whop-epost manuellt:</p>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="step2_submit" value="1">
+            
+            <div class="mb-3">
+                <input type="email" name="whop_email" class="form-control" placeholder="t.ex. emma@fotograf.se">
+            </div>
+            <button type="submit" class="btn-outline-custom">Skicka manuellt</button>
+        </form>
+    </div>
+{% endif %}

@@ -1022,4 +1022,4 @@ def whop_callback(request):
     except Exception as e:
         print(f"Whop OAuth error: {e}")
     
-    return redirect(f'/register-partner/?whop_ok=1')
+        return redirect('register_photographer')
