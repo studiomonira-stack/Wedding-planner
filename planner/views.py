@@ -577,6 +577,8 @@ def register_photographer(request):
                         photographer.save()
                         
                         try:
+                            print(f"📧 SENDGRID_API_KEY finns: {bool(settings.EMAIL_HOST_PASSWORD)}")
+                            print(f"📧 Nyckelns längd: {len(settings.EMAIL_HOST_PASSWORD) if settings.EMAIL_HOST_PASSWORD else 0}")
                             send_mail(
                                 subject='📸 Ny fotograf har kopplat Whop!',
                                 message=f'Hej!\n\nEn fotograf har precis kopplat sitt Whop-konto.\n\n'
