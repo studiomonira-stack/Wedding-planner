@@ -488,21 +488,18 @@ def register_photographer(request):
             try:
                 photographer = Photographer.objects.get(id=photographer_id)
                 if photographer.whop_affiliate_id:
-                    # Gå direkt till klart!
                     return render(request, 'planner/register_photographer_base.html', {
                         'step_content': 'planner/registration_complete.html',
                         'photographer': photographer
                     })
             except Photographer.DoesNotExist:
                 pass
-        # Om något gick fel, börja om
         return redirect('register_photographer')
 
     # --- STEG 1 ---
     if request.method == 'POST' and 'step1_submit' in request.POST:
         print("✅ Steg 1 mottaget!")
 
-        # GDPR-kontroll
         if not request.POST.get('accept_privacy'):
             form = PhotographerStep1Form(request.POST, request.FILES)
             form.add_error(None, "Du måste godkänna integritetspolicyn för att fortsätta.")
@@ -527,18 +524,14 @@ def register_photographer(request):
         else:
             print(f"❌ Fel: {form.errors}")
 
-
-       # --- STEG 2 ---
+    # --- STEG 2 ---
     elif request.method == 'POST' and 'step2_submit' in request.POST:
         print("✅ Steg 2 mottaget!")
         
         photographer_id = request.session.get('temp_photographer_id')
-        
-        # Hämta Whop-info från session (från OAuth) eller från POST
         whop_email = request.session.get('whop_email') or request.POST.get('whop_email', '')
         whop_affiliate_id = request.session.get('whop_affiliate_id', '')
         
-        # Om sessionen är tom – försök hitta fotografen via e-post
         if not photographer_id:
             if whop_email:
                 try:
@@ -558,13 +551,10 @@ def register_photographer(request):
                 
                 photographer.save()
                 
-                # Rensa Whop-session
                 request.session.pop('whop_email', None)
                 request.session.pop('whop_affiliate_id', None)
                 
-                # Om Whop är kopplat - gå till steg 4 (klart)
                 if photographer.whop_affiliate_id:
-                    # Skapa användarkonto om det inte finns
                     if not photographer.user:
                         import secrets
                         from django.contrib.auth.models import User
@@ -586,47 +576,29 @@ def register_photographer(request):
                         photographer.is_active = True
                         photographer.save()
                         
-                        # Skicka inloggningsuppgifter till fotografen
                         try:
                             send_mail(
-                                subject='🎉 Ditt partnerkonto är klart!',
-                                message=f'Hej {photographer.name}!\n\n'
-                                        f'Ditt partnerkonto är nu aktivt.\n\n'
-                                        f'Logga in på: https://www.brollopsplanner.se/login/\n'
+                                subject='📸 Ny fotograf har kopplat Whop!',
+                                message=f'Hej!\n\nEn fotograf har precis kopplat sitt Whop-konto.\n\n'
+                                        f'Namn: {photographer.name}\n'
+                                        f'Whop-epost: {photographer.whop_email}\n'
+                                        f'Affiliate-ID: {photographer.whop_affiliate_id}\n'
                                         f'Användarnamn: {username}\n'
                                         f'Lösenord: {password}\n\n'
-                                        f'Logga in och gå till "Partner" i menyn.\n\n'
-                                        f'Välkommen!',
+                                        f'Skicka inloggningsuppgifterna till fotografen manuellt.',
                                 from_email='hej@brollopsplanner.se',
-                                recipient_list=[whop_email],
+                                recipient_list=['hej@brollopsplanner.se'],
                                 fail_silently=False,
                             )
-                            print(f"📧 Inloggningsuppgifter skickade till {whop_email}")
+                            print(f"📧 Admin-notifiering skickad!")
                         except Exception as e:
                             print(f"❌ Kunde inte skicka mail: {e}")
-                    
-                    # Skicka notifiering till dig (admin)
-                    try:
-                        send_mail(
-                            subject='📸 Ny fotograf redo via Whop OAuth!',
-                            message=f'Hej! En fotograf har kopplat Whop.\n\n'
-                                    f'Namn: {photographer.name}\n'
-                                    f'Whop-epost: {photographer.whop_email}\n'
-                                    f'Affiliate-ID: {photographer.whop_affiliate_id}\n'
-                                    f'Logga: {photographer.logo if photographer.logo else "Ingen logga"}',
-                            from_email='hej@brollopsplanner.se',
-                            recipient_list=['hej@brollopsplanner.se'],
-                            fail_silently=False,
-                        )
-                    except Exception as e:
-                        print(f"❌ Admin-mejl misslyckades: {e}")
                     
                     return render(request, 'planner/register_photographer_base.html', {
                         'step_content': 'planner/registration_complete.html',
                         'photographer': photographer
                     })
                 
-                # Annars - visa steg 2 igen
                 form = PhotographerStep2Form(instance=photographer)
                 return render(request, 'planner/register_photographer_base.html', {
                     'step_content': 'planner/register_photographer_step2.html',
@@ -646,14 +618,12 @@ def register_photographer(request):
         except Photographer.DoesNotExist:
             pass
 
-        # --- STEG 4: KLART! ---
+    # --- STEG 4: KLART! ---
     if photographer and photographer.whop_affiliate_id:
-        # Skapa användarkonto åt fotografen om det inte redan finns
         if not photographer.user:
             from django.contrib.auth.models import User
             import secrets
             
-            # Skapa användarnamn baserat på företagsnamnet
             base_username = photographer.name.lower().replace(' ', '_')[:20]
             username = base_username
             counter = 1
@@ -661,9 +631,7 @@ def register_photographer(request):
                 username = f"{base_username}{counter}"
                 counter += 1
             
-            # Skapa lösenord
             password = secrets.token_urlsafe(10)
-            
             user = User.objects.create_user(
                 username=username,
                 email=photographer.whop_email or '',
@@ -673,22 +641,21 @@ def register_photographer(request):
             photographer.is_active = True
             photographer.save()
             
-            # Skicka inloggningsuppgifter till fotografen
             try:
                 send_mail(
-                    subject='🎉 Ditt partnerkonto är klart!',
-                    message=f'Hej {photographer.name}!\n\n'
-                            f'Ditt partnerkonto är nu aktivt.\n\n'
-                            f'Logga in på: https://www.brollopsplanner.se/login/\n'
+                    subject='📸 Ny fotograf har kopplat Whop!',
+                    message=f'Hej!\n\nEn fotograf har precis kopplat sitt Whop-konto.\n\n'
+                            f'Namn: {photographer.name}\n'
+                            f'Whop-epost: {photographer.whop_email}\n'
+                            f'Affiliate-ID: {photographer.whop_affiliate_id}\n'
                             f'Användarnamn: {username}\n'
                             f'Lösenord: {password}\n\n'
-                            f'Logga in och gå till "Partner" i menyn för att se dina kunder.\n\n'
-                            f'Välkommen!',
+                            f'Skicka inloggningsuppgifterna till fotografen manuellt.',
                     from_email='hej@brollopsplanner.se',
-                    recipient_list=[photographer.whop_email],
+                    recipient_list=['hej@brollopsplanner.se'],
                     fail_silently=False,
                 )
-                print(f"📧 Inloggningsuppgifter skickade till {photographer.whop_email}")
+                print(f"📧 Admin-notifiering skickad!")
             except Exception as e:
                 print(f"❌ Kunde inte skicka mail: {e}")
         
