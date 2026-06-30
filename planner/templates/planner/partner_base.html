@@ -8,26 +8,38 @@
     <title>{% trans "Partner Dashboard" %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Karla:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Karla:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #F5F3EE;
-            --primary: #C7BDAE;
-            --text-dark: #666666;
-            --white: #ffffff;
-            --border: #e5e3dc;
+            --white: #FFFFFF;
+            --blush: #F5EBEB;
+            --rose: #D4B5B5;
+            --rose-dark: #B89595;
+            --beige: #F2EFE9;
+            --text: #3A3A3A;
+            --text-light: #8C8C8C;
+            --border: #E8E5E0;
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Karla', sans-serif;
-            background: var(--bg);
-            color: var(--text-dark);
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
-        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; color: var(--text-dark); }
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            color: var(--text);
+        }
+        
+        /* NAVBAR */
         .partner-nav {
             background: var(--white);
             border-bottom: 1px solid var(--border);
-            padding: 12px 20px;
+            padding: 14px 28px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -35,52 +47,263 @@
             top: 0;
             z-index: 1000;
         }
-        .partner-nav a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: background 0.2s;
-        }
-        .partner-nav a:hover { background: #f5f5f5; }
-        .partner-nav a.active { background: var(--primary); color: white; }
         .partner-nav .brand {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text);
+            text-decoration: none;
         }
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        .partner-nav .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .partner-nav .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        .partner-nav .nav-links a:hover,
+        .partner-nav .nav-links a.active {
+            background: var(--rose);
+            color: white;
+        }
+        .btn-logout {
+            background: transparent;
+            border: 1.5px solid var(--rose);
+            color: var(--rose);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Karla', sans-serif;
+        }
+        .btn-logout:hover {
+            background: var(--rose);
+            color: white;
+        }
+        
+        /* CONTAINER */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        /* KORT */
         .card {
             background: var(--white);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border-radius: 20px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+            transition: all 0.4s ease;
         }
-        .btn-primary { background: var(--primary); border-color: var(--primary); color: white; }
-        .btn-primary:hover { background: #B4A390; border-color: #B4A390; }
-        .table { background: var(--white); border-radius: 12px; overflow: hidden; }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+        }
+        .card-body { padding: 24px; }
         
+        /* STAT-KORT */
+        .stat-card {
+            text-align: center;
+            padding: 36px 24px;
+        }
+        .stat-card .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--rose);
+            line-height: 1;
+        }
+        .stat-card .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+        
+        /* KNAPPAR */
+        .btn-primary {
+            background: var(--rose);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-family: 'Karla', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            background: var(--rose-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(180,149,149,0.3);
+            color: white;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--rose);
+            color: var(--rose);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-family: 'Karla', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            background: var(--rose);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .btn-sm { padding: 6px 16px; font-size: 0.75rem; }
+        
+        /* TABELL */
+        .table {
+            width: 100%;
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            border-collapse: separate;
+            border-spacing: 0;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+        }
+        .table th {
+            background: var(--white);
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            padding: 16px 20px;
+            text-align: left;
+        }
+        .table td {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        .table tr:last-child td { border-bottom: none; }
+        .table tr:hover td { background: #FDFCFB; }
+        
+        /* FORMULÄR */
+        .form-control, .form-select {
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            font-family: 'Karla', sans-serif;
+            background: var(--white);
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+        .form-control:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--rose);
+            box-shadow: 0 0 0 3px rgba(212,181,181,0.1);
+        }
+        .form-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            display: block;
+            font-weight: 600;
+        }
+        
+        /* BADGES */
+        .badge {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .badge-primary { background: var(--rose); color: white; }
+        .badge-accent { background: var(--rose-dark); color: white; }
+        
+        /* TABS */
+        .nav-tabs {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+            gap: 0;
+        }
+        .nav-tabs .nav-link {
+            border: none;
+            color: var(--text-light);
+            padding: 12px 24px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            background: transparent;
+            text-decoration: none;
+        }
+        .nav-tabs .nav-link:hover { color: var(--text); }
+        .nav-tabs .nav-link.active {
+            color: var(--rose);
+            border-bottom-color: var(--rose);
+        }
+        
+        /* MOBIL */
         @media (max-width: 768px) {
-            .partner-nav { flex-wrap: wrap; gap: 8px; }
-            .partner-nav a { font-size: 0.8rem; padding: 6px 10px; }
+            .partner-nav {
+                padding: 12px 16px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .partner-nav .nav-links a {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+            .container { padding: 24px 14px; }
+            .stat-card .stat-number { font-size: 2.4rem; }
         }
     </style>
 </head>
 <body>
 
 <nav class="partner-nav">
-    <a href="{% url 'partner_dashboard' %}" class="brand">📸 {{ fotograf.name }}</a>
-    <div style="display: flex; align-items: center; gap: 8px;">
-        <a href="{% url 'partner_dashboard' %}">📊 Översikt</a>
-        <a href="{% url 'partner_kunder' %}">👥 Mina kunder</a>
-        
-        <!-- Språkväljare -->
+    <a href="{% url 'partner_dashboard' %}" class="brand">
+        {{ fotograf.name }}
+    </a>
+    <div class="nav-links">
+        <a href="{% url 'partner_dashboard' %}" class="{% if request.resolver_match.url_name == 'partner_dashboard' %}active{% endif %}">
+            Översikt
+        </a>
+        <a href="{% url 'partner_kunder' %}" class="{% if request.resolver_match.url_name == 'partner_kunder' or request.resolver_match.url_name == 'partner_kund_detail' %}active{% endif %}">
+            Kunder
+        </a>
         <form action="{% url 'set_language' %}" method="post" style="display: inline;">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ request.path }}">
             <select name="language" onchange="this.form.submit()" 
-                    style="font-size: 0.8rem; padding: 4px 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--white); cursor: pointer;">
+                    style="font-size: 0.8rem; padding: 6px 10px; border: 1px solid var(--border); border-radius: 30px; background: var(--white); cursor: pointer; font-family: 'Karla', sans-serif;">
                 {% get_current_language as CURRENT_LANGUAGE %}
                 <option value="sv" {% if CURRENT_LANGUAGE == 'sv' %}selected{% endif %}>🇸🇪</option>
                 <option value="en" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>🇬🇧</option>
@@ -89,10 +312,9 @@
                 <option value="da" {% if CURRENT_LANGUAGE == 'da' %}selected{% endif %}>🇩🇰</option>
             </select>
         </form>
-        
-        <form method="post" action="{% url 'logout' %}" class="d-inline">
+        <form method="post" action="{% url 'logout' %}" style="display: inline;">
             {% csrf_token %}
-            <button type="submit" class="btn btn-sm btn-outline-danger">Logga ut</button>
+            <button type="submit" class="btn-logout">Logga ut</button>
         </form>
     </div>
 </nav>

@@ -2,38 +2,48 @@
 {% load i18n %}
 {% block content %}
 
-<h1>{% trans "Mina kunder" %}</h1>
-<p class="text-muted">{% trans "Alla brudpar kopplade till" %} {{ fotograf.name }}</p>
+<div style="margin-bottom: 28px;">
+    <h1 style="font-size: 2rem; margin-bottom: 4px;">{% trans "Mina kunder" %}</h1>
+    <p style="color: var(--text-light); font-size: 0.95rem;">{{ fotograf.name }}</p>
+</div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>{% trans "Kund" %}</th>
-            <th>{% trans "E-post" %}</th>
-            <th>{% trans "Registrerad" %}</th>
-            <th>{% trans "Utgångsdatum" %}</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for k in kunder %}
-            <tr>
-                <td><strong>{{ k.user.username }}</strong></td>
-                <td>{{ k.user.email }}</td>
-                <td>{{ k.user.date_joined|date:"Y-m-d" }}</td>
-                <td>{{ k.utgangsdatum|date:"Y-m-d"|default:"-" }}</td>
-                <td>
-                    <a href="{% url 'partner_kund_detail' k.id %}" class="btn btn-sm btn-outline-primary">{% trans "Visa planering" %}</a>
-                </td>
-            </tr>
-        {% empty %}
-            <tr>
-                <td colspan="5" class="text-center text-muted">✨ {% trans "Inga kunder ännu." %}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{% if kunder %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{% trans "Kund" %}</th>
+                    <th>{% trans "E-post" %}</th>
+                    <th>{% trans "Registrerad" %}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for k in kunder %}
+                    <tr>
+                        <td><strong>{{ k.user.username }}</strong></td>
+                        <td style="color: var(--text-light);">{{ k.user.email }}</td>
+                        <td>{{ k.user.date_joined|date:"d M Y" }}</td>
+                        <td style="text-align: right;">
+                            <a href="{% url 'partner_kund_detail' k.id %}" class="btn-outline btn-sm">{% trans "Visa" %} →</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="card">
+        <div class="card-body" style="text-align: center; color: var(--text-light); padding: 60px 40px;">
+            <div style="font-size: 3rem; margin-bottom: 12px;"></div>
+            <p style="font-size: 1rem;">{% trans "Inga kunder ännu." %}</p>
+            <p style="font-size: 0.85rem;">{% trans "När brudpar registrerar sig via din länk dyker de upp här." %}</p>
+        </div>
+    </div>
+{% endif %}
 
-<a href="{% url 'partner_dashboard' %}" class="btn btn-outline-secondary">← {% trans "Tillbaka" %}</a>
+<div style="margin-top: 24px;">
+    <a href="{% url 'partner_dashboard' %}" class="btn-outline">← {% trans "Tillbaka" %}</a>
+</div>
 
 {% endblock %}

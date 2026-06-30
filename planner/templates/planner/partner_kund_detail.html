@@ -2,143 +2,169 @@
 {% load i18n %}
 {% block content %}
 
-<h1>{{ kund.user.username }}</h1>
-<p class="text-muted">
-    {% trans "Registrerad" %}: {{ kund.user.date_joined|date:"Y-m-d" }}
-    {% if kund.utgangsdatum %}
-        | {% trans "Utgång" %}: {{ kund.utgangsdatum|date:"Y-m-d" }}
+<!-- Kund-header -->
+<div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 28px;">
+    <div>
+        <a href="{% url 'partner_kunder' %}" style="color: var(--text-light); text-decoration: none; font-size: 0.85rem;">
+            ← {% trans "Tillbaka" %}
+        </a>
+        <h1 style="font-size: 2rem; margin: 4px 0;">{{ kund.user.username }}</h1>
+        <p style="color: var(--text-light); font-size: 0.9rem;">
+            {% trans "Registrerad" %}: {{ kund.user.date_joined|date:"d M Y" }}
+            {% if kund.utgangsdatum %}
+                · {% trans "Utgång" %}: {{ kund.utgangsdatum|date:"d M Y" }}
+            {% endif %}
+        </p>
+    </div>
+    {% if brollop and brollop.datum %}
+        <span class="badge badge-accent" style="font-size: 0.9rem; padding: 8px 18px;">
+            {{ brollop.datum|date:"d M Y" }}
+        </span>
     {% endif %}
-</p>
+</div>
 
 <!-- Bröllopsdatum -->
-<div class="card p-3 mb-4">
-    <form method="post" action="{% url 'partner_set_brollopsdatum' kund.id %}" class="row g-2 align-items-end">
-        {% csrf_token %}
-        <div class="col-md-4">
-            <label class="form-label small">Bröllopsdatum</label>
-            <input type="date" name="datum" class="form-control form-control-sm" 
-                   value="{{ brollop.datum|date:'Y-m-d'|default:'' }}">
-        </div>
-        <div class="col-md-4">
-            <label class="form-label small">Namn (t.ex. "Sara & Johan")</label>
-            <input type="text" name="namn" class="form-control form-control-sm" 
-                   value="{{ brollop.namn|default:'' }}" placeholder="Sara & Johan">
-        </div>
-        <div class="col-md-4">
-            <button type="submit" class="btn btn-primary btn-sm">Spara</button>
-        </div>
-    </form>
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="post" action="{% url 'partner_set_brollopsdatum' kund.id %}" style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap;">
+            {% csrf_token %}
+            <div style="flex: 1; min-width: 180px;">
+                <label class="form-label">{% trans "Bröllopsdatum" %}</label>
+                <input type="date" name="datum" class="form-control" 
+                       value="{{ brollop.datum|date:'Y-m-d'|default:'' }}">
+            </div>
+            <div style="flex: 2; min-width: 200px;">
+                <label class="form-label">{% trans "Namn (t.ex. Sara & Johan)" %}</label>
+                <input type="text" name="namn" class="form-control" 
+                       value="{{ brollop.namn|default:'' }}" placeholder="Sara & Johan">
+            </div>
+            <button type="submit" class="btn-primary">{% trans "Spara" %}</button>
+        </form>
+    </div>
 </div>
 
 <!-- Tabs -->
-<ul class="nav nav-tabs mb-4" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" data-bs-toggle="tab" href="#tidslinje">{% trans "Tidslinje" %}</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="tab" href="#galleri">{% trans "Galleri" %}</a>
-    </li>
+<ul class="nav-tabs" style="display: flex; list-style: none; padding: 0; margin-bottom: 20px;">
+    <li><a class="nav-link active" data-bs-toggle="tab" href="#tidslinje"> {% trans "Tidslinje" %}</a></li>
+    <li><a class="nav-link" data-bs-toggle="tab" href="#galleri">{% trans "Galleri" %}</a></li>
 </ul>
 
 <div class="tab-content">
     
-    <!-- ========== TIDSLINJE ========== -->
+    <!-- TIDSLINJE -->
     <div class="tab-pane fade show active" id="tidslinje">
-        <h5>{% trans "Lägg till händelse" %}</h5>
-        <form method="post" action="{% url 'partner_add_tidslinje' kund.id %}" class="row g-2 mb-4">
-            {% csrf_token %}
-            <div class="col-md-2">
-                <input type="time" name="tid" class="form-control form-control-sm" required>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 style="margin-bottom: 14px;">{% trans "Lägg till händelse" %}</h5>
+                <form method="post" action="{% url 'partner_add_tidslinje' kund.id %}" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end;">
+                    {% csrf_token %}
+                    <input type="time" name="tid" class="form-control" style="width: 120px;" required>
+                    <input type="text" name="aktivitet" class="form-control" style="flex: 2; min-width: 150px;" placeholder="{% trans 'Aktivitet *' %}" required>
+                    <input type="text" name="plats" class="form-control" style="flex: 1; min-width: 100px;" placeholder="{% trans 'Plats' %}">
+                    <input type="text" name="ansvarig" class="form-control" style="flex: 1; min-width: 100px;" placeholder="{% trans 'Ansvarig' %}">
+                    <input type="text" name="notering" class="form-control" style="flex: 1; min-width: 100px;" placeholder="{% trans 'Notering' %}">
+                    <button type="submit" class="btn-primary">+</button>
+                </form>
             </div>
-            <div class="col-md-3">
-                <input type="text" name="aktivitet" class="form-control form-control-sm" placeholder="{% trans 'Aktivitet *' %}" required>
-            </div>
-            <div class="col-md-2">
-                <input type="text" name="plats" class="form-control form-control-sm" placeholder="{% trans 'Plats' %}">
-            </div>
-            <div class="col-md-2">
-                <input type="text" name="ansvarig" class="form-control form-control-sm" placeholder="{% trans 'Ansvarig' %}">
-            </div>
-            <div class="col-md-2">
-                <input type="text" name="notering" class="form-control form-control-sm" placeholder="{% trans 'Notering' %}">
-            </div>
-            <div class="col-md-1">
-                <button type="submit" class="btn btn-primary btn-sm w-100">+</button>
-            </div>
-        </form>
+        </div>
         
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>{% trans "Tid" %}</th>
-                    <th>{% trans "Aktivitet" %}</th>
-                    <th>{% trans "Plats" %}</th>
-                    <th>{% trans "Ansvarig" %}</th>
-                    <th>{% trans "Notering" %}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for h in tidslinje %}
-                    <tr>
-                        <td><strong>{{ h.tid|time:"H:i" }}</strong></td>
-                        <td>{{ h.aktivitet }}</td>
-                        <td>{{ h.plats }}</td>
-                        <td>{{ h.ansvarig }}</td>
-                        <td><small class="text-muted">{{ h.notering }}</small></td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="5" class="text-center text-muted">{% trans "Inga händelser ännu." %}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% if tidslinje %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Tid" %}</th>
+                            <th>{% trans "Aktivitet" %}</th>
+                            <th>{% trans "Plats" %}</th>
+                            <th>{% trans "Ansvarig" %}</th>
+                            <th>{% trans "Notering" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for h in tidslinje %}
+                            <tr>
+                                <td><strong>{{ h.tid|time:"H:i" }}</strong></td>
+                                <td>{{ h.aktivitet }}</td>
+                                <td>{{ h.plats }}</td>
+                                <td>{{ h.ansvarig }}</td>
+                                <td style="color: var(--text-light);">{{ h.notering }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="card">
+                <div class="card-body" style="text-align: center; color: var(--text-light); padding: 40px;">
+                    {% trans "Inga händelser ännu." %}
+                </div>
+            </div>
+        {% endif %}
     </div>
     
-    <!-- ========== GALLERI ========== -->
+    <!-- GALLERI -->
     <div class="tab-pane fade" id="galleri">
-        <h5>{% trans "Lägg till bild" %}</h5>
-        <form method="post" action="{% url 'partner_add_galleri' kund.id %}" class="row g-2 mb-4">
-            {% csrf_token %}
-            <div class="col-md-4">
-                <input type="url" name="bild" class="form-control form-control-sm" placeholder="{% trans 'Bild-URL *' %}" required>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 style="margin-bottom: 14px;">{% trans "Lägg till bild" %}</h5>
+                <form method="post" action="{% url 'partner_add_galleri' kund.id %}" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end;">
+                    {% csrf_token %}
+                    <input type="url" name="bild" class="form-control" style="flex: 3; min-width: 200px;" placeholder="{% trans 'Bild-URL *' %}" required>
+                    <input type="text" name="titel" class="form-control" style="flex: 1; min-width: 120px;" placeholder="{% trans 'Titel' %}">
+                    <select name="kategori" class="form-select" style="flex: 1; min-width: 140px;">
+                        {% for value, name in kategorier %}
+                            <option value="{{ value }}">{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="text" name="notering" class="form-control" style="flex: 1; min-width: 100px;" placeholder="{% trans 'Notering' %}">
+                    <button type="submit" class="btn-primary">+</button>
+                </form>
             </div>
-            <div class="col-md-2">
-                <input type="text" name="titel" class="form-control form-control-sm" placeholder="{% trans 'Titel' %}">
-            </div>
-            <div class="col-md-2">
-                <select name="kategori" class="form-select form-select-sm">
-                    {% for value, name in kategorier %}
-                        <option value="{{ value }}">{{ name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="col-md-3">
-                <input type="text" name="notering" class="form-control form-control-sm" placeholder="{% trans 'Notering' %}">
-            </div>
-            <div class="col-md-1">
-                <button type="submit" class="btn btn-primary btn-sm w-100">+</button>
-            </div>
-        </form>
+        </div>
         
-        <div class="row g-3">
-            {% for bild in galleri %}
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="{{ bild.bild }}" class="card-img-top" alt="{{ bild.titel }}" style="height: 150px; object-fit: cover;">
-                        <div class="card-body p-2">
-                            {% if bild.titel %}<small class="d-block"><strong>{{ bild.titel }}</strong></small>{% endif %}
-                            <small class="badge bg-secondary">{{ bild.get_kategori_display }}</small>
+        {% if galleri %}
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+                {% for bild in galleri %}
+                    <div class="card" style="animation: fadeIn 0.3s ease forwards;">
+                        <img src="{{ bild.bild }}" alt="{{ bild.titel }}" style="width: 100%; height: 180px; object-fit: cover;">
+                        <div style="padding: 12px 14px;">
+                            {% if bild.titel %}
+                                <strong style="font-size: 0.85rem; display: block;">{{ bild.titel }}</strong>
+                            {% endif %}
+                            <span class="badge badge-primary" style="font-size: 0.7rem; margin-top: 4px;">{{ bild.get_kategori_display }}</span>
+                            {% if bild.notering %}
+                                <p style="color: var(--text-light); font-size: 0.8rem; margin: 6px 0 0;">{{ bild.notering }}</p>
+                            {% endif %}
                         </div>
                     </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="card">
+                <div class="card-body" style="text-align: center; color: var(--text-light); padding: 40px;">
+                    {% trans "Inga bilder ännu." %}
                 </div>
-            {% empty %}
-                <div class="col-12 text-center text-muted">{% trans "Inga bilder ännu." %}</div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endif %}
     </div>
 </div>
 
-<a href="{% url 'partner_kunder' %}" class="btn btn-outline-secondary mt-3">← {% trans "Tillbaka" %}</a>
+<script>
+// Aktivera Bootstrap tabs manuellt
+document.querySelectorAll('.nav-tabs .nav-link').forEach(tab => {
+    tab.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Ta bort active från alla
+        document.querySelectorAll('.nav-tabs .nav-link').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('show', 'active'));
+        // Lägg till active på klickad
+        this.classList.add('active');
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.classList.add('show', 'active');
+        }
+    });
+});
+</script>
 
 {% endblock %}

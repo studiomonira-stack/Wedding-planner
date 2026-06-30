@@ -2,64 +2,79 @@
 {% load i18n %}
 {% block content %}
 
-<h1> {% trans "Översikt" %}</h1>
-<p class="text-muted">{% trans "Välkommen tillbaka" %}, {{ fotograf.name }}!</p>
+<div style="margin-bottom: 36px;">
+    <h1 style="font-size: 2rem; margin-bottom: 4px;">{% trans "Översikt" %}</h1>
+    <p style="color: var(--text-light); font-size: 0.95rem;">{% trans "Välkommen tillbaka" %}, {{ fotograf.name }}</p>
+</div>
 
-<div class="row g-3 mb-4">
+<div class="row g-3 mb-5">
     <div class="col-md-4">
-        <div class="card text-center p-4">
-            <h2>{{ antal_kunder }}</h2>
-            <small class="text-muted">{% trans "Totalt antal kunder" %}</small>
+        <div class="card stat-card">
+            <div class="stat-number">{{ antal_kunder }}</div>
+            <div class="stat-label">{% trans "Totalt antal kunder" %}</div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card text-center p-4">
-            <h2>{{ kommande_brollop|length }}</h2>
-            <small class="text-muted">{% trans "Kommande bröllop" %}</small>
+        <div class="card stat-card">
+            <div class="stat-number">{{ kommande_brollop|length }}</div>
+            <div class="stat-label">{% trans "Kommande bröllop" %}</div>
         </div>
     </div>
 </div>
 
-<h4 class="mt-4">{% trans "Kommande vigslar" %}</h4>
 {% if kommande_brollop %}
-    <div class="row g-3">
-        {% for brollop in kommande_brollop %}
-            <div class="col-md-6">
-                <div class="card p-3">
-                    <strong>{{ brollop.namn }}</strong>
-                    <span class="text-muted"> – {{ brollop.datum|date:"d M Y"|default:"Datum ej satt" }}</span>
+<h4 style="margin-bottom: 16px;">{% trans "Kommande bröllop" %}</h4>
+<div class="row g-3 mb-5">
+    {% for brollop in kommande_brollop %}
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="font-size: 0.95rem;">{{ brollop.namn }}</strong>
+                        <div style="color: var(--text-light); font-size: 0.85rem;">
+                            {{ brollop.datum|date:"d M Y"|default:"Datum ej satt" }}
+                        </div>
+                    </div>
+                    <span class="badge badge-primary">{{ brollop.datum|date:"M"|default:"TBD" }}</span>
                 </div>
             </div>
-        {% endfor %}
-    </div>
-{% else %}
-    <p class="text-muted">{% trans "Inga kommande vigslar ännu." %}</p>
+        </div>
+    {% endfor %}
+</div>
 {% endif %}
 
-<h4 class="mt-4">{% trans "Senaste kunder" %}</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>{% trans "Kund" %}</th>
-            <th>{% trans "Registrerad" %}</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for k in kunder %}
+<h4 style="margin-bottom: 16px;">{% trans "Senaste kunder" %}</h4>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
             <tr>
-                <td>{{ k.user.username }}</td>
-                <td>{{ k.user.date_joined|date:"Y-m-d" }}</td>
-                <td>
-                    <a href="{% url 'partner_kund_detail' k.id %}" class="btn btn-sm btn-primary">{% trans "Visa" %}</a>
-                </td>
+                <th>{% trans "Kund" %}</th>
+                <th>{% trans "Registrerad" %}</th>
+                <th></th>
             </tr>
-        {% empty %}
-            <tr><td colspan="3">{% trans "Inga kunder ännu." %}</td></tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for k in kunder %}
+                <tr>
+                    <td><strong>{{ k.user.username }}</strong></td>
+                    <td>{{ k.user.date_joined|date:"d M Y" }}</td>
+                    <td style="text-align: right;">
+                        <a href="{% url 'partner_kund_detail' k.id %}" class="btn-outline btn-sm">{% trans "Visa" %} →</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3" style="text-align: center; color: var(--text-light); padding: 40px;">
+                        {% trans "Inga kunder ännu." %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
-<a href="{% url 'partner_kunder' %}" class="btn btn-outline-secondary">{% trans "Se alla kunder" %} →</a>
+<div style="margin-top: 24px;">
+    <a href="{% url 'partner_kunder' %}" class="btn-outline">{% trans "Se alla kunder" %} →</a>
+</div>
 
 {% endblock %}
