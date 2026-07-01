@@ -1,0 +1,193 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ photographer.name }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Karla:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: {{ photographer.primary_color }};
+            --accent: {{ photographer.accent_color }};
+            --text: #3A3A3A;
+            --text-light: #8C8C8C;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Karla', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Profil */
+        .profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: white;
+        }
+        .profile-placeholder {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 16px;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+        .bio {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+        
+        /* Länkar */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
+        }
+        .link-btn.primary {
+            background: var(--accent);
+            color: white;
+        }
+        .link-btn.primary:hover {
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+        }
+        .link-btn.secondary {
+            background: white;
+            color: var(--text);
+            border: 1px solid #E8E5E0;
+        }
+        .link-btn.secondary:hover {
+            border-color: var(--accent);
+        }
+        .link-btn i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Footer */
+        .footer-text {
+            margin-top: 32px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+        .footer-text a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    
+    {% if photographer.logo %}
+        <img src="{{ photographer.logo }}" alt="{{ photographer.name }}" class="profile-img">
+    {% else %}
+        <div class="profile-placeholder">
+            <i class="fas fa-camera"></i>
+        </div>
+    {% endif %}
+    
+    <h1>{{ photographer.name }}</h1>
+    
+    {% if page.bio %}
+        <p class="bio">{{ page.bio }}</p>
+    {% endif %}
+    
+    <div class="links">
+        <!-- Planner-länk (alltid överst) -->
+        {% if photographer.whop_affiliate_id %}
+            <a href="https://www.brollopsplanner.se/checklist/kop-planner/?ref={{ photographer.whop_affiliate_id }}" 
+               class="link-btn primary" target="_blank">
+                💒 Planera ert bröllop
+            </a>
+        {% endif %}
+        
+        {% if page.instagram_url %}
+            <a href="{{ page.instagram_url }}" class="link-btn secondary" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        {% endif %}
+        
+        {% if page.tiktok_url %}
+            <a href="{{ page.tiktok_url }}" class="link-btn secondary" target="_blank">
+                <i class="fab fa-tiktok"></i> TikTok
+            </a>
+        {% endif %}
+        
+        {% if page.facebook_url %}
+            <a href="{{ page.facebook_url }}" class="link-btn secondary" target="_blank">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+        {% endif %}
+        
+        {% if page.website_url %}
+            <a href="{{ page.website_url }}" class="link-btn secondary" target="_blank">
+                <i class="fas fa-globe"></i> Hemsida
+            </a>
+        {% endif %}
+        
+        {% if page.custom_link_1_url %}
+            <a href="{{ page.custom_link_1_url }}" class="link-btn secondary" target="_blank">
+                {{ page.custom_link_1_text|default:"Läs mer" }}
+            </a>
+        {% endif %}
+        
+        {% if page.custom_link_2_url %}
+            <a href="{{ page.custom_link_2_url }}" class="link-btn secondary" target="_blank">
+                {{ page.custom_link_2_text|default:"Mer info" }}
+            </a>
+        {% endif %}
+    </div>
+    
+    <p class="footer-text">
+        Powered by <a href="https://www.brollopsplanner.se">Bröllopsplaneraren</a>
+    </p>
+</div>
+</body>
+</html>

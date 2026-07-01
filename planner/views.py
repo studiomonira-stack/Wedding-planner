@@ -2,7 +2,7 @@ from urllib import request
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import ChecklistItem, BudgetPost, Gast, Leverantor, Tidslinje, Galleri 
+from .models import ChecklistItem, BudgetPost, Gast, Leverantor, PartnerPage, Tidslinje, Galleri 
 from .forms import PhotographerStep1Form, PhotographerStep2Form
 from .models import Photographer
 from django.core.mail import send_mail  # <-- Lägg till denna rad
@@ -1095,4 +1095,13 @@ def partner_intakter(request):
         'stats': stats,
         'kunder': kunder,
         'antal_kunder': kunder.count(),
+    })
+
+def partner_page(request, slug):
+    page = get_object_or_404(PartnerPage, slug=slug, is_active=True)
+    photographer = page.photographer
+    
+    return render(request, 'planner/partner_page.html', {
+        'page': page,
+        'photographer': photographer,
     })

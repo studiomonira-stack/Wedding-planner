@@ -50,4 +50,6 @@ urlpatterns = [
     path('partner/kund/<int:kund_id>/tidslinje/add/', views.partner_add_tidslinje, name='partner_add_tidslinje'),
     path('partner/kund/<int:kund_id>/galleri/add/', views.partner_add_galleri, name='partner_add_galleri'),
     path('partner/kund/<int:kund_id>/set-datum/', views.partner_set_brollopsdatum, name='partner_set_brollopsdatum'),
+    
+    path('p/<slug:slug>/', views.partner_page, name='partner_page'),
     ]

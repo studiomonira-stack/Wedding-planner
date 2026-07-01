@@ -5,6 +5,7 @@ from django.urls import path
 from django.template.response import TemplateResponse
 import secrets
 from .models import Photographer, Brollop
+from .models import PartnerPage
 
 @admin.register(Photographer)
 class PhotographerAdmin(admin.ModelAdmin):
@@ -41,3 +42,10 @@ class PhotographerAdmin(admin.ModelAdmin):
     skapa_konton.short_description = "Skapa användarkonton för valda fotografer"
 
 admin.site.register(Brollop)
+
+
+@admin.register(PartnerPage)
+class PartnerPageAdmin(admin.ModelAdmin):
+    list_display = ('photographer', 'slug', 'is_active')
+    search_fields = ('photographer__name', 'slug')
+    list_filter = ('is_active',)

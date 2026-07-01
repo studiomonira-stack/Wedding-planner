@@ -184,3 +184,28 @@ class Photographer(models.Model):
 
     def __str__(self):
         return self.name
+    
+    
+class PartnerPage(models.Model):
+    photographer = models.OneToOneField(Photographer, on_delete=models.CASCADE, related_name='partner_page')
+    slug = models.SlugField(unique=True, max_length=100)
+    headline = models.CharField(max_length=200, blank=True, verbose_name="Rubrik")
+    bio = models.TextField(blank=True, verbose_name="Kort presentation")
+    
+    # Länkar
+    instagram_url = models.URLField(blank=True, verbose_name="Instagram")
+    tiktok_url = models.URLField(blank=True, verbose_name="TikTok")
+    facebook_url = models.URLField(blank=True, verbose_name="Facebook")
+    website_url = models.URLField(blank=True, verbose_name="Hemsida")
+    
+    # Egna länkar
+    custom_link_1_url = models.URLField(blank=True, verbose_name="Extra länk 1")
+    custom_link_1_text = models.CharField(max_length=100, blank=True, verbose_name="Text länk 1")
+    custom_link_2_url = models.URLField(blank=True, verbose_name="Extra länk 2")
+    custom_link_2_text = models.CharField(max_length=100, blank=True, verbose_name="Text länk 2")
+    
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Linktree: {self.photographer.name}"
