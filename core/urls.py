@@ -5,6 +5,7 @@ from django.conf.urls import i18n
 from django.conf import settings
 from django.conf.urls.static import static
 from planner import views as planner_views
+from planner.views import partner_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -16,6 +17,7 @@ urlpatterns = [
     path('partner-demo/', planner_views.partner_landing_demo, name='partner_landing_demo'),
     path('i18n/', include('django.conf.urls.i18n')), 
     path('rosetta/', include('rosetta.urls')),
+    path('p/<slug:slug>/', partner_page, name='partner_page'),
     
     
 ]
