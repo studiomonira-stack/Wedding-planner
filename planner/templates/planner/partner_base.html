@@ -299,6 +299,9 @@
         <a href="{% url 'partner_kunder' %}" class="{% if request.resolver_match.url_name == 'partner_kunder' or request.resolver_match.url_name == 'partner_kund_detail' %}active{% endif %}">
             Kunder
         </a>
+        <a href="{% url 'partner_intakter' %}" class="{% if request.resolver_match.url_name == 'partner_intakter' %}active{% endif %}">
+            Intäkter
+        </a>
         <form action="{% url 'set_language' %}" method="post" style="display: inline;">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ request.path }}">

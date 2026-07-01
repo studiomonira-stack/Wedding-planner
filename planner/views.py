@@ -575,6 +575,21 @@ def register_photographer(request):
                         photographer.user = user
                         photographer.is_active = True
                         photographer.save()
+
+                        # Skapa affiliate i Whop automatiskt
+                        from .whop_utils import get_or_create_affiliate
+
+                        affiliate_result = get_or_create_affiliate(
+                            email=whop_email or photographer.whop_email,
+                            name=photographer.name
+                        )
+
+                        if affiliate_result.get('success'):
+                            photographer.whop_affiliate_id = affiliate_result['affiliate_id']
+                            photographer.save()
+                            print(f"✅ Affiliate skapad: {affiliate_result['affiliate_id']}")
+                        else:
+                            print("❌ Kunde inte skapa affiliate automatiskt")
                         
                         try:
                             print(f"📧 SENDGRID_API_KEY finns: {bool(settings.EMAIL_HOST_PASSWORD)}")
@@ -1029,3 +1044,55 @@ def whop_callback(request):
         print(f"❌ Whop OAuth error: {e}")
     
     return redirect('register_photographer')
+
+
+
+
+from .whop_utils import create_checkout_session, get_or_create_affiliate
+
+def checkout_planner(request):
+    """Visa checkout-sida och redirecta till Whop"""
+    affiliate_id = request.GET.get('ref', '')
+    
+    # Hitta fotograf om ref finns
+    photographer = None
+    if affiliate_id:
+        try:
+            photographer = Photographer.objects.get(whop_affiliate_id=affiliate_id, is_active=True)
+        except Photographer.DoesNotExist:
+            pass
+    
+    if request.method == 'POST':
+        # Bygg Whop checkout-länk
+        checkout_url = f"https://whop.com/checkout/{settings.WHOP_PLAN_ID}"
+        if affiliate_id:
+            checkout_url += f"?affiliate_id={affiliate_id}"
+        
+        return redirect(checkout_url)
+    
+    return render(request, 'planner/checkout.html', {
+        'photographer': photographer,
+        'plan_price': 490,
+    })
+
+@login_required
+def partner_intakter(request):
+    fotograf = Photographer.objects.filter(user=request.user, is_active=True).first()
+    if not fotograf:
+        return redirect('dashboard')
+    
+    from .whop_utils import get_affiliate_stats
+    
+    stats = None
+    if fotograf.whop_affiliate_id:
+        stats = get_affiliate_stats(fotograf.whop_affiliate_id)
+    
+    # Hämta kunder
+    kunder = Profil.objects.filter(photographer=fotograf, roll='par')
+    
+    return render(request, 'planner/partner_intakter.html', {
+        'fotograf': fotograf,
+        'stats': stats,
+        'kunder': kunder,
+        'antal_kunder': kunder.count(),
+    })

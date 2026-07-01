@@ -38,6 +38,8 @@ urlpatterns = [
     path('fotograf/tidslinje/<int:kund_id>/ny/', views.fotograf_ny_handelse, name='fotograf_ny_handelse'),
     path('fotograf/tidslinje/<int:kund_id>/ta-bort/<int:handelse_id>/', views.fotograf_ta_bort_handelse, name='fotograf_ta_bort_handelse'),
     path('dashboard-embed/', views.dashboard_embed, name='dashboard_embed'),
+    path('kop-planner/', views.checkout_planner, name='checkout_planner'),
+    path('partner/intakter/', views.partner_intakter, name='partner_intakter'),
     path('whop/connect/', views.whop_connect, name='whop_connect'),
     path('whop/callback/', views.whop_callback, name='whop_callback'),
    

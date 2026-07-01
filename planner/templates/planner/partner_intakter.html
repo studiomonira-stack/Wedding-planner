@@ -1,0 +1,103 @@
+{% extends 'planner/partner_base.html' %}
+{% load i18n %}
+{% block content %}
+
+<div style="margin-bottom: 28px;">
+    <h1 style="font-size: 2rem; margin-bottom: 4px;"> {% trans "Mina intäkter" %}</h1>
+    <p style="color: var(--text-light); font-size: 0.95rem;">{{ fotograf.name }}</p>
+</div>
+
+<div class="row g-3 mb-5">
+    <div class="col-md-4">
+        <div class="card stat-card">
+            <div class="stat-number">{{ antal_kunder }}</div>
+            <div class="stat-label">{% trans "Kunder" %}</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stat-card">
+            <div class="stat-number">
+                {% if stats and stats.earnings %}
+                    {{ stats.earnings.total_earned|default:"0" }} kr
+                {% else %}
+                    --
+                {% endif %}
+            </div>
+            <div class="stat-label">{% trans "Intjänat" %}</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stat-card">
+            <div class="stat-number">
+                {% if stats and stats.stats %}
+                    {{ stats.stats.clicks|default:"0" }}
+                {% else %}
+                    --
+                {% endif %}
+            </div>
+            <div class="stat-label">{% trans "Klick" %}</div>
+        </div>
+    </div>
+</div>
+
+<!-- Checkout-länk -->
+{% if fotograf.whop_affiliate_id %}
+<div class="card mb-4">
+    <div class="card-body">
+        <h5> {% trans "Din checkout-länk" %}</h5>
+        <p style="color: var(--text-light); font-size: 0.9rem;">
+            {% trans "Dela denna länk med dina kunder:" %}
+        </p>
+        <div style="display: flex; gap: 8px; align-items: center;">
+            <input type="text" 
+                   value="https://www.brollopsplanner.se/checklist/kop-planner/?ref={{ fotograf.whop_affiliate_id }}" 
+                   class="form-control" 
+                   readonly 
+                   style="font-size: 0.85rem;">
+            <button onclick="navigator.clipboard.writeText('https://www.brollopsplanner.se/checklist/kop-planner/?ref={{ fotograf.whop_affiliate_id }}')" 
+                    class="btn-primary btn-sm" style="white-space: nowrap;">
+                 Kopiera
+            </button>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Kundlista -->
+<h4 style="margin-bottom: 16px;"> {% trans "Dina kunder" %}</h4>
+{% if kunder %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{% trans "Kund" %}</th>
+                    <th>{% trans "Registrerad" %}</th>
+                    <th>{% trans "Status" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for k in kunder %}
+                    <tr>
+                        <td><strong>{{ k.user.username }}</strong></td>
+                        <td>{{ k.user.date_joined|date:"d M Y" }}</td>
+                        <td>
+                            {% if k.utgangsdatum and k.utgangsdatum > now %}
+                                <span class="badge badge-primary">Aktiv</span>
+                            {% else %}
+                                <span style="color: var(--text-light);">Utgånget</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="card">
+        <div class="card-body" style="text-align: center; padding: 40px;">
+            ✨ {% trans "Inga kunder ännu." %}
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

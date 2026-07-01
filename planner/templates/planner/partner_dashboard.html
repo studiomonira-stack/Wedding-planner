@@ -22,6 +22,30 @@
     </div>
 </div>
 
+<!-- ========== LÄGG TILL HÄR ========== -->
+{% if fotograf.whop_affiliate_id %}
+<div class="card mb-4">
+    <div class="card-body">
+        <h5>🔗 {% trans "Din checkout-länk" %}</h5>
+        <p style="color: var(--text-light); font-size: 0.9rem;">
+            {% trans "Dela denna länk med dina kunder:" %}
+        </p>
+        <div style="display: flex; gap: 8px; align-items: center;">
+            <input type="text" 
+                   value="https://www.brollopsplanner.se/checklist/kop-planner/?ref={{ fotograf.whop_affiliate_id }}" 
+                   class="form-control" 
+                   readonly 
+                   style="font-size: 0.85rem;">
+            <button onclick="navigator.clipboard.writeText('https://www.brollopsplanner.se/checklist/kop-planner/?ref={{ fotograf.whop_affiliate_id }}')" 
+                    class="btn-primary btn-sm" style="white-space: nowrap;">
+                📋 Kopiera
+            </button>
+        </div>
+    </div>
+</div>
+{% endif %}
+<!-- ========== SLUT ========== -->
+
 {% if kommande_brollop %}
 <h4 style="margin-bottom: 16px;">{% trans "Kommande bröllop" %}</h4>
 <div class="row g-3 mb-5">

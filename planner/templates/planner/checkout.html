@@ -1,0 +1,163 @@
+{% extends 'accounts/base.html' %}
+{% load i18n %}
+{% block content %}
+
+<style>
+    .navbar, footer, #cookie-banner {
+        display: none !important;
+    }
+    body {
+        background: linear-gradient(180deg, #FFFFFF 0%, #F5EBEB 100%);
+        min-height: 100vh;
+    }
+    .checkout-container {
+        max-width: 550px;
+        margin: 60px auto;
+        padding: 0 20px;
+    }
+    .checkout-card {
+        background: white;
+        border-radius: 20px;
+        padding: 48px 36px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+        text-align: center;
+    }
+    .partner-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: {{ photographer.primary_color|default:'#F5EBEB' }}30;
+        padding: 8px 20px;
+        border-radius: 50px;
+        margin-bottom: 24px;
+        font-size: 0.85rem;
+        color: #8C8C8C;
+    }
+    .partner-badge strong {
+        color: {{ photographer.accent_color|default:'#D4B5B5' }};
+    }
+    .plan-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: #F5EBEB;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        font-size: 1.5rem;
+        color: {{ photographer.accent_color|default:'#D4B5B5' }};
+    }
+    .price {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 3rem;
+        color: #3A3A3A;
+        margin: 20px 0 4px;
+    }
+    .price-sub {
+        color: #8C8C8C;
+        font-size: 0.85rem;
+        margin-bottom: 28px;
+    }
+    .feature-list {
+        text-align: left;
+        list-style: none;
+        padding: 0;
+        margin: 0 0 28px;
+    }
+    .feature-list li {
+        padding: 14px 16px;
+        border-bottom: 1px solid #F5F0F0;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 0.9rem;
+        color: #3A3A3A;
+        border-radius: 8px;
+        transition: background 0.2s;
+    }
+    .feature-list li:last-child {
+        border-bottom: none;
+    }
+    .feature-list li:hover {
+        background: #FDFCFB;
+    }
+    .feature-list li i {
+        font-size: 1rem;
+        width: 22px;
+        text-align: center;
+        color: {{ photographer.accent_color|default:'#D4B5B5' }};
+    }
+    .btn-buy {
+        background: {{ photographer.accent_color|default:'#D4B5B5' }};
+        color: white;
+        padding: 16px 48px;
+        border-radius: 50px;
+        font-family: 'Karla', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    .btn-buy:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(180,149,149,0.3);
+    }
+    .secure-badge {
+        color: #8C8C8C;
+        font-size: 0.8rem;
+        margin-top: 16px;
+    }
+</style>
+
+<div class="checkout-container">
+    <div class="checkout-card">
+    
+    {% if photographer %}
+    <div class="partner-badge">
+        Presenteras av <strong>{{ photographer.name }}</strong>
+    </div>
+    {% endif %}
+    
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #3A3A3A; margin-bottom: 4px;">
+        {% trans "Bröllopsplaneraren" %}
+    </h1>
+    <p style="color: #8C8C8C; font-size: 0.9rem;">
+        {% trans "Allt ni behöver – samlat på ett ställe" %}
+    </p>
+    
+    <div class="price">490 kr</div>
+    <div class="price-sub">{% trans "Engångsavgift – ingen prenumeration" %}</div>
+    
+    <ul class="feature-list">
+        <li><i class="fas fa-list-check"></i> {% trans "Checklista – steg-för-steg fram till bröllopsdagen" %}</li>
+        <li><i class="fas fa-coins"></i> {% trans "Budget – håll koll på kostnaderna" %}</li>
+        <li><i class="fas fa-envelope-open-text"></i> {% trans "Gästlista – bjud in och håll koll på svar" %}</li>
+        <li><i class="fas fa-truck"></i> {% trans "Leverantörer – samla alla på ett ställe" %}</li>
+        <li><i class="fas fa-clock"></i> {% trans "Tidslinje – planera bröllopsdagen" %}</li>
+        <li><i class="fas fa-images"></i> {% trans "Inspirationsgalleri – spara era idéer" %}</li>
+    </ul>
+    
+    {% if error %}
+    <div style="background: #F5EBEB; color: #B89595; padding: 10px; border-radius: 10px; margin-bottom: 16px; font-size: 0.85rem;">
+        {{ error }}
+    </div>
+    {% endif %}
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-buy">
+            {% trans "Köp nu för 490 kr" %} →
+        </button>
+    </form>
+    
+    <div class="secure-badge">
+        <i class="fas fa-lock"></i> {% trans "Säker betalning via Whop" %}
+    </div>
+</div>
+
+{% endblock %}
