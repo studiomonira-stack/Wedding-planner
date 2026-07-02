@@ -231,3 +231,6 @@ def kop(request):
 
 def login_embed(request):
     return render(request, 'accounts/login_embed.html')
+
+def landing_test(request):
+    return render(request, 'accounts/landing_test.html')

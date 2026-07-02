@@ -13,4 +13,5 @@ urlpatterns = [
     path('skapa-par/', views.skapa_par, name='skapa_par'),
     path('kop/', views.kop, name='kop'),
     path('welcome/', views.welcome, name='welcome'),
+    path('landing-test/', views.landing_test, name='landing_test'),
 ]
