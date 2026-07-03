@@ -59,6 +59,14 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             font-weight: 300;
+
+            body {
+            overflow-x: hidden;
+            max-width: 100vw;
+            }
+            *, *::before, *::after {
+            max-width: 100%;
+            }
         }
         h1, h2, h3, h4 {
             font-family: 'Cormorant Garamond', serif;
@@ -291,6 +299,36 @@
         .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+        @media (max-width: 768px) {
+        .cta-dark {
+        min-height: auto;
+        padding: 60px 0;
+        }
+        .cta-dark .container-wide {
+        flex-direction: column !important;
+        gap: 30px !important;
+        padding-left: 20px !important;
+        }
+        .cta-dark .container-wide > div {
+        max-width: 100% !important;
+        padding: 20px 0 !important;
+        }
+        .cta-content {
+        max-width: 100% !important;
+        padding: 40px 20px !important;
+        }
+
+
+    /* Fixa sidoglidning */
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    section, .section, .hero {
+        overflow-x: hidden;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -323,17 +361,17 @@
     <div class="hero-image"><img src="https://i.imgur.com/nEfF7OS.png" alt=""></div>
     <div class="container-wide">
         <div class="hero-content">
-            <p class="hero-tag">Partnerprogram för bröllopsfotografer & kreatörer</p>
+            <p class="hero-tag">{% trans "Partnerprogram för bröllopsfotografer & kreatörer" %}</p>
             <h1>Skapa en bröllops-upplevelse som börjar långt innan bröllopsdagen.</h1>
             <p>Ge dina kunder ett vackert planeringsverktyg som förenklar hela deras resa – samtidigt som du stärker ditt eget varumärke.</p>
             <div class="hero-buttons">
-                <a href="#waitlist" class="btn-primary">Ansök om partnerskap</a>
-                <a href="#how" class="btn-outline">Upptäck hur det fungerar</a>
+                <a href="#waitlist" class="btn-primary">{% trans "Ansök om partnerskap" %}</a>
+                <a href="#how" class="btn-outline">{% trans "Upptäck hur det fungerar" %}</a>
             </div>
             <div class="hero-checks">
-                <span><i class="fas fa-check-circle"></i> Kostnadsfritt att gå med</span>
-                <span><i class="fas fa-check-circle"></i> Erbjud på ditt sätt</span>
-                <span><i class="fas fa-check-circle"></i> För fotografer & kreatörer</span>
+                <span><i class="fas fa-check-circle"></i> {% trans "Kostnadsfritt att gå med" %}</span>
+                <span><i class="fas fa-check-circle"></i> {% trans "Erbjud på ditt sätt" %}</span>
+                <span><i class="fas fa-check-circle"></i> {% trans "För fotografer & kreatörer" %}</span>
             </div>
         </div>
     </div>
@@ -345,16 +383,16 @@
         <div class="image-side"><img src="https://i.imgur.com/3W9UFwO.png" alt=""></div>
         <div class="text-side">
             <div class="content">
-                <p class="section-tag">Ett fantastiskt bröllop börjar med en fantastisk planering</p>
-                <h2>Ett digitalt hem för hela bröllopsresan.</h2>
-                <p>Allt samlat på ett ställe – enkelt, vackert och skapat för moderna brudpar.</p>
+                <p class="section-tag">{% trans "Ett fantastiskt bröllop börjar med en fantastisk planering" %}</p>
+                <h2>{% trans "Ett digitalt hem för hela bröllopsresan." %}</h2>
+                <p>{% trans "Allt samlat på ett ställe – enkelt, vackert och skapat för moderna brudpar." %}</p>
                 <div class="inline-icons">
-                    <div class="icon-item"><i class="fas fa-coins"></i><span>Budget</span></div>
-                    <div class="icon-item"><i class="fas fa-list-check"></i><span>Checklista</span></div>
-                    <div class="icon-item"><i class="fas fa-envelope-open-text"></i><span>Gästlista</span></div>
-                    <div class="icon-item"><i class="fas fa-truck"></i><span>Leverantörer</span></div>
-                    <div class="icon-item"><i class="fas fa-images"></i><span>Galleri</span></div>
-                    <div class="icon-item"><i class="fas fa-clock"></i><span>Tidslinje</span></div>
+                    <div class="icon-item"><i class="fas fa-coins"></i><span>{% trans "Budget" %}</span></div>
+                    <div class="icon-item"><i class="fas fa-list-check"></i><span>{% trans "Checklista" %}</span></div>
+                    <div class="icon-item"><i class="fas fa-envelope-open-text"></i><span>{% trans "Gästlista" %}</span></div>
+                    <div class="icon-item"><i class="fas fa-truck"></i><span>{% trans "Leverantörer" %}</span></div>
+                    <div class="icon-item"><i class="fas fa-images"></i><span>{% trans "Galleri" %}</span></div>
+                    <div class="icon-item"><i class="fas fa-clock"></i><span>{% trans "Tidslinje" %}</span></div>
                 </div>
             </div>
         </div>
@@ -364,12 +402,12 @@
 <!-- ========== 3. VAD DET BETYDER ========== -->
 <section class="section section-sand">
     <div class="container-medium text-center">
-        <p class="section-tag">När dina kunder får en bättre upplevelse får du också det</p>
+        <p class="section-tag">{% trans "När dina kunder får en bättre upplevelse får du också det" %}</p>
         <div class="card-row">
-            <div class="story-card"><div class="card-icon"><i class="far fa-heart"></i></div><h4>En starkare kundrelation</h4><p>Var med under hela planeringsresan – inte bara på bröllopsdagen.</p></div>
-            <div class="story-card"><div class="card-icon"><i class="far fa-star"></i></div><h4>Ett tydligt mervärde</h4><p>Erbjud något som gör att ditt företag sticker ut.</p></div>
-            <div class="story-card"><div class="card-icon"><i class="fas fa-seedling"></i></div><h4>Ett starkare varumärke</h4><p>Visa att du bryr dig om hela upplevelsen – från första mötet till sista bilden.</p></div>
-            <div class="story-card"><div class="card-icon"><i class="far fa-gem"></i></div><h4>Flexibla intäktsmöjligheter</h4><p>Välj själv hur du vill erbjuda Bröllopsplaneraren till dina kunder.</p></div>
+            <div class="story-card"><div class="card-icon"><i class="far fa-heart"></i></div><h4>{% trans "En starkare kundrelation" %}</h4><p>{% trans "Var med under hela planeringsresan – inte bara på bröllopsdagen." %}</p></div>
+            <div class="story-card"><div class="card-icon"><i class="far fa-star"></i></div><h4>{% trans "Ett tydligt mervärde" %}</h4><p>{% trans "Erbjud något som gör att ditt företag sticker ut." %}</p></div>
+            <div class="story-card"><div class="card-icon"><i class="fas fa-seedling"></i></div><h4>{% trans "Ett starkare varumärke" %}</h4><p>{% trans "Visa att du bryr dig om hela upplevelsen – från första mötet till sista bilden." %}</p></div>
+            <div class="story-card"><div class="card-icon"><i class="far fa-gem"></i></div><h4>{% trans "Flexibla intäktsmöjligheter" %}</h4><p>{% trans "Välj själv hur du vill erbjuda Bröllopsplaneraren till dina kunder." %}</p></div>
         </div>
     </div>
 </section>
@@ -377,28 +415,28 @@
 <!-- ========== 4. TVÅ SÄTT ========== -->
 <section class="section section-cream" id="how">
     <div class="container-medium text-center">
-        <p class="section-tag">Två sätt att samarbeta</p>
+        <p class="section-tag">{% trans "Två sätt att samarbeta" %}</p>
         <div class="two-cards">
             <div class="big-card">
                 <div class="card-img"><img src="https://i.imgur.com/tYfzByp.png" alt=""></div>
                 <div class="card-text">
-                    <h3>Inkludera i dina paket</h3>
-                    <p>För kreatörer som vill erbjuda en komplett premiumupplevelse.</p>
-                    <ul><li>Köp tillgång till partnerpris</li><li>Ge kunden tillgång direkt</li><li>Integrera i dina egna paket</li></ul>
-                    <a href="#" class="btn-outline" style="font-size:0.7rem;padding:10px 20px;">Läs mer</a>
+                    <h3>{% trans "Inkludera i dina paket" %}</h3>
+                    <p>{% trans "För kreatörer som vill erbjuda en komplett premiumupplevelse." %}</p>
+                    <ul><li>{% trans "Köp tillgång till partnerpris" %}</li><li>{% trans "Ge kunden tillgång direkt" %}</li><li>{% trans "Integrera i dina egna paket" %}</li></ul>
+                    <a href="#" class="btn-outline" style="font-size:0.7rem;padding:10px 20px;">{% trans "Läs mer" %}</a>
                 </div>
             </div>
             <div class="big-card">
                 <div class="card-img"><img src="https://i.imgur.com/5GWHoMO.png" alt=""></div>
                 <div class="card-text">
-                    <h3>Rekommendera till kunder</h3>
-                    <p>Perfekt om du vill erbjuda utan att ändra dina paket.</p>
-                    <ul><li>Dela din personliga partnerlänk</li><li>Kunden väljer själv</li><li>Du får ersättning vid registrering</li></ul>
-                    <a href="#" class="btn-outline" style="font-size:0.7rem;padding:10px 20px;">Läs mer</a>
+                    <h3>{% trans "Rekommendera till kunder" %}</h3>
+                    <p>{% trans "Perfekt om du vill erbjuda utan att ändra dina paket." %}</p>
+                    <ul><li>{% trans "Dela din personliga partnerlänk" %}</li><li>{% trans "Kunden väljer själv" %}</li><li>{% trans "Du får ersättning vid registrering" %}</li></ul>
+                    <a href="#" class="btn-outline" style="font-size:0.7rem;padding:10px 20px;">{% trans "Läs mer" %}</a>
                 </div>
             </div>
         </div>
-        <p style="margin-top:18px;color:var(--text-muted);font-size:0.85rem;">Eller kombinera båda – valet är helt ditt.</p>
+        <p style="margin-top:18px;color:var(--text-muted);font-size:0.85rem;">{% trans "Eller kombinera båda – valet är helt ditt." %}</p>
     </div>
 </section>
 
@@ -407,16 +445,16 @@
     <div class="split-panel">
         <div class="text-side" style="background: var(--sand);">
             <div class="content">
-                <p class="section-tag">Allt samlat i din</p>
-                <h2>Partner Studio.</h2>
-                <p style="color:var(--text-light);margin-bottom:16px;">En lugn och överskådlig plats där du har full koll på dina kunder, kommande bröllop och möjligheter.</p>
+                <p class="section-tag">{% trans "Allt samlat i din" %}</p>
+                <h2>{% trans "Partner Studio." %}</h2>
+                <p style="color:var(--text-light);margin-bottom:16px;">{% trans "En lugn och överskådlig plats där du har full koll på dina kunder, kommande bröllop och möjligheter." %}</p>
                 <div class="studio-icons">
-                    <div class="studio-icon-item"><i class="fas fa-clock"></i><div><strong>Lägg till fototider</strong><span>Planera in dina tider i kundens tidslinje.</span></div></div>
-                    <div class="studio-icon-item"><i class="fas fa-users"></i><div><strong>Hantera kunder</strong><span>Full överblick över alla par.</span></div></div>
-                    <div class="studio-icon-item"><i class="fas fa-calendar"></i><div><strong>Kommande bröllop</strong><span>Håll koll på alla datum.</span></div></div>
-                    <div class="studio-icon-item"><i class="fas fa-coins"></i><div><strong>Intäkter</strong><span>Se din ersättning i realtid.</span></div></div>
-                    <div class="studio-icon-item"><i class="fas fa-link"></i><div><strong>Partnerlänk</strong><span>Din unika länk att dela.</span></div></div>
-                    <div class="studio-icon-item"><i class="fas fa-pen"></i><div><strong>Redigera tidslinjer</strong><span>Hjälp kunderna med planeringen.</span></div></div>
+                    <div class="studio-icon-item"><i class="fas fa-clock"></i><div><strong>{% trans "Lägg till fototider" %}</strong><span>{% trans "Planera in dina tider i kundens tidslinje." %}</span></div></div>
+                    <div class="studio-icon-item"><i class="fas fa-users"></i><div><strong>{% trans "Hantera kunder" %}</strong><span>{% trans "Full överblick över alla par." %}</span></div></div>
+                    <div class="studio-icon-item"><i class="fas fa-calendar"></i><div><strong>{% trans "Kommande bröllop" %}</strong><span>{% trans "Håll koll på alla datum." %}</span></div></div>
+                    <div class="studio-icon-item"><i class="fas fa-coins"></i><div><strong>{% trans "Intäkter" %}</strong><span>{% trans "Se din ersättning i realtid." %}</span></div></div>
+                    <div class="studio-icon-item"><i class="fas fa-link"></i><div><strong>{% trans "Partnerlänk" %}</strong><span>{% trans "Din unika länk att dela." %}</span></div></div>
+                    <div class="studio-icon-item"><i class="fas fa-pen"></i><div><strong>{% trans "Redigera tidslinjer" %}</strong><span>{% trans "Hjälp kunderna med planeringen." %}</span></div></div>
                 </div>
             </div>
         </div>
@@ -427,11 +465,11 @@
 <!-- ========== 6. SÅ FUNGERAR DET ========== -->
 <section class="section section-blush">
     <div class="container-medium text-center">
-        <p class="section-tag">Så fungerar det</p>
+        <p class="section-tag">{% trans "Så fungerar det" %}</p>
         <div class="steps-horizontal">
-            <div class="step-item"><div class="step-num">01</div><h4>Ansök om partnerskap</h4><p>Fyll i formuläret. Vi hörs inom 24 timmar.</p></div>
-            <div class="step-item"><div class="step-num">02</div><h4>Skapa din Partner Studio</h4><p>Ladda upp logga, välj färger. Klart på några minuter.</p></div>
-            <div class="step-item"><div class="step-num">03</div><h4>Bjud in dina kunder</h4><p>Dela din länk på det sätt som passar dig bäst.</p></div>
+            <div class="step-item"><div class="step-num">01</div><h4>{% trans "Ansök om partnerskap" %}</h4><p>{% trans "Fyll i formuläret. Vi hörs inom 24 timmar." %}</p></div>
+            <div class="step-item"><div class="step-num">02</div><h4>{% trans "Skapa din Partner Studio" %}</h4><p>{% trans "Ladda upp logga, välj färger. Klart på några minuter." %}</p></div>
+            <div class="step-item"><div class="step-num">03</div><h4>{% trans "Bjud in dina kunder" %}</h4><p>{% trans "Dela din länk på det sätt som passar dig bäst." %}</p></div>
         </div>
     </div>
 </section>
@@ -439,15 +477,15 @@
 <!-- ========== 7. FÖR VILKA ========== -->
 <section class="section section-cream">
     <div class="container-medium text-center">
-        <p class="section-tag">För vilka?</p>
+        <p class="section-tag">{% trans "För vilka?" %}</p>
         <div class="icon-row">
-            <div class="icon-item"><i class="fas fa-camera"></i><span>Fotografer</span></div>
-            <div class="icon-item"><i class="fas fa-video"></i><span>Videografer</span></div>
-            <div class="icon-item"><i class="fas fa-pen-fancy"></i><span>Wedding planners</span></div>
-            <div class="icon-item"><i class="fas fa-seedling"></i><span>Florister</span></div>
-            <div class="icon-item"><i class="fas fa-paint-brush"></i><span>Makeupartister</span></div>
-            <div class="icon-item"><i class="fas fa-building"></i><span>Lokaler</span></div>
-            <div class="icon-item"><i class="fas fa-music"></i><span>DJ:s & Musiker</span></div>
+            <div class="icon-item"><i class="fas fa-camera"></i><span>{% trans "Fotografer" %}</span></div>
+            <div class="icon-item"><i class="fas fa-video"></i><span>{% trans "Videografer" %}</span></div>
+            <div class="icon-item"><i class="fas fa-pen-fancy"></i><span>{% trans "Wedding planners" %}</span></div>
+            <div class="icon-item"><i class="fas fa-seedling"></i><span>{% trans "Florister" %}</span></div>
+            <div class="icon-item"><i class="fas fa-paint-brush"></i><span>{% trans "Makeupartister" %}</span></div>
+            <div class="icon-item"><i class="fas fa-building"></i><span>{% trans "Lokaler" %}</span></div>
+            <div class="icon-item"><i class="fas fa-music"></i><span>{% trans "DJ:s & Musiker" %}</span></div>
         </div>
     </div>
 </section>
@@ -456,12 +494,12 @@
 <!-- ========== 8. PARTNERBERÄTTELSER ========== -->
 <section class="section section-sand">
     <div class="container-narrow text-center">
-        <p class="section-tag">Partnerberättelser</p>
+        <p class="section-tag">{% trans "Partnerberättelser" %}</p>
         <div class="testimonial-card">
             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Partner" class="avatar">
             <div>
-                <p class="quote">"När jag började erbjuda Bröllopsplaneraren blev planeringen mycket enklare för mina kunder. Jag upplevde också att relationen med dem blev starkare."</p>
-                <p class="author">Emma, Bröllopsfotograf, Stockholm</p>
+                <p class="quote">{% trans "När jag började erbjuda Bröllopsplaneraren blev planeringen mycket enklare för mina kunder. Jag upplevde också att relationen med dem blev starkare." %}</p>
+                <p class="author">{% trans "Emma, Bröllopsfotograf, Stockholm" %}</p>
             </div>
         </div>
     </div>
@@ -473,65 +511,61 @@
     <div class="split-panel">
         <div class="text-side" style="background: var(--blush);">
             <div class="content">
-                <h2>Vi tror att planeringen ska vara lika minnesvärd som bröllopsdagen.</h2>
-                <p style="color:var(--text-light);margin-top:14px;">Bröllopsplaneraren är skapad för att hjälpa brudpar känna sig trygga, inspirerade och organiserade – och för att ge dig som kreatör ett verktyg som lyfter hela din kundupplevelse.</p>
-                <p class="signature"><span class="first-letter">P</span>lanera och njut av tiden.</p>
+                <h2>{% trans "Vi tror att planeringen ska vara lika minnesvärd som bröllopsdagen." %}</h2>
+                <p style="color:var(--text-light);margin-top:14px;">{% trans "Bröllopsplaneraren är skapad för att hjälpa brudpar känna sig trygga, inspirerade och organiserade – och för att ge dig som kreatör ett verktyg som lyfter hela din kundupplevelse." %}</p>
+                <p class="signature"><span class="first-letter">P</span>{% trans "lanera och njut av tiden." %}</p>
             </div>
         </div>
         <div class="image-side"><img src="https://i.imgur.com/0OhWz7s.png" alt=""></div>
     </div>
 </section>
 
-<!-- ========== 10. CTA ========== -->
-<section id="waitlist" class="section-dark" style="padding:0; position: relative; overflow: hidden; min-height: 600px;">
-    <!-- Bild till höger med fade -->
-    <div class="hero-image" style="width: 55%; right: 0; left: auto;">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop" alt="" style="filter: brightness(0.5);">
+<!-- ===== 10. CTA ===== -->
+<section id="waitlist" style="position: relative; overflow: hidden; min-height: 600px; display: flex; align-items: center; justify-content: center;">
+    <!-- Bild med mörkt filter -->
+    <div style="position: absolute; inset: 0; z-index: 0;">
+        <img src="https://i.imgur.com/M2GFVbt.png" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35);">
     </div>
-    <!-- Fade från mörkt till bild -->
-    <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 55%; z-index: 1; background: linear-gradient(to right, #2D2421 0%, transparent 100%);"></div>
     
-    <div class="container-wide" style="position: relative; z-index: 2; display: flex; align-items: center; min-height: 600px; gap: 60px; padding-left: 120px;">
+    <div class="container-wide" style="position: relative; z-index: 2; display: flex; align-items: center; min-height: 600px; gap: 60px; padding-left: 80px;">
         <!-- Text till vänster -->
         <div style="flex: 1; max-width: 480px; padding: 80px 0;">
-            <h2>Redo att ge dina kunder något de faktiskt kommer använda?</h2>
-            <p style="margin:14px 0 0; color: rgba(255,255,255,0.7);">Bli en del av Bröllopsplanerarens partnernätverk och skapa ännu större värde för dina kunder.</p>
+            <h2 style="color: #fff;">{% trans "Redo att ge dina kunder något de faktiskt kommer använda?" %}</h2>
+            <p style="margin:14px 0 0; color: rgba(255,255,255,0.7);">{% trans "Bli en del av Bröllopsplanerarens partnernätverk och skapa ännu större värde för dina kunder." %}</p>
         </div>
         
         <!-- Countdown + Formulär till höger -->
         <div style="flex: 1; max-width: 400px; padding: 80px 0;">
             <!-- Countdown -->
             <div style="margin-bottom:24px;">
-                <p style="font-size:0.72rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.4);margin-bottom:8px;">Nästa kvartals intag öppnar i September. Anmäl intresse, och bli en del av vårt partnerskap!</p>
+                <p style="font-size:0.72rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.4);margin-bottom:8px;">{% trans "Nästa intag öppnar om" %}</p>
                 <div id="countdown" style="display:flex;gap:16px;font-family:'Cormorant Garamond',serif;">
-                    <div><span id="days" style="font-size:2.4rem;color:#fff;font-weight:300;">14</span><br><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.4);">Dagar</span></div>
-                    <div><span id="hours" style="font-size:2.4rem;color:#fff;font-weight:300;">00</span><br><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.4);">Tim</span></div>
-                    <div><span id="minutes" style="font-size:2.4rem;color:#fff;font-weight:300;">00</span><br><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.4);">Min</span></div>
-                    <div><span id="seconds" style="font-size:2.4rem;color:#fff;font-weight:300;">00</span><br><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.4);">Sek</span></div>
+                    <div><span id="days" style="font-size:2.4rem;color:#fff;font-weight:300;">--</span><br><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.4);">{% trans "Dagar" %}</span></div>
+                    <div><span id="hours" style="font-size:2.4rem;color:#fff;font-weight:300;">--</span><br><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.4);">{% trans "Tim" %}</span></div>
+                    <div><span id="minutes" style="font-size:2.4rem;color:#fff;font-weight:300;">--</span><br><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.4);">{% trans "Min" %}</span></div>
+                    <div><span id="seconds" style="font-size:2.4rem;color:#fff;font-weight:300;">--</span><br><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.4);">{% trans "Sek" %}</span></div>
                 </div>
             </div>
             
-            <!-- Formulär -->
             <form method="post" action="https://formspree.io/f/xvzybjwj">
                 {% csrf_token %}
-                <input type="text" name="firstname" placeholder="Förnamn" required style="width:100%;padding:14px 18px;margin-bottom:8px;border-radius:50px;border:none;font-family:'Karla',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.1);color:#fff;">
-                <input type="text" name="lastname" placeholder="Efternamn" required style="width:100%;padding:14px 18px;margin-bottom:8px;border-radius:50px;border:none;font-family:'Karla',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.1);color:#fff;">
-                <input type="email" name="email" placeholder="Mejl" required style="width:100%;padding:14px 18px;margin-bottom:14px;border-radius:50px;border:none;font-family:'Karla',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.1);color:#fff;">
-                <button type="submit" class="btn-primary" style="width:100%;">Ansök om partnerskap</button>
+                <input type="text" name="firstname" placeholder="{% trans 'Förnamn' %}" required style="width:100%;padding:14px 18px;margin-bottom:8px;border-radius:50px;border:none;font-family:'Karla',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.1);color:#fff;">
+                <input type="text" name="lastname" placeholder="{% trans 'Efternamn' %}" required style="width:100%;padding:14px 18px;margin-bottom:8px;border-radius:50px;border:none;font-family:'Karla',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.1);color:#fff;">
+                <input type="email" name="email" placeholder="{% trans 'Mejl' %}" required style="width:100%;padding:14px 18px;margin-bottom:14px;border-radius:50px;border:none;font-family:'Karla',sans-serif;font-size:0.88rem;background:rgba(255,255,255,0.1);color:#fff;">
+                <button type="submit" class="btn-primary" style="width:100%;">{% trans "Anmäl intresse" %}</button>
             </form>
             <div class="hero-checks" style="justify-content: flex-start; margin-top: 14px; font-size: 0.78rem;">
-                <span style="color:rgba(255,255,255,0.5);"><i class="fas fa-check" style="color: var(--rose); margin-right: 4px;"></i> Kostnadsfritt</span>
-                <span style="color:rgba(255,255,255,0.5); margin-left: 14px;"><i class="fas fa-check" style="color: var(--rose); margin-right: 4px;"></i> Inga krav</span>
-                <span style="color:rgba(255,255,255,0.5); margin-left: 14px;"><i class="fas fa-check" style="color: var(--rose); margin-right: 4px;"></i> Klar på några minuter</span>
+                <span style="color:rgba(255,255,255,0.5);"><i class="fas fa-check" style="color: var(--primary); margin-right: 4px;"></i> {% trans "Kostnadsfritt" %}</span>
+                <span style="color:rgba(255,255,255,0.5); margin-left: 14px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 4px;"></i> {% trans "Inga krav" %}</span>
+                <span style="color:rgba(255,255,255,0.5); margin-left: 14px;"><i class="fas fa-check" style="color: var(--primary); margin-right: 4px;"></i> {% trans "Klar på några minuter" %}</span>
             </div>
         </div>
+    </div>
     
-    <!-- Copyright längst ner i mitten -->
+    <!-- Copyright -->
     <div style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; z-index: 3; display: flex; justify-content: center; gap: 20px; font-size: 0.7rem;">
         <span style="color: rgba(255,255,255,0.3);">© 2026 Bröllopsplaneraren</span>
         <a href="{% url 'privacy_policy' %}" style="color: rgba(255,255,255,0.3); text-decoration: none;">Privacy Policy</a>
-    </div>
-</section>
     </div>
 </section>
 
