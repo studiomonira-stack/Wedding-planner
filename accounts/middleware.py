@@ -9,9 +9,7 @@ class ForceLanguageMiddleware:
         if lang:
             translation.activate(lang)
             request.session['_language'] = lang
-        
-        # Om språk finns i session, använd det
-        if not lang and '_language' in request.session:
+        elif '_language' in request.session:
             translation.activate(request.session['_language'])
         
         response = self.get_response(request)
