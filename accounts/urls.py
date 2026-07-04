@@ -14,4 +14,5 @@ urlpatterns = [
     path('kop/', views.kop, name='kop'),
     path('welcome/', views.welcome, name='welcome'),
     path('landing-test/', views.landing_test, name='landing_test'),
+    path('linktree/', views.linktree, name='linktree'),
 ]

@@ -227,6 +227,19 @@ def skapa_par(request):
 from django.utils.translation import activate
 
 def kop(request):
+    lang = request.GET.get('lang', '')
+    if lang:
+        from django.utils.translation import activate
+        activate(lang)
+        request.session['_language'] = lang
+        # Tvinga Django att använda detta språk
+        request.LANGUAGE_CODE = lang
+    
+    # Om inget språk är valt, kolla session
+    if not lang and '_language' in request.session:
+        from django.utils.translation import activate
+        activate(request.session['_language'])
+    
     return render(request, 'accounts/kop.html')
 
 def login_embed(request):
@@ -234,3 +247,12 @@ def login_embed(request):
 
 def landing_test(request):
     return render(request, 'accounts/landing_test.html')
+
+def linktree(request):
+    lang = request.GET.get('lang', '')
+    if lang:
+        # Aktivera språket och spara i session
+        from django.utils.translation import activate
+        activate(lang)
+        request.session['_language'] = lang
+    return render(request, 'accounts/linktree.html')

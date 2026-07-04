@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bröllopsplaneraren</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Karla:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F7F4EF;
+            --primary: #C8A26B;
+            --primary-dark: #B08C58;
+            --text: #3D3A37;
+            --text-light: #6A6662;
+            --white: #FFFFFF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Karla', sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+        }
+        .profile-img {
+            width: 160px;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--text);
+            margin-bottom: 4px;
+            font-weight: 400;
+        }
+        .bio {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
+        }
+        .link-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+        .link-btn.primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+        .link-btn.secondary {
+            background: var(--white);
+            color: var(--text);
+            border: 1px solid #E8E0D5;
+        }
+        .link-btn.secondary:hover {
+            border-color: var(--primary);
+        }
+        .link-btn i {
+            width: 20px;
+            text-align: center;
+        }
+        .footer {
+            margin-top: 32px;
+            font-size: 0.72rem;
+            color: var(--text-light);
+        }
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    
+    <img src="https://i.imgur.com/6eQtZu0.png" alt="Digitalni Planerator Vjencanja" class="profile-img">
+    <h1>Digitalni Planerator Vjencanja</h1>
+    <p class="bio">Planirajte vjenčanje iz snova – sve na jednom mjestu. Jednostavno, lijepo i stvoreno za moderne parove.</p>
+    
+    <div class="links">
+        <a href="https://www.brollopsplanner.se/kop/?lang=bs" class="link-btn primary">
+            💒 Planiraj svoje vjenčanje
+        </a>
+        <a href="https://www.brollopsplanner.se/kop/?lang=bs" class="link-btn secondary">
+            <i class="fas fa-star"></i> Pogledaj planer
+        </a>
+        <a href="mailto:hej@brollopsplanner.se" class="link-btn secondary">
+            <i class="far fa-envelope"></i> Pošalji nam email
+        </a>
+    </div>
+    
+    <p class="footer">
+        📸 <a href="https://instagram.com/planerator_za_vjencanja" target="_blank">@planerator_za_vjencanja</a>
+    </p>
+</div>
+</body>
+</html>

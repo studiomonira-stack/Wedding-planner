@@ -212,6 +212,25 @@
             .love-timeline { flex-direction: column; align-items: center; }
             .love-arrow { transform: rotate(90deg); }
         }
+
+        @media (max-width: 768px) {
+       /* Alla split screens - bild ovanför text */
+        [style*="grid-template-columns: 1fr 1fr"],
+        .hero-split {
+            grid-template-columns: 1fr !important;
+            min-height: auto !important;
+        }
+    
+        /* Bilden ska vara överst, text under */
+        [style*="grid-template-columns: 1fr 1fr"] > div:first-child {
+            height: 250px !important;
+        }
+    
+        /* Text-delen får padding */
+        [style*="grid-template-columns: 1fr 1fr"] > div:last-child {
+            padding: 40px 24px !important;
+        }
+    }
     </style>
 </head>
 <body>
