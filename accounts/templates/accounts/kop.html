@@ -235,21 +235,16 @@
         gap: 16px !important;
     }
     
-    /* Högerdelen (ikoner) överst */
+    /* Högerdelen (ikoner) under */
     .container-medium > [style*="grid-template-columns"] > div:last-child {
-        order: -1 !important;
-    }
-    
-    /* Vänsterdelen (text) under */
-    .container-medium > [style*="grid-template-columns"] > div:first-child {
         order: 1 !important;
     }
     
-    /* Ikonerna mindre på mobil */
-    .love-timeline {
-        justify-content: center !important;
-        gap: 6px !important;
+    /* Vänsterdelen (text) överst */
+    .container-medium > [style*="grid-template-columns"] > div:first-child {
+        order: -1 !important;
     }
+    
     .love-step {
         max-width: 65px !important;
     }
