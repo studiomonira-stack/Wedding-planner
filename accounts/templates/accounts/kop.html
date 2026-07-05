@@ -211,9 +211,7 @@
             .feature-grid, .testimonial-grid { grid-template-columns: 1fr; }
             .love-timeline { flex-direction: column; align-items: center; }
             .love-arrow { transform: rotate(90deg); }
-        }
-
-        @media (max-width: 768px) {
+        
        /* Alla split screens - bild ovanför text */
         [style*="grid-template-columns: 1fr 1fr"],
         .hero-split {
@@ -230,7 +228,43 @@
         [style*="grid-template-columns: 1fr 1fr"] > div:last-child {
             padding: 40px 24px !important;
         }
+
+        /* "Allt börjar med ett ja" - stacka på mobil */
+    .container-medium > [style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
     }
+    
+    /* Högerdelen (ikoner) överst */
+    .container-medium > [style*="grid-template-columns"] > div:last-child {
+        order: -1 !important;
+    }
+    
+    /* Vänsterdelen (text) under */
+    .container-medium > [style*="grid-template-columns"] > div:first-child {
+        order: 1 !important;
+    }
+    
+    /* Ikonerna mindre på mobil */
+    .love-timeline {
+        justify-content: center !important;
+        gap: 6px !important;
+    }
+    .love-step {
+        max-width: 65px !important;
+    }
+    .love-step .step-icon {
+        font-size: 1.2rem !important;
+    }
+    .love-step h4 {
+        font-size: 0.65rem !important;
+    }
+    .love-arrow {
+        font-size: 0.8rem !important;
+        margin-top: 10px !important;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -266,7 +300,7 @@
     <!-- Fade från vit till bild -->
     <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 52%; z-index: 1; background: linear-gradient(to right, var(--white) 0%, transparent 100%);"></div>
     
-    <div style="position: relative; z-index: 2; max-width: 500px; padding: 100px 0 80px 60px;">
+    <div style="position: relative; z-index: 2; max-width: 500px; padding: 100px 0 80px 40px;">
         <p class="section-tag">{% trans "Planera kärleken. Njut av resan." %}</p>
         <h1>{% trans "Allt ni behöver för att planera ert drömbröllop. Samlat på ett ställe." %}</h1>
         <p style="color: var(--text-light); margin: 14px 0 24px;">{% trans "Bröllopsplaneraren hjälper er hålla koll på allt från budget och checklista till leverantörer, inspiration och tidslinje – så att ni kan fokusera på det viktigaste: att njuta av resan tillsammans." %}</p>
