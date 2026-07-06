@@ -42,7 +42,7 @@
         
         .section { padding: clamp(60px, 10vw, 120px) 0; position: relative; }
             .section-surface { padding-bottom: 40px !important; overflow: visible !important; }
-            .section + .section { margin-top: 0 !important; clear: both !important; }
+            .section { float: none !important; clear: both !important; }
         
         .container-narrow { max-width: 680px; margin: 0 auto; padding: 0 24px; }
         .container-medium { max-width: 960px; margin: 0 auto; padding: 0 24px; }
@@ -247,6 +247,20 @@
     .love-arrow {
         font-size: 0.7rem !important;
         margin-top: 8px !important;
+    }
+
+        .love-timeline {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        overflow: visible !important;
+    }
+    .love-arrow {
+        display: none !important;
+    }
+    .love-step {
+        max-width: 55px !important;
+        margin-bottom: 8px !important;
     }
 }
 
