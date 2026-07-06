@@ -41,8 +41,8 @@
         h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
         
         .section { padding: clamp(60px, 10vw, 120px) 0; position: relative; }
-        .section-surface { background: var(--surface); }
-        .section-light { background: var(--surface-light); }
+            .section-surface {padding-bottom: 40px !important; overflow: visible !important; }
+            .section-light {clear: both !important; position: relative !important; z-index: 1 !important;}
         
         .container-narrow { max-width: 680px; margin: 0 auto; padding: 0 24px; }
         .container-medium { max-width: 960px; margin: 0 auto; padding: 0 24px; }
@@ -228,6 +228,26 @@
         [style*="grid-template-columns: 1fr 1fr"] > div:last-child {
             padding: 40px 24px !important;
         }
+
+            .love-timeline {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 4px !important;
+    }
+    .love-step {
+        max-width: 55px !important;
+    }
+    .love-step .step-icon {
+        font-size: 1rem !important;
+    }
+    .love-step h4 {
+        font-size: 0.6rem !important;
+    }
+    .love-arrow {
+        font-size: 0.7rem !important;
+        margin-top: 8px !important;
+    }
 }
 
     </style>
