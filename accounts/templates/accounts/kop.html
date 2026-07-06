@@ -262,6 +262,13 @@
         max-width: 55px !important;
         margin-bottom: 8px !important;
     }
+
+        .section-surface, .section-light {
+        display: block !important;
+        float: none !important;
+        clear: both !important;
+        position: relative !important;
+    }
 }
 
     </style>
@@ -366,7 +373,7 @@
 </section>
 
 <!-- ===== 5. EN RESA NI ALDRIG GLÖMMER ===== -->
-<section class="section section-surface">
+<section class="section section-surface" style="overflow: hidden;">
     <div class="container-narrow text-center">
         <p class="section-tag">{% trans "En resa ni aldrig glömmer" %}</p>
         <h2>{% trans "Allt börjar med ett" %} "<em>{% trans "Ja" %}</em>"</h2>
@@ -389,7 +396,7 @@
 
 {% comment %}
 <!-- ===== 6. BERÄTTELSER ===== -->
-<section class="section">
+<section class="section section-light" style="overflow: hidden; clear: both;">
     <div class="container-wide text-center">
         <p class="section-tag">{% trans "Berättelser" %}</p>
         <div class="testimonial-grid">
