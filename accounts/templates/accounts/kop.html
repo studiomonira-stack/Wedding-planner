@@ -228,36 +228,6 @@
         [style*="grid-template-columns: 1fr 1fr"] > div:last-child {
             padding: 40px 24px !important;
         }
-
-        /* "Allt börjar med ett ja" - stacka på mobil */
-    .container-medium > [style*="grid-template-columns"] {
-        grid-template-columns: 1fr !important;
-        gap: 16px !important;
-    }
-    
-    /* Högerdelen (ikoner) under */
-    .container-medium > [style*="grid-template-columns"] > div:last-child {
-        order: 1 !important;
-    }
-    
-    /* Vänsterdelen (text) överst */
-    .container-medium > [style*="grid-template-columns"] > div:first-child {
-        order: -1 !important;
-    }
-    
-    .love-step {
-        max-width: 65px !important;
-    }
-    .love-step .step-icon {
-        font-size: 1.2rem !important;
-    }
-    .love-step h4 {
-        font-size: 0.65rem !important;
-    }
-    .love-arrow {
-        font-size: 0.8rem !important;
-        margin-top: 10px !important;
-    }
 }
 
     </style>
@@ -363,27 +333,22 @@
 
 <!-- ===== 5. EN RESA NI ALDRIG GLÖMMER ===== -->
 <section class="section section-surface">
-    <div class="container-medium">
-        <div style="display: grid; grid-template-columns: 1.5fr 2.2fr; gap: 24px; align-items: center;">
-            <!-- Vänster: Rubrik, text, knapp -->
-            <div>
-                <p class="section-tag">{% trans "En resa ni aldrig glömmer" %}</p>
-                <h2 style="font-size: clamp(2.0rem, 3vw, 2.4rem);">{% trans "Allt börjar med ett" %} "<em>{% trans "Ja" %}</em>"</h2>
-                <p style="color: var(--text-light); margin: 12px 0 18px; font-size: 0.98rem;">{% trans "Vi är med er hela vägen – från den första drömmen till sista dansen och alla minnen däremellan." %}</p>
-                <a href="https://whop.com/checkout/plan_Xq2qra99EegxU" class="btn-primary" style="padding: 14px 28px; font-size: 0.75rem;">{% trans "Kom igång idag" %}</a>
-            </div>
-            <!-- Höger: Ikoner -->
-            <div class="love-timeline" style="justify-content: flex-end; gap: 10px; flex-wrap: nowrap;">
-                <div class="love-step" style="max-width: 90px;"><div class="step-icon" style="font-size: 1.8rem;"><i class="far fa-gem"></i></div><h4 style="font-size: 1.00rem;">{% trans "Förlovning" %}</h4></div>
-                <div class="love-arrow" style="font-size: 1rem; margin-top: 14px;">→</div>
-                <div class="love-step" style="max-width: 90px;"><div class="step-icon" style="font-size: 1.8rem;"><i class="far fa-clipboard"></i></div><h4 style="font-size: 1.00rem;">{% trans "Planering" %}</h4></div>
-                <div class="love-arrow" style="font-size: 1rem; margin-top: 14px;">→</div>
-                <div class="love-step" style="max-width: 90px;"><div class="step-icon" style="font-size: 1.8rem;"><i class="fas fa-feather-alt"></i></div><h4 style="font-size: 1.00rem;">{% trans "Detaljerna" %}</h4></div>
-                <div class="love-arrow" style="font-size: 1rem; margin-top: 14px;">→</div>
-                <div class="love-step" style="max-width: 90px;"><div class="step-icon" style="font-size: 1.8rem;"><i class="far fa-heart"></i></div><h4 style="font-size: 1.00rem;">{% trans "Bröllopsdagen" %}</h4></div>
-                <div class="love-arrow" style="font-size: 1rem; margin-top: 14px;">→</div>
-                <div class="love-step" style="max-width: 90px;"><div class="step-icon" style="font-size: 1.8rem;"><i class="fas fa-camera-retro"></i></div><h4 style="font-size: 1.00rem;">{% trans "Minnena" %}</h4></div>
-            </div>
+    <div class="container-narrow text-center">
+        <p class="section-tag">{% trans "En resa ni aldrig glömmer" %}</p>
+        <h2>{% trans "Allt börjar med ett" %} "<em>{% trans "Ja" %}</em>"</h2>
+        <p style="color: var(--text-light); margin: 14px 0 24px;">{% trans "Vi är med er hela vägen – från den första drömmen till sista dansen och alla minnen däremellan." %}</p>
+        <a href="https://whop.com/checkout/plan_Xq2qra99EegxU" class="btn-primary">{% trans "Kom igång idag" %}</a>
+        
+        <div class="love-timeline" style="margin-top: 36px;">
+            <div class="love-step"><div class="step-icon"><i class="far fa-gem"></i></div><h4>{% trans "Förlovning" %}</h4></div>
+            <div class="love-arrow">→</div>
+            <div class="love-step"><div class="step-icon"><i class="far fa-clipboard"></i></div><h4>{% trans "Planering" %}</h4></div>
+            <div class="love-arrow">→</div>
+            <div class="love-step"><div class="step-icon"><i class="fas fa-feather-alt"></i></div><h4>{% trans "Detaljerna" %}</h4></div>
+            <div class="love-arrow">→</div>
+            <div class="love-step"><div class="step-icon"><i class="far fa-heart"></i></div><h4>{% trans "Bröllopsdagen" %}</h4></div>
+            <div class="love-arrow">→</div>
+            <div class="love-step"><div class="step-icon"><i class="fas fa-camera-retro"></i></div><h4>{% trans "Minnerna" %}</h4></div>
         </div>
     </div>
 </section>

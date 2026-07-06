@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-03 21:39+0200\n"
+"POT-Creation-Date: 2026-07-06 13:17+0200\n"
 "PO-Revision-Date: 2026-06-29 18:41+0000\n"
 "Last-Translator:   <hej@brollopsplanner.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: .\accounts\templates\accounts\base.html:18
 #: .\accounts\templates\accounts\base.html:205
-#: .\accounts\templates\accounts\kop.html:414
+#: .\accounts\templates\accounts\kop.html:429
 #: .\accounts\templates\accounts\login.html:134
 #: .\accounts\templates\accounts\register.html:97
 #: .\planner\templates\planner\checkout.html:127
@@ -30,8 +30,8 @@ msgstr "Bryllupsplanlæggeren"
 
 #: .\accounts\templates\accounts\base.html:229
 #: .\accounts\templates\accounts\dashboard.html:138
-#: .\accounts\templates\accounts\kop.html:292
-#: .\accounts\templates\accounts\kop.html:305
+#: .\accounts\templates\accounts\kop.html:312
+#: .\accounts\templates\accounts\kop.html:325
 #: .\accounts\templates\accounts\landing.html:391
 #: .\planner\templates\planner\checklist.html:5
 msgid "Checklista"
@@ -39,8 +39,8 @@ msgstr "Tjekliste"
 
 #: .\accounts\templates\accounts\base.html:232
 #: .\accounts\templates\accounts\dashboard.html:186
-#: .\accounts\templates\accounts\kop.html:289
-#: .\accounts\templates\accounts\kop.html:304
+#: .\accounts\templates\accounts\kop.html:309
+#: .\accounts\templates\accounts\kop.html:324
 #: .\accounts\templates\accounts\landing.html:390
 #: .\planner\templates\planner\budget.html:5
 #: .\planner\templates\planner\budget.html:12
@@ -55,8 +55,8 @@ msgstr "Gæster"
 
 #: .\accounts\templates\accounts\base.html:238
 #: .\accounts\templates\accounts\dashboard.html:277
-#: .\accounts\templates\accounts\kop.html:294
-#: .\accounts\templates\accounts\kop.html:308
+#: .\accounts\templates\accounts\kop.html:314
+#: .\accounts\templates\accounts\kop.html:328
 #: .\accounts\templates\accounts\landing.html:393
 #: .\planner\templates\planner\leverantorer.html:5
 msgid "Leverantörer"
@@ -64,8 +64,8 @@ msgstr "Leverandører"
 
 #: .\accounts\templates\accounts\base.html:241
 #: .\accounts\templates\accounts\dashboard.html:316
-#: .\accounts\templates\accounts\kop.html:290
-#: .\accounts\templates\accounts\kop.html:307
+#: .\accounts\templates\accounts\kop.html:310
+#: .\accounts\templates\accounts\kop.html:327
 #: .\accounts\templates\accounts\landing.html:395
 #: .\planner\templates\planner\partner_kund_detail.html:48
 #: .\planner\templates\planner\tidslinje.html:5
@@ -92,7 +92,7 @@ msgid "Logga ut"
 msgstr "Log ud"
 
 #: .\accounts\templates\accounts\base.html:291
-#: .\accounts\templates\accounts\kop.html:234
+#: .\accounts\templates\accounts\kop.html:254
 #: .\accounts\templates\accounts\login.html:153
 #: .\accounts\templates\accounts\login_embed.html:8
 #: .\accounts\templates\accounts\login_embed.html:98
@@ -205,228 +205,232 @@ msgstr "Gå til galleriet"
 msgid "Bröllopsplaneraren – Planera ert drömbröllop"
 msgstr "Bryllupsplanlæggeren – Planlæg jeres drømmebryllup"
 
-#: .\accounts\templates\accounts\kop.html:249
+#: .\accounts\templates\accounts\kop.html:269
 msgid "Planera kärleken. Njut av resan."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:250
+#: .\accounts\templates\accounts\kop.html:270
 #, fuzzy
 #| msgid "Planera ert drömbröllop – allt på ett ställe"
 msgid "Allt ni behöver för att planera ert drömbröllop. Samlat på ett ställe."
 msgstr "Planlæg jeres drømmebryllup – alt på ét sted"
 
-#: .\accounts\templates\accounts\kop.html:251
+#: .\accounts\templates\accounts\kop.html:271
 msgid ""
 "Bröllopsplaneraren hjälper er hålla koll på allt från budget och checklista "
 "till leverantörer, inspiration och tidslinje – så att ni kan fokusera på det "
 "viktigaste: att njuta av resan tillsammans."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:253
-#: .\accounts\templates\accounts\kop.html:323
+#: .\accounts\templates\accounts\kop.html:273
+#: .\accounts\templates\accounts\kop.html:340
 msgid "Kom igång idag"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:254
+#: .\accounts\templates\accounts\kop.html:274
 #, fuzzy
 #| msgid "Se hur det ser ut"
 msgid "Se hur det fungerar"
 msgstr "Se hvordan det ser ud"
 
-#: .\accounts\templates\accounts\kop.html:257
-#: .\accounts\templates\accounts\kop.html:405
+#: .\accounts\templates\accounts\kop.html:277
+#: .\accounts\templates\accounts\kop.html:420
 msgid "Inget abbonemang"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:258
+#: .\accounts\templates\accounts\kop.html:278
 msgid "Engångskostnad"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:259
-#: .\accounts\templates\accounts\kop.html:276
-#: .\accounts\templates\accounts\kop.html:407
+#: .\accounts\templates\accounts\kop.html:279
+#: .\accounts\templates\accounts\kop.html:296
+#: .\accounts\templates\accounts\kop.html:422
 msgid "Planera tillsammans"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:273
+#: .\accounts\templates\accounts\kop.html:293
 msgid "Planera tillsammans, var ni än är."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:274
+#: .\accounts\templates\accounts\kop.html:294
 msgid ""
 "Oavsett om ni sitter bredvid varandra i soffan eller planerar från olika "
 "städer finns allt samlat på ett ställe."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:277
+#: .\accounts\templates\accounts\kop.html:297
 msgid "Alla enheter"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:278
+#: .\accounts\templates\accounts\kop.html:298
 msgid "Tryggt & säkert"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:287
+#: .\accounts\templates\accounts\kop.html:307
 #, fuzzy
 #| msgid "Allt ni behöver – samlat"
 msgid "Allt ni behöver"
 msgstr "Alt hvad I har brug for – samlet"
 
-#: .\accounts\templates\accounts\kop.html:289
+#: .\accounts\templates\accounts\kop.html:309
 msgid "Få full kontroll över er ekonomi."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:290
+#: .\accounts\templates\accounts\kop.html:310
 msgid "Vet alltid vad som händer härnäst."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:291
-#: .\accounts\templates\accounts\kop.html:306
+#: .\accounts\templates\accounts\kop.html:311
+#: .\accounts\templates\accounts\kop.html:326
 #: .\accounts\templates\accounts\landing.html:392
 #: .\planner\templates\planner\gastlista.html:5
 msgid "Gästlista"
 msgstr "Gæsteliste"
 
-#: .\accounts\templates\accounts\kop.html:291
+#: .\accounts\templates\accounts\kop.html:311
 msgid "Samla alla gäster på ett ställe."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:292
+#: .\accounts\templates\accounts\kop.html:312
 msgid "Bocka av allt i lugn och ro."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:293
-#: .\accounts\templates\accounts\kop.html:309
+#: .\accounts\templates\accounts\kop.html:313
+#: .\accounts\templates\accounts\kop.html:329
 msgid "Moodboard"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:293
-#: .\accounts\templates\accounts\kop.html:309
+#: .\accounts\templates\accounts\kop.html:313
+#: .\accounts\templates\accounts\kop.html:329
 #, fuzzy
 #| msgid "Samla inspiration från Pinterest och Instagram."
 msgid "Samla inspiration på ett ställe"
 msgstr "Samle inspiration fra Pinterest og Instagram."
 
-#: .\accounts\templates\accounts\kop.html:294
+#: .\accounts\templates\accounts\kop.html:314
 msgid "Samla inspiration tillsammans."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:302
+#: .\accounts\templates\accounts\kop.html:322
 msgid "Utforska funktionerna"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:304
+#: .\accounts\templates\accounts\kop.html:324
 #, fuzzy
 #| msgid "Här är en överblick över er bröllopsplanering."
 msgid "Få en tydlig överblick över alla kostnader."
 msgstr "Her er en oversigt over jeres bryllupsplanlægning."
 
-#: .\accounts\templates\accounts\kop.html:305
+#: .\accounts\templates\accounts\kop.html:325
 msgid "Ha koll på allt som måste göras."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:306
+#: .\accounts\templates\accounts\kop.html:326
 msgid "Håll koll på alla gäster."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:307
+#: .\accounts\templates\accounts\kop.html:327
 #, fuzzy
 #| msgid "Planera bröllopsdagen minut för minut."
 msgid "Planera bröllopsdagen."
 msgstr "Planlæg bryllupsdagen minut for minut."
 
-#: .\accounts\templates\accounts\kop.html:308
+#: .\accounts\templates\accounts\kop.html:328
 #, fuzzy
 #| msgid "Samla alla kontakter och jämför priser."
 msgid "Samla alla kontakter."
 msgstr "Saml alle kontakter og sammenlign priser."
 
-#: .\accounts\templates\accounts\kop.html:320
+#: .\accounts\templates\accounts\kop.html:337
 msgid "En resa ni aldrig glömmer"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:321
+#: .\accounts\templates\accounts\kop.html:338
 msgid "Allt börjar med ett"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:322
+#: .\accounts\templates\accounts\kop.html:338
+msgid "Ja"
+msgstr ""
+
+#: .\accounts\templates\accounts\kop.html:339
 msgid ""
 "Vi är med er hela vägen – från den första drömmen till sista dansen och alla "
 "minnen däremellan."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:327
+#: .\accounts\templates\accounts\kop.html:343
 msgid "Förlovning"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:329
+#: .\accounts\templates\accounts\kop.html:345
 msgid "Planering"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:331
+#: .\accounts\templates\accounts\kop.html:347
 msgid "Detaljerna"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:333
+#: .\accounts\templates\accounts\kop.html:349
 #, fuzzy
 #| msgid "Bröllopsplaneraren"
 msgid "Bröllopsdagen"
 msgstr "Bryllupsplanlæggeren"
 
-#: .\accounts\templates\accounts\kop.html:335
-msgid "Minnena"
+#: .\accounts\templates\accounts\kop.html:351
+msgid "Minnerna"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:378
+#: .\accounts\templates\accounts\kop.html:393
 msgid "Ta planeringen till nästa nivå."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:379
+#: .\accounts\templates\accounts\kop.html:394
 msgid ""
 "Bröllopsplaneraren samlar allt på ett ställe så att ni slipper hålla reda på "
 "dokument, anteckningar och olika appar. Ni kan fokusera på det viktigaste – "
 "att njuta av resan mot er stora dag."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:381
+#: .\accounts\templates\accounts\kop.html:396
 msgid "Full kontroll över planeringen"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:382
+#: .\accounts\templates\accounts\kop.html:397
 msgid "Allt samlat på ett ställe"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:383
+#: .\accounts\templates\accounts\kop.html:398
 msgid "En planering ni delar tillsammans"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:384
+#: .\accounts\templates\accounts\kop.html:399
 msgid "Tillgång när ni behöver den"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:386
+#: .\accounts\templates\accounts\kop.html:401
 msgid "Börja planera idag"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:401
+#: .\accounts\templates\accounts\kop.html:416
 #, fuzzy
 #| msgid "Bröllopsplaneraren – Planera ert drömbröllop"
 msgid "Redo att börja planera ert drömbröllop?"
 msgstr "Bryllupsplanlæggeren – Planlæg jeres drømmebryllup"
 
-#: .\accounts\templates\accounts\kop.html:402
+#: .\accounts\templates\accounts\kop.html:417
 msgid "Skapa ert konto idag och samla hela planeringen på ett ställe."
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:403
+#: .\accounts\templates\accounts\kop.html:418
 msgid "Börja planera som ett proffs"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:406
+#: .\accounts\templates\accounts\kop.html:421
 msgid "Engångsavgift"
 msgstr ""
 
-#: .\accounts\templates\accounts\kop.html:417
+#: .\accounts\templates\accounts\kop.html:432
 #, fuzzy
 #| msgid "Är du fotograf? Bli partner här →"
 msgid "Är du fotograf? Bli partner →"
