@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-!9le46)u7*g5y&o5--s)uzmj3+d4k_9xmbafcr)%eibl)c62#r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.brollopsplanner.se', 'brollopsplanner.se', '127.0.0.1', 'localhost']
 
 
 # Application definition
