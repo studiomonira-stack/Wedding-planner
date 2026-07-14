@@ -24,6 +24,7 @@ urlpatterns = [
     path('rosetta/', include('rosetta.urls')),
     path('p/<slug:slug>/', partner_page, name='partner_page'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     
     
 ]
