@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.brollopsplanner.se/sitemap.xml
