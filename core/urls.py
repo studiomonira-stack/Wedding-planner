@@ -23,7 +23,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')), 
     path('rosetta/', include('rosetta.urls')),
     path('p/<slug:slug>/', partner_page, name='partner_page'),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     
     
 ]
