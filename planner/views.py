@@ -2,7 +2,7 @@ from urllib import request
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import ChecklistItem, BudgetPost, Gast, Leverantor, PartnerPage, Tidslinje, Galleri 
+from .models import ChecklistItem, BudgetPost, Gast, Leverantor, PartnerPage, Tidslinje, Galleri, LeverantorProfil, Booking
 from .forms import PhotographerStep1Form, PhotographerStep2Form
 from .models import Photographer
 from django.core.mail import send_mail  # <-- Lägg till denna rad
@@ -1105,3 +1105,94 @@ def partner_page(request, slug):
         'page': page,
         'photographer': photographer,
     })
+
+
+def leverantor_booking(request, slug):
+    leverantor = get_object_or_404(LeverantorProfil, slug=slug, is_active=True, accept_bookings=True)
+    
+    if request.method == 'POST':
+        Booking.objects.create(
+            leverantor=leverantor,
+            customer_name=request.POST.get('name'),
+            customer_email=request.POST.get('email'),
+            customer_phone=request.POST.get('phone', ''),
+            booking_type=request.POST.get('booking_type', 'consultation'),
+            date=request.POST.get('date'),
+            time=request.POST.get('time'),
+            message=request.POST.get('message', ''),
+        )
+        
+        # Skicka email till leverantören
+        if leverantor.booking_email:
+            send_mail(
+                subject=f'📅 Ny bokning från {request.POST.get("name")}',
+                message=f'Hej {leverantor.name}!\n\n'
+                        f'Ny bokning:\n'
+                        f'Namn: {request.POST.get("name")}\n'
+                        f'Email: {request.POST.get("email")}\n'
+                        f'Datum: {request.POST.get("date")}\n'
+                        f'Tid: {request.POST.get("time")}\n'
+                        f'Meddelande: {request.POST.get("message", "")}\n\n'
+                        f'Logga in för att se alla bokningar.',
+                from_email='hej@brollopsplanner.se',
+                recipient_list=[leverantor.booking_email],
+                fail_silently=False,
+            )
+        
+        return render(request, 'planner/booking_confirmed.html', {
+            'leverantor': leverantor,
+            'customer_name': request.POST.get('name'),
+            'booking_date': request.POST.get('date'),
+            'booking_time': request.POST.get('time'),
+        })
+    
+    return render(request, 'planner/booking_form.html', {
+        'leverantor': leverantor,
+    })
+
+
+@login_required
+def leverantor_dashboard(request):
+    leverantor = get_object_or_404(LeverantorProfil, user=request.user, is_active=True)
+    
+    bookings = Booking.objects.filter(leverantor=leverantor).order_by('-date')[:5]
+    pending_count = Booking.objects.filter(leverantor=leverantor, status='pending').count()
+    confirmed_count = Booking.objects.filter(leverantor=leverantor, status='confirmed').count()
+    total_count = Booking.objects.filter(leverantor=leverantor).count()
+    
+    return render(request, 'planner/leverantor_dashboard.html', {
+        'leverantor': leverantor,
+        'bookings': bookings,
+        'pending_count': pending_count,
+        'confirmed_count': confirmed_count,
+        'total_count': total_count,
+    })
+
+
+@login_required
+def leverantor_bookings(request):
+    leverantor = get_object_or_404(LeverantorProfil, user=request.user, is_active=True)
+    bookings = Booking.objects.filter(leverantor=leverantor).order_by('date', 'time')
+    
+    return render(request, 'planner/leverantor_bookings.html', {
+        'leverantor': leverantor,
+        'bookings': bookings,
+    })
+
+
+@login_required
+def leverantor_confirm_booking(request, booking_id):
+    leverantor = get_object_or_404(LeverantorProfil, user=request.user, is_active=True)
+    booking = get_object_or_404(Booking, id=booking_id, leverantor=leverantor)
+    booking.status = 'confirmed'
+    booking.save()
+    return redirect('leverantor_bookings')
+
+
+@login_required
+def leverantor_cancel_booking(request, booking_id):
+    leverantor = get_object_or_404(LeverantorProfil, user=request.user, is_active=True)
+    booking = get_object_or_404(Booking, id=booking_id, leverantor=leverantor)
+    booking.status = 'cancelled'
+    booking.save()
+    return redirect('leverantor_bookings')

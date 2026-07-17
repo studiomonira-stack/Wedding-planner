@@ -9,6 +9,7 @@ from planner.views import partner_page
 from django.views.generic import TemplateView
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSitemap
+from planner import views as planner_views
 
 sitemaps = {'static': StaticViewSitemap}
 
@@ -25,8 +26,7 @@ urlpatterns = [
     path('p/<slug:slug>/', partner_page, name='partner_page'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
-    
-    
+    path('leverantor/<slug:slug>/boka/', planner_views.leverantor_booking, name='leverantor_booking'),
 ]
 from django.views.decorators.csrf import csrf_exempt
 

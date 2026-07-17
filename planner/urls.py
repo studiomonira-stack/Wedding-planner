@@ -50,4 +50,9 @@ urlpatterns = [
     path('partner/kund/<int:kund_id>/tidslinje/add/', views.partner_add_tidslinje, name='partner_add_tidslinje'),
     path('partner/kund/<int:kund_id>/galleri/add/', views.partner_add_galleri, name='partner_add_galleri'),
     path('partner/kund/<int:kund_id>/set-datum/', views.partner_set_brollopsdatum, name='partner_set_brollopsdatum'),
+    # Leverantör dashboard
+    path('leverantor/dashboard/', views.leverantor_dashboard, name='leverantor_dashboard'),
+    path('leverantor/bookings/', views.leverantor_bookings, name='leverantor_bookings'),
+    path('leverantor/booking/<int:booking_id>/confirm/', views.leverantor_confirm_booking, name='leverantor_confirm_booking'),
+    path('leverantor/booking/<int:booking_id>/cancel/', views.leverantor_cancel_booking, name='leverantor_cancel_booking'),
     ]

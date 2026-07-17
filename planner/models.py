@@ -209,3 +209,78 @@ class PartnerPage(models.Model):
 
     def __str__(self):
         return f"Linktree: {self.photographer.name}"
+
+
+
+class LeverantorProfil(models.Model):
+    LEVERANTOR_TYPES = [
+        ('jeweler', 'Ringförsäljare'),
+        ('florist', 'Florist'),
+        ('makeup', 'Makeup-artist'),
+        ('venue', 'Lokal'),
+        ('c'
+        'atering', 'Catering'),
+        ('music', 'Musik/DJ'),
+    ]
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    leverantor_type = models.CharField(max_length=20, choices=LEVERANTOR_TYPES, default='jeweler')
+    name = models.CharField(max_length=100, verbose_name="Företagsnamn")
+    logo = models.URLField(max_length=500, blank=True, null=True)
+    primary_color = models.CharField(max_length=7, default="#F7F4EF")
+    accent_color = models.CharField(max_length=7, default="#C8A26B")
+    background_image = models.URLField(max_length=500, blank=True, null=True, verbose_name="Bakgrundsbild (URL)")
+    email = models.EmailField(blank=True, null=True)
+    phone = models.CharField(max_length=20, blank=True)
+    description = models.TextField(blank=True, verbose_name="Beskrivning")
+    website = models.URLField(blank=True)
+    instagram = models.URLField(blank=True)
+    is_active = models.BooleanField(default=False)
+    slug = models.SlugField(unique=True, max_length=100, blank=True, null=True)
+    
+    
+    # Bokningsinställningar
+    accept_bookings = models.BooleanField(default=False, verbose_name="Ta emot bokningar")
+    booking_email = models.EmailField(blank=True, null=True, verbose_name="Email för bokningar")
+    
+    # Whop
+    whop_affiliate_id = models.CharField(max_length=100, blank=True, null=True)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Leverantör"
+        verbose_name_plural = "Leverantörer"
+
+    def __str__(self):
+        return f"{self.name} ({self.get_leverantor_type_display()})"
+    
+
+class Booking(models.Model):
+    BOOKING_TYPES = [
+        ('consultation', 'Konsultation'),
+        ('visit', 'Besök/Provning'),
+        ('call', 'Videosamtal'),
+    ]
+    STATUS_CHOICES = [
+        ('pending', 'Väntar på bekräftelse'),
+        ('confirmed', 'Bekräftad'),
+        ('completed', 'Genomförd'),
+        ('cancelled', 'Avbokad'),
+    ]
+    
+    leverantor = models.ForeignKey(LeverantorProfil, on_delete=models.CASCADE, related_name='bookings')
+    customer_name = models.CharField(max_length=100, verbose_name="Namn")
+    customer_email = models.EmailField(verbose_name="Email")
+    customer_phone = models.CharField(max_length=20, blank=True, verbose_name="Telefon")
+    booking_type = models.CharField(max_length=20, choices=BOOKING_TYPES, default='consultation')
+    date = models.DateField(verbose_name="Datum")
+    time = models.TimeField(verbose_name="Tid")
+    message = models.TextField(blank=True, verbose_name="Meddelande")
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['date', 'time']
+
+    def __str__(self):
+        return f"{self.customer_name} – {self.date} {self.time}"

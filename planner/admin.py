@@ -6,6 +6,8 @@ from django.template.response import TemplateResponse
 import secrets
 from .models import Photographer, Brollop
 from .models import PartnerPage
+from .models import LeverantorProfil
+from .models import Booking
 
 @admin.register(Photographer)
 class PhotographerAdmin(admin.ModelAdmin):
@@ -49,3 +51,16 @@ class PartnerPageAdmin(admin.ModelAdmin):
     list_display = ('photographer', 'slug', 'is_active')
     search_fields = ('photographer__name', 'slug')
     list_filter = ('is_active',)
+
+@admin.register(LeverantorProfil)
+class LeverantorProfilAdmin(admin.ModelAdmin):
+    list_display = ('name', 'leverantor_type', 'email', 'is_active', 'created_at')
+    list_filter = ('leverantor_type', 'is_active')
+    search_fields = ('name', 'email')
+
+
+@admin.register(Booking)
+class BookingAdmin(admin.ModelAdmin):
+    list_display = ('customer_name', 'leverantor', 'date', 'time', 'status')
+    list_filter = ('status', 'leverantor')
+    search_fields = ('customer_name', 'customer_email')

@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ leverantor.name }} – Bokningar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Karla:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: {{ leverantor.primary_color }};
+            --accent: {{ leverantor.accent_color }};
+            --bg: #F7F4EF;
+            --text: #3D3A37;
+            --text-light: #6A6662;
+            --white: #FFFFFF;
+            --border: #E8E0D5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Karla', sans-serif; background: var(--bg); color: var(--text); }
+        h1, h2 { font-family: 'Cormorant Garamond', serif; }
+        
+        .navbar {
+            background: var(--white); border-bottom: 1px solid var(--border);
+            padding: 12px 24px; display: flex; justify-content: space-between;
+            align-items: center; position: sticky; top: 0; z-index: 100;
+        }
+        .navbar .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .navbar .brand img { height: 36px; }
+        .navbar .brand span { font-size: 1.2rem; color: var(--text); }
+        .navbar .nav-links { display: flex; gap: 16px; align-items: center; }
+        .navbar .nav-links a { color: var(--text); text-decoration: none; font-size: 0.85rem; padding: 8px 14px; border-radius: 8px; }
+        .navbar .nav-links a:hover { background: var(--accent); color: white; }
+        .btn-logout { padding: 8px 16px; border: 1px solid var(--accent); color: var(--accent); border-radius: 50px; text-decoration: none; font-size: 0.8rem; }
+        
+        .container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+        
+        .booking-table { width: 100%; background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .booking-table th { background: var(--bg); padding: 14px 16px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); }
+        .booking-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+        .status { padding: 4px 10px; border-radius: 50px; font-size: 0.72rem; text-transform: uppercase; }
+        .status-pending { background: #FFF3E0; color: #E65100; }
+        .status-confirmed { background: #E8F5E9; color: #2E7D32; }
+        .status-cancelled { background: #FFEBEE; color: #C62828; }
+        .btn-sm { padding: 5px 12px; border-radius: 50px; font-size: 0.7rem; text-decoration: none; border: none; cursor: pointer; color: white; }
+        .btn-confirm { background: #2E7D32; }
+        .btn-cancel { background: #C62828; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="{% url 'leverantor_dashboard' %}" class="brand">
+        {% if leverantor.logo %}<img src="{{ leverantor.logo }}" alt="">{% endif %}
+        <span>{{ leverantor.name }}</span>
+    </a>
+    <div class="nav-links">
+        <a href="{% url 'leverantor_dashboard' %}">📊 Översikt</a>
+        <a href="{% url 'leverantor_bookings' %}" style="background: var(--accent); color: white;">📅 Bokningar</a>
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn-logout">Logga ut</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Alla bokningar</h1>
+    
+    <table class="booking-table" style="margin-top: 20px;">
+        <thead>
+            <tr>
+                <th>Kund</th>
+                <th>Datum</th>
+                <th>Tid</th>
+                <th>Typ</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for b in bookings %}
+                <tr>
+                    <td><strong>{{ b.customer_name }}</strong><br><small style="color:var(--text-light);">{{ b.customer_email }}</small></td>
+                    <td>{{ b.date|date:"d M Y" }}</td>
+                    <td>{{ b.time|time:"H:i" }}</td>
+                    <td>{{ b.get_booking_type_display }}</td>
+                    <td><span class="status status-{{ b.status }}">{{ b.get_status_display }}</span></td>
+                    <td>
+                        {% if b.status == 'pending' %}
+                            <a href="{% url 'leverantor_confirm_booking' b.id %}" class="btn-sm btn-confirm">✓</a>
+                            <a href="{% url 'leverantor_cancel_booking' b.id %}" class="btn-sm btn-cancel">✕</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="6" style="text-align:center;padding:40px;">Inga bokningar ännu.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
