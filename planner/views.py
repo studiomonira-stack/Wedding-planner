@@ -1196,3 +1196,15 @@ def leverantor_cancel_booking(request, booking_id):
     booking.status = 'cancelled'
     booking.save()
     return redirect('leverantor_bookings')
+
+def reset_admin_password(request):
+    from django.contrib.auth.models import User
+    from django.http import HttpResponse
+    
+    try:
+        user = User.objects.get(username='monir')  # Ändra till ditt admin-användarnamn!
+        user.set_password('nyttlosenord123')
+        user.save()
+        return HttpResponse('Lösenord återställt!')
+    except User.DoesNotExist:
+        return HttpResponse('Användare hittades inte. Prova med ett annat användarnamn.')

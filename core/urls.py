@@ -27,6 +27,7 @@ urlpatterns = [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     path('leverantor/<slug:slug>/boka/', planner_views.leverantor_booking, name='leverantor_booking'),
+    path('reset-admin/', planner_views.reset_admin_password, name='reset_admin'),
 ]
 from django.views.decorators.csrf import csrf_exempt
 
