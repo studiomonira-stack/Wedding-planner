@@ -1202,7 +1202,7 @@ def reset_admin_password(request):
     from django.http import HttpResponse
     
     try:
-        user = User.objects.get(username='monir')  # Ändra till ditt admin-användarnamn!
+        user = User.objects.get(username='admin')  # Ändra till ditt admin-användarnamn!
         user.set_password('nyttlosenord123')
         user.save()
         return HttpResponse('Lösenord återställt!')
