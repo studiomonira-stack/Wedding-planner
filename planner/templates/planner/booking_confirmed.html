@@ -87,17 +87,17 @@
 <body>
 <div class="card">
     <div class="check-icon">✓</div>
-    <h1>Tack för din bokning!</h1>
-    <p>Vi har tagit emot din förfrågan. Du får en bekräftelse via email inom 24 timmar.</p>
+    <h1>{% trans "Tack för din bokning!" %}</h1>
+    <p>{% trans "Vi har tagit emot din förfrågan. Du får en bekräftelse via email inom 24 timmar." %}</p>
     
     <div class="details">
-        <strong>📅 Vad händer nu?</strong>
-        {{ leverantor.name }} kommer att kontakta dig via email för att bekräfta din tid.
+        <strong>{% trans "Vad händer nu?" %}</strong>
+        {{ leverantor.name }} {% trans "kommer att kontakta dig via email för att bekräfta din tid." %}
     </div>
     
-    <p style="font-size: 0.8rem;">Har du frågor? Kontakta oss på <a href="mailto:{{ leverantor.email }}" style="color: var(--accent);">{{ leverantor.email }}</a></p>
+    <p style="font-size: 0.8rem;">{% trans "Har du frågor? Kontakta oss på" %} <a href="mailto:{{ leverantor.email }}" style="color: var(--accent);">{{ leverantor.email }}</a></p>
     
-    <a href="/" class="btn-back">← Tillbaka</a>
+    <a href="/" class="btn-back">← {% trans "Tillbaka" %}</a>
 </div>
 </body>
 </html>

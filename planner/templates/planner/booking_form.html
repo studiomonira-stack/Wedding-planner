@@ -131,7 +131,7 @@
         {% if leverantor.logo %}
             <img src="{{ leverantor.logo }}" alt="{{ leverantor.name }}">
         {% endif %}
-        <h1>Boka tid hos {{ leverantor.name }}</h1>
+        <h1>{% trans "Boka tid hos" %} {{ leverantor.name }}</h1>
         <p>{{ leverantor.description }}</p>
     </div>
     
@@ -139,40 +139,40 @@
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
-                <label>Namn</label>
+                <label>{% trans "Namn" %}</label>
                 <input type="text" name="name" required placeholder="Ditt namn">
             </div>
             <div class="form-group">
-                <label>Email</label>
+                <label>{% trans "Email" %}</label>
                 <input type="email" name="email" required placeholder="Din email">
             </div>
             <div class="form-group">
-                <label>Telefon</label>
+                <label>{% trans "Telefon" %}</label>
                 <input type="tel" name="phone" placeholder="Ditt telefonnummer">
             </div>
             <div class="form-group">
-                <label>Typ av möte</label>
+                <label>{% trans "Typ av möte" %}</label>
                 <select name="booking_type">
-                    <option value="consultation">Konsultation</option>
-                    <option value="visit">Besök/Provning</option>
-                    <option value="call">Videosamtal</option>
+                    <option value="consultation">{% trans "Konsultation" %}</option>
+                    <option value="visit">{% trans "Besök/Provning" %}</option>
+                    <option value="call">{% trans "Videosamtal" %}</option>
                 </select>
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label>Datum</label>
+                    <label>{% trans "Datum" %}</label>
                     <input type="date" name="date" required>
                 </div>
                 <div class="form-group">
-                    <label>Tid</label>
+                    <label>{% trans "Tid" %}</label>
                     <input type="time" name="time" required>
                 </div>
             </div>
             <div class="form-group">
-                <label>Meddelande</label>
+                <label>{% trans "Meddelande" %}</label>
                 <textarea name="message" rows="3" placeholder="Vad vill du veta mer om?"></textarea>
             </div>
-            <button type="submit" class="btn-submit">Skicka bokningsförfrågan</button>
+            <button type="submit" class="btn-submit">{% trans "Skicka bokningsförfrågan" %}</button>
         </form>
     </div>
 </div>

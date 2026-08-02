@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-02 23:20+0200\n"
-"PO-Revision-Date: 2026-08-02 23:25+0000\n"
+"POT-Creation-Date: 2026-08-02 23:32+0200\n"
+"PO-Revision-Date: 2026-08-02 23:37+0000\n"
 "Last-Translator:   <hej@brollopsplanner.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -847,6 +847,90 @@ msgstr "Already have an account?"
 msgid "Logga in här"
 msgstr "Log in here"
 
+#: .\planner\templates\planner\booking_confirmed.html:90
+msgid "Tack för din bokning!"
+msgstr "Thank you for your booking!"
+
+#: .\planner\templates\planner\booking_confirmed.html:91
+msgid ""
+"Vi har tagit emot din förfrågan. Du får en bekräftelse via email inom 24 "
+"timmar."
+msgstr ""
+"We have received your request. You will receive a confirmation via email "
+"within 24 hours."
+
+#: .\planner\templates\planner\booking_confirmed.html:94
+#| msgid "Inga händelser ännu."
+msgid "Vad händer nu?"
+msgstr "What happens now?"
+
+#: .\planner\templates\planner\booking_confirmed.html:95
+msgid "kommer att kontakta dig via email för att bekräfta din tid."
+msgstr "will contact you via email to confirm your appointment."
+
+#: .\planner\templates\planner\booking_confirmed.html:98
+msgid "Har du frågor? Kontakta oss på"
+msgstr "Have questions? Contact us at"
+
+#: .\planner\templates\planner\booking_confirmed.html:100
+#: .\planner\templates\planner\partner_kund_detail.html:9
+#: .\planner\templates\planner\partner_kunder.html:46
+msgid "Tillbaka"
+msgstr "Back"
+
+#: .\planner\templates\planner\booking_form.html:134
+msgid "Boka tid hos"
+msgstr "Book time"
+
+#: .\planner\templates\planner\booking_form.html:142
+#: .\planner\templates\planner\gastlista.html:68
+msgid "Namn"
+msgstr "Name"
+
+#: .\planner\templates\planner\booking_form.html:146
+msgid "Email"
+msgstr "Email"
+
+#: .\planner\templates\planner\booking_form.html:150
+msgid "Telefon"
+msgstr "Phone"
+
+#: .\planner\templates\planner\booking_form.html:154
+msgid "Typ av möte"
+msgstr "Type of meeting"
+
+#: .\planner\templates\planner\booking_form.html:156
+#| msgid "Resultat"
+msgid "Konsultation"
+msgstr "Consultation"
+
+#: .\planner\templates\planner\booking_form.html:157
+#| msgid "Beskrivning"
+msgid "Besök/Provning"
+msgstr "Visit/Try-on"
+
+#: .\planner\templates\planner\booking_form.html:158
+msgid "Videosamtal"
+msgstr "Videomeeting"
+
+#: .\planner\templates\planner\booking_form.html:163
+msgid "Datum"
+msgstr "Date"
+
+#: .\planner\templates\planner\booking_form.html:167
+#: .\planner\templates\planner\partner_kund_detail.html:76
+#: .\planner\templates\planner\tidslinje.html:35
+msgid "Tid"
+msgstr "Time"
+
+#: .\planner\templates\planner\booking_form.html:172
+msgid "Meddelande"
+msgstr "Message"
+
+#: .\planner\templates\planner\booking_form.html:175
+msgid "Skicka bokningsförfrågan"
+msgstr "Send booking request"
+
 #: .\planner\templates\planner\budget.html:6
 msgid "Håll koll på era bröllopskostnader."
 msgstr "Keep track of your wedding costs."
@@ -1025,10 +1109,6 @@ msgstr "Number"
 msgid "Bord"
 msgstr "Table"
 
-#: .\planner\templates\planner\gastlista.html:68
-msgid "Namn"
-msgstr "Name"
-
 #: .\planner\templates\planner\gastlista.html:70
 msgid "Svar"
 msgstr "Reply"
@@ -1141,11 +1221,6 @@ msgstr "Costumers"
 msgid "Status"
 msgstr "Status"
 
-#: .\planner\templates\planner\partner_kund_detail.html:9
-#: .\planner\templates\planner\partner_kunder.html:46
-msgid "Tillbaka"
-msgstr "Back"
-
 #: .\planner\templates\planner\partner_kund_detail.html:15
 msgid "Utgång"
 msgstr "Valid until"
@@ -1185,11 +1260,6 @@ msgstr "Location"
 msgid "Ansvarig"
 msgstr "Responsible"
 
-#: .\planner\templates\planner\partner_kund_detail.html:76
-#: .\planner\templates\planner\tidslinje.html:35
-msgid "Tid"
-msgstr "Time"
-
 #: .\planner\templates\planner\partner_kund_detail.html:77
 #: .\planner\templates\planner\tidslinje.html:36
 msgid "Aktivitet"
@@ -1213,7 +1283,6 @@ msgstr "When couples register via your link, they appear here."
 
 #: .\planner\templates\planner\partner_page.html:163
 #: .\planner\templates\planner\partner_page.html:168
-#| msgid "Planera bröllopsdagen."
 msgid "Planera ert bröllop"
 msgstr "Plan your wedding"
 
