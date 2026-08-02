@@ -175,6 +175,12 @@
                 <i class="fab fa-tiktok"></i> TikTok
             </a>
         {% endif %}
+
+        {% if page.snapchat_url %}
+    <a href="{{ page.snapchat_url }}" class="link-btn secondary" target="_blank">
+        <i class="fab fa-snapchat"></i> Snapchat
+    </a>
+        {% endif %}
         
         {% if page.facebook_url %}
             <a href="{{ page.facebook_url }}" class="link-btn secondary" target="_blank">

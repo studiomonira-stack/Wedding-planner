@@ -197,6 +197,7 @@ class PartnerPage(models.Model):
     instagram_url = models.URLField(blank=True, verbose_name="Instagram")
     tiktok_url = models.URLField(blank=True, verbose_name="TikTok")
     facebook_url = models.URLField(blank=True, verbose_name="Facebook")
+    snapchat_url = models.URLField(blank=True, verbose_name="Snapchat")
     website_url = models.URLField(blank=True, verbose_name="Hemsida")
     
     # Egna länkar
