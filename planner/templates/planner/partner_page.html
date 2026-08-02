@@ -160,60 +160,60 @@
         {% if whop_affiliate_id %}
             <a href="https://www.brollopsplanner.se/checklist/kop-planner/?ref={{ whop_affiliate_id }}" 
                class="link-btn primary" target="_blank">
-                Planera ert bröllop
+                {% trans "Planera ert bröllop" %}
             </a>
         {% else %}
             <a href="https://www.brollopsplanner.se/checklist/kop-planner/" 
                class="link-btn primary" target="_blank">
-                 Planera ert bröllop
+                 {% trans "Planera ert bröllop" %}
             </a>
         {% endif %}
         
         {% if page.instagram_url %}
             <a href="{{ page.instagram_url }}" class="link-btn secondary" target="_blank">
-                <i class="fab fa-instagram"></i> Instagram
+                <i class="fab fa-instagram"></i> {% trans "Instagram" %}
             </a>
         {% endif %}
         
         {% if page.tiktok_url %}
             <a href="{{ page.tiktok_url }}" class="link-btn secondary" target="_blank">
-                <i class="fab fa-tiktok"></i> TikTok
+                <i class="fab fa-tiktok"></i> {% trans "TikTok" %}
             </a>
         {% endif %}
 
         {% if page.snapchat_url %}
     <a href="{{ page.snapchat_url }}" class="link-btn secondary" target="_blank">
-        <i class="fab fa-snapchat"></i> Snapchat
+        <i class="fab fa-snapchat"></i> {% trans "Snapchat" %}
     </a>
         {% endif %}
         
         {% if page.facebook_url %}
             <a href="{{ page.facebook_url }}" class="link-btn secondary" target="_blank">
-                <i class="fab fa-facebook"></i> Facebook
+                <i class="fab fa-facebook"></i> {% trans "Facebook" %}
             </a>
         {% endif %}
         
         {% if page.website_url %}
             <a href="{{ page.website_url }}" class="link-btn secondary" target="_blank">
-                <i class="fas fa-globe"></i> Hemsida
+                <i class="fas fa-globe"></i> {% trans "Hemsida" %}
             </a>
         {% endif %}
         
         {% if page.custom_link_1_url %}
             <a href="{{ page.custom_link_1_url }}" class="link-btn secondary" target="_blank">
-                {{ page.custom_link_1_text|default:"Läs mer" }}
+               {{ page.custom_link_1_text|default:_("Läs mer") }}
             </a>
         {% endif %}
         
         {% if page.custom_link_2_url %}
             <a href="{{ page.custom_link_2_url }}" class="link-btn secondary" target="_blank">
-                {{ page.custom_link_2_text|default:"Mer info" }}
+                {{ page.custom_link_2_text|default:_("Mer info") }}
             </a>
         {% endif %}
     </div>
     
     <p class="footer-text">
-        Powered by <a href="https://www.brollopsplanner.se">Bröllopsplaneraren</a>
+        Powered by <a href="https://www.brollopsplanner.se">{% trans "Bröllopsplaneraren" %}</a>
     </p>
 </div>
 </body>
