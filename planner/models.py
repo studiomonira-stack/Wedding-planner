@@ -193,6 +193,13 @@ class PartnerPage(models.Model):
     slug = models.SlugField(unique=True, max_length=100)
     headline = models.CharField(max_length=200, blank=True, verbose_name="Rubrik")
     bio = models.TextField(blank=True, verbose_name="Kort presentation")
+
+    LANGUAGE_CHOICES = [
+        ('sv', 'Svenska'),
+        ('en', 'English'),
+        ('bs', 'Bosnian'),
+    ]
+    language = models.CharField(max_length=2, choices=LANGUAGE_CHOICES, default='sv', verbose_name="Språk")
     
     # Länkar
     instagram_url = models.URLField(blank=True, verbose_name="Instagram")

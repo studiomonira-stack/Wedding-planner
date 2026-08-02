@@ -14,6 +14,7 @@ import base64
 import secrets
 from django.conf import settings
 from django.utils.translation import gettext as _
+from django.utils.translation import activate
 
 
 @login_required
@@ -1104,6 +1105,11 @@ def partner_intakter(request):
 
 def partner_page(request, slug):
     page = get_object_or_404(PartnerPage, slug=slug, is_active=True)
+    
+    # Sätt språk baserat på partnerns val
+    if page.language:
+        activate(page.language)
+        request.session['_language'] = page.language
     
     # Hämta rätt profil
     if page.photographer:
