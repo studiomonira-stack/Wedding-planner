@@ -187,7 +187,8 @@ class Photographer(models.Model):
     
     
 class PartnerPage(models.Model):
-    photographer = models.OneToOneField(Photographer, on_delete=models.CASCADE, related_name='partner_page')
+    photographer = models.OneToOneField(Photographer, on_delete=models.CASCADE, related_name='partner_page', null=True, blank=True)
+    leverantor = models.OneToOneField('LeverantorProfil', on_delete=models.CASCADE, related_name='partner_page', null=True, blank=True)
     slug = models.SlugField(unique=True, max_length=100)
     headline = models.CharField(max_length=200, blank=True, verbose_name="Rubrik")
     bio = models.TextField(blank=True, verbose_name="Kort presentation")
@@ -208,7 +209,11 @@ class PartnerPage(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Linktree: {self.photographer.name}"
+        if self.photographer:
+            return f"Linktree: {self.photographer.name}"
+        elif self.leverantor:
+            return f"Linktree: {self.leverantor.name}"
+        return f"Linktree: {self.slug}"
 
 
 

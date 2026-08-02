@@ -12,10 +12,10 @@
     </div>
     <div class="col-md-4">
         <select name="kategori" class="form-select">
-            {% for value, name in kategorier %}
-                <option value="{{ value }}">{{ name }}</option>
-            {% endfor %}
-        </select>
+    {% for value, name in kategorier %}
+        <option value="{{ value }}">{% blocktrans %}{{ name }}{% endblocktrans %}</option>
+    {% endfor %}
+</select>
     </div>
     <div class="col-md-2">
         <button type="submit" class="btn btn-primary w-100">{% trans "Lägg till" %}</button>

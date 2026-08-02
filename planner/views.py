@@ -13,8 +13,10 @@ import hashlib
 import base64
 import secrets
 from django.conf import settings
+from django.utils.translation import gettext as _
 
 
+@login_required
 @login_required
 def checklist(request):
     items = ChecklistItem.objects.filter(user=request.user).order_by('kategori', '-skapad')
@@ -25,13 +27,16 @@ def checklist(request):
         items_i_kategori = items.filter(kategori=value)
         if items_i_kategori.exists():
             kategorier_med_items[value] = {
-                'name': name,
+                'name': _(name),  # Översatt!
                 'items': items_i_kategori
             }
     
+    # Översatta kategorier för dropdown
+    kategorier_oversatta = [(value, _(name)) for value, name in kategorier]
+    
     return render(request, 'planner/checklist.html', {
         'kategorier_med_items': kategorier_med_items,
-        'kategorier': kategorier,
+        'kategorier': kategorier_oversatta,
     })
 
 
@@ -1099,11 +1104,35 @@ def partner_intakter(request):
 
 def partner_page(request, slug):
     page = get_object_or_404(PartnerPage, slug=slug, is_active=True)
-    photographer = page.photographer
+    
+    # Hämta rätt profil
+    if page.photographer:
+        profil = page.photographer
+        name = profil.name
+        logo = profil.logo
+        primary_color = profil.primary_color
+        accent_color = profil.accent_color
+        background_image = None  # Photographer har inte background_image
+        whop_affiliate_id = profil.whop_affiliate_id
+    elif page.leverantor:
+        profil = page.leverantor
+        name = profil.name
+        logo = profil.logo
+        primary_color = profil.primary_color
+        accent_color = profil.accent_color
+        background_image = profil.background_image  # Leverantör har!
+        whop_affiliate_id = getattr(profil, 'whop_affiliate_id', None)
+    else:
+        return redirect('landing')
     
     return render(request, 'planner/partner_page.html', {
         'page': page,
-        'photographer': photographer,
+        'name': name,
+        'logo': logo,
+        'primary_color': primary_color,
+        'accent_color': accent_color,
+        'background_image': background_image,
+        'whop_affiliate_id': whop_affiliate_id,
     })
 
 

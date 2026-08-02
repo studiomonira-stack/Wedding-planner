@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 13:16+0200\n"
+"POT-Creation-Date: 2026-07-20 12:30+0200\n"
 "PO-Revision-Date: 2026-07-06 13:19+0000\n"
 "Last-Translator:   <hej@brollopsplanner.se>\n"
 "Language-Team: Bosnian\n"
@@ -14,83 +14,84 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Translated-Using: django-rosetta 0.10.3\n"
 
-#: .\accounts\templates\accounts\base.html:18
-#: .\accounts\templates\accounts\base.html:205
-#: .\accounts\templates\accounts\kop.html:429
+#: .\accounts\templates\accounts\base.html:25
+#: .\accounts\templates\accounts\base.html:212
+#: .\accounts\templates\accounts\kop.html:470
 #: .\accounts\templates\accounts\login.html:134
 #: .\accounts\templates\accounts\register.html:97
 #: .\planner\templates\planner\checkout.html:127
 msgid "Bröllopsplaneraren"
 msgstr "Planerator za vjenčanja"
 
-#: .\accounts\templates\accounts\base.html:229
+#: .\accounts\templates\accounts\base.html:236
 #: .\accounts\templates\accounts\dashboard.html:138
-#: .\accounts\templates\accounts\kop.html:312
-#: .\accounts\templates\accounts\kop.html:325
-#: .\accounts\templates\accounts\landing.html:391
+#: .\accounts\templates\accounts\kop.html:353
+#: .\accounts\templates\accounts\kop.html:366
+#: .\accounts\templates\accounts\landing.html:403
 #: .\planner\templates\planner\checklist.html:5
 msgid "Checklista"
 msgstr "Kontrolna lista"
 
-#: .\accounts\templates\accounts\base.html:232
+#: .\accounts\templates\accounts\base.html:239
 #: .\accounts\templates\accounts\dashboard.html:186
-#: .\accounts\templates\accounts\kop.html:309
-#: .\accounts\templates\accounts\kop.html:324
-#: .\accounts\templates\accounts\landing.html:390
+#: .\accounts\templates\accounts\kop.html:350
+#: .\accounts\templates\accounts\kop.html:365
+#: .\accounts\templates\accounts\landing.html:402
 #: .\planner\templates\planner\budget.html:5
 #: .\planner\templates\planner\budget.html:12
 #: .\planner\templates\planner\budget.html:64
 msgid "Budget"
 msgstr "Budžet"
 
-#: .\accounts\templates\accounts\base.html:235
+#: .\accounts\templates\accounts\base.html:242
 #: .\accounts\templates\accounts\dashboard.html:234
 msgid "Gäster"
 msgstr "Gosti"
 
-#: .\accounts\templates\accounts\base.html:238
+#: .\accounts\templates\accounts\base.html:245
 #: .\accounts\templates\accounts\dashboard.html:277
-#: .\accounts\templates\accounts\kop.html:314
-#: .\accounts\templates\accounts\kop.html:328
-#: .\accounts\templates\accounts\landing.html:393
+#: .\accounts\templates\accounts\kop.html:355
+#: .\accounts\templates\accounts\kop.html:369
+#: .\accounts\templates\accounts\landing.html:405
 #: .\planner\templates\planner\leverantorer.html:5
 msgid "Leverantörer"
 msgstr "Dobavljači"
 
-#: .\accounts\templates\accounts\base.html:241
+#: .\accounts\templates\accounts\base.html:248
 #: .\accounts\templates\accounts\dashboard.html:316
-#: .\accounts\templates\accounts\kop.html:310
-#: .\accounts\templates\accounts\kop.html:327
-#: .\accounts\templates\accounts\landing.html:395
+#: .\accounts\templates\accounts\kop.html:351
+#: .\accounts\templates\accounts\kop.html:368
+#: .\accounts\templates\accounts\landing.html:407
 #: .\planner\templates\planner\partner_kund_detail.html:48
 #: .\planner\templates\planner\tidslinje.html:5
 msgid "Tidslinje"
 msgstr "Vremenska linija"
 
-#: .\accounts\templates\accounts\base.html:244
+#: .\accounts\templates\accounts\base.html:251
 #: .\accounts\templates\accounts\dashboard.html:349
-#: .\accounts\templates\accounts\landing.html:394
+#: .\accounts\templates\accounts\landing.html:406
 #: .\planner\templates\planner\partner_kund_detail.html:49
 msgid "Galleri"
 msgstr "Galerija"
 
-#: .\accounts\templates\accounts\base.html:250
+#: .\accounts\templates\accounts\base.html:257
 msgid "Partner"
 msgstr "Partner"
 
-#: .\accounts\templates\accounts\base.html:271
+#: .\accounts\templates\accounts\base.html:278
 msgid "Hej"
 msgstr "Zdravo"
 
-#: .\accounts\templates\accounts\base.html:274
+#: .\accounts\templates\accounts\base.html:281
 msgid "Logga ut"
 msgstr "Odjava"
 
-#: .\accounts\templates\accounts\base.html:291
-#: .\accounts\templates\accounts\kop.html:254
+#: .\accounts\templates\accounts\base.html:298
+#: .\accounts\templates\accounts\kop.html:295
 #: .\accounts\templates\accounts\login.html:153
 #: .\accounts\templates\accounts\login_embed.html:8
 #: .\accounts\templates\accounts\login_embed.html:98
@@ -203,54 +204,54 @@ msgstr "Idi u galeriju"
 msgid "Bröllopsplaneraren – Planera ert drömbröllop"
 msgstr "Planerator za vjenčanja – Planirajte svoje vjenčanje iz snova"
 
-#: .\accounts\templates\accounts\kop.html:269
+#: .\accounts\templates\accounts\kop.html:310
 msgid "Planera kärleken. Njut av resan."
 msgstr "Planirajte ljubav. Uživajte u putovanju."
 
-#: .\accounts\templates\accounts\kop.html:270
+#: .\accounts\templates\accounts\kop.html:311
 msgid "Allt ni behöver för att planera ert drömbröllop. Samlat på ett ställe."
 msgstr ""
 "Sve što vam treba za planiranje vjenčanja iz snova. Sve na jednom mjestu."
 
-#: .\accounts\templates\accounts\kop.html:271
+#: .\accounts\templates\accounts\kop.html:312
 msgid ""
 "Bröllopsplaneraren hjälper er hålla koll på allt från budget och checklista "
-"till leverantörer, inspiration och tidslinje – så att ni kan fokusera på det"
-" viktigaste: att njuta av resan tillsammans."
+"till leverantörer, inspiration och tidslinje – så att ni kan fokusera på det "
+"viktigaste: att njuta av resan tillsammans."
 msgstr ""
 "Planer vjenčanja vam pomaže da pratite sve, od budžeta i check-liste do "
-"dobavljača, inspiracije i vremenske linije – tako da se možete fokusirati na"
-" ono najvažnije: da zajedno uživate u putovanju."
+"dobavljača, inspiracije i vremenske linije – tako da se možete fokusirati na "
+"ono najvažnije: da zajedno uživate u putovanju."
 
-#: .\accounts\templates\accounts\kop.html:273
-#: .\accounts\templates\accounts\kop.html:340
+#: .\accounts\templates\accounts\kop.html:314
+#: .\accounts\templates\accounts\kop.html:381
 msgid "Kom igång idag"
 msgstr "Počnite danas"
 
-#: .\accounts\templates\accounts\kop.html:274
+#: .\accounts\templates\accounts\kop.html:315
 msgid "Se hur det fungerar"
 msgstr "Pogledajte kako funkcioniše"
 
-#: .\accounts\templates\accounts\kop.html:277
-#: .\accounts\templates\accounts\kop.html:420
+#: .\accounts\templates\accounts\kop.html:318
+#: .\accounts\templates\accounts\kop.html:461
 msgid "Inget abbonemang"
 msgstr "Bez pretplate"
 
-#: .\accounts\templates\accounts\kop.html:278
+#: .\accounts\templates\accounts\kop.html:319
 msgid "Engångskostnad"
 msgstr "Jednokratni trošak"
 
-#: .\accounts\templates\accounts\kop.html:279
-#: .\accounts\templates\accounts\kop.html:296
-#: .\accounts\templates\accounts\kop.html:422
+#: .\accounts\templates\accounts\kop.html:320
+#: .\accounts\templates\accounts\kop.html:337
+#: .\accounts\templates\accounts\kop.html:463
 msgid "Planera tillsammans"
 msgstr "Planirajte zajedno"
 
-#: .\accounts\templates\accounts\kop.html:293
+#: .\accounts\templates\accounts\kop.html:334
 msgid "Planera tillsammans, var ni än är."
 msgstr "Planirajte zajedno, gdje god da ste."
 
-#: .\accounts\templates\accounts\kop.html:294
+#: .\accounts\templates\accounts\kop.html:335
 msgid ""
 "Oavsett om ni sitter bredvid varandra i soffan eller planerar från olika "
 "städer finns allt samlat på ett ställe."
@@ -258,173 +259,173 @@ msgstr ""
 "Bilo da sjedite jedno pored drugog na kauču ili planirate iz različitih "
 "gradova, sve je na jednom mjestu."
 
-#: .\accounts\templates\accounts\kop.html:297
+#: .\accounts\templates\accounts\kop.html:338
 msgid "Alla enheter"
 msgstr "Svi uređaji"
 
-#: .\accounts\templates\accounts\kop.html:298
+#: .\accounts\templates\accounts\kop.html:339
 msgid "Tryggt & säkert"
 msgstr "Sigurno i zaštićeno"
 
-#: .\accounts\templates\accounts\kop.html:307
+#: .\accounts\templates\accounts\kop.html:348
 msgid "Allt ni behöver"
 msgstr "Sve što vam treba"
 
-#: .\accounts\templates\accounts\kop.html:309
+#: .\accounts\templates\accounts\kop.html:350
 msgid "Få full kontroll över er ekonomi."
 msgstr "Imajte potpunu kontrolu nad svojim budžetom."
 
-#: .\accounts\templates\accounts\kop.html:310
+#: .\accounts\templates\accounts\kop.html:351
 msgid "Vet alltid vad som händer härnäst."
 msgstr "Uvijek znajte šta je sljedeće."
 
-#: .\accounts\templates\accounts\kop.html:311
-#: .\accounts\templates\accounts\kop.html:326
-#: .\accounts\templates\accounts\landing.html:392
+#: .\accounts\templates\accounts\kop.html:352
+#: .\accounts\templates\accounts\kop.html:367
+#: .\accounts\templates\accounts\landing.html:404
 #: .\planner\templates\planner\gastlista.html:5
 msgid "Gästlista"
 msgstr "Lista gostiju"
 
-#: .\accounts\templates\accounts\kop.html:311
+#: .\accounts\templates\accounts\kop.html:352
 msgid "Samla alla gäster på ett ställe."
 msgstr "Sakupite sve goste na jednom mjestu."
 
-#: .\accounts\templates\accounts\kop.html:312
+#: .\accounts\templates\accounts\kop.html:353
 msgid "Bocka av allt i lugn och ro."
 msgstr "Otkačite sve u miru i bez žurbe."
 
-#: .\accounts\templates\accounts\kop.html:313
-#: .\accounts\templates\accounts\kop.html:329
+#: .\accounts\templates\accounts\kop.html:354
+#: .\accounts\templates\accounts\kop.html:370
 msgid "Moodboard"
 msgstr "Moodboard"
 
-#: .\accounts\templates\accounts\kop.html:313
-#: .\accounts\templates\accounts\kop.html:329
+#: .\accounts\templates\accounts\kop.html:354
+#: .\accounts\templates\accounts\kop.html:370
 msgid "Samla inspiration på ett ställe"
 msgstr "Sakupite inspiraciju na jednom mjestu"
 
-#: .\accounts\templates\accounts\kop.html:314
+#: .\accounts\templates\accounts\kop.html:355
 msgid "Samla inspiration tillsammans."
 msgstr "Sakupljajte inspiraciju zajedno."
 
-#: .\accounts\templates\accounts\kop.html:322
+#: .\accounts\templates\accounts\kop.html:363
 msgid "Utforska funktionerna"
 msgstr "Istražite funkcije"
 
-#: .\accounts\templates\accounts\kop.html:324
+#: .\accounts\templates\accounts\kop.html:365
 msgid "Få en tydlig överblick över alla kostnader."
 msgstr "Dobijte jasan pregled svih troškova."
 
-#: .\accounts\templates\accounts\kop.html:325
+#: .\accounts\templates\accounts\kop.html:366
 msgid "Ha koll på allt som måste göras."
 msgstr "Imajte pregled svega što treba uraditi."
 
-#: .\accounts\templates\accounts\kop.html:326
+#: .\accounts\templates\accounts\kop.html:367
 msgid "Håll koll på alla gäster."
 msgstr "Pratite sve goste."
 
-#: .\accounts\templates\accounts\kop.html:327
+#: .\accounts\templates\accounts\kop.html:368
 msgid "Planera bröllopsdagen."
 msgstr "Planirajte dan vjenčanja."
 
-#: .\accounts\templates\accounts\kop.html:328
+#: .\accounts\templates\accounts\kop.html:369
 msgid "Samla alla kontakter."
 msgstr "Sakupite sve kontakte."
 
-#: .\accounts\templates\accounts\kop.html:337
+#: .\accounts\templates\accounts\kop.html:378
 msgid "En resa ni aldrig glömmer"
 msgstr "Putovanje koje nikada nećete zaboraviti"
 
-#: .\accounts\templates\accounts\kop.html:338
+#: .\accounts\templates\accounts\kop.html:379
 msgid "Allt börjar med ett"
 msgstr "Sve počinje jednom"
 
-#: .\accounts\templates\accounts\kop.html:338
+#: .\accounts\templates\accounts\kop.html:379
 msgid "Ja"
 msgstr "Ja"
 
-#: .\accounts\templates\accounts\kop.html:339
+#: .\accounts\templates\accounts\kop.html:380
 msgid ""
-"Vi är med er hela vägen – från den första drömmen till sista dansen och alla"
-" minnen däremellan."
+"Vi är med er hela vägen – från den första drömmen till sista dansen och alla "
+"minnen däremellan."
 msgstr ""
 "Tu smo za vas cijelim putem – od prvog sna do posljednjeg plesa i svih "
 "uspomena između."
 
-#: .\accounts\templates\accounts\kop.html:343
+#: .\accounts\templates\accounts\kop.html:384
 msgid "Förlovning"
 msgstr "Zaruke"
 
-#: .\accounts\templates\accounts\kop.html:345
+#: .\accounts\templates\accounts\kop.html:386
 msgid "Planering"
 msgstr "Planiranje"
 
-#: .\accounts\templates\accounts\kop.html:347
+#: .\accounts\templates\accounts\kop.html:388
 msgid "Detaljerna"
 msgstr "Detalji"
 
-#: .\accounts\templates\accounts\kop.html:349
+#: .\accounts\templates\accounts\kop.html:390
 msgid "Bröllopsdagen"
 msgstr "Dan vjenčanja"
 
-#: .\accounts\templates\accounts\kop.html:351
+#: .\accounts\templates\accounts\kop.html:392
 #, fuzzy
 #| msgid "Minnena"
 msgid "Minnerna"
 msgstr "Uspomene"
 
-#: .\accounts\templates\accounts\kop.html:393
+#: .\accounts\templates\accounts\kop.html:434
 msgid "Ta planeringen till nästa nivå."
 msgstr "Podignite planiranje na viši nivo."
 
-#: .\accounts\templates\accounts\kop.html:394
+#: .\accounts\templates\accounts\kop.html:435
 msgid ""
-"Bröllopsplaneraren samlar allt på ett ställe så att ni slipper hålla reda på"
-" dokument, anteckningar och olika appar. Ni kan fokusera på det viktigaste –"
-" att njuta av resan mot er stora dag."
+"Bröllopsplaneraren samlar allt på ett ställe så att ni slipper hålla reda på "
+"dokument, anteckningar och olika appar. Ni kan fokusera på det viktigaste – "
+"att njuta av resan mot er stora dag."
 msgstr ""
 "Planer vjenčanja sakuplja sve na jednom mjestu tako da ne morate pratiti "
 "dokumente, bilješke i različite aplikacije. Možete se fokusirati na ono "
 "najvažnije – da uživate u putovanju prema vašem velikom danu."
 
-#: .\accounts\templates\accounts\kop.html:396
+#: .\accounts\templates\accounts\kop.html:437
 msgid "Full kontroll över planeringen"
 msgstr "Potpuna kontrola nad planiranjem"
 
-#: .\accounts\templates\accounts\kop.html:397
+#: .\accounts\templates\accounts\kop.html:438
 msgid "Allt samlat på ett ställe"
 msgstr "Sve na jednom mjestu"
 
-#: .\accounts\templates\accounts\kop.html:398
+#: .\accounts\templates\accounts\kop.html:439
 msgid "En planering ni delar tillsammans"
 msgstr "Planiranje koje dijelite zajedno"
 
-#: .\accounts\templates\accounts\kop.html:399
+#: .\accounts\templates\accounts\kop.html:440
 msgid "Tillgång när ni behöver den"
 msgstr "Pristup kada vam je potreban"
 
-#: .\accounts\templates\accounts\kop.html:401
+#: .\accounts\templates\accounts\kop.html:442
 msgid "Börja planera idag"
 msgstr "Počnite planirati danas"
 
-#: .\accounts\templates\accounts\kop.html:416
+#: .\accounts\templates\accounts\kop.html:457
 msgid "Redo att börja planera ert drömbröllop?"
 msgstr "Spremni da počnete planirati svoje vjenčanje iz snova?"
 
-#: .\accounts\templates\accounts\kop.html:417
+#: .\accounts\templates\accounts\kop.html:458
 msgid "Skapa ert konto idag och samla hela planeringen på ett ställe."
 msgstr ""
 "Kreirajte svoj račun danas i sakupite cijelo planiranje na jednom mjestu."
 
-#: .\accounts\templates\accounts\kop.html:418
+#: .\accounts\templates\accounts\kop.html:459
 msgid "Börja planera som ett proffs"
 msgstr "Počnite planirati kao profesionalac"
 
-#: .\accounts\templates\accounts\kop.html:421
+#: .\accounts\templates\accounts\kop.html:462
 msgid "Engångsavgift"
 msgstr "Jednokratna naknada"
 
-#: .\accounts\templates\accounts\kop.html:432
+#: .\accounts\templates\accounts\kop.html:473
 msgid "Är du fotograf? Bli partner →"
 msgstr "Jeste li fotograf? Postanite partner →"
 
@@ -432,70 +433,70 @@ msgstr "Jeste li fotograf? Postanite partner →"
 msgid "Bröllopsplaneraren – För kreatörer"
 msgstr "Planer vjenčanja – Za kreatore"
 
-#: .\accounts\templates\accounts\landing.html:364
+#: .\accounts\templates\accounts\landing.html:376
 msgid "Partnerprogram för bröllopsfotografer & kreatörer"
 msgstr "Partnerski program za fotografe vjenčanja i kreatore"
 
-#: .\accounts\templates\accounts\landing.html:368
-#: .\accounts\templates\accounts\landing.html:470
+#: .\accounts\templates\accounts\landing.html:380
+#: .\accounts\templates\accounts\landing.html:482
 msgid "Ansök om partnerskap"
 msgstr "Prijavite se za partnerstvo"
 
-#: .\accounts\templates\accounts\landing.html:369
+#: .\accounts\templates\accounts\landing.html:381
 msgid "Upptäck hur det fungerar"
 msgstr "Otkrijte kako funkcioniše"
 
-#: .\accounts\templates\accounts\landing.html:372
+#: .\accounts\templates\accounts\landing.html:384
 msgid "Kostnadsfritt att gå med"
 msgstr "Besplatno pridruživanje"
 
-#: .\accounts\templates\accounts\landing.html:373
+#: .\accounts\templates\accounts\landing.html:385
 msgid "Erbjud på ditt sätt"
 msgstr "Ponudite na svoj način"
 
-#: .\accounts\templates\accounts\landing.html:374
+#: .\accounts\templates\accounts\landing.html:386
 msgid "För fotografer & kreatörer"
 msgstr "Za fotografe i kreatore"
 
-#: .\accounts\templates\accounts\landing.html:386
+#: .\accounts\templates\accounts\landing.html:398
 msgid "Ett fantastiskt bröllop börjar med en fantastisk planering"
 msgstr "Fantastično vjenčanje počinje fantastičnim planiranjem"
 
-#: .\accounts\templates\accounts\landing.html:387
+#: .\accounts\templates\accounts\landing.html:399
 msgid "Ett digitalt hem för hela bröllopsresan."
 msgstr "Digitalni dom za cijelo putovanje vjenčanja."
 
-#: .\accounts\templates\accounts\landing.html:388
+#: .\accounts\templates\accounts\landing.html:400
 msgid ""
 "Allt samlat på ett ställe – enkelt, vackert och skapat för moderna brudpar."
 msgstr ""
 "Sve na jednom mjestu – jednostavno, lijepo i stvoreno za moderne mladence."
 
-#: .\accounts\templates\accounts\landing.html:405
+#: .\accounts\templates\accounts\landing.html:417
 msgid "När dina kunder får en bättre upplevelse får du också det"
 msgstr "Kada vaši klijenti dobiju bolje iskustvo, dobijate ga i vi"
 
-#: .\accounts\templates\accounts\landing.html:407
+#: .\accounts\templates\accounts\landing.html:419
 msgid "En starkare kundrelation"
 msgstr "Snažniji odnos s klijentima"
 
-#: .\accounts\templates\accounts\landing.html:407
+#: .\accounts\templates\accounts\landing.html:419
 msgid "Var med under hela planeringsresan – inte bara på bröllopsdagen."
 msgstr "Budite tu tokom cijelog puta planiranja – ne samo na dan vjenčanja."
 
-#: .\accounts\templates\accounts\landing.html:408
+#: .\accounts\templates\accounts\landing.html:420
 msgid "Ett tydligt mervärde"
 msgstr "Jasna dodatna vrijednost"
 
-#: .\accounts\templates\accounts\landing.html:408
+#: .\accounts\templates\accounts\landing.html:420
 msgid "Erbjud något som gör att ditt företag sticker ut."
 msgstr "Ponudite nešto što čini da se vaše preduzeće izdvaja."
 
-#: .\accounts\templates\accounts\landing.html:409
+#: .\accounts\templates\accounts\landing.html:421
 msgid "Ett starkare varumärke"
 msgstr "Snažniji brend"
 
-#: .\accounts\templates\accounts\landing.html:409
+#: .\accounts\templates\accounts\landing.html:421
 msgid ""
 "Visa att du bryr dig om hela upplevelsen – från första mötet till sista "
 "bilden."
@@ -503,77 +504,77 @@ msgstr ""
 "Pokažite da brinete o cijelom doživljaju – od prvog susreta do posljednje "
 "fotografije."
 
-#: .\accounts\templates\accounts\landing.html:410
+#: .\accounts\templates\accounts\landing.html:422
 msgid "Flexibla intäktsmöjligheter"
 msgstr "Fleksibilne mogućnosti zarade"
 
-#: .\accounts\templates\accounts\landing.html:410
+#: .\accounts\templates\accounts\landing.html:422
 msgid "Välj själv hur du vill erbjuda Bröllopsplaneraren till dina kunder."
 msgstr ""
 "Sami odaberite kako želite ponuditi Planer vjenčanja svojim klijentima."
 
-#: .\accounts\templates\accounts\landing.html:418
+#: .\accounts\templates\accounts\landing.html:430
 msgid "Två sätt att samarbeta"
 msgstr "Dva načina saradnje"
 
-#: .\accounts\templates\accounts\landing.html:423
+#: .\accounts\templates\accounts\landing.html:435
 msgid "Inkludera i dina paket"
 msgstr "Uključite u svoje pakete"
 
-#: .\accounts\templates\accounts\landing.html:424
+#: .\accounts\templates\accounts\landing.html:436
 msgid "För kreatörer som vill erbjuda en komplett premiumupplevelse."
 msgstr "Za kreatore koji žele ponuditi kompletno premium iskustvo."
 
-#: .\accounts\templates\accounts\landing.html:425
+#: .\accounts\templates\accounts\landing.html:437
 msgid "Köp tillgång till partnerpris"
 msgstr "Kupite pristup po partnerskoj cijeni"
 
-#: .\accounts\templates\accounts\landing.html:425
+#: .\accounts\templates\accounts\landing.html:437
 msgid "Ge kunden tillgång direkt"
 msgstr "Dajte klijentu direktan pristup"
 
-#: .\accounts\templates\accounts\landing.html:425
+#: .\accounts\templates\accounts\landing.html:437
 msgid "Integrera i dina egna paket"
 msgstr "Integrirajte u svoje pakete"
 
-#: .\accounts\templates\accounts\landing.html:426
-#: .\accounts\templates\accounts\landing.html:435
+#: .\accounts\templates\accounts\landing.html:438
+#: .\accounts\templates\accounts\landing.html:447
 msgid "Läs mer"
 msgstr "Pročitajte više"
 
-#: .\accounts\templates\accounts\landing.html:432
+#: .\accounts\templates\accounts\landing.html:444
 msgid "Rekommendera till kunder"
 msgstr "Preporučite klijentima"
 
-#: .\accounts\templates\accounts\landing.html:433
+#: .\accounts\templates\accounts\landing.html:445
 msgid "Perfekt om du vill erbjuda utan att ändra dina paket."
 msgstr "Savršeno ako želite ponuditi bez mijenjanja svojih paketa."
 
-#: .\accounts\templates\accounts\landing.html:434
+#: .\accounts\templates\accounts\landing.html:446
 msgid "Dela din personliga partnerlänk"
 msgstr "Podijelite svoj lični partnerski link"
 
-#: .\accounts\templates\accounts\landing.html:434
+#: .\accounts\templates\accounts\landing.html:446
 msgid "Kunden väljer själv"
 msgstr "Klijent sam bira"
 
-#: .\accounts\templates\accounts\landing.html:434
+#: .\accounts\templates\accounts\landing.html:446
 msgid "Du får ersättning vid registrering"
 msgstr "Dobijate naknadu pri registraciji"
 
-#: .\accounts\templates\accounts\landing.html:439
+#: .\accounts\templates\accounts\landing.html:451
 msgid "Eller kombinera båda – valet är helt ditt."
 msgstr "Ili kombinirajte oba – izbor je u potpunosti vaš."
 
-#: .\accounts\templates\accounts\landing.html:448
+#: .\accounts\templates\accounts\landing.html:460
 msgid "Allt samlat i din"
 msgstr "Sve sakupljeno u vašem"
 
-#: .\accounts\templates\accounts\landing.html:449
+#: .\accounts\templates\accounts\landing.html:461
 msgid "Partner Studio."
 msgstr "Partnerski Studio."
 
-#: .\accounts\templates\accounts\landing.html:450
+#: .\accounts\templates\accounts\landing.html:462
 msgid ""
 "En lugn och överskådlig plats där du har full koll på dina kunder, kommande "
 "bröllop och möjligheter."
@@ -581,118 +582,118 @@ msgstr ""
 "Mirno i pregledno mjesto gdje imate potpunu kontrolu nad svojim klijentima, "
 "predstojećim vjenčanjima i mogućnostima."
 
-#: .\accounts\templates\accounts\landing.html:452
+#: .\accounts\templates\accounts\landing.html:464
 msgid "Lägg till fototider"
 msgstr "Dodajte termine fotografisanja"
 
-#: .\accounts\templates\accounts\landing.html:452
+#: .\accounts\templates\accounts\landing.html:464
 msgid "Planera in dina tider i kundens tidslinje."
 msgstr "Planirajte svoje termine u vremenskoj liniji klijenta."
 
-#: .\accounts\templates\accounts\landing.html:453
+#: .\accounts\templates\accounts\landing.html:465
 msgid "Hantera kunder"
 msgstr "Upravljanje klijentima"
 
-#: .\accounts\templates\accounts\landing.html:453
+#: .\accounts\templates\accounts\landing.html:465
 msgid "Full överblick över alla par."
 msgstr "Potpuni pregled svih parova."
 
-#: .\accounts\templates\accounts\landing.html:454
+#: .\accounts\templates\accounts\landing.html:466
 #: .\planner\templates\planner\partner_dashboard.html:20
 #: .\planner\templates\planner\partner_dashboard.html:50
 msgid "Kommande bröllop"
 msgstr "Predstojeća vjenčanja"
 
-#: .\accounts\templates\accounts\landing.html:454
+#: .\accounts\templates\accounts\landing.html:466
 msgid "Håll koll på alla datum."
 msgstr "Pratite sve datume."
 
-#: .\accounts\templates\accounts\landing.html:455
+#: .\accounts\templates\accounts\landing.html:467
 msgid "Intäkter"
 msgstr "Prihodi"
 
-#: .\accounts\templates\accounts\landing.html:455
+#: .\accounts\templates\accounts\landing.html:467
 msgid "Se din ersättning i realtid."
 msgstr "Pratite svoju zaradu u realnom vremenu."
 
-#: .\accounts\templates\accounts\landing.html:456
+#: .\accounts\templates\accounts\landing.html:468
 msgid "Partnerlänk"
 msgstr "Partnerski link"
 
-#: .\accounts\templates\accounts\landing.html:456
+#: .\accounts\templates\accounts\landing.html:468
 msgid "Din unika länk att dela."
 msgstr "Vaš jedinstveni link za dijeljenje."
 
-#: .\accounts\templates\accounts\landing.html:457
+#: .\accounts\templates\accounts\landing.html:469
 msgid "Redigera tidslinjer"
 msgstr "Uređivanje vremenskih linija"
 
-#: .\accounts\templates\accounts\landing.html:457
+#: .\accounts\templates\accounts\landing.html:469
 msgid "Hjälp kunderna med planeringen."
 msgstr "Pomozite klijentima s planiranjem."
 
-#: .\accounts\templates\accounts\landing.html:468
+#: .\accounts\templates\accounts\landing.html:480
 msgid "Så fungerar det"
 msgstr "Ovako to funkcioniše"
 
-#: .\accounts\templates\accounts\landing.html:470
+#: .\accounts\templates\accounts\landing.html:482
 msgid "Fyll i formuläret. Vi hörs inom 24 timmar."
 msgstr "Ispunite obrazac. Javit ćemo vam se u roku od 24 sata."
 
-#: .\accounts\templates\accounts\landing.html:471
+#: .\accounts\templates\accounts\landing.html:483
 msgid "Skapa din Partner Studio"
 msgstr "Kreirajte svoj Partnerski studio"
 
-#: .\accounts\templates\accounts\landing.html:471
+#: .\accounts\templates\accounts\landing.html:483
 msgid "Ladda upp logga, välj färger. Klart på några minuter."
 msgstr "Prenesite logo, odaberite boje. Gotovo za nekoliko minuta."
 
-#: .\accounts\templates\accounts\landing.html:472
+#: .\accounts\templates\accounts\landing.html:484
 msgid "Bjud in dina kunder"
 msgstr "Pozovite svoje klijente"
 
-#: .\accounts\templates\accounts\landing.html:472
+#: .\accounts\templates\accounts\landing.html:484
 msgid "Dela din länk på det sätt som passar dig bäst."
 msgstr "Podijelite svoj link na način koji vam najviše odgovara."
 
-#: .\accounts\templates\accounts\landing.html:480
+#: .\accounts\templates\accounts\landing.html:492
 msgid "För vilka?"
 msgstr "Za koga?"
 
-#: .\accounts\templates\accounts\landing.html:482
+#: .\accounts\templates\accounts\landing.html:494
 msgid "Fotografer"
 msgstr "Fotografi"
 
-#: .\accounts\templates\accounts\landing.html:483
+#: .\accounts\templates\accounts\landing.html:495
 msgid "Videografer"
 msgstr "Videografi"
 
-#: .\accounts\templates\accounts\landing.html:484
+#: .\accounts\templates\accounts\landing.html:496
 msgid "Wedding planners"
 msgstr "Wedding planneri"
 
-#: .\accounts\templates\accounts\landing.html:485
+#: .\accounts\templates\accounts\landing.html:497
 msgid "Florister"
 msgstr "Cvjećari"
 
-#: .\accounts\templates\accounts\landing.html:486
+#: .\accounts\templates\accounts\landing.html:498
 msgid "Makeupartister"
 msgstr "Šminkeri"
 
-#: .\accounts\templates\accounts\landing.html:487
+#: .\accounts\templates\accounts\landing.html:499
 msgid "Lokaler"
 msgstr "Prostori"
 
-#: .\accounts\templates\accounts\landing.html:488
+#: .\accounts\templates\accounts\landing.html:500
 msgid "DJ:s & Musiker"
 msgstr "DJ-evi & muzičari"
 
-#: .\accounts\templates\accounts\landing.html:514
+#: .\accounts\templates\accounts\landing.html:526
 msgid "Vi tror att planeringen ska vara lika minnesvärd som bröllopsdagen."
 msgstr ""
 "Vjerujemo da planiranje treba biti jednako nezaboravno kao i dan vjenčanja."
 
-#: .\accounts\templates\accounts\landing.html:515
+#: .\accounts\templates\accounts\landing.html:527
 msgid ""
 "Bröllopsplaneraren är skapad för att hjälpa brudpar känna sig trygga, "
 "inspirerade och organiserade – och för att ge dig som kreatör ett verktyg "
@@ -702,67 +703,67 @@ msgstr ""
 "inspirisano i organizovano – i da vama kao kreatoru pruži alat koji podiže "
 "cijelo vaše korisničko iskustvo."
 
-#: .\accounts\templates\accounts\landing.html:516
+#: .\accounts\templates\accounts\landing.html:528
 msgid "lanera och njut av tiden."
 msgstr "Planirajte i uživajte u vremenu."
 
-#: .\accounts\templates\accounts\landing.html:533
+#: .\accounts\templates\accounts\landing.html:545
 msgid "Redo att ge dina kunder något de faktiskt kommer använda?"
 msgstr "Spremni da svojim klijentima date nešto što će zaista koristiti?"
 
-#: .\accounts\templates\accounts\landing.html:534
+#: .\accounts\templates\accounts\landing.html:546
 msgid ""
-"Bli en del av Bröllopsplanerarens partnernätverk och skapa ännu större värde"
-" för dina kunder."
+"Bli en del av Bröllopsplanerarens partnernätverk och skapa ännu större värde "
+"för dina kunder."
 msgstr ""
 "Postanite dio partnerske mreže Planera vjenčanja i stvorite još veću "
 "vrijednost za svoje klijente."
 
-#: .\accounts\templates\accounts\landing.html:541
+#: .\accounts\templates\accounts\landing.html:553
 msgid "Nästa intag öppnar om"
 msgstr "Sljedeći prijem se otvara za"
 
-#: .\accounts\templates\accounts\landing.html:543
+#: .\accounts\templates\accounts\landing.html:555
 msgid "Dagar"
 msgstr "Dana"
 
-#: .\accounts\templates\accounts\landing.html:544
+#: .\accounts\templates\accounts\landing.html:556
 msgid "Tim"
 msgstr "Sati"
 
-#: .\accounts\templates\accounts\landing.html:545
+#: .\accounts\templates\accounts\landing.html:557
 msgid "Min"
 msgstr "Min"
 
-#: .\accounts\templates\accounts\landing.html:546
+#: .\accounts\templates\accounts\landing.html:558
 msgid "Sek"
 msgstr "Sek"
 
-#: .\accounts\templates\accounts\landing.html:552
+#: .\accounts\templates\accounts\landing.html:564
 msgid "Förnamn"
 msgstr "Ime"
 
-#: .\accounts\templates\accounts\landing.html:553
+#: .\accounts\templates\accounts\landing.html:565
 msgid "Efternamn"
 msgstr "Prezime"
 
-#: .\accounts\templates\accounts\landing.html:554
+#: .\accounts\templates\accounts\landing.html:566
 msgid "Mejl"
 msgstr "E-mail"
 
-#: .\accounts\templates\accounts\landing.html:555
+#: .\accounts\templates\accounts\landing.html:567
 msgid "Anmäl intresse"
 msgstr "Prijavite interes"
 
-#: .\accounts\templates\accounts\landing.html:558
+#: .\accounts\templates\accounts\landing.html:570
 msgid "Kostnadsfritt"
 msgstr "Besplatno"
 
-#: .\accounts\templates\accounts\landing.html:559
+#: .\accounts\templates\accounts\landing.html:571
 msgid "Inga krav"
 msgstr "Bez obaveza"
 
-#: .\accounts\templates\accounts\landing.html:560
+#: .\accounts\templates\accounts\landing.html:572
 msgid "Klar på några minuter"
 msgstr "Gotovo za nekoliko minuta"
 
@@ -900,6 +901,11 @@ msgstr "Pratite sve pred vaš veliki dan."
 msgid "Ny punkt..."
 msgstr "Nova stavka..."
 
+#: .\planner\templates\planner\checklist.html:16
+#, python-format
+msgid "%(name)s"
+msgstr ""
+
 #: .\planner\templates\planner\checklist.html:45
 msgid "Inga punkter ännu. Börja planera ert drömbröllop!"
 msgstr "Još nema stavki. Počnite planirati svoje vjenčanje iz snova!"
@@ -950,8 +956,8 @@ msgstr "Galerija inspiracije"
 
 #: .\planner\templates\planner\galleri.html:6
 msgid ""
-"Samla er inspiration – klistra in bildlänkar från Pinterest, Instagram eller"
-" andra sajter."
+"Samla er inspiration – klistra in bildlänkar från Pinterest, Instagram eller "
+"andra sajter."
 msgstr ""
 "Sakupite svoju inspiraciju – zalijepite linkove slika sa Pinteresta, "
 "Instagrama ili drugih stranica."
@@ -1285,8 +1291,8 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:297
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
-" hyphens."
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:309
@@ -1505,8 +1511,8 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1569
 #, python-format
 msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD "
-"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1574
@@ -1736,8 +1742,7 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\fields.py:642
 #, python-format
-msgid ""
-"Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
@@ -1844,8 +1849,7 @@ msgid "The inline value did not match the parent instance."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1474
-msgid ""
-"Select a valid choice. That choice is not one of the available choices."
+msgid "Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1623
@@ -2325,10 +2329,10 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\csrf.py:45
 msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or"
-" including the “Referrer-Policy: no-referrer” header, please remove them. "
-"The CSRF protection requires the “Referer” header to do strict referer "
-"checking. If you’re concerned about privacy, use alternatives like <a "
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
 "rel=\"noreferrer\" …> for links to third-party sites."
 msgstr ""
 
@@ -2439,10 +2443,10 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:208
 #, python-format
 msgid ""
-"You are seeing this page because <a "
-"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
-"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> is in your settings file "
-"and you have not configured any URLs."
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:217
@@ -2484,11 +2488,11 @@ msgstr ""
 #~ "Direktan pristup nakon kupovine. Radi na mobitelu, tabletu i računaru."
 
 #~ msgid ""
-#~ "Från första checklistan till sista dansen. Er bröllopsplanerare finns där ni"
-#~ " är – i mobilen, plattan eller datorn."
+#~ "Från första checklistan till sista dansen. Er bröllopsplanerare finns där "
+#~ "ni är – i mobilen, plattan eller datorn."
 #~ msgstr ""
-#~ "Od prve kontrolne liste do posljednjeg plesa. Vaš planerator za vjenčanja je"
-#~ " tu gdje ste vi – na mobitelu, tabletu ili računaru."
+#~ "Od prve kontrolne liste do posljednjeg plesa. Vaš planerator za vjenčanja "
+#~ "je tu gdje ste vi – na mobitelu, tabletu ili računaru."
 
 #~ msgid "Håll koll på kostnaderna med ett enkelt cirkeldiagram."
 #~ msgstr "Pratite troškove pomoću jednostavnog kružnog dijagrama."
@@ -2512,7 +2516,8 @@ msgstr ""
 #~ msgstr "Također dostupno na"
 
 #~ msgid "Bröllopsplaneraren – Ge varje par sin egen planner"
-#~ msgstr "Planerator za vjenčanja – Dajte svakom paru svoj vlastiti planerator"
+#~ msgstr ""
+#~ "Planerator za vjenčanja – Dajte svakom paru svoj vlastiti planerator"
 
 #~ msgid "Ge varje brudpar sin egen bröllopsplanner – med din logga."
 #~ msgstr ""
@@ -2521,15 +2526,15 @@ msgstr ""
 
 #, python-format
 #~ msgid ""
-#~ "Dina kunder planerar sitt bröllop varje dag. Se till att de gör det med dig "
-#~ "– inte på Google Sheets eller någon annans app. Du får en helt anpassad "
-#~ "planner, en unik länk att dela, och 30%% provision på varje köp. Utan "
-#~ "startkostnad."
+#~ "Dina kunder planerar sitt bröllop varje dag. Se till att de gör det med "
+#~ "dig – inte på Google Sheets eller någon annans app. Du får en helt "
+#~ "anpassad planner, en unik länk att dela, och 30%% provision på varje köp. "
+#~ "Utan startkostnad."
 #~ msgstr ""
-#~ "Vaši klijenti planiraju svoje vjenčanje svaki dan. Pobrinite se da to rade s"
-#~ " vama – ne na Google Sheetsu ili u tuđoj aplikaciji. Dobijate potpuno "
-#~ "prilagođen planerator, jedinstveni link za dijeljenje i 30%% provizije na "
-#~ "svaku kupovinu. Bez početnih troškova."
+#~ "Vaši klijenti planiraju svoje vjenčanje svaki dan. Pobrinite se da to "
+#~ "rade s vama – ne na Google Sheetsu ili u tuđoj aplikaciji. Dobijate "
+#~ "potpuno prilagođen planerator, jedinstveni link za dijeljenje i 30%% "
+#~ "provizije na svaku kupovinu. Bez početnih troškova."
 
 #~ msgid "Ansök om partnerskap, kostnadsfritt →"
 #~ msgstr "Prijavite se za partnerstvo, besplatno →"
@@ -2544,12 +2549,12 @@ msgstr ""
 
 #~ msgid ""
 #~ "Varje detalj planeras med din logga synlig. Från första checklistan till "
-#~ "sista dansen. Dina par loggar in, ser din branding, och planerar hela sitt "
-#~ "bröllop i ett verktyg som känns som du."
+#~ "sista dansen. Dina par loggar in, ser din branding, och planerar hela "
+#~ "sitt bröllop i ett verktyg som känns som du."
 #~ msgstr ""
-#~ "Svaki detalj se planira s vašim logom vidljivim. Od prve kontrolne liste do "
-#~ "posljednjeg plesa. Vaši parovi se prijavljuju, vide vaš brend i planiraju "
-#~ "cijelo svoje vjenčanje u alatu koji osjećaju kao vi."
+#~ "Svaki detalj se planira s vašim logom vidljivim. Od prve kontrolne liste "
+#~ "do posljednjeg plesa. Vaši parovi se prijavljuju, vide vaš brend i "
+#~ "planiraju cijelo svoje vjenčanje u alatu koji osjećaju kao vi."
 
 #~ msgid "Du är inte längre bara fotografen. Du är navet i deras planering."
 #~ msgstr "Više niste samo fotograf. Vi ste središte njihovog planiranja."
@@ -2559,9 +2564,9 @@ msgstr ""
 #~ "som om att dem verkligen kommer uppskatta det, samtidigt som jag kommer "
 #~ "kunna lägga in vårt schema för foto i deras tidslinje direkt!"
 #~ msgstr ""
-#~ "Jedva čekam ponuditi svojim klijentima i pratiocima planerator – Osjećam da "
-#~ "će ga zaista cijeniti, istovremeno ću moći direktno ubaciti naš raspored za "
-#~ "fotografisanje u njihovu vremensku liniju!"
+#~ "Jedva čekam ponuditi svojim klijentima i pratiocima planerator – Osjećam "
+#~ "da će ga zaista cijeniti, istovremeno ću moći direktno ubaciti naš "
+#~ "raspored za fotografisanje u njihovu vremensku liniju!"
 
 #~ msgid "— Emma, Bröllopsfotograf, Stockholm"
 #~ msgstr "— Emma, Fotograf za vjenčanja, Stockholm"
@@ -2573,8 +2578,8 @@ msgstr ""
 #~ "Steg-för-steg genom hela planeringen. Dina par missar inget. Du slipper "
 #~ "påminnelsemejl."
 #~ msgstr ""
-#~ "Korak po korak kroz cijelo planiranje. Vaši parovi ne propuštaju ništa. Vi "
-#~ "izbjegavate e-mailove s podsjetnicima."
+#~ "Korak po korak kroz cijelo planiranje. Vaši parovi ne propuštaju ništa. "
+#~ "Vi izbjegavate e-mailove s podsjetnicima."
 
 #~ msgid ""
 #~ "De håller koll på kostnaderna. När de ser vad som ryms, bokar de dig "
@@ -2586,8 +2591,8 @@ msgstr ""
 #~ msgstr "Lista gostiju i RSVP"
 
 #~ msgid ""
-#~ "Alla gäster samlade. Bordsplacering med överblick. Noll administration för "
-#~ "dig."
+#~ "Alla gäster samlade. Bordsplacering med överblick. Noll administration "
+#~ "för dig."
 #~ msgstr ""
 #~ "Svi gosti na jednom mjestu. Raspored za stolovima s pregledom. Nula "
 #~ "administracije za vas."
@@ -2600,11 +2605,11 @@ msgstr ""
 #~ "isplanirano u aplikaciji."
 
 #~ msgid ""
-#~ "De samlar inspiration från Pinterest och Instagram. Din logga syns medan de "
-#~ "drömmer."
+#~ "De samlar inspiration från Pinterest och Instagram. Din logga syns medan "
+#~ "de drömmer."
 #~ msgstr ""
-#~ "Oni sakupljaju inspiraciju sa Pinteresta i Instagrama. Vaš logo je vidljiv "
-#~ "dok oni sanjaju."
+#~ "Oni sakupljaju inspiraciju sa Pinteresta i Instagrama. Vaš logo je "
+#~ "vidljiv dok oni sanjaju."
 
 #~ msgid ""
 #~ "Du lägger in dina egna rekommendationer. Din florist, din makeup-artist – "
@@ -2619,26 +2624,27 @@ msgstr ""
 
 #~ msgid ""
 #~ "Lisa och Johan bokade dig för sina förlovningsbilder. Bilderna blev "
-#~ "fantastiska. De taggade dig överallt. Några veckor senare började de planera"
-#~ " sitt bröllop. I ett Google Sheets. På The Knot. I någon annans app."
+#~ "fantastiska. De taggade dig överallt. Några veckor senare började de "
+#~ "planera sitt bröllop. I ett Google Sheets. På The Knot. I någon annans "
+#~ "app."
 #~ msgstr ""
-#~ "Lisa i Johan su vas angažirali za fotografisanje svojih zaruka. Fotografije "
-#~ "su bile fantastične. Tagovali su vas svuda. Nekoliko sedmica kasnije počeli "
-#~ "su planirati svoje vjenčanje. U Google Sheetsu. Na The Knotu. U tuđoj "
-#~ "aplikaciji."
+#~ "Lisa i Johan su vas angažirali za fotografisanje svojih zaruka. "
+#~ "Fotografije su bile fantastične. Tagovali su vas svuda. Nekoliko sedmica "
+#~ "kasnije počeli su planirati svoje vjenčanje. U Google Sheetsu. Na The "
+#~ "Knotu. U tuđoj aplikaciji."
 
 #~ msgid ""
-#~ "Din logga? Begravd i en gammal mejltråd. Din relation? Vilande tills det är "
-#~ "dags för bröllopsfotograferingen."
+#~ "Din logga? Begravd i en gammal mejltråd. Din relation? Vilande tills det "
+#~ "är dags för bröllopsfotograferingen."
 #~ msgstr ""
 #~ "Vaš logo? Zakopan u starom e-mail threadu. Vaša veza? U mirovanju dok ne "
 #~ "dođe vrijeme za fotografisanje vjenčanja."
 
 #~ msgid ""
-#~ "Föreställ dig nu det här istället: Du ger dem en personlig bröllopsplanner –"
-#~ " med din logga. Varje gång de checkar av en punkt, lägger till en gäst eller"
-#~ " justerar budgeten, ser de dig. Du är inte längre bara fotografen. Du är "
-#~ "navet i deras planering."
+#~ "Föreställ dig nu det här istället: Du ger dem en personlig "
+#~ "bröllopsplanner – med din logga. Varje gång de checkar av en punkt, "
+#~ "lägger till en gäst eller justerar budgeten, ser de dig. Du är inte "
+#~ "längre bara fotografen. Du är navet i deras planering."
 #~ msgstr ""
 #~ "Zamislite sada ovo umjesto toga: Dajete im personalizirani planerator za "
 #~ "vjenčanja – s vašim logom. Svaki put kada označe stavku, dodaju gosta ili "
@@ -2646,8 +2652,8 @@ msgstr ""
 #~ "njihovog planiranja."
 
 #~ msgid ""
-#~ "När bröllopsdagen kommer är du inte en leverantör. Du är en självklar del av"
-#~ " deras historia."
+#~ "När bröllopsdagen kommer är du inte en leverantör. Du är en självklar del "
+#~ "av deras historia."
 #~ msgstr ""
 #~ "Kada dođe dan vjenčanja, vi niste dobavljač. Vi ste prirodan dio njihove "
 #~ "priče."
@@ -2662,8 +2668,8 @@ msgstr ""
 #~ "Vi anpassar din planner med din logga, dina färger och dina "
 #~ "leverantörsrekommendationer. Live inom 48 timmar."
 #~ msgstr ""
-#~ "Prilagođavamo vaš planerator s vašim logom, vašim bojama i vašim preporukama"
-#~ " dobavljača. Aktivan u roku od 48 sati."
+#~ "Prilagođavamo vaš planerator s vašim logom, vašim bojama i vašim "
+#~ "preporukama dobavljača. Aktivan u roku od 48 sati."
 
 #~ msgid "Dela och tjäna"
 #~ msgstr "Dijelite i zarađujte"
@@ -2673,16 +2679,16 @@ msgstr ""
 #~ "Du får en unik länk. Dela den med dina par. När de köper får du 30%% "
 #~ "provision – varje gång."
 #~ msgstr ""
-#~ "Dobijate jedinstveni link. Podijelite ga sa svojim parovima. Kada oni kupe, "
-#~ "vi dobijate 30%% provizije – svaki put."
+#~ "Dobijate jedinstveni link. Podijelite ga sa svojim parovima. Kada oni "
+#~ "kupe, vi dobijate 30%% provizije – svaki put."
 
 #~ msgid "Inga startavgifter. Ingen risk. Bara resultat."
 #~ msgstr "Bez početnih naknada. Bez rizika. Samo rezultati."
 
 #, python-format
 #~ msgid ""
-#~ "Vi tar inte en krona för att sätta upp din planner. Vi tjänar pengar först "
-#~ "när du gör det: 30%% provision på varje köp via din unika länk."
+#~ "Vi tar inte en krona för att sätta upp din planner. Vi tjänar pengar "
+#~ "först när du gör det: 30%% provision på varje köp via din unika länk."
 #~ msgstr ""
 #~ "Ne naplaćujemo ni marku za postavljanje vašeg planeratora. Zarađujemo tek "
 #~ "kada i vi zaradite: 30%% provizije na svaku kupovinu putem vašeg "
@@ -2692,8 +2698,8 @@ msgstr ""
 #~ msgstr "Primjer:"
 
 #~ msgid ""
-#~ "En planner kostar 999 kr. När ett av dina par köper får du 300 kr. Delar du "
-#~ "den med 20 par och 10 köper → 3 000 kr passivt."
+#~ "En planner kostar 999 kr. När ett av dina par köper får du 300 kr. Delar "
+#~ "du den med 20 par och 10 köper → 3 000 kr passivt."
 #~ msgstr ""
 #~ "Planerator košta 999 KM. Kada jedan od vaših parova kupi, vi dobijate 300 "
 #~ "KM. Podijelite li ga sa 20 parova i 10 ih kupi → 3.000 KM pasivno."
@@ -2705,20 +2711,20 @@ msgstr ""
 #~ "Vaš link funkcioniše čak i ako par kupi kasnije. Čuvamo kolačić 30 dana."
 
 #~ msgid ""
-#~ "Det här är inte för alla. Det är för dig som redan har bokat drömkunderna. "
-#~ "Som vill ge dem något extra – utan att lägga mer tid på administration. Som "
-#~ "förstår att en stark relation före bröllopet leder till bättre bilder, "
-#~ "nöjdare kunder och fler rekommendationer efteråt."
+#~ "Det här är inte för alla. Det är för dig som redan har bokat "
+#~ "drömkunderna. Som vill ge dem något extra – utan att lägga mer tid på "
+#~ "administration. Som förstår att en stark relation före bröllopet leder "
+#~ "till bättre bilder, nöjdare kunder och fler rekommendationer efteråt."
 #~ msgstr ""
 #~ "Ovo nije za svakoga. Ovo je za vas koji već imate rezervisane dream "
-#~ "klijente. Koji im želite dati nešto dodatno – bez trošenja više vremena na "
-#~ "administraciju. Koji razumijete da jaka veza prije vjenčanja dovodi do "
+#~ "klijente. Koji im želite dati nešto dodatno – bez trošenja više vremena "
+#~ "na administraciju. Koji razumijete da jaka veza prije vjenčanja dovodi do "
 #~ "boljih fotografija, zadovoljnijih klijenata i više preporuka nakon toga."
 
 #~ msgid ""
-#~ "Du behöver inte vara teknisk. Du behöver inte bygga något själv. Du behöver "
-#~ "bara vilja ge dina par den bästa planeringsupplevelsen – med ditt varumärke "
-#~ "i centrum."
+#~ "Du behöver inte vara teknisk. Du behöver inte bygga något själv. Du "
+#~ "behöver bara vilja ge dina par den bästa planeringsupplevelsen – med ditt "
+#~ "varumärke i centrum."
 #~ msgstr ""
 #~ "Ne morate biti tehnički potkovani. Ne morate ništa sami izgrađivati. Samo "
 #~ "trebate željeti pružiti svojim parovima najbolje iskustvo planiranja – s "
@@ -2731,18 +2737,18 @@ msgstr ""
 #~ msgstr "Moram li prodavati ili gurati aplikaciju?"
 
 #~ msgid ""
-#~ "Nej. Du delar bara din länk som en naturlig del av ditt kunderbjudande. Det "
-#~ "känns inte som försäljning – det känns som service."
+#~ "Nej. Du delar bara din länk som en naturlig del av ditt kunderbjudande. "
+#~ "Det känns inte som försäljning – det känns som service."
 #~ msgstr ""
-#~ "Ne. Samo dijelite svoj link kao prirodni dio vaše ponude klijentima. To ne "
-#~ "djeluje kao prodaja – djeluje kao usluga."
+#~ "Ne. Samo dijelite svoj link kao prirodni dio vaše ponude klijentima. To "
+#~ "ne djeluje kao prodaja – djeluje kao usluga."
 
 #~ msgid "Hur ser mina kunder min branding?"
 #~ msgstr "Kako moji klijenti vide moj brend?"
 
 #~ msgid ""
-#~ "De möts av din logga, dina färger och dina personliga rekommendationer. Du "
-#~ "kan även lägga in en personlig välkomsthälsning."
+#~ "De möts av din logga, dina färger och dina personliga rekommendationer. "
+#~ "Du kan även lägga in en personlig välkomsthälsning."
 #~ msgstr ""
 #~ "Dočekuje ih vaš logo, vaše boje i vaše lične preporuke. Također možete "
 #~ "dodati i ličnu poruku dobrodošlice."
@@ -2751,28 +2757,29 @@ msgstr ""
 #~ msgstr "Šta se dešava ako prestanem koristiti uslugu?"
 
 #~ msgid ""
-#~ "Ingenting. Du har ingen bindningstid. Dina redan köpta kunder behåller sin "
-#~ "planner."
+#~ "Ingenting. Du har ingen bindningstid. Dina redan köpta kunder behåller "
+#~ "sin planner."
 #~ msgstr ""
-#~ "Ništa. Nemate ugovornu obavezu. Vaši klijenti koji su već kupili zadržavaju "
-#~ "svoj planerator."
+#~ "Ništa. Nemate ugovornu obavezu. Vaši klijenti koji su već kupili "
+#~ "zadržavaju svoj planerator."
 
 #~ msgid "Hur får jag min provision utbetald?"
 #~ msgstr "Kako dobijam isplatu svoje provizije?"
 
 #~ msgid ""
-#~ "Månadsvis, direkt till ditt konto. Du ser alla dina köp och klick i en enkel"
-#~ " dashboard."
+#~ "Månadsvis, direkt till ditt konto. Du ser alla dina köp och klick i en "
+#~ "enkel dashboard."
 #~ msgstr ""
 #~ "Mjesečno, direktno na vaš račun. Vidite sve svoje kupovine i klikove na "
 #~ "jednostavnoj kontrolnoj tabli."
 
 #~ msgid "Redo att ge dina par deras egen bröllopsplanner?"
-#~ msgstr "Spremni dati svojim parovima njihov vlastiti planerator za vjenčanja?"
+#~ msgstr ""
+#~ "Spremni dati svojim parovima njihov vlastiti planerator za vjenčanja?"
 
 #~ msgid ""
-#~ "Vi öppnar endast 10 nya partnerskap detta kvartal. Ansök kostnadsfritt – tar"
-#~ " 2 minuter."
+#~ "Vi öppnar endast 10 nya partnerskap detta kvartal. Ansök kostnadsfritt – "
+#~ "tar 2 minuter."
 #~ msgstr ""
 #~ "Otvaramo samo 10 novih partnerstava ovog kvartala. Prijava je besplatna – "
 #~ "traje 2 minute."

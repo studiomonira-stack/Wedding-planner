@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-06 13:16+0200\n"
+"POT-Creation-Date: 2026-07-20 12:26+0200\n"
 "PO-Revision-Date: 2026-07-06 13:17+0000\n"
 "Last-Translator:   <hej@brollopsplanner.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,80 +19,80 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.3\n"
 
-#: .\accounts\templates\accounts\base.html:18
-#: .\accounts\templates\accounts\base.html:205
-#: .\accounts\templates\accounts\kop.html:429
+#: .\accounts\templates\accounts\base.html:25
+#: .\accounts\templates\accounts\base.html:212
+#: .\accounts\templates\accounts\kop.html:470
 #: .\accounts\templates\accounts\login.html:134
 #: .\accounts\templates\accounts\register.html:97
 #: .\planner\templates\planner\checkout.html:127
 msgid "Bröllopsplaneraren"
 msgstr "The weddingplanner"
 
-#: .\accounts\templates\accounts\base.html:229
+#: .\accounts\templates\accounts\base.html:236
 #: .\accounts\templates\accounts\dashboard.html:138
-#: .\accounts\templates\accounts\kop.html:312
-#: .\accounts\templates\accounts\kop.html:325
-#: .\accounts\templates\accounts\landing.html:391
+#: .\accounts\templates\accounts\kop.html:353
+#: .\accounts\templates\accounts\kop.html:366
+#: .\accounts\templates\accounts\landing.html:403
 #: .\planner\templates\planner\checklist.html:5
 msgid "Checklista"
 msgstr "Checklist"
 
-#: .\accounts\templates\accounts\base.html:232
+#: .\accounts\templates\accounts\base.html:239
 #: .\accounts\templates\accounts\dashboard.html:186
-#: .\accounts\templates\accounts\kop.html:309
-#: .\accounts\templates\accounts\kop.html:324
-#: .\accounts\templates\accounts\landing.html:390
+#: .\accounts\templates\accounts\kop.html:350
+#: .\accounts\templates\accounts\kop.html:365
+#: .\accounts\templates\accounts\landing.html:402
 #: .\planner\templates\planner\budget.html:5
 #: .\planner\templates\planner\budget.html:12
 #: .\planner\templates\planner\budget.html:64
 msgid "Budget"
 msgstr "Budget"
 
-#: .\accounts\templates\accounts\base.html:235
+#: .\accounts\templates\accounts\base.html:242
 #: .\accounts\templates\accounts\dashboard.html:234
 msgid "Gäster"
 msgstr "Guests"
 
-#: .\accounts\templates\accounts\base.html:238
+#: .\accounts\templates\accounts\base.html:245
 #: .\accounts\templates\accounts\dashboard.html:277
-#: .\accounts\templates\accounts\kop.html:314
-#: .\accounts\templates\accounts\kop.html:328
-#: .\accounts\templates\accounts\landing.html:393
+#: .\accounts\templates\accounts\kop.html:355
+#: .\accounts\templates\accounts\kop.html:369
+#: .\accounts\templates\accounts\landing.html:405
 #: .\planner\templates\planner\leverantorer.html:5
 msgid "Leverantörer"
 msgstr "Suppliers"
 
-#: .\accounts\templates\accounts\base.html:241
+#: .\accounts\templates\accounts\base.html:248
 #: .\accounts\templates\accounts\dashboard.html:316
-#: .\accounts\templates\accounts\kop.html:310
-#: .\accounts\templates\accounts\kop.html:327
-#: .\accounts\templates\accounts\landing.html:395
+#: .\accounts\templates\accounts\kop.html:351
+#: .\accounts\templates\accounts\kop.html:368
+#: .\accounts\templates\accounts\landing.html:407
 #: .\planner\templates\planner\partner_kund_detail.html:48
 #: .\planner\templates\planner\tidslinje.html:5
 msgid "Tidslinje"
 msgstr "Timeline"
 
-#: .\accounts\templates\accounts\base.html:244
+#: .\accounts\templates\accounts\base.html:251
 #: .\accounts\templates\accounts\dashboard.html:349
-#: .\accounts\templates\accounts\landing.html:394
+#: .\accounts\templates\accounts\landing.html:406
 #: .\planner\templates\planner\partner_kund_detail.html:49
 msgid "Galleri"
 msgstr "Gallery"
 
-#: .\accounts\templates\accounts\base.html:250
+#: .\accounts\templates\accounts\base.html:257
 msgid "Partner"
 msgstr "Partner"
 
-#: .\accounts\templates\accounts\base.html:271
+#: .\accounts\templates\accounts\base.html:278
 msgid "Hej"
 msgstr "Hi"
 
-#: .\accounts\templates\accounts\base.html:274
+#: .\accounts\templates\accounts\base.html:281
 msgid "Logga ut"
 msgstr "Log out"
 
-#: .\accounts\templates\accounts\base.html:291
-#: .\accounts\templates\accounts\kop.html:254
+#: .\accounts\templates\accounts\base.html:298
+#: .\accounts\templates\accounts\kop.html:295
 #: .\accounts\templates\accounts\login.html:153
 #: .\accounts\templates\accounts\login_embed.html:8
 #: .\accounts\templates\accounts\login_embed.html:98
@@ -205,53 +205,53 @@ msgstr "Go to gallery"
 msgid "Bröllopsplaneraren – Planera ert drömbröllop"
 msgstr "Wedding planner - Start planning your dream wedding"
 
-#: .\accounts\templates\accounts\kop.html:269
+#: .\accounts\templates\accounts\kop.html:310
 msgid "Planera kärleken. Njut av resan."
 msgstr "Plan the love. Enjoy the journey."
 
-#: .\accounts\templates\accounts\kop.html:270
+#: .\accounts\templates\accounts\kop.html:311
 msgid "Allt ni behöver för att planera ert drömbröllop. Samlat på ett ställe."
 msgstr "All you need to plan your dream-wedding. Gathered in one place."
 
-#: .\accounts\templates\accounts\kop.html:271
+#: .\accounts\templates\accounts\kop.html:312
 msgid ""
 "Bröllopsplaneraren hjälper er hålla koll på allt från budget och checklista "
-"till leverantörer, inspiration och tidslinje – så att ni kan fokusera på det"
-" viktigaste: att njuta av resan tillsammans."
+"till leverantörer, inspiration och tidslinje – så att ni kan fokusera på det "
+"viktigaste: att njuta av resan tillsammans."
 msgstr ""
 "The Wedding Planner helps you keep track of everything from budget and "
 "checklist to vendors, inspiration and timeline – so you can focus on what "
 "matters most: enjoying the journey together."
 
-#: .\accounts\templates\accounts\kop.html:273
-#: .\accounts\templates\accounts\kop.html:340
+#: .\accounts\templates\accounts\kop.html:314
+#: .\accounts\templates\accounts\kop.html:381
 msgid "Kom igång idag"
 msgstr "Get started today"
 
-#: .\accounts\templates\accounts\kop.html:274
+#: .\accounts\templates\accounts\kop.html:315
 msgid "Se hur det fungerar"
 msgstr "See how it works"
 
-#: .\accounts\templates\accounts\kop.html:277
-#: .\accounts\templates\accounts\kop.html:420
+#: .\accounts\templates\accounts\kop.html:318
+#: .\accounts\templates\accounts\kop.html:461
 msgid "Inget abbonemang"
 msgstr "No subscription"
 
-#: .\accounts\templates\accounts\kop.html:278
+#: .\accounts\templates\accounts\kop.html:319
 msgid "Engångskostnad"
 msgstr "One-time cost"
 
-#: .\accounts\templates\accounts\kop.html:279
-#: .\accounts\templates\accounts\kop.html:296
-#: .\accounts\templates\accounts\kop.html:422
+#: .\accounts\templates\accounts\kop.html:320
+#: .\accounts\templates\accounts\kop.html:337
+#: .\accounts\templates\accounts\kop.html:463
 msgid "Planera tillsammans"
 msgstr "Plan together"
 
-#: .\accounts\templates\accounts\kop.html:293
+#: .\accounts\templates\accounts\kop.html:334
 msgid "Planera tillsammans, var ni än är."
 msgstr "Plan together, wherever you are."
 
-#: .\accounts\templates\accounts\kop.html:294
+#: .\accounts\templates\accounts\kop.html:335
 msgid ""
 "Oavsett om ni sitter bredvid varandra i soffan eller planerar från olika "
 "städer finns allt samlat på ett ställe."
@@ -259,170 +259,170 @@ msgstr ""
 "Whether you're sitting next to each other on the couch or planning from "
 "different cities, everything is gathered in one place."
 
-#: .\accounts\templates\accounts\kop.html:297
+#: .\accounts\templates\accounts\kop.html:338
 msgid "Alla enheter"
 msgstr "All devices"
 
-#: .\accounts\templates\accounts\kop.html:298
+#: .\accounts\templates\accounts\kop.html:339
 msgid "Tryggt & säkert"
 msgstr "Safe & secure"
 
-#: .\accounts\templates\accounts\kop.html:307
+#: .\accounts\templates\accounts\kop.html:348
 msgid "Allt ni behöver"
 msgstr "Everything you need"
 
-#: .\accounts\templates\accounts\kop.html:309
+#: .\accounts\templates\accounts\kop.html:350
 msgid "Få full kontroll över er ekonomi."
 msgstr "Get full control of your finances."
 
-#: .\accounts\templates\accounts\kop.html:310
+#: .\accounts\templates\accounts\kop.html:351
 msgid "Vet alltid vad som händer härnäst."
 msgstr "Always know what happens next."
 
-#: .\accounts\templates\accounts\kop.html:311
-#: .\accounts\templates\accounts\kop.html:326
-#: .\accounts\templates\accounts\landing.html:392
+#: .\accounts\templates\accounts\kop.html:352
+#: .\accounts\templates\accounts\kop.html:367
+#: .\accounts\templates\accounts\landing.html:404
 #: .\planner\templates\planner\gastlista.html:5
 msgid "Gästlista"
 msgstr "Guest list"
 
-#: .\accounts\templates\accounts\kop.html:311
+#: .\accounts\templates\accounts\kop.html:352
 msgid "Samla alla gäster på ett ställe."
 msgstr "Gather all your guests in one place."
 
-#: .\accounts\templates\accounts\kop.html:312
+#: .\accounts\templates\accounts\kop.html:353
 msgid "Bocka av allt i lugn och ro."
 msgstr "Check everything off at your own pace."
 
-#: .\accounts\templates\accounts\kop.html:313
-#: .\accounts\templates\accounts\kop.html:329
+#: .\accounts\templates\accounts\kop.html:354
+#: .\accounts\templates\accounts\kop.html:370
 msgid "Moodboard"
 msgstr "Moodboard"
 
-#: .\accounts\templates\accounts\kop.html:313
-#: .\accounts\templates\accounts\kop.html:329
+#: .\accounts\templates\accounts\kop.html:354
+#: .\accounts\templates\accounts\kop.html:370
 msgid "Samla inspiration på ett ställe"
 msgstr "Collect inspiration in one place"
 
-#: .\accounts\templates\accounts\kop.html:314
+#: .\accounts\templates\accounts\kop.html:355
 msgid "Samla inspiration tillsammans."
 msgstr "Gather inspiration together."
 
-#: .\accounts\templates\accounts\kop.html:322
+#: .\accounts\templates\accounts\kop.html:363
 msgid "Utforska funktionerna"
 msgstr "Explore the features"
 
-#: .\accounts\templates\accounts\kop.html:324
+#: .\accounts\templates\accounts\kop.html:365
 msgid "Få en tydlig överblick över alla kostnader."
 msgstr "Get a clear overview of all costs."
 
-#: .\accounts\templates\accounts\kop.html:325
+#: .\accounts\templates\accounts\kop.html:366
 msgid "Ha koll på allt som måste göras."
 msgstr "Keep track of everything that needs to be done."
 
-#: .\accounts\templates\accounts\kop.html:326
+#: .\accounts\templates\accounts\kop.html:367
 msgid "Håll koll på alla gäster."
 msgstr "Keep track of all the guests"
 
-#: .\accounts\templates\accounts\kop.html:327
+#: .\accounts\templates\accounts\kop.html:368
 msgid "Planera bröllopsdagen."
 msgstr "Plan the wedding day."
 
-#: .\accounts\templates\accounts\kop.html:328
+#: .\accounts\templates\accounts\kop.html:369
 msgid "Samla alla kontakter."
 msgstr "Gather all contacts."
 
-#: .\accounts\templates\accounts\kop.html:337
+#: .\accounts\templates\accounts\kop.html:378
 msgid "En resa ni aldrig glömmer"
 msgstr "A journey you'll never forget"
 
-#: .\accounts\templates\accounts\kop.html:338
+#: .\accounts\templates\accounts\kop.html:379
 msgid "Allt börjar med ett"
 msgstr "It all starts with a"
 
-#: .\accounts\templates\accounts\kop.html:338
+#: .\accounts\templates\accounts\kop.html:379
 msgid "Ja"
 msgstr "Yes"
 
-#: .\accounts\templates\accounts\kop.html:339
+#: .\accounts\templates\accounts\kop.html:380
 msgid ""
-"Vi är med er hela vägen – från den första drömmen till sista dansen och alla"
-" minnen däremellan."
+"Vi är med er hela vägen – från den första drömmen till sista dansen och alla "
+"minnen däremellan."
 msgstr ""
 "We're with you all the way – from the first dream to the last dance and all "
 "the memories in between."
 
-#: .\accounts\templates\accounts\kop.html:343
+#: .\accounts\templates\accounts\kop.html:384
 msgid "Förlovning"
 msgstr "Engagement"
 
-#: .\accounts\templates\accounts\kop.html:345
+#: .\accounts\templates\accounts\kop.html:386
 msgid "Planering"
 msgstr "Planning"
 
-#: .\accounts\templates\accounts\kop.html:347
+#: .\accounts\templates\accounts\kop.html:388
 msgid "Detaljerna"
 msgstr "The details"
 
-#: .\accounts\templates\accounts\kop.html:349
+#: .\accounts\templates\accounts\kop.html:390
 msgid "Bröllopsdagen"
 msgstr "The weddingday"
 
-#: .\accounts\templates\accounts\kop.html:351
+#: .\accounts\templates\accounts\kop.html:392
 msgid "Minnerna"
 msgstr "The memories"
 
-#: .\accounts\templates\accounts\kop.html:393
+#: .\accounts\templates\accounts\kop.html:434
 msgid "Ta planeringen till nästa nivå."
 msgstr "Take your planning to the next level."
 
-#: .\accounts\templates\accounts\kop.html:394
+#: .\accounts\templates\accounts\kop.html:435
 msgid ""
-"Bröllopsplaneraren samlar allt på ett ställe så att ni slipper hålla reda på"
-" dokument, anteckningar och olika appar. Ni kan fokusera på det viktigaste –"
-" att njuta av resan mot er stora dag."
+"Bröllopsplaneraren samlar allt på ett ställe så att ni slipper hålla reda på "
+"dokument, anteckningar och olika appar. Ni kan fokusera på det viktigaste – "
+"att njuta av resan mot er stora dag."
 msgstr ""
 "The Wedding Planner gathers everything in one place so you don't have to "
 "keep track of documents, notes and different apps. You can focus on what "
 "matters most – enjoying the journey toward your big day."
 
-#: .\accounts\templates\accounts\kop.html:396
+#: .\accounts\templates\accounts\kop.html:437
 msgid "Full kontroll över planeringen"
 msgstr "Full control of the planning"
 
-#: .\accounts\templates\accounts\kop.html:397
+#: .\accounts\templates\accounts\kop.html:438
 msgid "Allt samlat på ett ställe"
 msgstr "Everything in one place"
 
-#: .\accounts\templates\accounts\kop.html:398
+#: .\accounts\templates\accounts\kop.html:439
 msgid "En planering ni delar tillsammans"
 msgstr "A plan you share together"
 
-#: .\accounts\templates\accounts\kop.html:399
+#: .\accounts\templates\accounts\kop.html:440
 msgid "Tillgång när ni behöver den"
 msgstr "Access when you need it"
 
-#: .\accounts\templates\accounts\kop.html:401
+#: .\accounts\templates\accounts\kop.html:442
 msgid "Börja planera idag"
 msgstr "Start planning today"
 
-#: .\accounts\templates\accounts\kop.html:416
+#: .\accounts\templates\accounts\kop.html:457
 msgid "Redo att börja planera ert drömbröllop?"
 msgstr "Ready to start planning your dream wedding?"
 
-#: .\accounts\templates\accounts\kop.html:417
+#: .\accounts\templates\accounts\kop.html:458
 msgid "Skapa ert konto idag och samla hela planeringen på ett ställe."
 msgstr "Create you account today  & gather your planning in one place."
 
-#: .\accounts\templates\accounts\kop.html:418
+#: .\accounts\templates\accounts\kop.html:459
 msgid "Börja planera som ett proffs"
 msgstr "Start planning like a PRO"
 
-#: .\accounts\templates\accounts\kop.html:421
+#: .\accounts\templates\accounts\kop.html:462
 msgid "Engångsavgift"
 msgstr "One-time cost"
 
-#: .\accounts\templates\accounts\kop.html:432
+#: .\accounts\templates\accounts\kop.html:473
 msgid "Är du fotograf? Bli partner →"
 msgstr "Are you a photographer? Become a partner →"
 
@@ -430,73 +430,73 @@ msgstr "Are you a photographer? Become a partner →"
 msgid "Bröllopsplaneraren – För kreatörer"
 msgstr "Wedding planner - For creators"
 
-#: .\accounts\templates\accounts\landing.html:364
+#: .\accounts\templates\accounts\landing.html:376
 msgid "Partnerprogram för bröllopsfotografer & kreatörer"
 msgstr "Partnerprogram for wedding photographers & creators"
 
-#: .\accounts\templates\accounts\landing.html:368
-#: .\accounts\templates\accounts\landing.html:470
+#: .\accounts\templates\accounts\landing.html:380
+#: .\accounts\templates\accounts\landing.html:482
 msgid "Ansök om partnerskap"
 msgstr "Apply for partnership"
 
-#: .\accounts\templates\accounts\landing.html:369
+#: .\accounts\templates\accounts\landing.html:381
 msgid "Upptäck hur det fungerar"
 msgstr "Discover how it works"
 
-#: .\accounts\templates\accounts\landing.html:372
+#: .\accounts\templates\accounts\landing.html:384
 msgid "Kostnadsfritt att gå med"
 msgstr "Free to join"
 
-#: .\accounts\templates\accounts\landing.html:373
+#: .\accounts\templates\accounts\landing.html:385
 msgid "Erbjud på ditt sätt"
 msgstr "Offer it your way"
 
-#: .\accounts\templates\accounts\landing.html:374
+#: .\accounts\templates\accounts\landing.html:386
 msgid "För fotografer & kreatörer"
 msgstr "For photographers & creators"
 
-#: .\accounts\templates\accounts\landing.html:386
+#: .\accounts\templates\accounts\landing.html:398
 msgid "Ett fantastiskt bröllop börjar med en fantastisk planering"
 msgstr "A fantastic wedding starts with fantastic planning"
 
-#: .\accounts\templates\accounts\landing.html:387
+#: .\accounts\templates\accounts\landing.html:399
 msgid "Ett digitalt hem för hela bröllopsresan."
 msgstr "A digital home for the entire wedding journey."
 
-#: .\accounts\templates\accounts\landing.html:388
+#: .\accounts\templates\accounts\landing.html:400
 msgid ""
 "Allt samlat på ett ställe – enkelt, vackert och skapat för moderna brudpar."
 msgstr ""
 "Everything gathered in one place – simple, beautiful and made for modern "
 "couples."
 
-#: .\accounts\templates\accounts\landing.html:405
+#: .\accounts\templates\accounts\landing.html:417
 msgid "När dina kunder får en bättre upplevelse får du också det"
 msgstr "When your clients get a better experience, you do too"
 
-#: .\accounts\templates\accounts\landing.html:407
+#: .\accounts\templates\accounts\landing.html:419
 msgid "En starkare kundrelation"
 msgstr "A stronger client relationship"
 
-#: .\accounts\templates\accounts\landing.html:407
+#: .\accounts\templates\accounts\landing.html:419
 msgid "Var med under hela planeringsresan – inte bara på bröllopsdagen."
 msgstr ""
 "Be there throughout the entire planning journey – not just on the wedding "
 "day."
 
-#: .\accounts\templates\accounts\landing.html:408
+#: .\accounts\templates\accounts\landing.html:420
 msgid "Ett tydligt mervärde"
 msgstr "A clear added value"
 
-#: .\accounts\templates\accounts\landing.html:408
+#: .\accounts\templates\accounts\landing.html:420
 msgid "Erbjud något som gör att ditt företag sticker ut."
 msgstr "Offer something that makes your business stand out."
 
-#: .\accounts\templates\accounts\landing.html:409
+#: .\accounts\templates\accounts\landing.html:421
 msgid "Ett starkare varumärke"
 msgstr "A stronger brand"
 
-#: .\accounts\templates\accounts\landing.html:409
+#: .\accounts\templates\accounts\landing.html:421
 msgid ""
 "Visa att du bryr dig om hela upplevelsen – från första mötet till sista "
 "bilden."
@@ -504,194 +504,194 @@ msgstr ""
 "Show that you care about the entire experience – from the first meeting to "
 "the last picture."
 
-#: .\accounts\templates\accounts\landing.html:410
+#: .\accounts\templates\accounts\landing.html:422
 msgid "Flexibla intäktsmöjligheter"
 msgstr "Flexible revenue opportunities"
 
-#: .\accounts\templates\accounts\landing.html:410
+#: .\accounts\templates\accounts\landing.html:422
 msgid "Välj själv hur du vill erbjuda Bröllopsplaneraren till dina kunder."
 msgstr "Choose how you want to offer the Wedding Planner to your clients."
 
-#: .\accounts\templates\accounts\landing.html:418
+#: .\accounts\templates\accounts\landing.html:430
 msgid "Två sätt att samarbeta"
 msgstr "Two ways to collaborate"
 
-#: .\accounts\templates\accounts\landing.html:423
+#: .\accounts\templates\accounts\landing.html:435
 msgid "Inkludera i dina paket"
 msgstr "Include in your packages"
 
-#: .\accounts\templates\accounts\landing.html:424
+#: .\accounts\templates\accounts\landing.html:436
 msgid "För kreatörer som vill erbjuda en komplett premiumupplevelse."
 msgstr "For creatives who want to offer a complete premium experience."
 
-#: .\accounts\templates\accounts\landing.html:425
+#: .\accounts\templates\accounts\landing.html:437
 msgid "Köp tillgång till partnerpris"
 msgstr "Purchase access at partner price"
 
-#: .\accounts\templates\accounts\landing.html:425
+#: .\accounts\templates\accounts\landing.html:437
 msgid "Ge kunden tillgång direkt"
 msgstr "Give the client immediate access"
 
-#: .\accounts\templates\accounts\landing.html:425
+#: .\accounts\templates\accounts\landing.html:437
 msgid "Integrera i dina egna paket"
 msgstr "Integrate into your own packages"
 
-#: .\accounts\templates\accounts\landing.html:426
-#: .\accounts\templates\accounts\landing.html:435
+#: .\accounts\templates\accounts\landing.html:438
+#: .\accounts\templates\accounts\landing.html:447
 msgid "Läs mer"
 msgstr "Read more"
 
-#: .\accounts\templates\accounts\landing.html:432
+#: .\accounts\templates\accounts\landing.html:444
 msgid "Rekommendera till kunder"
 msgstr "Recommend to clients"
 
-#: .\accounts\templates\accounts\landing.html:433
+#: .\accounts\templates\accounts\landing.html:445
 msgid "Perfekt om du vill erbjuda utan att ändra dina paket."
 msgstr "Perfect if you want to offer without changing your packages."
 
-#: .\accounts\templates\accounts\landing.html:434
+#: .\accounts\templates\accounts\landing.html:446
 msgid "Dela din personliga partnerlänk"
 msgstr "Share your personal partner link"
 
-#: .\accounts\templates\accounts\landing.html:434
+#: .\accounts\templates\accounts\landing.html:446
 msgid "Kunden väljer själv"
 msgstr "The client chooses"
 
-#: .\accounts\templates\accounts\landing.html:434
+#: .\accounts\templates\accounts\landing.html:446
 msgid "Du får ersättning vid registrering"
 msgstr "You receive compensation upon registration"
 
-#: .\accounts\templates\accounts\landing.html:439
+#: .\accounts\templates\accounts\landing.html:451
 msgid "Eller kombinera båda – valet är helt ditt."
 msgstr "Or combine both – the choice is entirely yours."
 
-#: .\accounts\templates\accounts\landing.html:448
+#: .\accounts\templates\accounts\landing.html:460
 msgid "Allt samlat i din"
 msgstr "Everything in your"
 
-#: .\accounts\templates\accounts\landing.html:449
+#: .\accounts\templates\accounts\landing.html:461
 msgid "Partner Studio."
 msgstr "Partner Studio"
 
-#: .\accounts\templates\accounts\landing.html:450
+#: .\accounts\templates\accounts\landing.html:462
 msgid ""
 "En lugn och överskådlig plats där du har full koll på dina kunder, kommande "
 "bröllop och möjligheter."
 msgstr ""
-"A calm and clear place where you have full control of your clients, upcoming"
-" weddings and opportunities."
+"A calm and clear place where you have full control of your clients, upcoming "
+"weddings and opportunities."
 
-#: .\accounts\templates\accounts\landing.html:452
+#: .\accounts\templates\accounts\landing.html:464
 msgid "Lägg till fototider"
 msgstr "Add photo times"
 
-#: .\accounts\templates\accounts\landing.html:452
+#: .\accounts\templates\accounts\landing.html:464
 msgid "Planera in dina tider i kundens tidslinje."
 msgstr "Schedule your times in the client's timeline."
 
-#: .\accounts\templates\accounts\landing.html:453
+#: .\accounts\templates\accounts\landing.html:465
 msgid "Hantera kunder"
 msgstr "Manage costumers"
 
-#: .\accounts\templates\accounts\landing.html:453
+#: .\accounts\templates\accounts\landing.html:465
 msgid "Full överblick över alla par."
 msgstr "Full overview of all couples."
 
-#: .\accounts\templates\accounts\landing.html:454
+#: .\accounts\templates\accounts\landing.html:466
 #: .\planner\templates\planner\partner_dashboard.html:20
 #: .\planner\templates\planner\partner_dashboard.html:50
 msgid "Kommande bröllop"
 msgstr "Coming weddings"
 
-#: .\accounts\templates\accounts\landing.html:454
+#: .\accounts\templates\accounts\landing.html:466
 msgid "Håll koll på alla datum."
 msgstr "Keep track of all dates"
 
-#: .\accounts\templates\accounts\landing.html:455
+#: .\accounts\templates\accounts\landing.html:467
 msgid "Intäkter"
 msgstr "Revenue"
 
-#: .\accounts\templates\accounts\landing.html:455
+#: .\accounts\templates\accounts\landing.html:467
 msgid "Se din ersättning i realtid."
 msgstr "See your compensation in real time."
 
-#: .\accounts\templates\accounts\landing.html:456
+#: .\accounts\templates\accounts\landing.html:468
 msgid "Partnerlänk"
 msgstr "Partnerlink"
 
-#: .\accounts\templates\accounts\landing.html:456
+#: .\accounts\templates\accounts\landing.html:468
 msgid "Din unika länk att dela."
 msgstr "Your unique link to share."
 
-#: .\accounts\templates\accounts\landing.html:457
+#: .\accounts\templates\accounts\landing.html:469
 msgid "Redigera tidslinjer"
 msgstr "Edit timelines"
 
-#: .\accounts\templates\accounts\landing.html:457
+#: .\accounts\templates\accounts\landing.html:469
 msgid "Hjälp kunderna med planeringen."
 msgstr "Help clients with their planning."
 
-#: .\accounts\templates\accounts\landing.html:468
+#: .\accounts\templates\accounts\landing.html:480
 msgid "Så fungerar det"
 msgstr "Here's how it works"
 
-#: .\accounts\templates\accounts\landing.html:470
+#: .\accounts\templates\accounts\landing.html:482
 msgid "Fyll i formuläret. Vi hörs inom 24 timmar."
 msgstr "Fill out the form. We'll get back to you within 24 hours."
 
-#: .\accounts\templates\accounts\landing.html:471
+#: .\accounts\templates\accounts\landing.html:483
 msgid "Skapa din Partner Studio"
 msgstr "Create your Partner Studio"
 
-#: .\accounts\templates\accounts\landing.html:471
+#: .\accounts\templates\accounts\landing.html:483
 msgid "Ladda upp logga, välj färger. Klart på några minuter."
 msgstr "Upload your logo, choose your colors. Done in minutes."
 
-#: .\accounts\templates\accounts\landing.html:472
+#: .\accounts\templates\accounts\landing.html:484
 msgid "Bjud in dina kunder"
 msgstr "Invite your costumers"
 
-#: .\accounts\templates\accounts\landing.html:472
+#: .\accounts\templates\accounts\landing.html:484
 msgid "Dela din länk på det sätt som passar dig bäst."
 msgstr "Share your link in the way that suits you best."
 
-#: .\accounts\templates\accounts\landing.html:480
+#: .\accounts\templates\accounts\landing.html:492
 msgid "För vilka?"
 msgstr "For whom?"
 
-#: .\accounts\templates\accounts\landing.html:482
+#: .\accounts\templates\accounts\landing.html:494
 msgid "Fotografer"
 msgstr "Photographers"
 
-#: .\accounts\templates\accounts\landing.html:483
+#: .\accounts\templates\accounts\landing.html:495
 msgid "Videografer"
 msgstr "Videographers"
 
-#: .\accounts\templates\accounts\landing.html:484
+#: .\accounts\templates\accounts\landing.html:496
 msgid "Wedding planners"
 msgstr "Wedding planners"
 
-#: .\accounts\templates\accounts\landing.html:485
+#: .\accounts\templates\accounts\landing.html:497
 msgid "Florister"
 msgstr "Florists"
 
-#: .\accounts\templates\accounts\landing.html:486
+#: .\accounts\templates\accounts\landing.html:498
 msgid "Makeupartister"
 msgstr "Makeup artists"
 
-#: .\accounts\templates\accounts\landing.html:487
+#: .\accounts\templates\accounts\landing.html:499
 msgid "Lokaler"
 msgstr "Veneus"
 
-#: .\accounts\templates\accounts\landing.html:488
+#: .\accounts\templates\accounts\landing.html:500
 msgid "DJ:s & Musiker"
 msgstr "DJs & Musicians"
 
-#: .\accounts\templates\accounts\landing.html:514
+#: .\accounts\templates\accounts\landing.html:526
 msgid "Vi tror att planeringen ska vara lika minnesvärd som bröllopsdagen."
 msgstr "We believe the planning should be as memorable as the wedding day."
 
-#: .\accounts\templates\accounts\landing.html:515
+#: .\accounts\templates\accounts\landing.html:527
 msgid ""
 "Bröllopsplaneraren är skapad för att hjälpa brudpar känna sig trygga, "
 "inspirerade och organiserade – och för att ge dig som kreatör ett verktyg "
@@ -701,67 +701,67 @@ msgstr ""
 "organized – and to give you as a creative a tool that elevates your entire "
 "client experience."
 
-#: .\accounts\templates\accounts\landing.html:516
+#: .\accounts\templates\accounts\landing.html:528
 msgid "lanera och njut av tiden."
 msgstr "Plan and enjoy the time."
 
-#: .\accounts\templates\accounts\landing.html:533
+#: .\accounts\templates\accounts\landing.html:545
 msgid "Redo att ge dina kunder något de faktiskt kommer använda?"
 msgstr "Ready to give your clients something they'll actually use?"
 
-#: .\accounts\templates\accounts\landing.html:534
+#: .\accounts\templates\accounts\landing.html:546
 msgid ""
-"Bli en del av Bröllopsplanerarens partnernätverk och skapa ännu större värde"
-" för dina kunder."
+"Bli en del av Bröllopsplanerarens partnernätverk och skapa ännu större värde "
+"för dina kunder."
 msgstr ""
-"Become part of the Wedding Planner's partner network and create even greater"
-" value for your clients."
+"Become part of the Wedding Planner's partner network and create even greater "
+"value for your clients."
 
-#: .\accounts\templates\accounts\landing.html:541
+#: .\accounts\templates\accounts\landing.html:553
 msgid "Nästa intag öppnar om"
 msgstr "Next intake opens in"
 
-#: .\accounts\templates\accounts\landing.html:543
+#: .\accounts\templates\accounts\landing.html:555
 msgid "Dagar"
 msgstr "Days"
 
-#: .\accounts\templates\accounts\landing.html:544
+#: .\accounts\templates\accounts\landing.html:556
 msgid "Tim"
 msgstr "Hours"
 
-#: .\accounts\templates\accounts\landing.html:545
+#: .\accounts\templates\accounts\landing.html:557
 msgid "Min"
 msgstr "Min"
 
-#: .\accounts\templates\accounts\landing.html:546
+#: .\accounts\templates\accounts\landing.html:558
 msgid "Sek"
 msgstr "Sek"
 
-#: .\accounts\templates\accounts\landing.html:552
+#: .\accounts\templates\accounts\landing.html:564
 msgid "Förnamn"
 msgstr "First name"
 
-#: .\accounts\templates\accounts\landing.html:553
+#: .\accounts\templates\accounts\landing.html:565
 msgid "Efternamn"
 msgstr "Last name"
 
-#: .\accounts\templates\accounts\landing.html:554
+#: .\accounts\templates\accounts\landing.html:566
 msgid "Mejl"
 msgstr "Email"
 
-#: .\accounts\templates\accounts\landing.html:555
+#: .\accounts\templates\accounts\landing.html:567
 msgid "Anmäl intresse"
 msgstr "Register interest"
 
-#: .\accounts\templates\accounts\landing.html:558
+#: .\accounts\templates\accounts\landing.html:570
 msgid "Kostnadsfritt"
 msgstr "Free of charge"
 
-#: .\accounts\templates\accounts\landing.html:559
+#: .\accounts\templates\accounts\landing.html:571
 msgid "Inga krav"
 msgstr "No obligations"
 
-#: .\accounts\templates\accounts\landing.html:560
+#: .\accounts\templates\accounts\landing.html:572
 msgid "Klar på några minuter"
 msgstr "Ready in minutes"
 
@@ -898,6 +898,11 @@ msgstr "Keep track of everything for your big day."
 msgid "Ny punkt..."
 msgstr "New item..."
 
+#: .\planner\templates\planner\checklist.html:16
+#, python-format
+msgid "%(name)s"
+msgstr ""
+
 #: .\planner\templates\planner\checklist.html:45
 msgid "Inga punkter ännu. Börja planera ert drömbröllop!"
 msgstr "No items yet. Start planning your dream wedding!"
@@ -948,8 +953,8 @@ msgstr "Inspiration Gallery"
 
 #: .\planner\templates\planner\galleri.html:6
 msgid ""
-"Samla er inspiration – klistra in bildlänkar från Pinterest, Instagram eller"
-" andra sajter."
+"Samla er inspiration – klistra in bildlänkar från Pinterest, Instagram eller "
+"andra sajter."
 msgstr ""
 "Collect your inspiration – paste image links from Pinterest, Instagram or "
 "other sites."
@@ -1214,8 +1219,7 @@ msgstr "No events yet. Start by adding the ceremony!"
 
 #: .\planner\templates\planner\tidslinje.html:90
 msgid "Tips: 14:00 – Vigsel, 15:30 – Mingel, 18:00 – Middag, 22:00 – Dans"
-msgstr ""
-"Tip: 14:00 – Ceremony, 15:30 – Mingling, 18:00 – Dinner, 22:00 – Dance"
+msgstr "Tip: 14:00 – Ceremony, 15:30 – Mingling, 18:00 – Dinner, 22:00 – Dance"
 
 #: .\venv\Lib\site-packages\cloudinary\forms.py:55
 #: .\venv\Lib\site-packages\cloudinary\forms.py:124
@@ -1285,8 +1289,8 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:297
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
-" hyphens."
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:309
@@ -1505,8 +1509,8 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1569
 #, python-format
 msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD "
-"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1574
@@ -1736,8 +1740,7 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\fields.py:642
 #, python-format
-msgid ""
-"Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
@@ -1844,8 +1847,7 @@ msgid "The inline value did not match the parent instance."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1474
-msgid ""
-"Select a valid choice. That choice is not one of the available choices."
+msgid "Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1623
@@ -2325,10 +2327,10 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\csrf.py:45
 msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or"
-" including the “Referrer-Policy: no-referrer” header, please remove them. "
-"The CSRF protection requires the “Referer” header to do strict referer "
-"checking. If you’re concerned about privacy, use alternatives like <a "
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
 "rel=\"noreferrer\" …> for links to third-party sites."
 msgstr ""
 
@@ -2439,10 +2441,10 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:208
 #, python-format
 msgid ""
-"You are seeing this page because <a "
-"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
-"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> is in your settings file "
-"and you have not configured any URLs."
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:217
@@ -2480,11 +2482,12 @@ msgstr ""
 #~ msgstr "Buy now – 49 € →"
 
 #~ msgid "Direkt tillgång efter köp. Fungerar på mobil, platta och dator."
-#~ msgstr "Instant access after purchase. Works on mobile, tablet and computer."
+#~ msgstr ""
+#~ "Instant access after purchase. Works on mobile, tablet and computer."
 
 #~ msgid ""
-#~ "Från första checklistan till sista dansen. Er bröllopsplanerare finns där ni"
-#~ " är – i mobilen, plattan eller datorn."
+#~ "Från första checklistan till sista dansen. Er bröllopsplanerare finns där "
+#~ "ni är – i mobilen, plattan eller datorn."
 #~ msgstr ""
 #~ "From the first checklist to the last dance. Your wedding planner is where "
 #~ "you are – on mobile, tablet or computer."
@@ -2515,13 +2518,13 @@ msgstr ""
 
 #, python-format
 #~ msgid ""
-#~ "Dina kunder planerar sitt bröllop varje dag. Se till att de gör det med dig "
-#~ "– inte på Google Sheets eller någon annans app. Du får en helt anpassad "
-#~ "planner, en unik länk att dela, och 30%% provision på varje köp. Utan "
-#~ "startkostnad."
+#~ "Dina kunder planerar sitt bröllop varje dag. Se till att de gör det med "
+#~ "dig – inte på Google Sheets eller någon annans app. Du får en helt "
+#~ "anpassad planner, en unik länk att dela, och 30%% provision på varje köp. "
+#~ "Utan startkostnad."
 #~ msgstr ""
-#~ "Your clients are planning their wedding every day. Make sure they do it with"
-#~ " you – not on Google Sheets or someone else's app. You get a fully "
+#~ "Your clients are planning their wedding every day. Make sure they do it "
+#~ "with you – not on Google Sheets or someone else's app. You get a fully "
 #~ "customized planner, a unique link to share, and 30%% commission on every "
 #~ "purchase. With no startup cost."
 
@@ -2536,16 +2539,17 @@ msgstr ""
 
 #~ msgid ""
 #~ "Varje detalj planeras med din logga synlig. Från första checklistan till "
-#~ "sista dansen. Dina par loggar in, ser din branding, och planerar hela sitt "
-#~ "bröllop i ett verktyg som känns som du."
+#~ "sista dansen. Dina par loggar in, ser din branding, och planerar hela "
+#~ "sitt bröllop i ett verktyg som känns som du."
 #~ msgstr ""
-#~ "Every detail is planned with your logo visible. From the first checklist to "
-#~ "the last dance. Your couples log in, see your branding, and plan their "
+#~ "Every detail is planned with your logo visible. From the first checklist "
+#~ "to the last dance. Your couples log in, see your branding, and plan their "
 #~ "entire wedding in a tool that feels like you."
 
 #~ msgid "Du är inte längre bara fotografen. Du är navet i deras planering."
 #~ msgstr ""
-#~ "You are no longer just the photographer. You are the hub of their planning."
+#~ "You are no longer just the photographer. You are the hub of their "
+#~ "planning."
 
 #~ msgid ""
 #~ "Jag ser så fram emot att erbjuda mina kunder och följare plannern – Känns "
@@ -2553,8 +2557,8 @@ msgstr ""
 #~ "kunna lägga in vårt schema för foto i deras tidslinje direkt!"
 #~ msgstr ""
 #~ "I'm really looking forward to offering the planner to my clients and "
-#~ "followers – It feels like they will truly appreciate it, while I'll also be "
-#~ "able to add our photo schedule directly into their timeline!"
+#~ "followers – It feels like they will truly appreciate it, while I'll also "
+#~ "be able to add our photo schedule directly into their timeline!"
 
 #~ msgid "— Emma, Bröllopsfotograf, Stockholm"
 #~ msgstr "— Emma, Wedding Photographer, Stockholm"
@@ -2573,15 +2577,15 @@ msgstr ""
 #~ "De håller koll på kostnaderna. När de ser vad som ryms, bokar de dig "
 #~ "snabbare."
 #~ msgstr ""
-#~ "They keep track of costs. When they see what fits within their budget, they "
-#~ "book you faster."
+#~ "They keep track of costs. When they see what fits within their budget, "
+#~ "they book you faster."
 
 #~ msgid "Gästlista & RSVP"
 #~ msgstr "Guest list & RSVP"
 
 #~ msgid ""
-#~ "Alla gäster samlade. Bordsplacering med överblick. Noll administration för "
-#~ "dig."
+#~ "Alla gäster samlade. Bordsplacering med överblick. Noll administration "
+#~ "för dig."
 #~ msgstr ""
 #~ "All guests in one place. Seating arrangements with full overview. Zero "
 #~ "administration for you."
@@ -2594,11 +2598,11 @@ msgstr ""
 #~ "takes place – planned right in the app."
 
 #~ msgid ""
-#~ "De samlar inspiration från Pinterest och Instagram. Din logga syns medan de "
-#~ "drömmer."
+#~ "De samlar inspiration från Pinterest och Instagram. Din logga syns medan "
+#~ "de drömmer."
 #~ msgstr ""
-#~ "They gather inspiration from Pinterest and Instagram. Your logo is visible "
-#~ "while they dream."
+#~ "They gather inspiration from Pinterest and Instagram. Your logo is "
+#~ "visible while they dream."
 
 #~ msgid ""
 #~ "Du lägger in dina egna rekommendationer. Din florist, din makeup-artist – "
@@ -2610,42 +2614,44 @@ msgstr ""
 #~ msgid ""
 #~ "Efter förlovningsbilderna försvinner de. Här är hur du får dem att stanna."
 #~ msgstr ""
-#~ "After the engagement photos, they disappear. Here's how you make them stay."
+#~ "After the engagement photos, they disappear. Here's how you make them "
+#~ "stay."
 
 #~ msgid ""
 #~ "Lisa och Johan bokade dig för sina förlovningsbilder. Bilderna blev "
-#~ "fantastiska. De taggade dig överallt. Några veckor senare började de planera"
-#~ " sitt bröllop. I ett Google Sheets. På The Knot. I någon annans app."
+#~ "fantastiska. De taggade dig överallt. Några veckor senare började de "
+#~ "planera sitt bröllop. I ett Google Sheets. På The Knot. I någon annans "
+#~ "app."
 #~ msgstr ""
-#~ "Lisa and Johan booked you for their engagement photos. The photos turned out"
-#~ " amazing. They tagged you everywhere. A few weeks later, they started "
+#~ "Lisa and Johan booked you for their engagement photos. The photos turned "
+#~ "out amazing. They tagged you everywhere. A few weeks later, they started "
 #~ "planning their wedding. In a Google Sheet. On The Knot. In someone else's "
 #~ "app."
 
 #~ msgid ""
-#~ "Din logga? Begravd i en gammal mejltråd. Din relation? Vilande tills det är "
-#~ "dags för bröllopsfotograferingen."
+#~ "Din logga? Begravd i en gammal mejltråd. Din relation? Vilande tills det "
+#~ "är dags för bröllopsfotograferingen."
 #~ msgstr ""
-#~ "Your logo? Buried in an old email thread. Your relationship? Dormant until "
-#~ "it's time for the wedding photography."
+#~ "Your logo? Buried in an old email thread. Your relationship? Dormant "
+#~ "until it's time for the wedding photography."
 
 #~ msgid ""
-#~ "Föreställ dig nu det här istället: Du ger dem en personlig bröllopsplanner –"
-#~ " med din logga. Varje gång de checkar av en punkt, lägger till en gäst eller"
-#~ " justerar budgeten, ser de dig. Du är inte längre bara fotografen. Du är "
-#~ "navet i deras planering."
+#~ "Föreställ dig nu det här istället: Du ger dem en personlig "
+#~ "bröllopsplanner – med din logga. Varje gång de checkar av en punkt, "
+#~ "lägger till en gäst eller justerar budgeten, ser de dig. Du är inte "
+#~ "längre bara fotografen. Du är navet i deras planering."
 #~ msgstr ""
 #~ "Now imagine this instead: You give them a personalized wedding planner – "
 #~ "with your logo. Every time they check off an item, add a guest, or adjust "
-#~ "the budget, they see you. You are no longer just the photographer. You are "
-#~ "the hub of their planning."
+#~ "the budget, they see you. You are no longer just the photographer. You "
+#~ "are the hub of their planning."
 
 #~ msgid ""
-#~ "När bröllopsdagen kommer är du inte en leverantör. Du är en självklar del av"
-#~ " deras historia."
+#~ "När bröllopsdagen kommer är du inte en leverantör. Du är en självklar del "
+#~ "av deras historia."
 #~ msgstr ""
-#~ "When the wedding day arrives, you're not a vendor. You're a natural part of "
-#~ "their story."
+#~ "When the wedding day arrives, you're not a vendor. You're a natural part "
+#~ "of their story."
 
 #~ msgid "Ansök"
 #~ msgstr "Apply"
@@ -2668,26 +2674,26 @@ msgstr ""
 #~ "Du får en unik länk. Dela den med dina par. När de köper får du 30%% "
 #~ "provision – varje gång."
 #~ msgstr ""
-#~ "You get a unique link. Share it with your couples. When they purchase, you "
-#~ "get 30%% commission – every time."
+#~ "You get a unique link. Share it with your couples. When they purchase, "
+#~ "you get 30%% commission – every time."
 
 #~ msgid "Inga startavgifter. Ingen risk. Bara resultat."
 #~ msgstr "No startup fees. No risk. Just results."
 
 #, python-format
 #~ msgid ""
-#~ "Vi tar inte en krona för att sätta upp din planner. Vi tjänar pengar först "
-#~ "när du gör det: 30%% provision på varje köp via din unika länk."
+#~ "Vi tar inte en krona för att sätta upp din planner. Vi tjänar pengar "
+#~ "först när du gör det: 30%% provision på varje köp via din unika länk."
 #~ msgstr ""
-#~ "We don't charge a cent to set up your planner. We only make money when you "
-#~ "do: 30%% commission on every purchase made through your unique link."
+#~ "We don't charge a cent to set up your planner. We only make money when "
+#~ "you do: 30%% commission on every purchase made through your unique link."
 
 #~ msgid "Exempel:"
 #~ msgstr "Example:"
 
 #~ msgid ""
-#~ "En planner kostar 999 kr. När ett av dina par köper får du 300 kr. Delar du "
-#~ "den med 20 par och 10 köper → 3 000 kr passivt."
+#~ "En planner kostar 999 kr. När ett av dina par köper får du 300 kr. Delar "
+#~ "du den med 20 par och 10 köper → 3 000 kr passivt."
 #~ msgstr ""
 #~ "A planner costs 999 SEK. When one of your couples purchases, you earn 300 "
 #~ "SEK. If you share it with 20 couples and 10 buy → 3,000 SEK in passive "
@@ -2697,29 +2703,29 @@ msgstr ""
 #~ "Din länk fungerar även om paret köper senare. Vi sparar en cookie i 30 "
 #~ "dagar."
 #~ msgstr ""
-#~ "Your link still works even if the couple purchases later. We save a cookie "
-#~ "for 30 days."
+#~ "Your link still works even if the couple purchases later. We save a "
+#~ "cookie for 30 days."
 
 #~ msgid ""
-#~ "Det här är inte för alla. Det är för dig som redan har bokat drömkunderna. "
-#~ "Som vill ge dem något extra – utan att lägga mer tid på administration. Som "
-#~ "förstår att en stark relation före bröllopet leder till bättre bilder, "
-#~ "nöjdare kunder och fler rekommendationer efteråt."
+#~ "Det här är inte för alla. Det är för dig som redan har bokat "
+#~ "drömkunderna. Som vill ge dem något extra – utan att lägga mer tid på "
+#~ "administration. Som förstår att en stark relation före bröllopet leder "
+#~ "till bättre bilder, nöjdare kunder och fler rekommendationer efteråt."
 #~ msgstr ""
 #~ "This isn't for everyone. It's for you who have already booked your dream "
-#~ "clients. Who want to give them something extra – without spending more time "
-#~ "on administration. Who understand that a strong relationship before the "
-#~ "wedding leads to better photos, happier clients, and more referrals "
+#~ "clients. Who want to give them something extra – without spending more "
+#~ "time on administration. Who understand that a strong relationship before "
+#~ "the wedding leads to better photos, happier clients, and more referrals "
 #~ "afterward."
 
 #~ msgid ""
-#~ "Du behöver inte vara teknisk. Du behöver inte bygga något själv. Du behöver "
-#~ "bara vilja ge dina par den bästa planeringsupplevelsen – med ditt varumärke "
-#~ "i centrum."
+#~ "Du behöver inte vara teknisk. Du behöver inte bygga något själv. Du "
+#~ "behöver bara vilja ge dina par den bästa planeringsupplevelsen – med ditt "
+#~ "varumärke i centrum."
 #~ msgstr ""
-#~ "You don't need to be technical. You don't need to build anything yourself. "
-#~ "You just need to want to give your couples the best planning experience – "
-#~ "with your brand at the center."
+#~ "You don't need to be technical. You don't need to build anything "
+#~ "yourself. You just need to want to give your couples the best planning "
+#~ "experience – with your brand at the center."
 
 #~ msgid "Frågor och svar"
 #~ msgstr "Questions and answers"
@@ -2728,18 +2734,18 @@ msgstr ""
 #~ msgstr "Do I have to sell or push the app?"
 
 #~ msgid ""
-#~ "Nej. Du delar bara din länk som en naturlig del av ditt kunderbjudande. Det "
-#~ "känns inte som försäljning – det känns som service."
+#~ "Nej. Du delar bara din länk som en naturlig del av ditt kunderbjudande. "
+#~ "Det känns inte som försäljning – det känns som service."
 #~ msgstr ""
-#~ "No. You simply share your link as a natural part of your client offering. It"
-#~ " doesn't feel like sales – it feels like service."
+#~ "No. You simply share your link as a natural part of your client offering. "
+#~ "It doesn't feel like sales – it feels like service."
 
 #~ msgid "Hur ser mina kunder min branding?"
 #~ msgstr "How do my clients see my branding?"
 
 #~ msgid ""
-#~ "De möts av din logga, dina färger och dina personliga rekommendationer. Du "
-#~ "kan även lägga in en personlig välkomsthälsning."
+#~ "De möts av din logga, dina färger och dina personliga rekommendationer. "
+#~ "Du kan även lägga in en personlig välkomsthälsning."
 #~ msgstr ""
 #~ "They are greeted by your logo, your colors, and your personal "
 #~ "recommendations. You can also add a personal welcome message."
@@ -2748,31 +2754,31 @@ msgstr ""
 #~ msgstr "What happens if I stop using the service?"
 
 #~ msgid ""
-#~ "Ingenting. Du har ingen bindningstid. Dina redan köpta kunder behåller sin "
-#~ "planner."
+#~ "Ingenting. Du har ingen bindningstid. Dina redan köpta kunder behåller "
+#~ "sin planner."
 #~ msgstr ""
-#~ "Nothing. You have no lock-in period. Your clients who have already purchased"
-#~ " keep their planner."
+#~ "Nothing. You have no lock-in period. Your clients who have already "
+#~ "purchased keep their planner."
 
 #~ msgid "Hur får jag min provision utbetald?"
 #~ msgstr "How do I get my commission paid out?"
 
 #~ msgid ""
-#~ "Månadsvis, direkt till ditt konto. Du ser alla dina köp och klick i en enkel"
-#~ " dashboard."
+#~ "Månadsvis, direkt till ditt konto. Du ser alla dina köp och klick i en "
+#~ "enkel dashboard."
 #~ msgstr ""
-#~ "Monthly, directly to your account. You see all your purchases and clicks in "
-#~ "a simple dashboard."
+#~ "Monthly, directly to your account. You see all your purchases and clicks "
+#~ "in a simple dashboard."
 
 #~ msgid "Redo att ge dina par deras egen bröllopsplanner?"
 #~ msgstr "Ready to give your couples their own wedding planner?"
 
 #~ msgid ""
-#~ "Vi öppnar endast 10 nya partnerskap detta kvartal. Ansök kostnadsfritt – tar"
-#~ " 2 minuter."
+#~ "Vi öppnar endast 10 nya partnerskap detta kvartal. Ansök kostnadsfritt – "
+#~ "tar 2 minuter."
 #~ msgstr ""
-#~ "We are only opening 10 new partnerships this quarter. Apply for free – takes"
-#~ " 2 minutes."
+#~ "We are only opening 10 new partnerships this quarter. Apply for free – "
+#~ "takes 2 minutes."
 
 #~ msgid "Ansök om partnerskap nu →"
 #~ msgstr "Apply for partnership now →"
@@ -2814,69 +2820,71 @@ msgstr ""
 #~ msgid ""
 #~ "Du byggde publiken. Ge dem nu ett skäl att stanna. En digital "
 #~ "bröllopsplanerare – fullt anpassad till ditt varumärke, inbäddad i ditt "
-#~ "ekosystem – som gör varje planeringsstund till en påminnelse om vem som gav "
-#~ "dem verktyget från början."
+#~ "ekosystem – som gör varje planeringsstund till en påminnelse om vem som "
+#~ "gav dem verktyget från början."
 #~ msgstr ""
 #~ "You built the audience. Now give them a reason to stay. A digital wedding "
-#~ "planner – fully customized to your brand, embedded in your ecosystem – that "
-#~ "turns every planning moment into a reminder of who gave them the tool in the"
-#~ " first place."
+#~ "planner – fully customized to your brand, embedded in your ecosystem – "
+#~ "that turns every planning moment into a reminder of who gave them the "
+#~ "tool in the first place."
 
 #~ msgid "När inspirerande innehåll tyst arbetar mot dig"
 #~ msgstr "When inspiring content quietly works against you"
 
 #~ msgid ""
-#~ "Du har gjort allting rätt. Vackra bilder. Konsekvent publicering. En växande"
-#~ " gemenskap som uppriktigt älskar det du skapar. Och ändå – när dina följare "
-#~ "stänger Instagram och öppnar sin dator för att faktiskt planera sitt "
-#~ "bröllop, går de någon annanstans. En klumpig engelskspråkig app. En generisk"
-#~ " checklist-sajt. Ett tomt kalkylark. De bär med sig din inspiration – och "
-#~ "lämnar sin lojalitet någon helt annanstans. Detta är inte ett "
-#~ "innehållsproblem. Det är ett strukturellt sådant."
+#~ "Du har gjort allting rätt. Vackra bilder. Konsekvent publicering. En "
+#~ "växande gemenskap som uppriktigt älskar det du skapar. Och ändå – när "
+#~ "dina följare stänger Instagram och öppnar sin dator för att faktiskt "
+#~ "planera sitt bröllop, går de någon annanstans. En klumpig engelskspråkig "
+#~ "app. En generisk checklist-sajt. Ett tomt kalkylark. De bär med sig din "
+#~ "inspiration – och lämnar sin lojalitet någon helt annanstans. Detta är "
+#~ "inte ett innehållsproblem. Det är ett strukturellt sådant."
 #~ msgstr ""
 #~ "You've done everything right. Beautiful images. Consistent posting. A "
-#~ "growing community that genuinely loves what you create. And yet – when your "
-#~ "followers close Instagram and open their laptop to actually plan their "
-#~ "wedding, they go somewhere else. A clunky English app. A generic checklist "
-#~ "site. A blank spreadsheet. They carry your inspiration with them – and leave"
-#~ " their loyalty somewhere else entirely. This is not a content problem. It is"
-#~ " a structural one."
+#~ "growing community that genuinely loves what you create. And yet – when "
+#~ "your followers close Instagram and open their laptop to actually plan "
+#~ "their wedding, they go somewhere else. A clunky English app. A generic "
+#~ "checklist site. A blank spreadsheet. They carry your inspiration with "
+#~ "them – and leave their loyalty somewhere else entirely. This is not a "
+#~ "content problem. It is a structural one."
 
 #~ msgid ""
-#~ "Här är det ingen talar om: ju bättre ditt innehåll är, desto värre blir det."
-#~ " Varje gång du publicerar något vackert ger du dina följare ytterligare en "
-#~ "anledning att känna sig inspirerade – och ytterligare en anledning att agera"
-#~ " på den inspirationen i någon annans verktyg. Du förlorar dem inte för att "
-#~ "ditt varumärke är svagt. Du förlorar dem för att ditt varumärke saknar en "
-#~ "hamn. De ser fyren. De beundrar den. Sedan seglar de vidare."
+#~ "Här är det ingen talar om: ju bättre ditt innehåll är, desto värre blir "
+#~ "det. Varje gång du publicerar något vackert ger du dina följare "
+#~ "ytterligare en anledning att känna sig inspirerade – och ytterligare en "
+#~ "anledning att agera på den inspirationen i någon annans verktyg. Du "
+#~ "förlorar dem inte för att ditt varumärke är svagt. Du förlorar dem för "
+#~ "att ditt varumärke saknar en hamn. De ser fyren. De beundrar den. Sedan "
+#~ "seglar de vidare."
 #~ msgstr ""
 #~ "Here's what no one talks about: the better your content, the worse this "
 #~ "gets. Every time you publish something beautiful, you give your followers "
 #~ "one more reason to feel inspired – and one more reason to act on that "
 #~ "inspiration in someone else's tool. You're not losing them because your "
-#~ "brand is weak. You're losing them because your brand has no harbor. They see"
-#~ " the lighthouse. They admire it. Then they sail on."
+#~ "brand is weak. You're losing them because your brand has no harbor. They "
+#~ "see the lighthouse. They admire it. Then they sail on."
 
 #~ msgid ""
-#~ "Detta kallar vi auktoritetsläckage. Det är den tysta, dagliga överföringen "
-#~ "av förtroende från varumärket som byggde publiken till verktyget som fångade"
-#~ " beteendet. Det visar sig inte som ett dramatiskt misslyckande. Det visar "
-#~ "sig som följarantal som ser sunt ut men konverteringssiffror som aldrig rör "
-#~ "sig. Det visar sig som ett marknadsteam som arbetar hårdare för varje "
-#~ "kvartal och undrar varför lojalitet känns permanent utom räckhåll. Det är "
-#~ "inte ditt fel. Innehållsstrategin var aldrig utformad för att skapa den typ "
-#~ "av daglig, funktionell beroendeställning som förvandlar beundran till "
-#~ "intäkter. Du fick helt enkelt aldrig rätt verktyg för att stänga det gapet."
+#~ "Detta kallar vi auktoritetsläckage. Det är den tysta, dagliga "
+#~ "överföringen av förtroende från varumärket som byggde publiken till "
+#~ "verktyget som fångade beteendet. Det visar sig inte som ett dramatiskt "
+#~ "misslyckande. Det visar sig som följarantal som ser sunt ut men "
+#~ "konverteringssiffror som aldrig rör sig. Det visar sig som ett "
+#~ "marknadsteam som arbetar hårdare för varje kvartal och undrar varför "
+#~ "lojalitet känns permanent utom räckhåll. Det är inte ditt fel. "
+#~ "Innehållsstrategin var aldrig utformad för att skapa den typ av daglig, "
+#~ "funktionell beroendeställning som förvandlar beundran till intäkter. Du "
+#~ "fick helt enkelt aldrig rätt verktyg för att stänga det gapet."
 #~ msgstr ""
-#~ "We call this Authority Bleed. It's the quiet, daily transfer of trust from "
-#~ "the brand that built the audience to the tool that captured the behavior. It"
-#~ " doesn't show up as a dramatic failure. It shows up as follower counts that "
-#~ "look healthy but conversion numbers that never move. It shows up as a "
-#~ "marketing team working harder every quarter, wondering why loyalty feels "
-#~ "permanently out of reach. It's not your fault. The content-first playbook "
-#~ "was never designed to create the kind of daily, functional dependency that "
-#~ "turns admiration into revenue. You were simply never given the right tool to"
-#~ " close that gap."
+#~ "We call this Authority Bleed. It's the quiet, daily transfer of trust "
+#~ "from the brand that built the audience to the tool that captured the "
+#~ "behavior. It doesn't show up as a dramatic failure. It shows up as "
+#~ "follower counts that look healthy but conversion numbers that never move. "
+#~ "It shows up as a marketing team working harder every quarter, wondering "
+#~ "why loyalty feels permanently out of reach. It's not your fault. The "
+#~ "content-first playbook was never designed to create the kind of daily, "
+#~ "functional dependency that turns admiration into revenue. You were simply "
+#~ "never given the right tool to close that gap."
 
 #~ msgid "Den första som äger planeringsresan vinner allt som följer"
 #~ msgstr "The first to own the planning journey wins everything that follows"
@@ -2884,84 +2892,86 @@ msgstr ""
 #~ msgid ""
 #~ "Just nu finns det en lucka på den svenska bröllopsmarknaden. Par som "
 #~ "planerar sitt bröllop söker ett digitalt verktyg som passar deras språk, "
-#~ "deras estetik och verkligheten i att planera något så betydelsefullt. Vad de"
-#~ " istället finner är utländska appar som känns generiska, webbplatser som "
-#~ "känns frånkopplade och PDF-checklistor som blir oanvändbara inom en vecka. "
-#~ "Den luckan är öppen. Och det första etablerade varumärket som fyller den med"
-#~ " något genuint användbart kommer inte bara att skapa en ny intäktsström. Det"
-#~ " kommer att bli den oumbärliga dagliga destinationen för varje par i sin "
-#~ "gemenskap – platsen de återvänder till varje morgon medan de planerar den "
-#~ "viktigaste dagen i sina liv."
+#~ "deras estetik och verkligheten i att planera något så betydelsefullt. Vad "
+#~ "de istället finner är utländska appar som känns generiska, webbplatser "
+#~ "som känns frånkopplade och PDF-checklistor som blir oanvändbara inom en "
+#~ "vecka. Den luckan är öppen. Och det första etablerade varumärket som "
+#~ "fyller den med något genuint användbart kommer inte bara att skapa en ny "
+#~ "intäktsström. Det kommer att bli den oumbärliga dagliga destinationen för "
+#~ "varje par i sin gemenskap – platsen de återvänder till varje morgon medan "
+#~ "de planerar den viktigaste dagen i sina liv."
 #~ msgstr ""
 #~ "Right now there is a gap in the wedding market. Couples planning their "
 #~ "wedding are looking for a digital tool that fits their language, their "
-#~ "aesthetic, and the reality of planning something this significant. What they"
-#~ " find instead are foreign apps that feel generic, websites that feel "
-#~ "disconnected, and PDF checklists that become useless within a week. That gap"
-#~ " is open. And the first established brand to fill it with something "
-#~ "genuinely useful won't just create a new revenue stream. It will become the "
-#~ "indispensable daily destination for every couple in its community – the "
-#~ "place they return to every morning as they plan the most important day of "
-#~ "their lives."
+#~ "aesthetic, and the reality of planning something this significant. What "
+#~ "they find instead are foreign apps that feel generic, websites that feel "
+#~ "disconnected, and PDF checklists that become useless within a week. That "
+#~ "gap is open. And the first established brand to fill it with something "
+#~ "genuinely useful won't just create a new revenue stream. It will become "
+#~ "the indispensable daily destination for every couple in its community – "
+#~ "the place they return to every morning as they plan the most important "
+#~ "day of their lives."
 
 #~ msgid "Ett verktyg som stärker bandet med dina följare"
 #~ msgstr "A tool that strengthens the bond with your followers"
 
 #~ msgid ""
 #~ "Utility Anchor-partnerskapet gör en sak med precision: det bäddar in en "
-#~ "fullt varumärkesanpassad, interaktiv digital bröllopsplanerare direkt i ditt"
-#~ " ekosystem. Inte en mall. Inte en white label-produkt med någon annans "
-#~ "logotyp. Ett verktyg som din publik kommer att anta att du byggde från "
-#~ "grunden – för i varje meningsfull bemärkelse gjorde du det. Varje gång de "
-#~ "öppnar det ser de ditt varumärke. Varje gång de slutför ett steg litar de "
-#~ "mer på dig. Varje gång de delar det med en vän som just förlovat sig når "
-#~ "ditt varumärke längre. Planeraren står inte bredvid ditt varumärke. Den blir"
-#~ " ett uttryck för det."
+#~ "fullt varumärkesanpassad, interaktiv digital bröllopsplanerare direkt i "
+#~ "ditt ekosystem. Inte en mall. Inte en white label-produkt med någon "
+#~ "annans logotyp. Ett verktyg som din publik kommer att anta att du byggde "
+#~ "från grunden – för i varje meningsfull bemärkelse gjorde du det. Varje "
+#~ "gång de öppnar det ser de ditt varumärke. Varje gång de slutför ett steg "
+#~ "litar de mer på dig. Varje gång de delar det med en vän som just förlovat "
+#~ "sig når ditt varumärke längre. Planeraren står inte bredvid ditt "
+#~ "varumärke. Den blir ett uttryck för det."
 #~ msgstr ""
 #~ "The Utility Anchor Partnership does one thing with precision: it embeds a "
 #~ "fully branded, interactive digital wedding planner directly into your "
 #~ "ecosystem. Not a template. Not a white-label product with someone else's "
-#~ "logo. A tool your audience will assume you built from scratch – because in "
-#~ "every meaningful sense, you did. Every time they open it, they see your "
-#~ "brand. Every time they complete a step, they trust you more. Every time they"
-#~ " share it with a newly engaged friend, your brand reaches further. The "
-#~ "planner doesn't sit beside your brand. It becomes an expression of it."
+#~ "logo. A tool your audience will assume you built from scratch – because "
+#~ "in every meaningful sense, you did. Every time they open it, they see "
+#~ "your brand. Every time they complete a step, they trust you more. Every "
+#~ "time they share it with a newly engaged friend, your brand reaches "
+#~ "further. The planner doesn't sit beside your brand. It becomes an "
+#~ "expression of it."
 
 #~ msgid "Från passiv beundran till daglig beroendeställning"
 #~ msgstr "From passive admiration to daily dependency"
 
 #~ msgid ""
-#~ "Föreställ dig vad som förändras när ditt varumärke äger den dagliga vanan. "
-#~ "Dina följare slutar vara människor som ibland besöker din webbplats och "
-#~ "börjar vara människor som är beroende av den. Relationen skiftar från "
-#~ "envisgsutsändning till genuint partnerskap. Du har nu en tydlig, databaserad"
-#~ " berättelse att presentera i varje ledningsmöte. Inte \\"
+#~ "Föreställ dig vad som förändras när ditt varumärke äger den dagliga "
+#~ "vanan. Dina följare slutar vara människor som ibland besöker din "
+#~ "webbplats och börjar vara människor som är beroende av den. Relationen "
+#~ "skiftar från envisgsutsändning till genuint partnerskap. Du har nu en "
+#~ "tydlig, databaserad berättelse att presentera i varje ledningsmöte. Inte "
+#~ "\\"
 #~ msgstr ""
-#~ "Imagine what changes when your brand owns that daily habit. Your followers "
-#~ "stop being people who occasionally visit your website and start being people"
-#~ " who depend on it. The relationship shifts from one-way broadcast to genuine"
-#~ " partnership. You now have a clear, data-backed story to present in every "
-#~ "leadership meeting. Not \""
+#~ "Imagine what changes when your brand owns that daily habit. Your "
+#~ "followers stop being people who occasionally visit your website and start "
+#~ "being people who depend on it. The relationship shifts from one-way "
+#~ "broadcast to genuine partnership. You now have a clear, data-backed story "
+#~ "to present in every leadership meeting. Not \""
 
 #~ msgid "För vem passar detta?"
 #~ msgstr "Who is this for?"
 
 #~ msgid ""
-#~ "Ni har byggt en lojal följarskara genom ert arbete, men er publik har ingen "
-#~ "anledning att återvända mellan fotograferingarna. Ni vill förändra det – och"
-#~ " samtidigt skapa en ny intäktsström."
+#~ "Ni har byggt en lojal följarskara genom ert arbete, men er publik har "
+#~ "ingen anledning att återvända mellan fotograferingarna. Ni vill förändra "
+#~ "det – och samtidigt skapa en ny intäktsström."
 #~ msgstr ""
-#~ "You've built a loyal following through your work, but your audience has no "
-#~ "reason to return between shoots. You want to change that – and create a new "
-#~ "revenue stream in the process."
+#~ "You've built a loyal following through your work, but your audience has "
+#~ "no reason to return between shoots. You want to change that – and create "
+#~ "a new revenue stream in the process."
 
 #~ msgid "Bröllopsklänningsbutiker och ringmärken"
 #~ msgstr "Bridal boutiques and ring brands"
 
 #~ msgid ""
-#~ "Era kunder befinner sig mitt i det mest känslomässigt laddade köpbeslutet i "
-#~ "sina liv. Ni vill vara närvarande genom hela den resan, inte bara vid själva"
-#~ " köptillfället."
+#~ "Era kunder befinner sig mitt i det mest känslomässigt laddade köpbeslutet "
+#~ "i sina liv. Ni vill vara närvarande genom hela den resan, inte bara vid "
+#~ "själva köptillfället."
 #~ msgstr ""
 #~ "Your customers are in the middle of the most emotionally significant "
 #~ "purchase of their lives. You want to be present throughout that entire "
@@ -2981,11 +2991,11 @@ msgstr ""
 
 #~ msgid ""
 #~ "Ett begränsat antal partnerskap öppnas per kvartal. De varumärken som "
-#~ "ansluter nu är live och genererar insikter – medan nästa intag fortfarande "
-#~ "väntar."
+#~ "ansluter nu är live och genererar insikter – medan nästa intag "
+#~ "fortfarande väntar."
 #~ msgstr ""
-#~ "A limited number of partnerships open each quarter. Brands that join now are"
-#~ " live and generating insights – while the next intake is still waiting."
+#~ "A limited number of partnerships open each quarter. Brands that join now "
+#~ "are live and generating insights – while the next intake is still waiting."
 
 #~ msgid "Var inte sist denna gången"
 #~ msgstr "Don't be last this time"
@@ -3036,8 +3046,8 @@ msgstr ""
 #~ "Ni får allt detta – utan en enda krona i start-investering. Eftersom vi "
 #~ "endast tjänar pengar när ni gör det."
 #~ msgstr ""
-#~ "You get all of this – without a single krona in upfront investment. Because "
-#~ "we only make money when you do."
+#~ "You get all of this – without a single krona in upfront investment. "
+#~ "Because we only make money when you do."
 
 #~ msgid ""
 #~ "Om ni har 40 000 följare och tre procent av dem just nu planerar sitt "
@@ -3046,10 +3056,10 @@ msgstr ""
 #~ "tillsammans. Och just nu fattar de det någon annanstans. Inte hos er."
 #~ msgstr ""
 #~ "If you have 40,000 followers and three percent of them are currently "
-#~ "planning their wedding, we're talking about 1,200 people. 1,200 couples in "
-#~ "the middle of the most emotional – and financially significant – decision "
-#~ "they've ever made together. And right now, they're making it somewhere else."
-#~ " Not with you."
+#~ "planning their wedding, we're talking about 1,200 people. 1,200 couples "
+#~ "in the middle of the most emotional – and financially significant – "
+#~ "decision they've ever made together. And right now, they're making it "
+#~ "somewhere else. Not with you."
 
 #~ msgid "Ett löfte. Inga avgifter."
 #~ msgstr "A promise. No fees."
@@ -3057,10 +3067,10 @@ msgstr ""
 #~ msgid ""
 #~ "Ett partnerskap byggt på en enda princip: vi lyckas bara när ni lyckas. "
 #~ "Ingen för-kostnad. Ingen teknisk risk. Bara ett verktyg som förvandlar er "
-#~ "publik från passiva beundrare till dagligt återkommande kunder – live inom "
-#~ "48 timmar."
+#~ "publik från passiva beundrare till dagligt återkommande kunder – live "
+#~ "inom 48 timmar."
 #~ msgstr ""
-#~ "A partnership built on a single principle: we only succeed when you succeed."
-#~ " No upfront cost. No technical risk. Just a tool that transforms your "
-#~ "audience from passive admirers to daily returning customers – live within 48"
-#~ " hours."
+#~ "A partnership built on a single principle: we only succeed when you "
+#~ "succeed. No upfront cost. No technical risk. Just a tool that transforms "
+#~ "your audience from passive admirers to daily returning customers – live "
+#~ "within 48 hours."
