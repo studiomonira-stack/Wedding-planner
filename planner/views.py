@@ -1112,7 +1112,7 @@ def partner_page(request, slug):
         logo = profil.logo
         primary_color = profil.primary_color
         accent_color = profil.accent_color
-        background_image = None  # Photographer har inte background_image
+        background_image = getattr(profil, 'background_image', None)  # Photographer har inte background_image
         whop_affiliate_id = profil.whop_affiliate_id
     elif page.leverantor:
         profil = page.leverantor
@@ -1120,7 +1120,7 @@ def partner_page(request, slug):
         logo = profil.logo
         primary_color = profil.primary_color
         accent_color = profil.accent_color
-        background_image = profil.background_image  # Leverantör har!
+        background_image = profil.background_image # Leverantör har!
         whop_affiliate_id = getattr(profil, 'whop_affiliate_id', None)
     else:
         return redirect('landing')
